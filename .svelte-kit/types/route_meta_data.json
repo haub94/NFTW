@@ -1,0 +1,6 @@
+{
+	"/": [],
+	"/imprint": [
+		"src/routes/imprint/+server.ts"
+	]
+}
