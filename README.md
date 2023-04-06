@@ -56,7 +56,7 @@ npm run build
 
 ## 🔥  Step-by-step instruction
 1. switch to the location where you want to have the project directory
-2. clone the repo: git clone ``` git@github.com:haub94/NFTW.git ```
+2. clone the repo: ``` git clone git@github.com:haub94/NFTW.git ```
 3. switch into the created directory and install dependencies: ``` npm install ```
 4. run the localhost: ``` npm run dev ``` or ``` npm run dev -- --open ``` to open a new tab in the browser
 
