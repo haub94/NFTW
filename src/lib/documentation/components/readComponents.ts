@@ -1,5 +1,5 @@
-export function readComp(directory) {
-	let compArray = [];
+export function readComp(directory: string) {
+	let compArray: string[] = [];
 	let modules;
 	switch (directory) {
 		case "atoms":
@@ -14,13 +14,13 @@ export function readComp(directory) {
 	for (const path in modules) {
 		modules[path]().then(() => {
 			//console.log(index, mod);
-			let pathArray = path.split("/");
-			let compSvelte = pathArray.at(-1);
+			let pathArray: string[] = path.split("/");
+			let compSvelte: string | undefined = pathArray.at(-1) || 'zero components';
 			//console.log(compSvelte);
-			let comp = compSvelte.split(".");
+			let comp: string[] = compSvelte.split(".");
 			//console.log(comp.at(0));
-			let component = comp.at(0);
-			compArray.push(component);
+			let component: string | undefined = comp.at(0);
+			compArray.push(component as string);
 		})
 	}
 	console.log(compArray);
