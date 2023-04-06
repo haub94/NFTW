@@ -43,6 +43,9 @@ npm run dev -- --open
     -------------------------------------------->
 - if you do single changes, please comment with your name and date (syntax.: //JJJJ.MM.DD - lastname, firstname:  descripe the change)
 
+### 6. Adding routes
+- add sites with the default header&footer into the directory [[sites]]
+- if its necessary to break the default layout (header&footer) --> add the route into the root of routes
 
 ## 🔧 Building
 To create a production version of your app:
