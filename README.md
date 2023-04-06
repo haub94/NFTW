@@ -7,7 +7,7 @@
 - nvm (node version manager) is recomended
 
 
-### 2. Install and Run (at the end there is a step-by-step instruction 🏃)
+### 2. Install and Run (at the end is a step-by-step instruction 🏃)
 Once you've created a project and installed dependencies with `npm install`, start a development server:
 ```
 npm run dev
