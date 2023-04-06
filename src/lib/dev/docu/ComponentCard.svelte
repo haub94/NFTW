@@ -1,5 +1,5 @@
 <script>
-	import Button from '$lib/documentation/components/atoms/Button.svelte';
+	import Button from '$lib/dev/docu/components/atoms/Button.svelte';
 
 	export let name = "Button";
 	export let description = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et"

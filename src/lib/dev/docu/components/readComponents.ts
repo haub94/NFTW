@@ -3,10 +3,10 @@ export function readComp(directory: string) {
 	let modules;
 	switch (directory) {
 		case "atoms":
-			modules = import.meta.glob("$lib/patternLib/components/atoms/*.svelte");
+			modules = import.meta.glob("$lib/dev/docu/documentation/components/atoms/*.svelte");
 			break;
 		case "molecules":
-			modules = import.meta.glob("$lib/patternLib/components/molecules/*.svelte");
+			modules = import.meta.glob("$lib/dev/docu/documentation/components/molecules/*.svelte");
 			break;
 		default:
 			console.log("Error in function readComponents: The directory with the name <" + directory + "> doesnt exists!");

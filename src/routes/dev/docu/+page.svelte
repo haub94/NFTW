@@ -1,8 +1,8 @@
 <script>
-	import SideBarTab from '$lib/documentation/SideBarTab.svelte';
-	import Header from '$lib/documentation/Searchbar.svelte';
-	import ComponentCard from '$lib/documentation/ComponentCard.svelte';
-	import PatternLib from '$lib/documentation/PatternLib.svelte';
+	import SideBarTab from '$lib/dev/docu/SideBarTab.svelte';
+	import Header from '$lib/dev/docu/Searchbar.svelte';
+	import ComponentCard from '$lib/dev/docu/ComponentCard.svelte';
+	import Docu from '$lib/dev/docu/Docu.svelte';
 
 
 	//TEMP
@@ -15,15 +15,15 @@
 			subitem:[
 				{
 					name:"Button",
-					componentPath:"$lib/patternLib/components/atoms/Button.svelte",
+					componentPath:"$lib/documentation/components/atoms/Button.svelte",
 				},
 				{
 					name:"Button2",
-					componentPath:"$lib/patternLib/components/atoms/Button.svelte",
+					componentPath:"$lib/documentation/components/atoms/Button.svelte",
 				},
 				{
 					name:"Button3",
-					componentPath:"$lib/patternLib/components/atoms/Button.svelte",
+					componentPath:"$lib/documentation/components/atoms/Button.svelte",
 				}
 			],
 		},
@@ -128,7 +128,7 @@
 	<div class="flex flex-1 flex-col md:pl-64">
 		<Header />
 		<ComponentCard data={navigation} />
-		<PatternLib />
+		<Docu />
 	</div>
 
 </div>
