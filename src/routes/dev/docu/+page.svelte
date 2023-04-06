@@ -1,7 +1,7 @@
 <script>
 	import SideBarTab from '$lib/dev/docu/SideBarTab.svelte';
 	import Header from '$lib/dev/docu/Searchbar.svelte';
-	import ComponentCard from '$lib/dev/docu/ComponentCard.svelte';
+	import ComponentDescription from '$lib/dev/docu/ComponentDescription.svelte';
 	import Docu from '$lib/dev/docu/Docu.svelte';
 
 
@@ -127,7 +127,7 @@
 
 	<div class="flex flex-1 flex-col md:pl-64">
 		<Header />
-		<ComponentCard data={navigation} />
+		<ComponentDescription data={navigation} />
 		<Docu />
 	</div>
 
