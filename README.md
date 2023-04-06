@@ -7,7 +7,7 @@
 - nvm (node version manager) is recomended
 
 
-### 2. Install and Run (at the end is a step-by-step instruction 🏃)
+### 2. Install and run (at the end is a step-by-step instruction 🏃)
 Once you've created a project and installed dependencies with `npm install`, start a development server:
 ```
 npm run dev
@@ -25,7 +25,7 @@ npm run dev -- --open
 - only the project owner merge staging into master
 - default merge-direction:  master ⬅ staging ⬅ feature-branch
 
-### 4. Work with Database
+### 4. Work with database
     ...content follows soon
 
 ### 5. Codestyle
@@ -43,6 +43,9 @@ npm run dev -- --open
     -------------------------------------------->
 - if you do single changes, please comment with your name and date (syntax.: //JJJJ.MM.DD - lastname, firstname:  descripe the change)
 
+### 6. Adding routes
+- add sites with the default header&footer into the directory [[sites]]
+- if its necessary to break the default layout (header&footer) --> add the route into the root of routes
 
 ## 🔧 Building
 To create a production version of your app:
