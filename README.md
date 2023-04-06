@@ -1,7 +1,13 @@
-# 🚀 Readme for NFTW Adventures Website 🚀
+# 🌎🚀 Readme NFTW Adventures
 
 ## 💻 Developing
-### 1. Install and Run 
+### 1. What you need
+- git
+- node.js version 18.15.0 (you can install it with homebrew or with the download from here: https://nodejs.org/en/download)
+- nvm (node version manager) is recomended
+
+
+### 2. Install and Run (at the end there is a step-by-step instruction 🏃)
 Once you've created a project and installed dependencies with `npm install`, start a development server:
 ```
 npm run dev
@@ -9,7 +15,7 @@ npm run dev
 npm run dev -- --open
 ```
 
-### 2. Working with branches and commits
+### 3. Working with branches and commits
 - NEVER merge a feature-branch into master
 - every feature-branch have to be aproved by another contributer
 - if you create a new branch, please make sure you generate it from the updated staging
@@ -19,10 +25,10 @@ npm run dev -- --open
 - only the project owner merge staging into master
 - default merge-direction:  master ⬅ staging ⬅ feature-branch
 
-### 3. Work with Database
+### 4. Work with Database
     ...content follows soon
 
-### 4. Codestyle
+### 5. Codestyle
 - use Prettier! shortcut to open search bar VS Code:
     - MacOS: COMMAND + SHIFT + P |>Format Document
     - Windows: CRTL + SHIFT + P |>Format Document
@@ -44,5 +50,12 @@ To create a production version of your app:
 ```
 npm run build
 ```
+
+## 🔥  Step-by-step instruction
+1. switch to the location where you want to have the project directory
+2. clone the repo: git clone ``` git@github.com:haub94/NFTW.git ```
+3. switch into the created directory and install dependencies: ``` npm install ```
+4. run the localhost: ``` npm run dev ``` or ``` npm run dev -- --open ``` to open a new tab in the browser
+
 
 
