@@ -1,4 +1,5 @@
 #IGNORE Sveltekit stuff
+/.svelte-kit
 .DS_Store
 node_modules
 dist
