@@ -1,12 +1,36 @@
-<script>
-	import Button from '$lib/dev/docu/components/atoms/ButtonAtoms.svelte';
+<script lang="ts">
+	import { onMount } from 'svelte';
+	const jsonFile: string = '/content.json';
+
+
 
 	export let name = "Button";
 	export let description = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et"
-	export let data;
+
+
+	
+
+	onMount(() => {
+		fetch(jsonFile)
+			.then(function (response) {
+				return response.json();
+			})
+			.then(function (data) {
+				let content = JSON.parse(JSON.stringify(data));
+				console.log('content :>> ', content);
+			
+				//console.log("eintrag: " + content.day[0].monday[0].town);
+			})
+		.catch(function (e) {
+			console.log('error creating location-data: ' + e);
+		});
+	});
+
+
 
 </script>
 
+<!--
 {#each data as dat}
 	<main>
 		<div class="py-6">
@@ -22,11 +46,14 @@
 			</div>
 			<div class="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
 				<div class="py-4 h-auto">
-						<div class="flex justify-center my-4 py-4 border border-2 border-gray-300 rounded-lg">
+						<div class="flex justify-center my-4 py-4 border-2 border-gray-300 rounded-lg">
 							<svelte:component this={Button} />
+
+
 						</div>
 				</div>
 			</div>
 		</div>
 	</main>
 {/each}
+-->

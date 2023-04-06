@@ -1,77 +1,8 @@
 <script>
 	import SideBarTab from '$lib/dev/docu/SideBarTab.svelte';
-	import Header from '$lib/dev/docu/Searchbar.svelte';
-	import ComponentDescription from '$lib/dev/docu/ComponentDescription.svelte';
-	import Docu from '$lib/dev/docu/Docu.svelte';
-
-
-	//TEMP
-	const navigation = [
-		{
-			name:"Atoms",
-			icon:"",
-			iconAltText:"",
-			path:"",
-			subitem:[
-				{
-					name:"Button",
-					componentPath:"$lib/documentation/components/atoms/Button.svelte",
-				},
-				{
-					name:"Button2",
-					componentPath:"$lib/documentation/components/atoms/Button.svelte",
-				},
-				{
-					name:"Button3",
-					componentPath:"$lib/documentation/components/atoms/Button.svelte",
-				}
-			],
-		},
-		{
-			name:"Molecules",
-			icon:"",
-			iconAltText:"",
-			path:"",
-			subitem:[
-				{
-					name:"Form"
-				}
-			],
-		},
-		{
-			name:"Organisms",
-			icon:"",
-			iconAltText:"",
-			path:"",
-			subitem:[
-				{
-					name:"CTA"
-				}
-			],
-		},
-		{
-			name:"Template",
-			icon:"",
-			iconAltText:"",
-			path:"",
-			subitem:[
-				{
-					name:"Template Landing"
-				}
-			],
-		},
-		{
-			name:"Pages",
-			icon:"",
-			iconAltText:"",
-			path:"",
-			subitem:[
-				{
-					name:"Landingpage"
-				}
-			],
-		}
-	]
+	import Searchbar from '$lib/dev/docu/Searchbar.svelte';
+	import Components from '$lib/dev/docu/Components.svelte';
+	
 
 </script>
 
@@ -126,9 +57,8 @@
 
 
 	<div class="flex flex-1 flex-col md:pl-64">
-		<Header />
-		<ComponentDescription data={navigation} />
-		<Docu />
+		<Searchbar />
+		<Components />
 	</div>
 
 </div>

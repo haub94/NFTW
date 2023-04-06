@@ -1,0 +1,18 @@
+{
+    "components": [
+        {
+            "name": "Header",
+            "path": "$lib/sectionComponent/Header.svelte",
+            "descritopn": "Beschreibung zu Header.",
+            "props": ["eins", "zwei", "drei"]
+
+        },
+        {
+            "name": "Footer",
+            "path": "$lib/sectionComponent/Footer.svelte",
+            "descritopn": "Beschreibung zu Footer.",
+            "props": ["eins", "zwei", "drei"]
+
+        }
+    ]       
+}
