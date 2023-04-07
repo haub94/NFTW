@@ -1,5 +1,5 @@
 <script lang="ts">
-    import ScriptBlock from "./ScriptBlock.svelte";
+    import ScriptBlock from "./helper/ScriptBlock.svelte";
     //add all component-imports here
     import Header from "$lib/sectionComponents/Header.svelte";
     import Footer from "$lib/sectionComponents/Footer.svelte";
