@@ -11,22 +11,30 @@
 			name: 'Header',   
 			component: Header,
 			description: 'Beschreibung zu Header.',
-			"props": ["eins", "zwei", "drei"]   
+			parameter: ["eins", "zwei", "drei"],
+			parameterDescription: [],  
 		},
 		{ 
 			name: 'Footer', 
 			component: Footer,
 			description: 'Beschreibung zu Footer.',
-			"props": ["eins", "zwei", "drei"] 
+			parameter: ["eins", "zwei", "drei"],
+			parameterDescription: [],    
 		},
 	];
+
 	
+	
+
+
+
+
+
 </script>
 
 
-
-{#each components as component}
-	<main>
+<div class="[&>*:nth-child(odd)]:bg-gray-50 [&>*:nth-child(even)]:bg-gray-200">
+	{#each components as component}
 		<div class="py-6">
 			<div class="flex flex-row justify-between content-center mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
 				<div class='flex flex-col space-y-2'>
@@ -40,12 +48,13 @@
 			</div>
 			<div class="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
 				<div class="py-4 h-auto">
-						<div class="flex justify-center my-4 py-4 border-2 border-gray-300 rounded-lg">
+						<div class="flex justify-center my-4 p-4 border-2 border-gray-300 rounded-lg">
 							<svelte:component this={component.component}/>
 						</div>
 				</div>
 			</div>
 		</div>
-	</main>
-{/each}
+	{/each}
+</div>
+
 
