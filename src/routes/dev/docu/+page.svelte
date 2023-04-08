@@ -1,9 +1,6 @@
 <script>
 	import SideBarTab from '$lib/dev/docu/SideBarTab.svelte';
-	import Searchbar from '$lib/dev/docu/Searchbar.svelte';
 	import Components from '$lib/dev/docu/Components.svelte';
-	
-
 </script>
 
 
@@ -57,7 +54,6 @@
 
 
 	<div class="flex flex-1 flex-col md:pl-64">
-		<Searchbar />
 		<Components />
 	</div>
 
