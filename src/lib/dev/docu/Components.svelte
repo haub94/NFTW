@@ -123,11 +123,11 @@
             <div>
               <h2 class="font-bold">Props</h2>
               <div class="pl-4">
-                {#each component[index].props as item}
+                
                    <div class="flex-row space-x-4">
                     <p>{component.props}</p>
                   </div>
-                {/each}
+                
                   
                 
                 
