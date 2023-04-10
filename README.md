@@ -7,7 +7,7 @@
 - nvm (node version manager) is recomended
 
 
-### 2. Install and Run (at the end is a step-by-step instruction 🏃)
+### 2. Install and run (at the end is a step-by-step instruction 🏃)
 Once you've created a project and installed dependencies with `npm install`, start a development server:
 ```
 npm run dev
@@ -25,7 +25,7 @@ npm run dev -- --open
 - only the project owner merge staging into master
 - default merge-direction:  master ⬅ staging ⬅ feature-branch
 
-### 4. Work with Database
+### 4. Work with database
     ...content follows soon
 
 ### 5. Codestyle
@@ -53,6 +53,11 @@ To create a production version of your app:
 ```
 npm run build
 ```
+
+## 📄 Documentation
+The documentation is in the project integrated. 
+- You will find it by follow the route:  http://127.0.0.1:5173/dev/docu
+- Every componend must noted in the docu! --> add a new object to the data-object in the +page.svelte file from the route /dev/docu (use the template!)
 
 ## 🔥  Step-by-step instruction
 1. switch to the location where you want to have the project directory
