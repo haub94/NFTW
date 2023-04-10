@@ -5,12 +5,16 @@
     import Header from "$lib/sectionComponents/Header.svelte";
     import Footer from "$lib/sectionComponents/Footer.svelte";
 
+    //some styling
+    const tableHeaderStyle: string = "border text-left px-2 py-1 font-medium";
+    const tableRowStyle: string = "border text-left px-4 py-1";
+
 
     let previewState: boolean = false;
     let toggleButtonDescription = "show code";
 
     function togglePreviewState() {
-      previewState = !previewState;
+      previewState = !previewState; //0=coponent 1=code
       if (previewState) {
         toggleButtonDescription = "show preview"
       } else {
@@ -29,8 +33,17 @@
         version: "1.0",
         usedBy: "",
         dependecies: "",
-        props: ["eins", "zwei"],
-        propDescription: ["prop1 beschribeung", "prop2 beschreibung"],
+        variables: [
+          {
+            name: 'Prop1',
+            description: 'Beschreibung zu Prop1',
+          },
+          {
+            name: 'Prop2',
+            description: 'Beschreibung zu Prop2',
+          }
+        ],
+        propDescription: ["prop1 Beschreibung", "prop2 Beschreibung"],
         script: 
     `
     function helloWorld() {
@@ -39,32 +52,38 @@
     return(0);
     }`,
         html: 
-        `
+    `
     <div class="flex flex-row bg-black p-5 text-3xl text-white mx-auto py-4 md:py-4 md:flex-row">
     <p>NFTW Adventures</p>
     <a href="/impressum" class="ml-48 text-lg bg-red-600">Impressum</a>
     <button class="ml-12 text-lg">spacetravel</button>
     <button class="ml-12 text-lg">client storys</button>
     </div>
-      `
+    `
       },
+    ]
+      
+      /*
       {
         ID: 1,
         name: "Footer",
         component: Footer,
         description: "Beschreibung zu Footer.",
-        parameter: ["eins", "zwei", "drei"],
-        parameterDescription: [],
+        author: "Markus Haubold",
+        version: "1.0",
+        usedBy: "",
+        dependecies: "",
+        props: ['Prop1', 'Prop2'],
+        propDescription: ["prop1 Beschreibung", "prop2 Beschreibung"],
         script: ``,
         html: 
         `
         <div>test</div>
-        `,
-      },
-    ];
+        `
+      }
+    ]*/
 
 </script>
-
 
 <!--preview/code toggle button-->
 <div class="sticky top-0 z-10 flex h-16 flex-shrink-0 bg-white shadow">
@@ -121,37 +140,36 @@
             </div>
 
             <div>
-              <h2 class="font-bold">Props</h2>
-              <div class="pl-4">
+              <h2 class="font-bold mb-1">Variables</h2>
+              <table class="border">
+                <thead>
+                  <tr>
+                    <th class={tableHeaderStyle}>Name</th>
+                    <th class={tableHeaderStyle}>Desription</th>
+                  </tr>
+                </thead>
                 
-                   <div class="flex-row space-x-4">
-                    <p>{component.props}</p>
-                  </div>
-                
+                <tbody>
                   
-                
-                
-
-              </div>
+                    {#each component.variables as variable}
+                    <tr>
+                      <td class={tableRowStyle}>{variable.name} </td>
+                      <td class={tableRowStyle}>{variable.description}</td>
+                    </tr> 
+                    {/each}
+                 
+                </tbody>
+              </table>
             </div>
-            
-              
-         
-            
-
-
-          </div>
-          
+          </div>  
         </div>
-
-        <!--toggle preview-->
-       
       </div>
+
 
       <!--preview-->
         <div class="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
           <div class="h-auto py-4">
-            <div class="my-4 flex justify-center rounded-lg border-2 border-gray-300 p-4">
+            <div class:justify-start={previewState} class:justify-center={!previewState} class="my-4 flex rounded-lg border-2 border-gray-300 p-4">
               {#if !previewState} 
 				      <!--component preview-->  
               <svelte:component this={component.component} />    
