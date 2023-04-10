@@ -1,11 +1,16 @@
-<script>
+<script lang="ts">
 	export let data;
+
+	//config
+	const pathToDocu: string = "/dev/docu/#";
+
 </script>
 
 
-<!--name-->
+<div class="space-y-2 px-2">
+	<!--name-->
 	{#each data as nav}
-		<a href={nav.name} class=" mt-8 bg-indigo-800 text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md" >
+		<a href={pathToDocu + nav.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
 			<!-- Heroicon name: outline/home -->
 
 			<!--use this component later-->
@@ -27,3 +32,4 @@
 			</span>
 		{/each}
 	{/each}-->
+</div>

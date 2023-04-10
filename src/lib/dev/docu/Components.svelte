@@ -60,12 +60,12 @@
 
 <div>
   {#each components as component}
-    <div class="py-6 border-t-4 bg-gray-50 hover:bg-indigo-50">
+    <div class="py-6">
       <!--infos-->
       <div
         class="mx-auto flex max-w-7xl flex-row content-center justify-between px-4 sm:px-6 md:px-8">
         <div class="flex flex-col space-y-2">
-          <h1 class="h-12 text-2xl font-semibold text-gray-900">
+          <h1 id={component.name} class="h-12 text-2xl font-semibold text-gray-900">
             {component.name}
           </h1>
           <div class="space-y-4">

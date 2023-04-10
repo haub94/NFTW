@@ -6,15 +6,9 @@
 </script>
 
 
+<Sidebar data={data} />
 
 
+  
 
-<div class="flex flex-row" >
-  <div class="w-96">
-   <Sidebar data={data} />
-  </div>
-  <div>
-    <Components data={data} />
-  </div>
-</div>
 
