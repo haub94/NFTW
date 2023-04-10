@@ -32,15 +32,6 @@ npm run dev -- --open
 - use Prettier! shortcut to open search bar VS Code:
     - MacOS: COMMAND + SHIFT + P |>Format Document
     - Windows: CRTL + SHIFT + P |>Format Document
-- add the following declaration at the top of your component (set "!" after "<" (its too a comment here and not visible)): \
-    <-------------------------------------------\
-    Name:          
-    Description:             
-    Author(s):     
-    Date:          JJJJ-MM-DD \
-    Version:       VX.Y \
-    TODO:          
-    -------------------------------------------->
 - if you do single changes, please comment with your name and date (syntax.: //JJJJ.MM.DD - lastname, firstname:  descripe the change)
 
 ### 6. Adding routes
