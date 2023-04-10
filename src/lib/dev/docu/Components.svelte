@@ -2,7 +2,7 @@
     import ScriptBlock from "./helper/ScriptBlock.svelte";
 
     //bind data
-    export let data;
+    export let data: any;
 
     //some styling
     const tableHeaderStyle: string = "border text-left px-2 py-1 font-medium";
@@ -20,46 +20,27 @@
       }
     }
 
-    //fill with docu-data
-   let components = data;
-
 </script>
 
 
 
 
-<!--preview/code toggle button-->
-<div class="sticky top-0 z-10 flex h-16 flex-shrink-0 bg-white shadow">
-  <h1 class="font-medium text-4xl my-auto pl-2">Documentation for Website NFTW Adventures</h1>
-  <button type="button" class="border-r border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden">
-    <span class="sr-only">Open sidebar</span>
-    <!-- Heroicon name: outline/bars-3-bottom-left -->
-    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
-    </svg>
-  </button>
-  <div class="flex flex-1 justify-between px-4">
-    <div class="flex flex-1">
-      <form class="flex w-full md:ml-0" action="#" method="GET">
-        <label for="search-field" class="sr-only">Search</label>
-        <div class="relative w-full text-gray-400 focus-within:text-gray-600">
-          <div class="absolute right-2 top-2 flex items-center">
-            <!-- Heroicon name: mini/magnifying-glass -->
-            <button
-            on:click={togglePreviewState}
-            class="active show ml-12 h-12 w-40 rounded border border-solid border-blue-500 bg-transparent px-3 text-sm font-bold uppercase text-blue-500 outline-none transition-all duration-150 ease-linear hover:bg-blue-500 hover:text-white focus:outline-none">
-            {toggleButtonDescription}
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>
+<!--toggle button preview/code-->
+<div class="sticky top-0 z-10 flex h-16 flex-shrink-0 bg-none">
+  <div class="absolute right-2 top-2 flex items-center">
+    <button
+    on:click={togglePreviewState}
+    class="active show ml-12 h-12 w-40 rounded border border-solid border-blue-500 bg-transparent px-3 text-sm font-bold uppercase text-blue-500 outline-none transition-all duration-150 ease-linear hover:bg-blue-500 hover:text-white focus:outline-none">
+    {toggleButtonDescription}
+    </button>
   </div>
 </div>
 
 
+
+
 <div>
-  {#each components as component}
+  {#each data as component}
     <div class="py-6">
       <!--infos-->
       <div
@@ -107,7 +88,7 @@
       <!--preview-->
       <div class="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
         <div class="h-auto py-4">
-          <div class:justify-start={previewState} class:justify-center={!previewState} class="my-4 flex rounded-lg border-2 border-gray-300 p-4">
+          <div class:justify-start={previewState} class:justify-center={!previewState} class="my-4 flex rounded-lg border-2 border-gray-300 p-4 overflow-scroll max-h-screen">
             {#if !previewState} 
             <!--component preview-->  
             <svelte:component this={component.component} />    

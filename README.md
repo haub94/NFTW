@@ -54,6 +54,11 @@ To create a production version of your app:
 npm run build
 ```
 
+## 📄 Documentation
+The documentation is in the project integrated. 
+- You will find it by follow the route:  http://127.0.0.1:5173/dev/docu
+- Every componend must noted in the docu! --> add a new object to the data-object in the +page.svelte file from the route /dev/docu (use the template!)
+
 ## 🔥  Step-by-step instruction
 1. switch to the location where you want to have the project directory
 2. clone the repo:  ``` git clone git@github.com:haub94/NFTW.git ```

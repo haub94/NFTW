@@ -1,10 +1,9 @@
 <script lang="ts">
-  import Sidebar from "./Sidebar/Sidebar.svelte";
-  import Components from "./Components.svelte";
+  import Sidebar from "./Sidebar.svelte";
 
-  export let data;
+
+  export let data: any;
 </script>
-
 
 <Sidebar data={data} />
 
