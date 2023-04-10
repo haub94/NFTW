@@ -43,7 +43,6 @@
             description: 'Beschreibung zu Prop2',
           }
         ],
-        propDescription: ["prop1 Beschreibung", "prop2 Beschreibung"],
         script: 
     `
     function helloWorld() {
@@ -61,32 +60,38 @@
     </div>
     `
       },
-    ]
-      
-      /*
       {
         ID: 1,
         name: "Footer",
         component: Footer,
-        description: "Beschreibung zu Footer.",
+        description: "Beschreibung zu Header.",
         author: "Markus Haubold",
         version: "1.0",
         usedBy: "",
         dependecies: "",
-        props: ['Prop1', 'Prop2'],
-        propDescription: ["prop1 Beschreibung", "prop2 Beschreibung"],
+        variables: [
+          {
+            name: 'Prop1',
+            description: 'Beschreibung zu Prop1',
+          },
+          {
+            name: 'Prop2',
+            description: 'Beschreibung zu Prop2',
+          }
+        ],
         script: ``,
         html: 
         `
         <div>test</div>
         `
       }
-    ]*/
+    ]
 
 </script>
 
 <!--preview/code toggle button-->
 <div class="sticky top-0 z-10 flex h-16 flex-shrink-0 bg-white shadow">
+  <h1 class="font-medium text-4xl my-auto pl-2">Documentation for Website NFTW Adventures</h1>
   <button type="button" class="border-r border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden">
     <span class="sr-only">Open sidebar</span>
     <!-- Heroicon name: outline/bars-3-bottom-left -->
@@ -114,12 +119,10 @@
 </div>
 
 
-
-
-
-<div class="[&>*:nth-child(even)]:bg-gray-200 [&>*:nth-child(odd)]:bg-gray-50">
+<div>
   {#each components as component}
-    <div class="py-6">
+    <div class="py-6 border-t-4 bg-gray-50 hover:bg-indigo-50">
+      <!--infos-->
       <div
         class="mx-auto flex max-w-7xl flex-row content-center justify-between px-4 sm:px-6 md:px-8">
         <div class="flex flex-col space-y-2">
@@ -148,16 +151,13 @@
                     <th class={tableHeaderStyle}>Desription</th>
                   </tr>
                 </thead>
-                
                 <tbody>
-                  
                     {#each component.variables as variable}
                     <tr>
                       <td class={tableRowStyle}>{variable.name} </td>
                       <td class={tableRowStyle}>{variable.description}</td>
                     </tr> 
                     {/each}
-                 
                 </tbody>
               </table>
             </div>
@@ -165,34 +165,33 @@
         </div>
       </div>
 
-
       <!--preview-->
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
-          <div class="h-auto py-4">
-            <div class:justify-start={previewState} class:justify-center={!previewState} class="my-4 flex rounded-lg border-2 border-gray-300 p-4">
-              {#if !previewState} 
-				      <!--component preview-->  
-              <svelte:component this={component.component} />    
-              {:else}
-                <!--code preview-->
-                <div class="flex-row">
-                  {#if component.script !== ``}
-                    <pre>
-                        <ScriptBlock>
-                          <slot>
-                            {component.script}
-                          </slot>
-                        </ScriptBlock>  
-                    </pre>
-                  {/if}
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
+        <div class="h-auto py-4">
+          <div class:justify-start={previewState} class:justify-center={!previewState} class="my-4 flex rounded-lg border-2 border-gray-300 p-4">
+            {#if !previewState} 
+            <!--component preview-->  
+            <svelte:component this={component.component} />    
+            {:else}
+              <!--code preview-->
+              <div class="flex-row">
+                {#if component.script !== ``}
                   <pre>
-                    {component.html}
+                      <ScriptBlock>
+                        <slot>
+                          {component.script}
+                        </slot>
+                      </ScriptBlock>  
                   </pre>
-              </div> 
-			        {/if}
-			      </div>
+                {/if}
+                <pre>
+                  {component.html}
+                </pre>
+            </div> 
+            {/if}
           </div>
         </div>
+      </div>
     </div>
   {/each}
 </div>
