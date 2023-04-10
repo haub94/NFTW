@@ -1,61 +1,77 @@
 <script>
-	import SideBarTab from '$lib/dev/docu/SideBarTab.svelte';
-	import Components from '$lib/dev/docu/Components.svelte';
+    import Documentation from "$lib/dev/docu/Documentation.svelte";
+
+	//add all component-imports here
+    import Header from "$lib/sectionComponents/Header.svelte";
+    import Footer from "$lib/sectionComponents/Footer.svelte";
+
+
+    const data = [
+      {
+        ID: 0,
+        name: "Header",
+        component: Header,
+        description: "Beschreibung zu Header.",
+        author: "Markus Haubold",
+        version: "1.0",
+        usedBy: "",
+        dependecies: "",
+        variables: [
+          {
+            name: 'Prop1',
+            description: 'Beschreibung zu Prop1',
+          },
+          {
+            name: 'Prop2',
+            description: 'Beschreibung zu Prop2',
+          }
+        ],
+        script: 
+    `
+    function helloWorld() {
+    console.log("hello");
+
+    return(0);
+    }`,
+        html: 
+    `
+    <div class="flex flex-row bg-black p-5 text-3xl text-white mx-auto py-4 md:py-4 md:flex-row">
+    <p>NFTW Adventures</p>
+    <a href="/impressum" class="ml-48 text-lg bg-red-600">Impressum</a>
+    <button class="ml-12 text-lg">spacetravel</button>
+    <button class="ml-12 text-lg">client storys</button>
+    </div>
+    `
+      },
+      {
+        ID: 1,
+        name: "Footer",
+        component: Footer,
+        description: "Beschreibung zu Header.",
+        author: "Markus Haubold",
+        version: "1.0",
+        usedBy: "",
+        dependecies: "",
+        variables: [
+          {
+            name: 'Prop1',
+            description: 'Beschreibung zu Prop1',
+          },
+          {
+            name: 'Prop2',
+            description: 'Beschreibung zu Prop2',
+          }
+        ],
+        script: ``,
+        html: 
+        `
+        <div>test</div>
+        `
+      }
+    ]
+
+	
 </script>
 
 
-<div class="flex w-full h-full absolute bg-gray-50">
-	<!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
-	<div class="relative z-40 md:hidden" role="dialog" aria-modal="true">
-		<div class="fixed inset-0 bg-gray-600 bg-opacity-75"></div>
-		<div class="fixed inset-0 z-40 flex">
-			<div class="relative flex w-full max-w-xs flex-1 flex-col bg-indigo-700 pt-5 pb-4">
-				<!--close mobile sidebar-->
-				<div class="absolute top-0 right-0 -mr-12 pt-2">
-					<button type="button" class="ml-1 flex h-10 w-10 items-center justify-center rounded-full ring-2 ring-inset ring-white">
-						<span class="sr-only">Close sidebar</span>
-						<!-- Heroicon name: outline/x-mark -->
-						<svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-						</svg>
-					</button>
-				</div>
-
-				<div class="flex flex-shrink-0 text-indigo-100 font-bold text-xl items-center px-4">
-					<h1 class='h-8 w-auto'>Pattern Lib</h1>
-				</div>
-
-				<!--mobile menu-->
-				<div class="mt-5 h-0 flex-1 overflow-y-auto">
-					<nav class="space-y-1 px-2">
-						<SideBarTab />
-					</nav>
-				</div>
-			</div>
-			<div class="w-14 flex-shrink-0" aria-hidden="true">
-				<!-- Dummy element to force sidebar to shrink to fit close icon -->
-			</div>
-		</div>
-	</div>
-
-	<!--desktop menu-->
-	<div class="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
-		<div class="flex flex-grow flex-col overflow-y-auto bg-indigo-700 pt-5">
-			<div class="flex flex-shrink-0 items-center px-4">
-				<img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=300" alt="Your Company">
-			</div>
-			<div class="mt-5 flex flex-1 flex-col">
-				<nav class="flex-1 space-y-1 px-2 pb-4">
-					<SideBarTab />
-				</nav>
-			</div>
-		</div>
-	</div>
-
-
-	<div class="flex flex-1 flex-col md:pl-64">
-		<Components />
-	</div>
-
-</div>
-
+<Documentation data={data} />
