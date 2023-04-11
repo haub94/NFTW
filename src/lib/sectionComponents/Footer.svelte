@@ -10,8 +10,8 @@ bg-black">
 Wikipedia content is verifiable, anyone may question an uncited claim. If 
 your work has been tagged</p>
       <div class="w-44 pt-6 md:pt-0">
-        <a class="flex items-center justify-center rounded-lg bg-red-500 
-px-10 py-3 text-center shadow">Contact US</a>
+        <picture class="flex items-center justify-center rounded-lg bg-red-500 
+px-10 py-3 text-center shadow">Contact US</picture>
       </div>
     </div>
     <div class="flex flex-col">
@@ -272,16 +272,16 @@ xmlns="http://www.w3.org/2000/svg">
 1C75.1323 1.20833 75.1532 1.49479 75.1532 1.85938Z" fill="white" />
           </svg>
         </div>
-        <a class="hidden cursor-pointer uppercase text-gray-600 
-hover:text-white md:block">About</a>
-        <a class="hidden cursor-pointer uppercase text-gray-600 
-hover:text-white md:block">Services</a>
-        <a class="hidden cursor-pointer uppercase text-gray-600 
-hover:text-white md:block">Why us</a>
-        <a class="hidden cursor-pointer uppercase text-gray-600 
-hover:text-white md:block">Contact</a>
+        <p class="hidden cursor-pointer uppercase text-gray-600 
+hover:text-white md:block">About</p>
+        <p class="hidden cursor-pointer uppercase text-gray-600 
+hover:text-white md:block">Services</p>
+        <p class="hidden cursor-pointer uppercase text-gray-600 
+hover:text-white md:block">Why us</p>
+        <p class="hidden cursor-pointer uppercase text-gray-600 
+hover:text-white md:block">Contact</p>
         <div class="flex flex-row items-center justify-between space-x-8">
-          <a>
+          <p>
             <svg width="6" height="12" viewBox="0 0 6 12" fill="none" 
 xmlns="http://www.w3.org/2000/svg">
               <path d="M3.89782 12V6.53514H5.67481L5.93895 
@@ -290,8 +290,8 @@ xmlns="http://www.w3.org/2000/svg">
 0.000112795C2.84383 0.000112795 1.76542 0.994936 1.76542 
 2.82122V4.39147H0V6.53114H1.76928V12H3.89782Z" fill="white" />
             </svg>
-          </a>
-          <a>
+          </p>
+          <p>
             <svg width="12" height="13" viewBox="0 0 12 13" fill="none" 
 xmlns="http://www.w3.org/2000/svg">
               <path d="M5.99536 2.91345C5.17815 2.91345 4.39441 3.23809 
@@ -344,7 +344,7 @@ xmlns="http://www.w3.org/2000/svg">
 10.9065 5.98734C10.9065 7.61062 10.9065 7.78521 10.8778 
 8.42226H10.8705V8.42159Z" fill="white" />
             </svg>
-          </a>
+          </p>
           <a 
 href="https://www.youtube.com/channel/UCjtCbnkIaiCJgj13sEZ9iqw">
             <svg width="13" height="9" viewBox="0 0 13 9" fill="none" 
