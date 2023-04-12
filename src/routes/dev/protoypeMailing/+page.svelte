@@ -1,7 +1,34 @@
-<script>
+<script >
+    import { onMount } from "svelte";
     export let form;
     let showNotification = true;
+
+    let Email;
+
+    onMount(() => {
+        Email = { send: function (a) { return new Promise(function (n, e) { a.nocache = Math.floor(1e6 * Math.random() + 1), a.Action = "Send"; var t = JSON.stringify(a); Email.ajaxPost("https://smtpjs.com/v3/smtpjs.aspx?", t, function (e) { n(e) }) }) }, ajaxPost: function (e, n, t) { var a = Email.createCORSRequest("POST", e); a.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), a.onload = function () { var e = a.responseText; null != t && t(e) }, a.send(n) }, ajax: function (e, n) { var t = Email.createCORSRequest("GET", e); t.onload = function () { var e = t.responseText; null != n && n(e) }, t.send() }, createCORSRequest: function (e, n) { var t = new XMLHttpRequest; return "withCredentials" in t ? t.open(e, n, !0) : "undefined" != typeof XDomainRequest ? (t = new XDomainRequest).open(e, n) : t = null, t } };
+    });
+
+    function send() {
+        Email.send({
+            SecureToken : "94760a15-abe9-41f9-93c9-10b847421b96",
+            To : 'haubie94@web.de',
+            From : "haubie94@googlemail.com",
+            Subject : "This is the subject",
+            Body : "And this is the body"
+        }).then(
+          message => alert(message)
+        );
+        console.log('message sent');
+    }
+
+    
+
 </script>
+
+<svelte:head>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+</svelte:head>
 
 
 {#if form?.success && showNotification}
@@ -48,7 +75,7 @@
                         <input id="lastname" name="lastname" type="text" autocomplete="family-name" required class="w-full rounded-md border border-transparent px-5 py-3 placeholder-gray-500 focus:border-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" placeholder="Nachname">
                         <label for="email" class="sr-only">E-Mail Adresse</label>
                         <input id="email" name="email" type="email" autocomplete="email" required class="w-full rounded-md border border-transparent px-5 py-3 placeholder-gray-500 focus:border-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" placeholder="Ihre E-Mail Adresse">
-                        <button type="submit" class="mt-3 sm:mt-0 w-full rounded-md border border-transparent px-5 py-3 placeholder-gray-500 focus:border-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800  bg-fuchsia-500 text-base font-medium text-white hover:bg-fuchsia-600 focus:outline-none" placeholder="Ihre E-Mail Adresse">Download anfordern</button>
+                        <button on:click={send} type="submit" class="mt-3 sm:mt-0 w-full rounded-md border border-transparent px-5 py-3 placeholder-gray-500 focus:border-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800  bg-fuchsia-500 text-base font-medium text-white hover:bg-fuchsia-600 focus:outline-none" placeholder="Ihre E-Mail Adresse">Download anfordern</button>
                     </form>
                     <p class="mt-3 text-sm text-gray-300">
                         Datenschutz ist uns sehr wichtig. Hier finden Sie unsere
