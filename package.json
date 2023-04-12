@@ -23,6 +23,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@emailjs/browser": "^3.11.0",
 		"svelte-icons": "^2.1.0"
 	}
 }
