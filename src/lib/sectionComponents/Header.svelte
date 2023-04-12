@@ -33,6 +33,11 @@
       >Test</a
     >
     <a
+      href="/test2"
+      class="ml-12 pt-1 text-lg hover:scale-125 hover:transition-all hover:text-blue-600 ease-in-out duration-300"
+      >Test 2</a
+    >
+    <a
       href="/spacetravel"
       class="ml-12 pt-1 text-lg hover:scale-125 hover:transition-all hover:text-blue-600 ease-in-out duration-300"
       >Spacetravel</a
