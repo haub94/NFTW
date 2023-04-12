@@ -1,7 +1,5 @@
 <script>
-
     export let form;
-    
     let showNotification = true;
 </script>
 
@@ -16,7 +14,7 @@
             </svg>
         </div>
         <div class="ml-3">
-            <p class="text-xl font-medium text-green-800">Der Konferenz Sponsoring Benchmark-Report 2022/2023 wurde erfolgreich per E-Mail versendet.</p>
+            <p class="text-xl font-medium text-green-800">Your mail was successfully sent.</p>
         </div>
         <div class="ml-auto pl-3">
             <div class="-mx-1.5 -my-1.5">
@@ -44,7 +42,6 @@
                 </div>
                 <div class="mt-8 xl:mt-0 xl:ml-8">
                     <form class="grid sm:grid-cols-2 gap-1" autocomplete="on" method="POST">
-    
                         <label for="firstname" class="sr-only">Vorname</label>
                         <input id="firstname" name="firstname" type="text" autocomplete="given-name" required class="w-full rounded-md border border-transparent px-5 py-3 placeholder-gray-500 focus:border-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" placeholder="Vorname">
                         <label for="lastname" class="sr-only">Nachname</label>
