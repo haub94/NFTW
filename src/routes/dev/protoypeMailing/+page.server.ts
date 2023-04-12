@@ -1,13 +1,16 @@
 /** @type {import('./$types').Actions} */
 
 export const actions = {
-    default: async ({ cookies, request }) => {
+    default: async ({ request }) => {
         const data = await request.formData();
+        const firstName: FormDataEntryValue | null = data.get('firstname');
+        const lastName: FormDataEntryValue | null = data.get('lastname');
+        const email: FormDataEntryValue | null = data.get('email');
 
         let formData = new FormData();
-        formData.append('firstname', data.get('firstname') || '');
-        formData.append('lastname', data.get('lastname') || '');
-        formData.append('email', data.get('email') || '');
+        formData.append('firstname', firstName || '');
+        formData.append('lastname', lastName || '');
+        formData.append('email', email || '');
 
         /*const response = fetch('https://script.google.com/macros/s/AKfycbxPfg9IDPvMa__3Q4kTFjrIAI93XBbEREGH85YxwBjj-B-YSsZNHWo62qnf2R7ld_0/exec', {
             method: 'POST',
