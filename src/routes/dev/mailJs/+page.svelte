@@ -20,10 +20,11 @@
             console.log('lastName :>> ', inputData.lastName);
             console.log('emailAddress :>> ', inputData.emailAddress);
             console.log('message :>> ', inputData.message);
-
-
             console.log("call emailJS function to send mail");
         }
+
+        //DO HERE CRAZY STUFF WITH THE DB!!!!!!!!!
+
 
         sendEmail(inputData.firstName, inputData.emailAddress);
     }
@@ -65,18 +66,7 @@
     }
 
   </script>
-  
-  <!--
-  <form on:submit|preventDefault={mailingSequence}>
-    <label>Name</label>
-    <input type="text" name="user_name" bind:value={userName}>
-    <label>Email</label>
-    <input type="text" name="user_email" bind:value={toMail}>
-    <label>Message</label>
-    <textarea name="message"></textarea>
-    <input type="submit" value="Send">
-  </form>
--->
+
   
 <!--BANNER-->
 {#if mailingStatus === 1 || mailingStatus === 999 }
