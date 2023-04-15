@@ -27,7 +27,7 @@
     <div class="absolute right-2 top-2 flex items-center">
       <button
       on:click={togglePreviewState}
-      class="active show ml-12 h-12 w-40 rounded border border-solid border-blue-500 bg-transparent px-3 text-sm font-bold uppercase text-blue-500 outline-none transition-all duration-150 ease-linear hover:bg-blue-500 hover:text-white focus:outline-none">
+      class="active show ml-12 h-12 w-40 rounded border border-solid bg-white border-NFTW-lila-600 px-3 text-sm font-bold uppercase text-NFTW-lila-600 outline-none transition-all duration-150 ease-linear hover:bg-NFTW-lila-600 hover:text-white focus:outline-none">
       {toggleButtonDescription}
       </button>
     </div>

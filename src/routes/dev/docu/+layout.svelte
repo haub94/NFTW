@@ -11,14 +11,13 @@
     const pathToDatabaseDocu: string = pathToDocu + "/database/#";
     const pathToDesignDocu: string = pathToDocu + "/design/#";
 
-    let mobileSidebarOpen: boolean = true;
-    let docuSectionTitle: string = 'Welcome';
+    let mobileSidebarOpen: boolean = false;
 
     function toggleVisibilitySidebar() {
         mobileSidebarOpen = !mobileSidebarOpen;
     }
 
-    console.log('docuSectionTitle :>> ', docuSectionTitle);
+  
 
     export const componentData = [
       /*
