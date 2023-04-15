@@ -3,8 +3,6 @@
 	//add all component-imports here
     import Card from "$lib/components/Card.svelte";
     
-
-
     //config
     const pathToDocu: string = "/dev/docu";
     const pathToComponentsDocu: string = pathToDocu + "/components/#";
@@ -14,9 +12,6 @@
 
     let mobileSidebarOpen: boolean = true;
     let docuSectionTitle: string = 'Welcome';
-
-
-
 
     function toggleSidebarChangeTitle(title: string) {
         mobileSidebarOpen = !mobileSidebarOpen;
@@ -28,8 +23,6 @@
 
     console.log('docuSectionTitle :>> ', docuSectionTitle);
 
-
-    export const componentData = [
     export const componentData = [
       /*
       ---------TEMPLATE--------- 
@@ -172,7 +165,6 @@
 
 
     export const scriptData = [
-    export const scriptData = [
       /*
       ---------TEMPLATE--------- 
       
@@ -245,7 +237,6 @@
     /*########################################################################################################################################################################*/
 
     export const database = [
-    export const database = [
         {
             ID: 0,
             name: '',
@@ -270,7 +261,6 @@
 
     /*########################################################################################################################################################################*/
 
-    export const design = [
     export const design = [
         {
             ID: 0,
@@ -378,8 +368,7 @@
                 </div>
                 </div>
             </div>
-      </div>     
-      </div>     
+      </div>         
     {/if}
 
       
