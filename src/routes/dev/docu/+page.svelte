@@ -30,7 +30,7 @@
                 <div class="lg:pr-4">
                   <div class="lg:max-w-lg">
                     <p class="text-base font-semibold leading-7 text-NFTW-pink-500">Develop faster</p>
-                    <h1 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">A better workflow</h1>
+                    <h1 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">For a better workflow</h1>
                     <p class="mt-6 text-xl leading-8 text-gray-700">Welcome to the documentation page of the NFTW Adventures website. As a good developer, you should record any changes here.</p>
                   </div>
                 </div>
