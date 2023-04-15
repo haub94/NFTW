@@ -7,11 +7,33 @@
 
 
     //config
-    const pathToDocu: string = "/dev/docu/#";
+    const pathToComponentsDocu: string = "/dev/docu/components/#";
+    const pathToScriptsDocu: string = "/dev/docu/scripts/#";
+    const pathToDatabaseDocu: string = "/dev/docu/database/#";
+    const pathToDesignDocu: string = "/dev/docu/design/#";
 
     let mobileSidebarOpen: boolean = false;
-    function toggleSidebar() {
+    let docuSectionTitle: string = 'Welcome';
+
+
+    function toggleSidebar(section: number) {
         mobileSidebarOpen = !mobileSidebarOpen;
+        docuSectionTitle = setDocuSectionTitle(section);
+    }
+
+    function setDocuSectionTitle(section: number): string {
+        switch (section) {
+            case 1:
+                return 'Component Documentation';
+            case 2:
+                return 'Script Documentation';
+            case 3:
+                return 'Database Documentation';
+            case 4:
+                return 'Design Documentation';
+            default:
+                return docuSectionTitle 
+        }
     }
 
 
@@ -48,7 +70,7 @@
       */
       {
         ID: 0,
-        name: "Header",
+        name: "Card",
         component: Card,
         description: "Beschreibung zu Card.",
         author: "Markus Haubold",
@@ -90,7 +112,51 @@
     </a>
     `
       },
-    ]
+      {
+        ID: 1,
+        name: "NextComponent",
+        component: Card,
+        description: "Beschreibung zu Card.",
+        author: "Markus Haubold",
+        version: "1.0",
+        usedBy: "",
+        dependecies: "",
+        variables: [
+          {
+            name: 'image',
+            description: 'Image for the card',
+          },  
+          {
+            name: 'title',
+            description: 'Title of the card',
+          },
+          {
+            name: 'cation',
+            description: 'Caption of the card',
+          }
+        ],
+        script: 
+  `
+  import { checkUndefinedNullOrEmpty } from "../tools/Tools.svelte";
+
+  export let img: string = "/brokenImage.png";
+  export let title: string = "defaultVaule";
+  export let caption: string = "defaultVaule";
+    `,
+        html: 
+    `
+    <a href="/" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+      <img class="h-auto w-48 object-cover rounded-l-lg" src={checkUndefinedNullOrEmpty(img) ? "/brokenImage.png" : img} alt="" />
+      <div class="flex flex-col justify-between p-4 leading-normal">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          {title}
+        </h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{caption}</p>
+      </div>
+    </a>
+    `
+      }
+    ];
 
 
 
@@ -101,7 +167,7 @@
       */
       {
         ID: 0,
-        name: "Test_Script",
+        name: "Script_ONE",
         component: Card,
         description: "Beschreibung zu Test_Script.",
         author: "Markus Haubold",
@@ -130,6 +196,81 @@
   }
     `,
       },
+      {
+        ID: 0,
+        name: "Script_TWO",
+        component: Card,
+        description: "Beschreibung zu Test_Script.",
+        author: "Markus Haubold",
+        version: "1.0",
+        usedBy: "",
+        dependecies: "",
+        variables: [
+          {
+            name: 'image',
+            description: 'Image for the card',
+          },  
+          {
+            name: 'title',
+            description: 'Title of the card',
+          },
+          {
+            name: 'cation',
+            description: 'Caption of the card',
+          }
+        ],
+        script: 
+  `
+  function helloWorld(): boolean {
+    console.log("hello world")
+    return true;
+  }
+    `,
+      }
+    ];
+
+    const database = [
+        {
+            ID: 0,
+            name: '',
+            description: "Beschreibung zu Test_Script.",
+            author: "Markus Haubold",
+            version: "1.0",
+            usedBy: "",
+            dependecies: "",
+
+            chapter: [
+                {
+                    name: 'overview'
+                },    
+                {
+                    name: 'usage',
+                    content: 'blablabla'
+                }
+            ]
+        }
+    ];
+
+    const design = [
+        {
+            ID: 0,
+            name: '',
+            description: "Beschreibung zu Test_Script.",
+            author: "Markus Haubold",
+            version: "1.0",
+            usedBy: "",
+            dependecies: "",
+
+            chapter: [
+                {
+                    name: 'overview'
+                },    
+                {
+                    name: 'usage',
+                    content: 'blablabla'
+                }
+            ]
+        }
     ]
 
 	
@@ -147,7 +288,7 @@
                 <div class="relative mr-16 flex w-full max-w-xs flex-1">
                     <!--close sidebar-->
                     <div class="absolute left-full top-0 flex w-16 justify-center pt-5">
-                    <button on:click={toggleSidebar} type="button" class="-m-2.5 p-2.5">
+                    <button on:click={() => toggleSidebar(0)} type="button" class="-m-2.5 p-2.5">
                         <span class="sr-only">Close sidebar</span>
                         <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -162,22 +303,53 @@
                       </div>
                       <h1 class="font-bold text-2xl text-white my-auto">Documentation</h1>
                     </div>
-                    <nav class="flex flex-1 flex-col">
-                        <ul class="flex flex-1 flex-col gap-y-7">
-                        <li>
-                            <ul class="-mx-2 space-y-1">
-                                <!--component names-->
-                                <div class="space-y-2 px-2">
-                                    {#each componentData as component}
-                                        <a on:click={toggleSidebar} href={pathToDocu + component.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
+                    <div class="flex flex-1 flex-col">
+                        <div class="flex flex-1 flex-col gap-y-7">
+                            <!--component names-->
+                            <div class="space-y-2 px-2">
+                                <h3 class="text-white font-bold">Components</h3>  
+                                {#each componentData as component}
+                                        <a on:click={() => toggleSidebar(1)} href={pathToComponentsDocu + component.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
                                             {component.name}
                                         </a>
-                                    {/each}
-                                </div>
-                            </ul>
-                        </li>
-                        </ul>
-                    </nav>
+                                {/each}
+                            </div>
+
+                            <!--script names-->
+                            <div class="space-y-2 px-2 mt-4">
+                                <h3 class="text-white font-bold">Scripts</h3>  
+                                {#each scriptData as script}
+                                        <a on:click={() => toggleSidebar(2)} href={pathToScriptsDocu + script.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
+                                            {script.name}
+                                        </a>
+                                {/each}
+                            </div>
+
+                            <!--database-->
+                            <div class="space-y-2 px-2 mt-4">
+                                <h3 class="text-white font-bold">Database</h3>  
+                                {#each database as db}
+                                    {#each db.chapter as chapter}
+                                        <a on:click={() => toggleSidebar(3)} href={pathToDatabaseDocu + chapter.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
+                                            {chapter.name}
+                                        </a>  
+                                    {/each}   
+                                {/each}
+                            </div>
+
+                            <!--design-->
+                            <div class="space-y-2 px-2 mt-4">
+                                <h3 class="text-white font-bold">Design</h3>  
+                                {#each design as design}
+                                    {#each design.chapter as chapter}
+                                        <a on:click={() => toggleSidebar(4)} href={pathToDesignDocu + chapter.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
+                                            {chapter.name}
+                                        </a>  
+                                    {/each}   
+                                {/each}
+                            </div>
+                        </div>
+          </div>
                     </div>
                 </div>
             </div>
@@ -196,28 +368,59 @@
             </div>
             <h1 class="font-bold text-2xl text-white my-auto">Documentation</h1>
           </div>  
-          <nav class="flex flex-1 flex-col">
-            <ul class="flex flex-1 flex-col gap-y-7">
-              <li>
-                <ul class="-mx-2 space-y-1">
-                  <!--component names-->
-                  <div class="space-y-2 px-2">
-                      {#each componentData as component}
-                          <a on:click={toggleSidebar} href={pathToDocu + component.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
-                              {component.name}
-                          </a>
-                      {/each}
-                  </div>
-                </ul>
-              </li>
-            </ul>
-          </nav>
+          <div class="flex flex-1 flex-col">
+            <div class="flex flex-1 flex-col gap-y-7">
+                <!--component names-->
+                <div class="space-y-2 px-2">
+                    <h3 class="text-white font-bold">Components</h3>  
+                    {#each componentData as component}
+                            <a on:click={() => toggleSidebar(1)} href={pathToComponentsDocu + component.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
+                                {component.name}
+                            </a>
+                    {/each}
+                </div>
+
+                <!--script names-->
+                <div class="space-y-2 px-2 mt-4">
+                    <h3 class="text-white font-bold">Scripts</h3>  
+                    {#each scriptData as script}
+                            <a on:click={() => toggleSidebar(2)} href={pathToScriptsDocu + script.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
+                                {script.name}
+                            </a>
+                    {/each}
+                </div>
+
+                <!--database-->
+                <div class="space-y-2 px-2 mt-4">
+                    <h3 class="text-white font-bold">Database</h3>  
+                    {#each database as db}
+                        {#each db.chapter as chapter}
+                            <a on:click={() => toggleSidebar(3)} href={pathToDatabaseDocu + chapter.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
+                                {chapter.name}
+                            </a>  
+                        {/each}   
+                    {/each}
+                </div>
+
+                <!--design-->
+                <div class="space-y-2 px-2 mt-4">
+                    <h3 class="text-white font-bold">Design</h3>  
+                    {#each design as design}
+                        {#each design.chapter as chapter}
+                            <a on:click={() => toggleSidebar(4)} href={pathToDesignDocu + chapter.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
+                                {chapter.name}
+                            </a>  
+                        {/each}   
+                    {/each}
+                </div>
+            </div>
+          </div>
         </div>
       </div>
     
       <!--sidebar mobile closed-->
       <div class="sticky top-0 z-40 flex items-center gap-x-6 bg-indigo-600 px-4 py-4 shadow-sm sm:px-6 lg:hidden">
-        <button on:click={toggleSidebar} type="button" class="-m-2.5 p-2.5 text-indigo-200 lg:hidden">
+        <button on:click={() => toggleSidebar(0)} type="button" class="-m-2.5 p-2.5 text-indigo-200 lg:hidden">
           <span class="sr-only">Open sidebar</span>
           <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -227,7 +430,7 @@
     
       <main class="lg:pl-72">
         <div class="w-full h-16 bg-indigo-600 flex justify-center items-center">
-            <h2 class="uppercase text-white font-bold text-2xl">documentation section title</h2>
+            <h2 class="uppercase text-white font-bold text-2xl">{docuSectionTitle}</h2>
         </div>
         <div class="px-4 sm:px-6 lg:px-8">
           <!--HERE COMPONENTS-->
