@@ -1,5 +1,4 @@
 <script lang="ts" context="module">
-   
 
 	//add all component-imports here
     import Card from "$lib/components/Card.svelte";
@@ -17,6 +16,8 @@
     let docuSectionTitle: string = 'Welcome';
 
 
+
+
     function toggleSidebarChangeTitle(title: string) {
         mobileSidebarOpen = !mobileSidebarOpen;
 
@@ -24,6 +25,8 @@
           docuSectionTitle = title;
         }
     }
+
+    console.log('docuSectionTitle :>> ', docuSectionTitle);
 
 
     export const componentData = [
@@ -443,11 +446,11 @@
         </button>
       </div>
     
-      <main class="lg:pl-72">
+      <main class="lg:pl-72 bg-indigo-600">
         <div class="w-full h-16 bg-indigo-600 flex justify-center items-center">
             <h2 class="uppercase text-white font-bold text-2xl">{docuSectionTitle}</h2>
         </div>
-        <div class="p-4 sm:p-6 lg:p-8">
+        <div class="p-4 sm:p-6 lg:p-8 rounded-tl-xl bg-white">
           <!--HERE COMPONENTS-->
             <slot></slot>
         </div>
