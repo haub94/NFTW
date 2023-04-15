@@ -2,6 +2,7 @@
 
 	//add all component-imports here
     import Card from "$lib/components/Card.svelte";
+    import SidebarButton from "$lib/dev/docu/helper/SidebarButton.svelte";
     
     //config
     const pathToDocu: string = "/dev/docu";
@@ -13,12 +14,8 @@
     let mobileSidebarOpen: boolean = true;
     let docuSectionTitle: string = 'Welcome';
 
-    function toggleSidebarChangeTitle(title: string) {
+    function toggleVisibilitySidebar() {
         mobileSidebarOpen = !mobileSidebarOpen;
-
-        if (title !== '') {
-          docuSectionTitle = title;
-        }
     }
 
     console.log('docuSectionTitle :>> ', docuSectionTitle);
@@ -283,7 +280,6 @@
 
 
 <div>
-
     <!--mobile menu-->
     {#if mobileSidebarOpen}
       <div class="relative z-50 lg:hidden" role="dialog" aria-modal="true">
@@ -292,7 +288,7 @@
             <div class="relative mr-16 flex w-full max-w-xs flex-1"> 
               <!--close sidebar-->
               <div class="absolute left-full top-0 flex w-16 justify-center pt-5">
-                <button on:click={() => toggleSidebarChangeTitle('')} type="button" class="-m-2.5 p-2.5">
+                <button on:click={toggleVisibilitySidebar} type="button" class="-m-2.5 p-2.5">
                     <span class="sr-only">Close sidebar</span>
                     <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -300,7 +296,7 @@
                 </button>
               </div>
               <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-NFTW-lila-800 px-6 pb-2">
-                <a href={pathToDocu} on:click={() => toggleSidebarChangeTitle('Welcome')}>
+                <a href={pathToDocu} on:click={toggleVisibilitySidebar}>
                   <div class="flex flex-row justify-center space-x-6">
                     <div class="flex h-16 shrink-0 items-center">
                         <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=white" alt="Your Company">
@@ -314,46 +310,38 @@
                     <div class="flex flex-1 flex-col gap-y-7">
                         <!--component names-->
                         <div class="space-y-2 px-2">
-                            <h3 class="text-white font-bold">Components</h3>  
-                            {#each componentData as component}
-                              <a on:click={() => toggleSidebarChangeTitle('Components Documentation')} href={pathToComponentsDocu + component.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
-                                  {component.name}
-                              </a>
-                            {/each}
+                          <h3 class="text-white font-bold">Components</h3>  
+                          {#each componentData as component}
+                            <SidebarButton on:click={toggleVisibilitySidebar} pathTo={pathToComponentsDocu + component.name} label={component.name} />
+                          {/each}
                         </div>
 
                         <!--script names-->
                         <div class="space-y-2 px-2 mt-4">
-                            <h3 class="text-white font-bold">Scripts</h3>  
-                            {#each scriptData as script}
-                                    <a on:click={() => toggleSidebarChangeTitle('Script Documentation')} href={pathToScriptsDocu + script.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
-                                        {script.name}
-                                    </a>
-                            {/each}
+                          <h3 class="text-white font-bold">Scripts</h3>  
+                          {#each scriptData as script}        
+                            <SidebarButton on:click={toggleVisibilitySidebar} pathTo={pathToScriptsDocu + script.name} label={script.name} />
+                          {/each}
                         </div>
 
                         <!--database-->
                         <div class="space-y-2 px-2 mt-4">
-                            <h3 class="text-white font-bold">Database</h3>  
-                            {#each database as db}
-                                {#each db.chapter as chapter}
-                                    <a on:click={() => toggleSidebarChangeTitle('Database Documentation')} href={pathToDatabaseDocu + chapter.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
-                                        {chapter.name}
-                                    </a>  
-                                {/each}   
-                            {/each}
+                          <h3 class="text-white font-bold">Database</h3>  
+                          {#each database as db}
+                            {#each db.chapter as chapter}   
+                              <SidebarButton on:click={toggleVisibilitySidebar} pathTo={pathToDatabaseDocu + chapter.name} label={chapter.name} />
+                            {/each}   
+                          {/each}
                         </div>
 
                         <!--design-->
                         <div class="space-y-2 px-2 mt-4">
-                            <h3 class="text-white font-bold">Design</h3>  
-                            {#each design as design}
-                                {#each design.chapter as chapter}
-                                    <a on:click={() => toggleSidebarChangeTitle('Design Documentation')} href={pathToDesignDocu + chapter.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
-                                        {chapter.name}
-                                    </a>  
-                                {/each}   
-                            {/each}
+                          <h3 class="text-white font-bold">Design</h3>  
+                          {#each design as design}
+                            {#each design.chapter as chapter}
+                              <SidebarButton on:click={toggleVisibilitySidebar} pathTo={pathToDesignDocu + chapter.name} label={chapter.name} />
+                            {/each}   
+                          {/each}
                         </div>
                     </div>
                   </div>
@@ -363,14 +351,11 @@
       </div>         
     {/if}
 
-      
-    
-  
       <!-- Static sidebar for desktop -->
       <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
         <!-- Sidebar component, swap this element with another sidebar if you like -->
         <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-NFTW-lila-800 px-6">
-        <a href={pathToDocu} on:click={() => toggleSidebarChangeTitle('Welcome')}>
+        <a href={pathToDocu} on:click={toggleVisibilitySidebar}>
           <div class="flex flex-row justify-center space-x-6">
             <div class="flex h-16 shrink-0 items-center">
               <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=white" alt="NFTW Adventures">
@@ -386,9 +371,7 @@
                 <div class="space-y-2 px-2">
                     <h3 class="text-white font-bold">Components</h3>  
                     {#each componentData as component}
-                            <a on:click={() => toggleSidebarChangeTitle('Component Documentation')} href={pathToComponentsDocu + component.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
-                                {component.name}
-                            </a>
+                      <SidebarButton pathTo={pathToComponentsDocu + component.name} label={component.name} />
                     {/each}
                 </div>
 
@@ -396,9 +379,7 @@
                 <div class="space-y-2 px-2 mt-4">
                     <h3 class="text-white font-bold">Scripts</h3>  
                     {#each scriptData as script}
-                            <a on:click={() => toggleSidebarChangeTitle('Script Documentation')} href={pathToScriptsDocu + script.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
-                                {script.name}
-                            </a>
+                      <SidebarButton pathTo={pathToScriptsDocu + script.name} label={script.name} />
                     {/each}
                 </div>
 
@@ -407,9 +388,7 @@
                     <h3 class="text-white font-bold">Database</h3>  
                     {#each database as db}
                         {#each db.chapter as chapter}
-                            <a on:click={() => toggleSidebarChangeTitle('Databse Documentation')} href={pathToDatabaseDocu + chapter.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
-                                {chapter.name}
-                            </a>  
+                          <SidebarButton pathTo={pathToDatabaseDocu + chapter.name} label={chapter.name} />
                         {/each}   
                     {/each}
                 </div>
@@ -419,9 +398,7 @@
                     <h3 class="text-white font-bold">Design</h3>  
                     {#each design as design}
                         {#each design.chapter as chapter}
-                            <a on:click={() => toggleSidebarChangeTitle('Design Documentation')} href={pathToDesignDocu + chapter.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
-                                {chapter.name}
-                            </a>  
+                          <SidebarButton pathTo={pathToDesignDocu + chapter.name} label={chapter.name} />
                         {/each}   
                     {/each}
                 </div>
@@ -432,7 +409,7 @@
     
       <!--sidebar mobile closed-->
       <div class="sticky top-0 z-40 flex items-center gap-x-6 bg-NFTW-lila-800 px-4 py-4 shadow-sm sm:px-6 lg:hidden">
-        <button on:click={() => toggleSidebarChangeTitle('')} type="button" class="-m-2.5 p-2.5 text-indigo-200 lg:hidden">
+        <button on:click={toggleVisibilitySidebar} type="button" class="-m-2.5 p-2.5 text-indigo-200 lg:hidden">
           <span class="sr-only">Open sidebar</span>
           <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
