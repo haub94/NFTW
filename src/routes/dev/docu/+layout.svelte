@@ -13,6 +13,7 @@
     const pathToScriptsDocu: string = pathToDocu + "/scripts/#";
     const pathToDatabaseDocu: string = pathToDocu + "/database/#";
     const pathToDesignDocu: string = pathToDocu + "/design/#";
+    const pathToAboutDocu: string = pathToDocu + "/about";
 
     let mobileSidebarOpen: boolean = false;
 
@@ -163,6 +164,14 @@
                         <SidebarButton pathTo={pathToDesignDocu + chapter.name} label={chapter.name} />
                       {/each}   
                   {/each}
+                </div>
+
+                <!--about docu-->
+                <div class="space-y-2 px-2 mt-4 absolute bottom-8">
+                  <a href={pathToAboutDocu}>
+                    <h3 class="text-white font-bold">About Documentation</h3>  
+                  </a>
+                  <SidebarButton pathTo={pathToAboutDocu} label="Informations" />
                 </div>
             </div>
           </div>
