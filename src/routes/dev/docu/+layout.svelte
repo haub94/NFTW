@@ -445,16 +445,8 @@
           </svg>
         </button>
       </div>
-    
-      <main class="lg:pl-72 bg-indigo-600">
-        <div class="w-full h-16 bg-indigo-600 flex justify-center items-center">
-            <h2 class="uppercase text-white font-bold text-2xl">{docuSectionTitle}</h2>
-        </div>
-        <div class="p-4 sm:p-6 lg:p-8 rounded-tl-xl bg-white">
-          <!--HERE COMPONENTS-->
-            <slot></slot>
-        </div>
-      </main>
+      <!--here comes the content from the docu-->
+      <slot></slot>
     </div>
     
   
