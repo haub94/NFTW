@@ -11,8 +11,8 @@
     const pathToDocu: string = "/dev/docu";
     const pathToComponentsDocu: string = pathToDocu + "/components/#";
     const pathToScriptsDocu: string = pathToDocu + "/scripts/#";
-    const pathTodatabaseDataDocu: string = pathToDocu + "/databaseData/#";
-    const pathTodesignDataDocu: string = pathToDocu + "/designData/#";
+    const pathToDatabaseDocu: string = pathToDocu + "/database/#";
+    const pathToDesignDocu: string = pathToDocu + "/design/#";
 
     let mobileSidebarOpen: boolean = false;
 
@@ -20,10 +20,6 @@
         mobileSidebarOpen = !mobileSidebarOpen;
     }
 
-  
-
-    
-	
 </script>
 
 
@@ -60,7 +56,9 @@
                     <div class="flex flex-1 flex-col gap-y-7">
                         <!--component names-->
                         <div class="space-y-2 px-2">
-                          <h3 class="text-white font-bold">Components</h3>  
+                          <a href={pathToComponentsDocu}>
+                            <h3 class="text-white font-bold">Components</h3>  
+                          </a> 
                           {#each componentData as component}
                             <SidebarButton on:click={toggleVisibilitySidebar} pathTo={pathToComponentsDocu + component.name} label={component.name} />
                           {/each}
@@ -68,7 +66,9 @@
 
                         <!--script names-->
                         <div class="space-y-2 px-2 mt-4">
-                          <h3 class="text-white font-bold">Scripts</h3>  
+                          <a href={pathToScriptsDocu}>
+                            <h3 class="text-white font-bold">Scripts</h3>  
+                          </a>
                           {#each scriptData as script}        
                             <SidebarButton on:click={toggleVisibilitySidebar} pathTo={pathToScriptsDocu + script.name} label={script.name} />
                           {/each}
@@ -76,20 +76,24 @@
 
                         <!--databaseData-->
                         <div class="space-y-2 px-2 mt-4">
-                          <h3 class="text-white font-bold">databaseData</h3>  
+                          <a href={pathToDatabaseDocu}>
+                            <h3 class="text-white font-bold">Database</h3>  
+                          </a>
                           {#each databaseData as db}
                             {#each db.chapter as chapter}   
-                              <SidebarButton on:click={toggleVisibilitySidebar} pathTo={pathTodatabaseDataDocu + chapter.name} label={chapter.name} />
+                              <SidebarButton on:click={toggleVisibilitySidebar} pathTo={pathToDatabaseDocu + chapter.name} label={chapter.name} />
                             {/each}   
                           {/each}
                         </div>
 
                         <!--designData-->
                         <div class="space-y-2 px-2 mt-4">
-                          <h3 class="text-white font-bold">designData</h3>  
+                          <a href={pathToDesignDocu}>
+                            <h3 class="text-white font-bold">Design</h3>  
+                          </a>
                           {#each designData as designData}
                             {#each designData.chapter as chapter}
-                              <SidebarButton on:click={toggleVisibilitySidebar} pathTo={pathTodesignDataDocu + chapter.name} label={chapter.name} />
+                              <SidebarButton on:click={toggleVisibilitySidebar} pathTo={pathToDesignDocu + chapter.name} label={chapter.name} />
                             {/each}   
                           {/each}
                         </div>
@@ -119,38 +123,46 @@
             <div class="flex flex-1 flex-col gap-y-7">
                 <!--component names-->
                 <div class="space-y-2 px-2">
+                  <a href={pathToComponentsDocu}>
                     <h3 class="text-white font-bold">Components</h3>  
-                    {#each componentData as component}
-                      <SidebarButton pathTo={pathToComponentsDocu + component.name} label={component.name} />
-                    {/each}
+                  </a>
+                  {#each componentData as component}
+                    <SidebarButton pathTo={pathToComponentsDocu + component.name} label={component.name} />
+                  {/each}
                 </div>
 
                 <!--script names-->
                 <div class="space-y-2 px-2 mt-4">
+                  <a href={pathToScriptsDocu}>
                     <h3 class="text-white font-bold">Scripts</h3>  
-                    {#each scriptData as script}
-                      <SidebarButton pathTo={pathToScriptsDocu + script.name} label={script.name} />
-                    {/each}
+                  </a>
+                  {#each scriptData as script}
+                    <SidebarButton pathTo={pathToScriptsDocu + script.name} label={script.name} />
+                  {/each}
                 </div>
 
                 <!--databaseData-->
                 <div class="space-y-2 px-2 mt-4">
-                    <h3 class="text-white font-bold">databaseData</h3>  
-                    {#each databaseData as db}
-                        {#each db.chapter as chapter}
-                          <SidebarButton pathTo={pathTodatabaseDataDocu + chapter.name} label={chapter.name} />
-                        {/each}   
-                    {/each}
+                  <a href={pathToDatabaseDocu}>
+                    <h3 class="text-white font-bold">Database</h3>  
+                  </a>
+                  {#each databaseData as db}
+                      {#each db.chapter as chapter}
+                        <SidebarButton pathTo={pathToDatabaseDocu + chapter.name} label={chapter.name} />
+                      {/each}   
+                  {/each}
                 </div>
 
                 <!--designData-->
                 <div class="space-y-2 px-2 mt-4">
-                    <h3 class="text-white font-bold">designData</h3>  
-                    {#each designData as designData}
-                        {#each designData.chapter as chapter}
-                          <SidebarButton pathTo={pathTodesignDataDocu + chapter.name} label={chapter.name} />
-                        {/each}   
-                    {/each}
+                  <a href={pathToDesignDocu}>
+                    <h3 class="text-white font-bold">Design</h3>  
+                  </a>
+                  {#each designData as designData}
+                      {#each designData.chapter as chapter}
+                        <SidebarButton pathTo={pathToDesignDocu + chapter.name} label={chapter.name} />
+                      {/each}   
+                  {/each}
                 </div>
             </div>
           </div>
