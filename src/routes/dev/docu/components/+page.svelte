@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { componentData } from "../+layout.svelte";
+    import { componentData } from "../data.svelte";
     import ScriptBlock from "$lib/dev/docu/helper/ScriptBlock.svelte";
 
     const tableHeaderStyle: string = "text-left px-2 py-1 font-medium";
