@@ -7,32 +7,21 @@
 
 
     //config
-    const pathToComponentsDocu: string = "/dev/docu/components/#";
-    const pathToScriptsDocu: string = "/dev/docu/scripts/#";
-    const pathToDatabaseDocu: string = "/dev/docu/database/#";
-    const pathToDesignDocu: string = "/dev/docu/design/#";
+    const pathToDocu: string = "/dev/docu";
+    const pathToComponentsDocu: string = pathToDocu + "/components/#";
+    const pathToScriptsDocu: string = pathToDocu + "/scripts/#";
+    const pathToDatabaseDocu: string = pathToDocu + "/database/#";
+    const pathToDesignDocu: string = pathToDocu + "/design/#";
 
     let mobileSidebarOpen: boolean = false;
     let docuSectionTitle: string = 'Welcome';
 
 
-    function toggleSidebar(section: number) {
+    function toggleSidebarChangeTitle(title: string) {
         mobileSidebarOpen = !mobileSidebarOpen;
-        docuSectionTitle = setDocuSectionTitle(section);
-    }
 
-    function setDocuSectionTitle(section: number): string {
-        switch (section) {
-            case 1:
-                return 'Component Documentation';
-            case 2:
-                return 'Script Documentation';
-            case 3:
-                return 'Database Documentation';
-            case 4:
-                return 'Design Documentation';
-            default:
-                return docuSectionTitle 
+        if (title !== '') {
+          docuSectionTitle = title;
         }
     }
 
@@ -67,6 +56,7 @@
     HTML AND STYLE SECTIONS FROM THE COMPONENT
     `
       },
+      //-------------------------------------------------------------------------------------------
       */
       {
         ID: 0,
@@ -155,9 +145,12 @@
       </div>
     </a>
     `
-      }
+      }, 
+      //-------------------------------------------------------------------------------------------
     ];
 
+
+    /*########################################################################################################################################################################*/
 
 
     const scriptData = [
@@ -226,8 +219,11 @@
     return true;
   }
     `,
-      }
+      },
+      //-------------------------------------------------------------------------------------------
     ];
+
+    /*########################################################################################################################################################################*/
 
     const database = [
         {
@@ -248,8 +244,11 @@
                     content: 'blablabla'
                 }
             ]
-        }
+        },
+        //-------------------------------------------------------------------------------------------
     ];
+
+    /*########################################################################################################################################################################*/
 
     const design = [
         {
@@ -270,7 +269,8 @@
                     content: 'blablabla'
                 }
             ]
-        }
+        },
+        //-------------------------------------------------------------------------------------------
     ]
 
 	
@@ -288,7 +288,7 @@
                 <div class="relative mr-16 flex w-full max-w-xs flex-1">
                     <!--close sidebar-->
                     <div class="absolute left-full top-0 flex w-16 justify-center pt-5">
-                    <button on:click={() => toggleSidebar(0)} type="button" class="-m-2.5 p-2.5">
+                    <button on:click={() => toggleSidebarChangeTitle('')} type="button" class="-m-2.5 p-2.5">
                         <span class="sr-only">Close sidebar</span>
                         <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -297,19 +297,23 @@
                     </div>
                     <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-indigo-600 px-6 pb-2">
                     
-                    <div class="flex flex-row justify-center space-x-6">
-                      <div class="flex h-16 shrink-0 items-center">
-                          <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=white" alt="Your Company">
+                    <a href={pathToDocu} on:click={() => toggleSidebarChangeTitle('Welcome')}>
+                      <div class="flex flex-row justify-center space-x-6">
+                        <div class="flex h-16 shrink-0 items-center">
+                            <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=white" alt="Your Company">
+                        </div>
+                        <h1 class="font-bold text-2xl text-white my-auto">
+                            Documentation
+                        </h1>
                       </div>
-                      <h1 class="font-bold text-2xl text-white my-auto">Documentation</h1>
-                    </div>
+                    </a>
                     <div class="flex flex-1 flex-col">
                         <div class="flex flex-1 flex-col gap-y-7">
                             <!--component names-->
                             <div class="space-y-2 px-2">
                                 <h3 class="text-white font-bold">Components</h3>  
                                 {#each componentData as component}
-                                        <a on:click={() => toggleSidebar(1)} href={pathToComponentsDocu + component.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
+                                        <a on:click={() => toggleSidebarChangeTitle('Components Documentation')} href={pathToComponentsDocu + component.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
                                             {component.name}
                                         </a>
                                 {/each}
@@ -319,7 +323,7 @@
                             <div class="space-y-2 px-2 mt-4">
                                 <h3 class="text-white font-bold">Scripts</h3>  
                                 {#each scriptData as script}
-                                        <a on:click={() => toggleSidebar(2)} href={pathToScriptsDocu + script.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
+                                        <a on:click={() => toggleSidebarChangeTitle('Script Documentation')} href={pathToScriptsDocu + script.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
                                             {script.name}
                                         </a>
                                 {/each}
@@ -330,7 +334,7 @@
                                 <h3 class="text-white font-bold">Database</h3>  
                                 {#each database as db}
                                     {#each db.chapter as chapter}
-                                        <a on:click={() => toggleSidebar(3)} href={pathToDatabaseDocu + chapter.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
+                                        <a on:click={() => toggleSidebarChangeTitle('Database Documentation')} href={pathToDatabaseDocu + chapter.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
                                             {chapter.name}
                                         </a>  
                                     {/each}   
@@ -342,7 +346,7 @@
                                 <h3 class="text-white font-bold">Design</h3>  
                                 {#each design as design}
                                     {#each design.chapter as chapter}
-                                        <a on:click={() => toggleSidebar(4)} href={pathToDesignDocu + chapter.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
+                                        <a on:click={() => toggleSidebarChangeTitle('Design Documentation')} href={pathToDesignDocu + chapter.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
                                             {chapter.name}
                                         </a>  
                                     {/each}   
@@ -362,19 +366,23 @@
       <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
         <!-- Sidebar component, swap this element with another sidebar if you like -->
         <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-indigo-600 px-6">
+        <a href={pathToDocu} on:click={() => toggleSidebarChangeTitle('Welcome')}>
           <div class="flex flex-row justify-center space-x-6">
             <div class="flex h-16 shrink-0 items-center">
               <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=white" alt="NFTW Adventures">
             </div>
-            <h1 class="font-bold text-2xl text-white my-auto">Documentation</h1>
-          </div>  
+            <h1 class="font-bold text-2xl text-white my-auto">
+                Documentation
+            </h1>
+          </div>
+          </a>
           <div class="flex flex-1 flex-col">
             <div class="flex flex-1 flex-col gap-y-7">
                 <!--component names-->
                 <div class="space-y-2 px-2">
                     <h3 class="text-white font-bold">Components</h3>  
                     {#each componentData as component}
-                            <a on:click={() => toggleSidebar(1)} href={pathToComponentsDocu + component.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
+                            <a on:click={() => toggleSidebarChangeTitle('Component Documentation')} href={pathToComponentsDocu + component.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
                                 {component.name}
                             </a>
                     {/each}
@@ -384,7 +392,7 @@
                 <div class="space-y-2 px-2 mt-4">
                     <h3 class="text-white font-bold">Scripts</h3>  
                     {#each scriptData as script}
-                            <a on:click={() => toggleSidebar(2)} href={pathToScriptsDocu + script.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
+                            <a on:click={() => toggleSidebarChangeTitle('Script Documentation')} href={pathToScriptsDocu + script.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
                                 {script.name}
                             </a>
                     {/each}
@@ -395,7 +403,7 @@
                     <h3 class="text-white font-bold">Database</h3>  
                     {#each database as db}
                         {#each db.chapter as chapter}
-                            <a on:click={() => toggleSidebar(3)} href={pathToDatabaseDocu + chapter.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
+                            <a on:click={() => toggleSidebarChangeTitle('Databse Documentation')} href={pathToDatabaseDocu + chapter.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
                                 {chapter.name}
                             </a>  
                         {/each}   
@@ -407,7 +415,7 @@
                     <h3 class="text-white font-bold">Design</h3>  
                     {#each design as design}
                         {#each design.chapter as chapter}
-                            <a on:click={() => toggleSidebar(4)} href={pathToDesignDocu + chapter.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
+                            <a on:click={() => toggleSidebarChangeTitle('Design Documentation')} href={pathToDesignDocu + chapter.name} class="bg-indigo-700 text-white flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-indigo-800" >
                                 {chapter.name}
                             </a>  
                         {/each}   
@@ -420,7 +428,7 @@
     
       <!--sidebar mobile closed-->
       <div class="sticky top-0 z-40 flex items-center gap-x-6 bg-indigo-600 px-4 py-4 shadow-sm sm:px-6 lg:hidden">
-        <button on:click={() => toggleSidebar(0)} type="button" class="-m-2.5 p-2.5 text-indigo-200 lg:hidden">
+        <button on:click={() => toggleSidebarChangeTitle('')} type="button" class="-m-2.5 p-2.5 text-indigo-200 lg:hidden">
           <span class="sr-only">Open sidebar</span>
           <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
