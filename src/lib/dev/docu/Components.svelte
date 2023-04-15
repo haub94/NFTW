@@ -20,6 +20,8 @@
       }
     }
 
+console.log('previewState :>> ', previewState);
+
 </script>
 
 
@@ -90,8 +92,8 @@
         <div class="h-auto py-4">
           <div class:justify-start={previewState} class:justify-center={!previewState} class="my-4 flex rounded-lg border-2 border-gray-300 p-4 overflow-scroll max-h-screen">
             {#if !previewState} 
-            <!--component preview-->  
-            <svelte:component this={component.component} />    
+              <!--component preview-->  
+              <svelte:component this={component.component} />    
             {:else}
               <!--code preview-->
               <div class="flex-row">

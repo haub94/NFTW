@@ -7,7 +7,7 @@
     //config
     const pathToDocu: string = "/dev/docu/#";
 
-    let mobileSidebarOpen: boolean = true;
+    let mobileSidebarOpen: boolean = false;
     function toggleSidebar() {
         mobileSidebarOpen = !mobileSidebarOpen;
     }
