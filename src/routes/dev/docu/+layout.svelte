@@ -30,6 +30,7 @@
 
 
     export const componentData = [
+    export const componentData = [
       /*
       ---------TEMPLATE--------- 
       {
@@ -68,6 +69,14 @@
         description: "Beschreibung zu Card.",
         author: "Markus Haubold",
         version: "1.0",
+        usedBy: [
+          "usedBy Comp1",
+          "usedBy Comp2"
+        ],
+        dependecies: [
+          "dependecie1",
+          "dependecie2",
+        ],
         usedBy: [
           "usedBy Comp1",
           "usedBy Comp2"
@@ -163,6 +172,7 @@
 
 
     export const scriptData = [
+    export const scriptData = [
       /*
       ---------TEMPLATE--------- 
       
@@ -235,6 +245,7 @@
     /*########################################################################################################################################################################*/
 
     export const database = [
+    export const database = [
         {
             ID: 0,
             name: '',
@@ -259,6 +270,7 @@
 
     /*########################################################################################################################################################################*/
 
+    export const design = [
     export const design = [
         {
             ID: 0,
@@ -366,6 +378,7 @@
                 </div>
                 </div>
             </div>
+      </div>     
       </div>     
     {/if}
 
