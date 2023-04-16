@@ -39,10 +39,10 @@
       dependecies: [
         "Dependencies from the script <string>"
       ],
-      parameters: [
+      variables: [
         {
-          name: "Name of the parameter <string>",
-          description: "Description of the parameter <string>",
+          name: "Name of the variable <string>",
+          description: "Description of the variable <string>",
         }  
       ],
       script: "Add the script-section without the script-tags (they are generated on the fly!) <string>",
@@ -106,7 +106,7 @@
   <div class="overflow-hidden shadow-xl sm:rounded-lg bg-gray-100 p-4">
     <div class="px-4 py-6 sm:px-6">
       <h3 class="text-base font-semibold leading-7 text-gray-900">Template component-data</h3>
-      <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">For each component to be displayed in the documentation, a data object with the following structure must be inserted into the data array at the component: {pathToDataStorage} . <br>
+      <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">For each component to be displayed in the documentation, a data object with the following structure must be inserted into the data array at the component: {pathToDataStorage} . Please fill empty fields with a - (dash).<br>
         Psst... have a look into the mentioned data.svelte - there is a prettier styled template. 
       </p>
     </div>
@@ -121,7 +121,7 @@
    <div class="overflow-hidden shadow-xl sm:rounded-lg bg-gray-100 p-4">
     <div class="px-4 py-6 sm:px-6">
       <h3 class="text-base font-semibold leading-7 text-gray-900">Template script-data</h3>
-      <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">For each used script to be displayed in the documentation, a data object with the following structure must be inserted into the data array {pathToDataStorage} .<br>
+      <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">For each used script to be displayed in the documentation, a data object with the following structure must be inserted into the data array {pathToDataStorage} . Please fill empty fields with a - (dash).<br>
         Psst... have a look into the mentioned data.svelte - there is a prettier styled template.
       </p>
     </div>

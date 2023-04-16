@@ -149,20 +149,20 @@
         description: "Beschreibung zu Test_Script.",
         author: "Markus Haubold",
         version: "1.0",
-        usedBy: "",
-        dependecies: "",
+        usedBy: "-",
+        dependecies: "-",
         variables: [
           {
-            name: 'image',
-            description: 'Image for the card',
+            name: 'var1',
+            description: 'tempVar1',
           },  
           {
-            name: 'title',
-            description: 'Title of the card',
+            name: 'var2',
+            description: 'tempVar2',
           },
           {
-            name: 'cation',
-            description: 'Caption of the card',
+            name: 'var3',
+            description: 'tempVar3',
           }
         ],
         script: 
@@ -180,21 +180,13 @@
         description: "Beschreibung zu Test_Script.",
         author: "Markus Haubold",
         version: "1.0",
-        usedBy: "",
-        dependecies: "",
+        usedBy: "-",
+        dependecies: "-",
         variables: [
           {
-            name: 'image',
-            description: 'Image for the card',
+            name: '-',
+            description: '-',
           },  
-          {
-            name: 'title',
-            description: 'Title of the card',
-          },
-          {
-            name: 'cation',
-            description: 'Caption of the card',
-          }
         ],
         script: 
   `
