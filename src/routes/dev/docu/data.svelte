@@ -59,6 +59,8 @@
           {
             name: "title",
             description: "Title of the card",
+            name: "title",
+            description: "Title of the card",
           },
           {
             name: "cation",
