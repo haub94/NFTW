@@ -115,6 +115,16 @@
                             {/each}   
                           {/each}
                         </div>
+
+                        <!--about docu-->
+                        <div class="space-y-2 px-2 mt-4 absolute bottom-8">
+                          <a href={pathToAboutDocu}>
+                            <h3 class="text-white font-bold">About Documentation</h3>  
+                          </a>
+                          <a on:click={toggleVisibilitySidebar} href={pathToAboutDocu} class={sidebarButtonStyle}>
+                            Informations
+                          </a>
+                        </div>
                     </div>
                   </div>
                 </div>
