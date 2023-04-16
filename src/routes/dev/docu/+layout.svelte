@@ -20,11 +20,17 @@
     const pathToDesignDocu: string = pathToDocu + "/design/#";
     const pathToAboutDocu: string = pathToDocu + "/about";
 
+    //style
+    const sidebarButtonStyle = 'bg-NFTW-lila-600 text-gray-300 flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-NFTW-lila-700"';
+
     let mobileSidebarOpen: boolean = false;
 
     function toggleVisibilitySidebar() {
         mobileSidebarOpen = !mobileSidebarOpen;
+        console.log("fire");
     }
+
+    console.log('mobileSIdebarOpen :>> ', mobileSidebarOpen);
 
 </script>
 
@@ -64,7 +70,9 @@
                             <h3 class="text-white font-bold">Components</h3>  
                           </a> 
                           {#each componentData as component}
-                            <SidebarButton on:click={toggleVisibilitySidebar} pathTo={pathToComponentsDocu + component.name} label={component.name} />
+                            <a on:click={toggleVisibilitySidebar} href={pathToComponentsDocu + component.name} class={sidebarButtonStyle}>
+                              {component.name}
+                            </a>
                           {/each}
                         </div>
 
@@ -73,8 +81,10 @@
                           <a href={pathToScriptsDocu}>
                             <h3 class="text-white font-bold">Scripts</h3>  
                           </a>
-                          {#each scriptData as script}        
-                            <SidebarButton on:click={toggleVisibilitySidebar} pathTo={pathToScriptsDocu + script.name} label={script.name} />
+                          {#each scriptData as script}
+                            <a on:click={toggleVisibilitySidebar} href={pathToScriptsDocu + script.name} class={sidebarButtonStyle}>
+                              {script.name}
+                            </a>        
                           {/each}
                         </div>
 
@@ -84,8 +94,10 @@
                             <h3 class="text-white font-bold">Database</h3>  
                           </a>
                           {#each databaseData as db}
-                            {#each db.chapter as chapter}   
-                              <SidebarButton on:click={toggleVisibilitySidebar} pathTo={pathToDatabaseDocu + chapter.name} label={chapter.name} />
+                            {#each db.chapter as chapter}
+                              <a on:click={toggleVisibilitySidebar} href={pathToDatabaseDocu + chapter.name} class={sidebarButtonStyle}>
+                                {chapter.name}
+                              </a> 
                             {/each}   
                           {/each}
                         </div>
@@ -97,7 +109,9 @@
                           </a>
                           {#each designData as designData}
                             {#each designData.chapter as chapter}
-                              <SidebarButton on:click={toggleVisibilitySidebar} pathTo={pathToDesignDocu + chapter.name} label={chapter.name} />
+                              <a on:click={toggleVisibilitySidebar} href={pathToDesignDocu + chapter.name} class={sidebarButtonStyle}>
+                                {chapter.name}
+                              </a> 
                             {/each}   
                           {/each}
                         </div>
@@ -131,7 +145,9 @@
                     <h3 class="text-white font-bold">Components</h3>  
                   </a>
                   {#each componentData as component}
-                    <SidebarButton pathTo={pathToComponentsDocu + component.name} label={component.name} />
+                    <a on:click={toggleVisibilitySidebar} href={pathToComponentsDocu + component.name} class={sidebarButtonStyle}>
+                      {component.name}
+                    </a>
                   {/each}
                 </div>
 
@@ -141,7 +157,9 @@
                     <h3 class="text-white font-bold">Scripts</h3>  
                   </a>
                   {#each scriptData as script}
-                    <SidebarButton pathTo={pathToScriptsDocu + script.name} label={script.name} />
+                    <a on:click={toggleVisibilitySidebar} href={pathToScriptsDocu + script.name} class={sidebarButtonStyle}>
+                      {script.name}
+                    </a> 
                   {/each}
                 </div>
 
@@ -152,7 +170,9 @@
                   </a>
                   {#each databaseData as db}
                       {#each db.chapter as chapter}
-                        <SidebarButton pathTo={pathToDatabaseDocu + chapter.name} label={chapter.name} />
+                        <a on:click={toggleVisibilitySidebar} href={pathToDatabaseDocu + chapter.name} class={sidebarButtonStyle}>
+                          {chapter.name}
+                        </a> 
                       {/each}   
                   {/each}
                 </div>
@@ -164,7 +184,9 @@
                   </a>
                   {#each designData as designData}
                       {#each designData.chapter as chapter}
-                        <SidebarButton pathTo={pathToDesignDocu + chapter.name} label={chapter.name} />
+                        <a on:click={toggleVisibilitySidebar} href={pathToDesignDocu + chapter.name} class={sidebarButtonStyle}>
+                          {chapter.name}
+                        </a> 
                       {/each}   
                   {/each}
                 </div>
@@ -174,7 +196,9 @@
                   <a href={pathToAboutDocu}>
                     <h3 class="text-white font-bold">About Documentation</h3>  
                   </a>
-                  <SidebarButton pathTo={pathToAboutDocu} label="Informations" />
+                  <a on:click={toggleVisibilitySidebar} href={pathToAboutDocu} class={sidebarButtonStyle}>
+                    Informations
+                  </a>
                 </div>
             </div>
           </div>
