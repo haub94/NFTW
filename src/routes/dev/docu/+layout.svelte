@@ -21,7 +21,7 @@
     const pathToAboutDocu: string = pathToDocu + "/about";
 
     //style
-    const sidebarButtonStyle = 'bg-NFTW-lila-600 text-gray-300 flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-NFTW-lila-700"';
+    const sidebarButtonStyle = "bg-NFTW-lila-600 text-gray-300 flex items-center px-2 py-2 text-sm font-medium rounded-md hover:bg-NFTW-lila-700";
 
     let mobileSidebarOpen: boolean = false;
 
