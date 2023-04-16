@@ -38,14 +38,14 @@
       */
       {
         ID: 0,
-        name: "Card",
+        name: "TestCard1",
         component: Card,
         description: "Beschreibung zu Card.",
         author: "Markus Haubold",
         version: "1.0",
         usedBy: [
-          "usedBy Comp1",
-          "usedBy Comp2"
+          "Comp1",
+          "Comp2"
         ],
         dependecies: [
           "dependecie1",
@@ -53,82 +53,78 @@
         ],
         variables: [
           {
-            name: 'image',
-            description: 'Image for the card',
+            name: "image",
+            description: "Image for the card",
           },  
           {
-            name: 'title',
-            description: 'Title of the card',
+            name: "title",
+            description: "Title of the card",
           },
           {
-            name: 'cation',
-            description: 'Caption of the card',
+            name: "cation",
+            description: "Caption of the card",
           }
         ],
         script: 
-  `
+        `
   import { checkUndefinedNullOrEmpty } from "../tools/Tools.svelte";
 
   export let img: string = "/brokenImage.png";
   export let title: string = "defaultVaule";
   export let caption: string = "defaultVaule";
-    `,
+        `,
         html: 
-    `
-    <a href="/" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-      <img class="h-auto w-48 object-cover rounded-l-lg" src={checkUndefinedNullOrEmpty(img) ? "/brokenImage.png" : img} alt="" />
-      <div class="flex flex-col justify-between p-4 leading-normal">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-          {title}
-        </h5>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{caption}</p>
-      </div>
-    </a>
-    `
+        `
+  <a href="/" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+    <img class="h-auto w-48 object-cover rounded-l-lg" src={checkUndefinedNullOrEmpty(img) ? "/brokenImage.png" : img} alt="" />
+    <div class="flex flex-col justify-between p-4 leading-normal">
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        {title}
+      </h5>
+      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{caption}</p>
+    </div>
+  </a>
+        `
       },
       {
         ID: 1,
-        name: "NextComponent",
+        name: "TestCard2",
         component: Card,
         description: "Beschreibung zu Card.",
         author: "Markus Haubold",
         version: "1.0",
-        usedBy: "",
-        dependecies: "",
+        usedBy: [
+          "-",
+        ],
+        dependecies: [
+          "-",
+        ],
         variables: [
           {
-            name: 'image',
-            description: 'Image for the card',
-          },  
-          {
-            name: 'title',
-            description: 'Title of the card',
+            name: "-",
+            description: "-",
           },
-          {
-            name: 'cation',
-            description: 'Caption of the card',
-          }
         ],
         script: 
-  `
+        `
   import { checkUndefinedNullOrEmpty } from "../tools/Tools.svelte";
 
   export let img: string = "/brokenImage.png";
   export let title: string = "defaultVaule";
   export let caption: string = "defaultVaule";
-    `,
+        `,
         html: 
-    `
-    <a href="/" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-      <img class="h-auto w-48 object-cover rounded-l-lg" src={checkUndefinedNullOrEmpty(img) ? "/brokenImage.png" : img} alt="" />
-      <div class="flex flex-col justify-between p-4 leading-normal">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-          {title}
-        </h5>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{caption}</p>
-      </div>
-    </a>
-    `
+        `
+  <a href="/" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+    <img class="h-auto w-48 object-cover rounded-l-lg" src={checkUndefinedNullOrEmpty(img) ? "/brokenImage.png" : img} alt="" />
+    <div class="flex flex-col justify-between p-4 leading-normal">
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        {title}
+      </h5>
+      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{caption}</p>
+    </div>
+  </a>
+        `
       }, 
       //-------------------------------------------------------------------------------------------
     ];
@@ -144,58 +140,66 @@
       */
       {
         ID: 0,
-        name: "Script_ONE",
-        component: Card,
-        description: "Beschreibung zu Test_Script.",
+        name: "TestScript1",
+        description: "Beschreibung zu TestScript1.",
         author: "Markus Haubold",
         version: "1.0",
-        usedBy: "-",
-        dependecies: "-",
+        usedBy: [
+          "script 2",
+          "script 3"
+        ],
+        dependecies: [
+          "dependecie1",
+          "dependecie2"
+        ],
         variables: [
           {
-            name: 'var1',
-            description: 'tempVar1',
+            name: "var1",
+            description: "tempVar1",
           },  
           {
-            name: 'var2',
-            description: 'tempVar2',
+            name: "var2",
+            description: "tempVar2",
           },
           {
-            name: 'var3',
-            description: 'tempVar3',
+            name: "var3",
+            description: "tempVar3",
           }
         ],
         script: 
-  `
-  function helloWorld(): boolean {
-    console.log("hello world")
-    return true;
-  }
-    `,
+        `
+    function helloWorld(): boolean {
+      console.log("hello world")
+      return true;
+    }
+        `,
       },
       {
-        ID: 0,
-        name: "Script_TWO",
-        component: Card,
-        description: "Beschreibung zu Test_Script.",
+        ID: 1,
+        name: "TestScript2",
+        description: "Beschreibung zu TestScript2.",
         author: "Markus Haubold",
         version: "1.0",
-        usedBy: "-",
-        dependecies: "-",
+        usedBy: [
+          "-",
+        ],
+        dependecies: [
+          "-",
+        ],
         variables: [
           {
-            name: '-',
-            description: '-',
+            name: "-",
+            description: "-",
           },  
         ],
         script: 
-  `
+        `
   function helloWorld(): boolean {
     console.log("hello world")
     return true;
   }
-    `,
-      },
+      `,
+      }
       //-------------------------------------------------------------------------------------------
     ];
 
