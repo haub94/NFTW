@@ -58,10 +58,6 @@
       
     }
     
-    console.log('templateAsString :>> ', templatesAsString[0]);
-    console.log('templateAsString :>> ', templatesAsString[1]);
-
-
 </script>
 
 <div class="space-y-8">
