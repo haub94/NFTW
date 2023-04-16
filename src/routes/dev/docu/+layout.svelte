@@ -187,7 +187,6 @@
           </svg>
         </button>
       </div>
-      <!--here comes the content from the docu-->
       <slot></slot>
     </div>
     

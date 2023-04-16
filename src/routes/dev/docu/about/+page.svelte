@@ -1,4 +1,4 @@
-<div class="overflow-hidden bg-white shadow sm:rounded-lg">
+<div class="overflow-hidden shadow sm:rounded-lg">
     <div class="px-4 py-6 sm:px-6">
       <h3 class="text-base font-semibold leading-7 text-gray-900">Informations</h3>
       <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">In this documentation you will find information about all components and scripts used on the website, the handling of the database and the cooperate design. The basics of the frameworks used, Svelte and Tailwind, are not listed in this documentation and can be found on the developer's website.</p>
@@ -31,7 +31,7 @@
           <ul class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0 list-disc">
             <li>nothing</li>
             <li>because we are</li>
-            <li>goods of</li>
+            <li>gods of</li>
             <li>coding</li>
           </ul>
         </div>

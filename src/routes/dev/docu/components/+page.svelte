@@ -18,16 +18,12 @@
     }
 </script>
 
-<!--
-<Components data={componentData} />
--->
-
 <!--toggle button preview/code-->
 <div class="sticky top-0 z-10 flex h-16 flex-shrink-0 bg-none mb-4">
     <div class="absolute right-2 top-2 flex items-center">
       <button
       on:click={togglePreviewState}
-      class="active show ml-12 h-12 w-40 rounded border border-solid bg-white border-NFTW-lila-600 px-3 text-sm font-bold uppercase text-NFTW-lila-600 outline-none transition-all duration-150 ease-linear hover:bg-NFTW-lila-600 hover:text-white focus:outline-none">
+      class="active show ml-12 h-12 w-40 rounded border border-solid bg-NFTW-blue-200 border-NFTW-lila-600 px-3 text-sm font-bold uppercase text-NFTW-lila-600 outline-none transition-all duration-150 ease-linear hover:bg-NFTW-blue-300 hover:text-white focus:outline-none">
       {toggleButtonDescription}
       </button>
     </div>
@@ -35,12 +31,12 @@
 
 <div class="space-y-4">
     {#each componentData as comp}
-        <div id={comp.name} class="bg-white rounded-lg p-4 border-2 border-gray-500 shadow-lg">
+        <div id={comp.name} class="bg-gray-100 rounded-lg p-4 border-2 border-gray-500 shadow-lg">
             <div class="px-4 sm:px-0">
                 <h3 class="text-base font-semibold leading-7 text-gray-900">{comp.name}</h3>
                 <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">{comp.description}</p>
             </div>
-            <div class=" border-gray-100">
+            <div class=" border-NFTW-black-50">
                 <dl class="divide-y divide-gray-500">
                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                     <dt class="text-sm font-medium leading-6 text-gray-900">Author</dt>

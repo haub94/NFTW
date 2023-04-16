@@ -8,10 +8,8 @@
     <div class="w-full h-16 bg-bg-NFTW-lila-800 flex justify-center items-center">
         <h2 class="text-white font-bold text-2xl">Welcome</h2>
     </div>
-    <div class="p-4 sm:p-6 lg:p-8 rounded-tl-xl bg-NFTW-blue-100">
-        <!--here comes the content from the docu-->
-        
-        <div class="relative isolate overflow-hidden bg-NFTW-blue-100 px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
+    <div class="p-4 sm:p-6 lg:p-8 rounded-tl-xl bg-NFTW-blue-100 ">  
+        <div class="relative isolate overflow-hidden bg-NFTW-blue-100 px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0 h-screen">
             <div class="absolute inset-0 -z-10 overflow-hidden">
               <svg class="absolute left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-gray-200 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]" aria-hidden="true">
                 <defs>
@@ -76,11 +74,6 @@
               </div>
             </div>
           </div>
-          
-
-
-
-
     </div>
 </div>
 
