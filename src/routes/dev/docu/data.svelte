@@ -40,8 +40,8 @@
         ID: 0,
         name: "DocuTemplateCard1",
         component: Card,
-        description: "Description of DocuTemplateCard1.",
-        author: "Max Mustermann",
+        description: "Description of DocuTemplateCard1. Dont delete this!",
+        author: "Maxi Musterfrau",
         version: "x.y",
         usedBy: [
           "Usage 1",
@@ -90,8 +90,8 @@
         ID: 1,
         name: "DocuTemplateCard2",
         component: Card,
-        description: "Description of DocuTemplateCard2.",
-        author: "Mann Mustermax",
+        description: "Description of DocuTemplateCard2. Dont delete this!",
+        author: "Max Mustermann",
         version: "x.y",
         usedBy: [
           "-",
@@ -133,10 +133,10 @@
       */
       {
         ID: 0,
-        name: "TestScript1",
-        description: "Beschreibung zu TestScript1.",
-        author: "Markus Haubold",
-        version: "1.0",
+        name: "DocuTemplateScript1",
+        description: "Description of DocuTemplateScript1. Dont delete this!",
+        author: "Maxi Musterfrau",
+        version: "x.y",
         usedBy: [
           "script 2",
           "script 3"
@@ -169,10 +169,10 @@
       },
       {
         ID: 1,
-        name: "TestScript2",
-        description: "Beschreibung zu TestScript2.",
-        author: "Markus Haubold",
-        version: "1.0",
+        name: "DocuTemplateScript2",
+        description: "Description of DocuTemplateScript2. Dont delete this!",
+        author: "Max Mustermann",
+        version: "x.y",
         usedBy: [
           "-",
         ],
