@@ -1,3 +1,8 @@
+<!--
+ Thats the default layout for the sidebar at the left side
+ and the right slot-place for the docu-content. 
+-->
+
 <script lang="ts">
     import { componentData } from "./data.svelte";
     import { scriptData } from "./data.svelte";
@@ -22,8 +27,6 @@
     }
 
 </script>
-
-
 
 
 <div>
@@ -189,6 +192,3 @@
       </div>
       <slot></slot>
     </div>
-    
-  
-
