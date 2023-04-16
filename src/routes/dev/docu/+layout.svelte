@@ -66,7 +66,7 @@
                     <div class="flex flex-1 flex-col gap-y-7">
                         <!--component names-->
                         <div class="space-y-2 px-2">
-                          <a href={pathToComponentsDocu}>
+                          <a href={pathToComponentsDocu} on:click={toggleVisibilitySidebar}>
                             <h3 class="text-white font-bold">Components</h3>  
                           </a> 
                           {#each componentData as component}
@@ -78,7 +78,7 @@
 
                         <!--script names-->
                         <div class="space-y-2 px-2 mt-4">
-                          <a href={pathToScriptsDocu}>
+                          <a href={pathToScriptsDocu} on:click={toggleVisibilitySidebar}>
                             <h3 class="text-white font-bold">Scripts</h3>  
                           </a>
                           {#each scriptData as script}
@@ -90,7 +90,7 @@
 
                         <!--databaseData-->
                         <div class="space-y-2 px-2 mt-4">
-                          <a href={pathToDatabaseDocu}>
+                          <a href={pathToDatabaseDocu} on:click={toggleVisibilitySidebar}>
                             <h3 class="text-white font-bold">Database</h3>  
                           </a>
                           {#each databaseData as db}
@@ -104,7 +104,7 @@
 
                         <!--designData-->
                         <div class="space-y-2 px-2 mt-4">
-                          <a href={pathToDesignDocu}>
+                          <a href={pathToDesignDocu} on:click={toggleVisibilitySidebar}>
                             <h3 class="text-white font-bold">Design</h3>  
                           </a>
                           {#each designData as designData}
@@ -118,7 +118,7 @@
 
                         <!--about docu-->
                         <div class="space-y-2 px-2 mt-4 absolute bottom-8">
-                          <a href={pathToAboutDocu}>
+                          <a href={pathToAboutDocu} on:click={toggleVisibilitySidebar}>
                             <h3 class="text-white font-bold">About Documentation</h3>  
                           </a>
                           <a on:click={toggleVisibilitySidebar} href={pathToAboutDocu} class={sidebarButtonStyle}>
@@ -151,7 +151,7 @@
             <div class="flex flex-1 flex-col gap-y-7">
                 <!--component names-->
                 <div class="space-y-2 px-2">
-                  <a href={pathToComponentsDocu}>
+                  <a href={pathToComponentsDocu} on:click={toggleVisibilitySidebar}>
                     <h3 class="text-white font-bold">Components</h3>  
                   </a>
                   {#each componentData as component}
@@ -163,7 +163,7 @@
 
                 <!--script names-->
                 <div class="space-y-2 px-2 mt-4">
-                  <a href={pathToScriptsDocu}>
+                  <a href={pathToScriptsDocu} on:click={toggleVisibilitySidebar}>
                     <h3 class="text-white font-bold">Scripts</h3>  
                   </a>
                   {#each scriptData as script}
@@ -175,7 +175,7 @@
 
                 <!--databaseData-->
                 <div class="space-y-2 px-2 mt-4">
-                  <a href={pathToDatabaseDocu}>
+                  <a href={pathToDatabaseDocu} on:click={toggleVisibilitySidebar}>
                     <h3 class="text-white font-bold">Database</h3>  
                   </a>
                   {#each databaseData as db}
@@ -189,7 +189,7 @@
 
                 <!--designData-->
                 <div class="space-y-2 px-2 mt-4">
-                  <a href={pathToDesignDocu}>
+                  <a href={pathToDesignDocu} on:click={toggleVisibilitySidebar}>
                     <h3 class="text-white font-bold">Design</h3>  
                   </a>
                   {#each designData as designData}
@@ -203,7 +203,7 @@
 
                 <!--about docu-->
                 <div class="space-y-2 px-2 mt-4 absolute bottom-8">
-                  <a href={pathToAboutDocu}>
+                  <a href={pathToAboutDocu} on:click={toggleVisibilitySidebar}>
                     <h3 class="text-white font-bold">About Documentation</h3>  
                   </a>
                   <a on:click={toggleVisibilitySidebar} href={pathToAboutDocu} class={sidebarButtonStyle}>
