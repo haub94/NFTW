@@ -38,14 +38,14 @@
       */
       {
         ID: 0,
-        name: "Card",
+        name: "TestCard1",
         component: Card,
         description: "Beschreibung zu Card.",
         author: "Markus Haubold",
         version: "1.0",
         usedBy: [
-          "usedBy Comp1",
-          "usedBy Comp2"
+          "Comp1",
+          "Comp2"
         ],
         dependecies: [
           "dependecie1",
@@ -53,16 +53,16 @@
         ],
         variables: [
           {
-            name: 'image',
-            description: 'Image for the card',
+            name: "image",
+            description: "Image for the card",
           },  
           {
-            name: 'title',
-            description: 'Title of the card',
+            name: "title",
+            description: "Title of the card",
           },
           {
-            name: 'cation',
-            description: 'Caption of the card',
+            name: "cation",
+            description: "Caption of the card",
           }
         ],
         script: 
@@ -88,26 +88,22 @@
       },
       {
         ID: 1,
-        name: "NextComponent",
+        name: "TestCard2",
         component: Card,
         description: "Beschreibung zu Card.",
         author: "Markus Haubold",
         version: "1.0",
-        usedBy: "",
-        dependecies: "",
+        usedBy: [
+          "-",
+        ],
+        dependecies: [
+          "-",
+        ],
         variables: [
           {
-            name: 'image',
-            description: 'Image for the card',
-          },  
-          {
-            name: 'title',
-            description: 'Title of the card',
+            name: "-",
+            description: "-",
           },
-          {
-            name: 'cation',
-            description: 'Caption of the card',
-          }
         ],
         script: 
   `
@@ -144,25 +140,30 @@
       */
       {
         ID: 0,
-        name: "Script_ONE",
-        component: Card,
-        description: "Beschreibung zu Test_Script.",
+        name: "TestScript1",
+        description: "Beschreibung zu TestScript1.",
         author: "Markus Haubold",
         version: "1.0",
-        usedBy: "-",
-        dependecies: "-",
+        usedBy: [
+          "script 2",
+          "script 3"
+        ],
+        dependecies: [
+          "dependecie1",
+          "dependecie2"
+        ],
         variables: [
           {
-            name: 'var1',
-            description: 'tempVar1',
+            name: "var1",
+            description: "tempVar1",
           },  
           {
-            name: 'var2',
-            description: 'tempVar2',
+            name: "var2",
+            description: "tempVar2",
           },
           {
-            name: 'var3',
-            description: 'tempVar3',
+            name: "var3",
+            description: "tempVar3",
           }
         ],
         script: 
@@ -174,18 +175,21 @@
     `,
       },
       {
-        ID: 0,
-        name: "Script_TWO",
-        component: Card,
-        description: "Beschreibung zu Test_Script.",
+        ID: 1,
+        name: "TestScript2",
+        description: "Beschreibung zu TestScript2.",
         author: "Markus Haubold",
         version: "1.0",
-        usedBy: "-",
-        dependecies: "-",
+        usedBy: [
+          "-",
+        ],
+        dependecies: [
+          "-",
+        ],
         variables: [
           {
-            name: '-',
-            description: '-',
+            name: "-",
+            description: "-",
           },  
         ],
         script: 
@@ -195,7 +199,7 @@
     return true;
   }
     `,
-      },
+      }
       //-------------------------------------------------------------------------------------------
     ];
 
