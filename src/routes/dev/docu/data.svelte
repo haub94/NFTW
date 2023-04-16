@@ -38,33 +38,31 @@
       */
       {
         ID: 0,
-        name: "TestCard1",
+        name: "DocuTemplateCard1",
         component: Card,
-        description: "Beschreibung zu Card.",
-        author: "Markus Haubold",
-        version: "1.0",
+        description: "Description of DocuTemplateCard1.",
+        author: "Max Mustermann",
+        version: "x.y",
         usedBy: [
-          "Comp1",
-          "Comp2"
+          "Usage 1",
+          "Usage 2"
         ],
         dependecies: [
-          "dependecie1",
-          "dependecie2",
+          "Dependecie 1",
+          "Dependecie 2",
         ],
         variables: [
           {
-            name: "image",
-            description: "Image for the card",
+            name: "Exportet variable1",
+            description: "Description of variable1",
           },  
           {
-            name: "title",
-            description: "Title of the card",
-            name: "title",
-            description: "Title of the card",
+            name: "Exportet variable1",
+            description: "Description of variable1",
           },
           {
-            name: "cation",
-            description: "Caption of the card",
+            name: "Exportet variable1",
+            description: "Description of variable1",
           }
         ],
         script: 
@@ -90,11 +88,11 @@
       },
       {
         ID: 1,
-        name: "TestCard2",
+        name: "DocuTemplateCard2",
         component: Card,
-        description: "Beschreibung zu Card.",
-        author: "Markus Haubold",
-        version: "1.0",
+        description: "Description of DocuTemplateCard2.",
+        author: "Mann Mustermax",
+        version: "x.y",
         usedBy: [
           "-",
         ],
@@ -105,16 +103,9 @@
           {
             name: "-",
             description: "-",
-          },
+          },  
         ],
-        script: 
-        `
-  import { checkUndefinedNullOrEmpty } from "../tools/Tools.svelte";
-
-  export let img: string = "/brokenImage.png";
-  export let title: string = "defaultVaule";
-  export let caption: string = "defaultVaule";
-        `,
+        script: '',
         html: 
         `
   <a href="/" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
@@ -127,7 +118,7 @@
     </div>
   </a>
         `
-      }, 
+      },
       //-------------------------------------------------------------------------------------------
     ];
 

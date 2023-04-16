@@ -98,7 +98,7 @@
                             {:else}
                               <!--code preview-->
                               <div class="flex-row">
-                                {#if comp.script !== ``}
+                                {#if comp.script !== ''}
                                   <pre>
                                       <ScriptBlock>
                                         <slot>
