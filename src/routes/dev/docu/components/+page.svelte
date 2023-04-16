@@ -29,9 +29,9 @@
     </div>
   </div>
 
-<div class="space-y-4">
+<div class="space-y-8">
     {#each componentData as comp}
-        <div id={comp.name} class="bg-gray-100 rounded-lg p-4 border-2 border-gray-500 shadow-lg">
+        <div id={comp.name} class="bg-gray-100 rounded-lg p-4 shadow-lg">
             <div class="px-4 sm:px-0">
                 <h3 class="text-base font-semibold leading-7 text-gray-900">{comp.name}</h3>
                 <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">{comp.description}</p>
