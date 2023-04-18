@@ -10,9 +10,13 @@ datasource db {
   url      = "file:./dev.sqlite"
 }
 
-model Article {
+model Customers {
   id  Int @id @default(autoincrement())
-  title String
-  content String
+  firstName String
+  lastName String
+  email String
 }
+
+
+
 //1:50 https://www.youtube.com/watch?v=E9J2VXd-bzE
