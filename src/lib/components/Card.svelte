@@ -2,8 +2,8 @@
   import { checkUndefinedNullOrEmpty } from "../tools/Tools.svelte";
 
   export let img: string = "/brokenImage.png";
-  export let title: string = "defaultVaule";
-  export let caption: string = "defaultVaule";
+  export let title: string = "title";
+  export let caption: string = "caption";
 </script>
 
 <a
