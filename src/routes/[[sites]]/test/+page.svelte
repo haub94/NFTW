@@ -69,11 +69,40 @@
   } */
 </script>
 
-<div class="grid grid-cols-3 gap-10 bg-gray-900 p-20">
-  <!--<Card img={randomImg()} title={randomTitle()} caption={randomCaption()} />-->
-  <Card img={randomImg()} title={randomTitle()} caption={randomCaption()} />
-  <Card img={randomImg()} title={randomTitle()} caption={randomCaption()} />
-  <Card img={randomImg()} title={randomTitle()} caption={randomCaption()} />
-  <Card img={randomImg()} title={randomTitle()} caption={randomCaption()} />
-  <Card img={randomImg()} title={randomTitle()} caption={randomCaption()} />
+<div
+  class="flex min-h-screen w-full items-center justify-center bg-NFTW-black-800"
+>
+<div class="">
+  
+
+
+
+
+
+
+
+
+
+  <div class="w-full h-1 m-20">
+  </div>
+    
+
+    
+    <div class="grid grid-cols-3 gap-10 p-20">
+      <!--<Card img={randomImg()} title={randomTitle()} caption={randomCaption()} />-->
+      <Card img={randomImg()} title={randomTitle()} caption={randomCaption()} />
+    <Card img={randomImg()} title={randomTitle()} caption={randomCaption()} />
+    <Card img={randomImg()} title={randomTitle()} caption={randomCaption()} />
+    <Card img={randomImg()} title={randomTitle()} caption={randomCaption()} />
+    <Card img={randomImg()} title={randomTitle()} caption={randomCaption()} />
+  </div>
+  
+  
+  
 </div>
+</div>
+
+
+
+<style>
+</style>
