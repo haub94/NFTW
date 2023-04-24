@@ -23,13 +23,13 @@
       <div class="">
         <h3
           id="card-{title}"
-          class="text-4xl font-bold leading-7 text-NFTW-blue-50 mb-32"
+          class="text-4xl font-bold leading-7 text-NFTW-white mb-32"
         >
           {title}
         </h3>
         <div class="w-3/4 h-64 grid content-end">
           <p
-            class="text-base leading-7 text-justify line-clamp-6 opacity-50 group-hover:opacity-100 transition duration-500 text-transparent bg-clip-text bg-gradient-to-b from-NFTW-blue-50 to-transparent group-hover:text-NFTW-blue-50"
+            class="text-base leading-7 text-justify line-clamp-6 opacity-50 group-hover:opacity-100 transition duration-500 text-transparent bg-clip-text bg-gradient-to-b from-NFTW-white to-transparent group-hover:text-NFTW-white"
           >
             {caption}
           </p>

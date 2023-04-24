@@ -6,7 +6,7 @@
   export let caption: string = "Lorem ipsum dolor.";
 </script>
 
-<div class="isolate overflow-hidden bg-NFTW-black-800">
+<div class="isolate overflow-hidden bg-NFTW-bg">
   <div class="mx-auto max-w-7xl px-6 pb-96 pt-24 text-center sm:pt-32 lg:px-8">
     <div class="mx-auto max-w-4xl">
       <p class="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">

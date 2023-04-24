@@ -26,7 +26,7 @@ const colors = [
 
 </script>
 
-<div class="relative isolate bg-NFTW-black-800 px-6 py-24 sm:py-32 lg:px-8">
+<div class="relative isolate bg-NFTW-bg px-6 py-24 sm:py-32 lg:px-8">
   <div
     class="absolute inset-x-0 -top-3 -z-10 transform-gpu overflow-hidden px-36 blur-3xl"
     aria-hidden="true"
