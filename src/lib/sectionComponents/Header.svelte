@@ -1,13 +1,5 @@
 <script lang="ts">
   import { dev } from "$app/environment";
-
-  export let publicVar = "defaultVaule";
-  let var1: string = "text_var";
-
-  function hello(): number {
-    console.log("hello :>> ");
-    return 1;
-  }
 </script>
 
 {#if dev}
