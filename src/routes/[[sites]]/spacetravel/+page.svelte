@@ -18,7 +18,7 @@
     >
       <div class="lg:col-end-1 lg:w-full lg:max-w-lg lg:pb-8">
         <h2
-          class="text-3xl font-bold tracking-tight text-NFTW-blue-50 sm:text-4xl"
+          class="text-3xl font-bold tracking-tight text-NFTW-white sm:text-4xl"
         >
           Where to go. When to go.
         </h2>
