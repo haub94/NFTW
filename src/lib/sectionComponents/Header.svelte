@@ -31,7 +31,7 @@
   />
 
   <div
-    class="group flex flex-row bg-NFTW-black-800 opacity-80 p-5 text-3xl text-white mx-auto py-4 md:py-4 md:flex-row absolute w-full mt-10"
+    class="group flex flex-row bg-NFTW-bg opacity-80 p-5 text-3xl text-white mx-auto py-4 md:py-4 md:flex-row absolute w-full mt-10"
   >
     <div class="mx-auto max-w-7xl px-6 lg:px-8 xl:grid xl:grid-cols-2">
       <a href="/"><p>NFTW Adventures</p></a>

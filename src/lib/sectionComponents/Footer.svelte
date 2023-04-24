@@ -3,7 +3,7 @@
 
 <!-- component -->
 <div
-  class="flex min-h-screen w-full items-center justify-center bg-NFTW-black-800"
+  class="flex min-h-screen w-full items-center justify-center bg-NFTW-bg"
 >
   <footer aria-labelledby="footer-heading" class="z-10">
     <h2 id="footer-heading" class="sr-only">Footer</h2>
