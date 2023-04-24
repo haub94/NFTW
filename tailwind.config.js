@@ -4,6 +4,10 @@ export default {
   theme: {
     extend: {
       colors: {
+        "NFTW": {
+          white: "#E9E0FF",
+          bg: "#06000F",
+        },
         "NFTW-black": {
           50: "#E3D1FF",
           100: "#C39EFF",
