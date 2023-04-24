@@ -1,5 +1,7 @@
 <script lang="ts">
   import CardSpacetravel from "$lib/components/CardSpacetravel.svelte";
+  import SectionBg001 from "$lib/components/SectionBg001.svelte";
+  import SectionBg002 from "$lib/components/SectionBg002.svelte";
 
   let destinationCaption: string =
     "Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination ";
@@ -79,62 +81,44 @@
 
 <!---->
 
-<div class="isolate overflow-hidden bg-NFTW-black-800">
-  <div class="mx-auto max-w-7xl px-6 pb-96 pt-24 text-center sm:pt-32 lg:px-8">
-    <div class="mx-auto max-w-4xl">
-      <p class="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-        Where to go. <br class="hidden sm:inline lg:hidden" />When to go.
-      </p>
-    </div>
-    <div class="relative mt-6">
-      <p class="mx-auto max-w-2xl text-lg leading-8 text-white/60">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit numquam
-        eligendi quos odit doloribus molestiae voluptatum.
-      </p>
-      <svg
-        viewBox="0 0 1208 1024"
-        class="absolute -top-10 left-1/2 -z-10 h-[64rem] -translate-x-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:-top-12 md:-top-20 lg:-top-12 xl:top-0"
-      >
-        <ellipse
-          cx="604"
-          cy="512"
-          fill="url(#radialGradient_001)"
-          rx="604"
-          ry="512"
-        />
-        <defs>
-          <radialGradient id="radialGradient_001">
-            <stop stop-color="#3500BF" />
-            <stop offset="1" stop-color="#9300B9" />
-          </radialGradient>
-        </defs>
-      </svg>
-    </div>
-  </div>
-  <div class="flow-root pb-96">
-    <div class="-mt-80">
-      <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div
-          class="mx-auto grid max-w-md grid-cols-1 gap-16 lg:max-w-4xl lg:grid-cols-2"
-        >
-          <CardSpacetravel
-            img="/planets/moon-planet.png"
-            title="Destination"
-            caption={destinationCaption}
-            imgPosition="bottom"
-            imgSize="cover"
-            path="/spacetravel/destination"
-          />
-          <CardSpacetravel
-            img="/planets/blue-planet.png"
-            title="Journey Purpose"
-            caption={purposeCaption}
-            imgPosition="left"
-            imgSize="cover"
-            path="/spacetravel/journeyPurpose"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<SectionBg001
+  title1of2="Where to go."
+  title2of2="When to go."
+  caption="Lorem Ipsum. Lorem ipsum"
+>
+  <CardSpacetravel
+    img="/planets/moon-planet.png"
+    title="Destination"
+    caption={destinationCaption}
+    imgPosition="bottom"
+    imgSize="cover"
+    path="/spacetravel/destination"
+  />
+  <CardSpacetravel
+    img="/planets/blue-planet.png"
+    title="Journey Purpose"
+    caption={purposeCaption}
+    imgPosition="left"
+    imgSize="cover"
+    path="/spacetravel/journeyPurpose"
+  />
+</SectionBg001>
+
+<SectionBg002>
+  <CardSpacetravel
+    img="/planets/moon-planet.png"
+    title="Destination"
+    caption={destinationCaption}
+    imgPosition="bottom"
+    imgSize="cover"
+    path="/spacetravel/destination"
+  />
+  <CardSpacetravel
+    img="/planets/blue-planet.png"
+    title="Journey Purpose"
+    caption={purposeCaption}
+    imgPosition="left"
+    imgSize="cover"
+    path="/spacetravel/journeyPurpose"
+  />
+</SectionBg002>

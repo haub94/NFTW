@@ -1,5 +1,7 @@
 <script lang="ts">
-  import Card from "../../../lib/components/Card.svelte";
+  import CardSpacetravel from "$lib/components/CardSpacetravel.svelte";
+import SectionBg002 from "$lib/components/SectionBg002.svelte";
+import Card from "../../../lib/components/Card.svelte";
 
   const planets = [
     "/planets/green-planet.png",
@@ -74,14 +76,16 @@
 >
 <div class="">
   
+<!---->
+
+
+<SectionBg002>
+
+</SectionBg002>
 
 
 
-
-
-
-
-
+<!---->
 
   <div class="w-full h-1 m-20">
   </div>
@@ -102,7 +106,7 @@
 </div>
 </div>
 
-
+<!---->
 
 <style>
 </style>
