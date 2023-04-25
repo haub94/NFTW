@@ -63,5 +63,11 @@ export default {
       }
     }
   },
-  plugins: []
+  plugins: [
+    require('@tailwindcss/forms')/* ({
+      // Choose Only One Of The Following Strategies !!!
+      strategy: 'base', // only generate global styles
+      strategy: 'class', // only generate classes
+    }), */
+  ],
 };

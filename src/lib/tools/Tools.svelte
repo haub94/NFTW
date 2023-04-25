@@ -1,5 +1,4 @@
 <script lang="ts" context="module">
-    
     export function checkUndefined(e: any): e is undefined {
       return e === undefined || e === "undefined";
     }
@@ -69,5 +68,11 @@
   
       return mergeObjects(target, ...sources);
     };
+  
+    export function randomPercentage() {
+      const str = (Math.random() * 101).toFixed(1);
+      const percent = parseFloat(str) + "%";
+      return percent;
+    }
   </script>
   
