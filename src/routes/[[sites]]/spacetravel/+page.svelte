@@ -79,7 +79,7 @@
   </div>
 </div>
 
-<!---->
+<!-- -->
 
 <SectionBg001
   title1of2="Where to go."
@@ -90,7 +90,7 @@
     img="/planets/moon-planet.png"
     title="Destination"
     caption={destinationCaption}
-    imgPosition="bottom"
+    imgPosition="left"
     imgSize="cover"
     path="/spacetravel/destination"
   />
@@ -103,22 +103,3 @@
     path="/spacetravel/journeyPurpose"
   />
 </SectionBg001>
-
-<SectionBg002 twoCols>
-  <CardSpacetravel
-    img="/planets/moon-planet.png"
-    title="Destination"
-    caption={destinationCaption}
-    imgPosition="bottom"
-    imgSize="cover"
-    path="/spacetravel/destination"
-  />
-  <CardSpacetravel
-    img="/planets/blue-planet.png"
-    title="Journey Purpose"
-    caption={purposeCaption}
-    imgPosition="left"
-    imgSize="cover"
-    path="/spacetravel/journeyPurpose"
-  />
-</SectionBg002>
