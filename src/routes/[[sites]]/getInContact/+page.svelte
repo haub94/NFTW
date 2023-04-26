@@ -1,11 +1,11 @@
 <script lang="ts">
   import FormularGic from "$lib/components/FormularGIC.svelte";
-import SectionBg002uni from "$lib/components/SectionBg002uni.svelte";
+  import SectionBg002 from "$lib/components/SectionBg002.svelte";
 </script>
 
 <div class="pt-60 bg-NFTW-bg" />
 
-<SectionBg002uni>
+<SectionBg002 twoCols>
 <FormularGic/>
   <!-- LETS WORK TOGETHER -->
 
@@ -199,4 +199,4 @@ import SectionBg002uni from "$lib/components/SectionBg002uni.svelte";
   </div>
 
   <!-- / LETS WORK TOGETHER -->
-</SectionBg002uni>
+</SectionBg002>
