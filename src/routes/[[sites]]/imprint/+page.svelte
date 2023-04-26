@@ -1,7 +1,12 @@
 <script lang="ts">
-    // your script goes here
+	import ImpressumContent from './ImpressumContent.svelte';
 </script>
 
-<div>
-    <!-- your html goes here -->
-</div>
+<svelte:head>
+	<title>Impressum</title>
+	<meta name="description" content="Angaben zum Impressum" />
+</svelte:head>
+
+<main class="h-full">
+	<ImpressumContent />
+</main>
