@@ -1,7 +1,7 @@
 <script lang="ts">
   import CardSpacetravel from "$lib/components/CardSpacetravel.svelte";
-  import SectionBg001 from "$lib/components/SectionBg001.svelte";
-  import SectionBg002 from "$lib/components/SectionBg002.svelte";
+  import SectionBg001 from "$lib/sectionComponents/SectionBg001.svelte";
+  import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
 
   let destinationCaption: string =
     "Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination ";

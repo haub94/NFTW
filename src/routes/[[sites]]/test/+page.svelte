@@ -1,7 +1,7 @@
 <script lang="ts">
   import CardSpacetravel from "$lib/components/CardSpacetravel.svelte";
-import SectionBg002 from "$lib/components/SectionBg002.svelte";
-import Card from "../../../lib/components/Card.svelte";
+  import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
+  import Card from "../../../lib/components/Card.svelte";
 
   const planets = [
     "/planets/green-planet.png",
@@ -71,39 +71,25 @@ import Card from "../../../lib/components/Card.svelte";
   } */
 </script>
 
-<div
-  class="flex min-h-screen w-full items-center justify-center bg-NFTW-bg"
->
-<div class="">
-  
-<!---->
+<div class="flex min-h-screen w-full items-center justify-center bg-NFTW-bg">
+  <div class="">
+    <!---->
 
+    <SectionBg002 />
 
-<SectionBg002>
+    <!---->
 
-</SectionBg002>
+    <div class="w-full h-1 m-20" />
 
-
-
-<!---->
-
-  <div class="w-full h-1 m-20">
-  </div>
-    
-
-    
     <div class="grid grid-cols-3 gap-10 p-20">
       <!--<Card img={randomImg()} title={randomTitle()} caption={randomCaption()} />-->
       <Card img={randomImg()} title={randomTitle()} caption={randomCaption()} />
-    <Card img={randomImg()} title={randomTitle()} caption={randomCaption()} />
-    <Card img={randomImg()} title={randomTitle()} caption={randomCaption()} />
-    <Card img={randomImg()} title={randomTitle()} caption={randomCaption()} />
-    <Card img={randomImg()} title={randomTitle()} caption={randomCaption()} />
+      <Card img={randomImg()} title={randomTitle()} caption={randomCaption()} />
+      <Card img={randomImg()} title={randomTitle()} caption={randomCaption()} />
+      <Card img={randomImg()} title={randomTitle()} caption={randomCaption()} />
+      <Card img={randomImg()} title={randomTitle()} caption={randomCaption()} />
+    </div>
   </div>
-  
-  
-  
-</div>
 </div>
 
 <!---->
