@@ -1,7 +1,12 @@
 <script lang="ts">
-    // your script goes here
+	import ImpressumContent from '$lib/sectionComponents/ImprintContent.svelte';
 </script>
 
-<div>
-    <!-- your html goes here -->
-</div>
+<svelte:head>
+	<title>Imprint</title>
+	<meta name="description" content="Imprint details" />
+</svelte:head>
+
+<main class="h-full">
+	<ImpressumContent />
+</main>
