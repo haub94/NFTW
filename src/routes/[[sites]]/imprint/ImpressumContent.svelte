@@ -75,9 +75,15 @@
 					{#each imprintData as imDate}
 						<div class="sm:col-span-1">
 							<p class=" font-medium text-gray-500">{imDate.header}</p>
-							<p class="mt-1  text-gray-900">{imDate.descriptionLine1}</p>
-							<p class="mt-1  text-gray-900">{imDate.descriptionLine2}</p>
-							<p class="mt-1  text-gray-900">{imDate.descriptionLine3}</p>
+							<p class="mt-1  text-gray-900">
+								{imDate.descriptionLine1} 
+								{#if imDate.descriptionLine2 !== ""}
+									<br/>{imDate.descriptionLine2} <br/>
+								{/if}
+								{#if imDate.descriptionLine3 !== ""}
+									{imDate.descriptionLine3}
+								{/if}
+							</p>
 						</div>
 					{/each}
 
