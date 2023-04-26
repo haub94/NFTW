@@ -16,8 +16,16 @@
   //Haubold, Markus - Use input values to send mail to the customer
   //config EmailJS
   const SERVICE_ID: string = 'service_vzyr2ok';
-  const TEMPLATE_ID: string = 'template_3sdt4dk';
+  let TEMPLATE_ID: string = ''; //template_3sdt4dk
   const PUPLIC_KEY: string = 'YYaLHQ2Bd6V9Rk4vS';
+
+  //select the template based on the current filled form (contact / get in contact)
+  let mailType: number = 0;
+  if (isContact) {
+    TEMPLATE_ID = 'template_3sdt4dk';
+  } else if (isGetInContact) {
+    TEMPLATE_ID = 'template_3sdt4dk'; //adding new one is still in progress!!
+  }
 
   //form inputs
   let inputData = {
@@ -31,29 +39,55 @@
     message: '',
   }
 
+  function loadDevData() {
+    inputData.destination = "Moon";
+    inputData.purpose = "Vacation";
+    inputData.startdate = "2023-05-10";
+    inputData.enddate = "2023-05-15";
+    inputData.firstName = "Markus";
+    inputData.lastName = "Haubold";
+    inputData.emailAddress = "haubie94@web.de";
+    inputData.message = "Hello, that's data are loaded during DEV-mode!";
+    console.log("DEV data loaded successfull!")
+  }
+
+  function logInput() {
+    console.log("mailing data:")
+    console.log('destination :>> ',inputData.destination);
+    console.log('purpose :>> ',inputData.purpose);
+    console.log('start-date :>> ',inputData.startdate);
+    console.log('end-date :>> ',inputData.enddate);
+    console.log('firstName :>> ', inputData.firstName);
+    console.log('lastName :>> ', inputData.lastName);
+    console.log('emailAddress :>> ', inputData.emailAddress);
+    console.log('message :>> ', inputData.message);
+    console.log("call emailJS function to send mail");
+  }
+
   let mailingStatus: number = 0;
 
   function handleInputValues() {
       if (dev) {
-        console.log("mailing data:")
-        console.log('destination :>> ',inputData.destination);
-        console.log('purpose :>> ',inputData.purpose);
-        console.log('start-date :>> ',inputData.startdate);
-        console.log('end-date :>> ',inputData.enddate);
-        console.log('firstName :>> ', inputData.firstName);
-        console.log('lastName :>> ', inputData.lastName);
-        console.log('emailAddress :>> ', inputData.emailAddress);
-        console.log('message :>> ', inputData.message);
-        console.log("call emailJS function to send mail");
+        logInput();
       }
 
       //DO HERE CRAZY STUFF WITH THE DB!!!!!!!!!
 
-
-      //sendEmail(inputData.firstName, inputData.emailAddress);
-      //clearInputValues();
+      sendEmail(SERVICE_ID,
+                TEMPLATE_ID,
+                PUPLIC_KEY,
+                inputData.destination,
+                inputData.purpose,
+                inputData.startdate,
+                inputData.enddate,
+                inputData.firstName, 
+                inputData.emailAddress,
+                inputData.emailAddress,
+                inputData.message);
+      clearInputValues();
   }
 
+  //clear inputbuffer after sending
   function clearInputValues(): boolean {
     inputData.destination = '';
     inputData.purpose = '';
@@ -67,27 +101,39 @@
     return true;
   }
 
-  function sendEmail(name: string, mail: string): boolean {
-      emailjs.send(SERVICE_ID, 
-      TEMPLATE_ID, 
-      //template variables
-      {
-          from_name: name,
-          to_mail: mail
-      }, 
-      PUPLIC_KEY)
+  //send mail with emailJs client
+  function sendEmail( S_ID: string,
+                      T_ID: string,
+                      P_KEY: string,
+                      destination: string,
+                      purpose: string,
+                      startdate: string,
+                      enddate: string,
+                      firstname: string,
+                      lastname: string, 
+                      emailAddress: string,
+                      message: string): boolean {
       
-      .then((result) => {
+      emailjs.send(S_ID, 
+                    T_ID, 
+                    //template variables
+                    {
+                        from_name: firstname,
+                        to_mail: emailAddress,
+                        bla_blabla: lastname
+                    }, 
+                    P_KEY)
+
+        .then((result) => {
           if (dev) { console.log('SUCCESS!', result.text)}
-          mailingStatus = 1;  
-
-      }, (error) => {
+            mailingStatus = 1;  
+        }, (error) => {
           if (dev) { console.log('FAILED...', error.text)} 
-          mailingStatus = 999;  
-          clearInputValues();
+            mailingStatus = 999;  
+            clearInputValues();
 
-          return false
-      },);
+            return false
+        },);
 
       clearInputValues();
 
@@ -96,6 +142,18 @@
 
 
 </script>
+
+ <!--load testdate for dev-mode-->
+ {#if dev}
+    <div class="">
+      <button
+        on:click={loadDevData}
+        class="rounded-md bg-green-500 px-3.5 py-2.5 text-center text-sm font-semibold text-NFTW-white shadow-sm hover:bg-cyan-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+        >Load DEV-Data ...</button
+      >
+    </div>
+ {/if}
+
 
 <!-- GET IN CONTACT -->
 <div class="relative isolate bg-NFTW-bg bg-opacity-50">
@@ -224,6 +282,7 @@
       </div>
     </div>
 
+   
     <!-- FORM -->
     <form
       on:submit|preventDefault={handleInputValues}
