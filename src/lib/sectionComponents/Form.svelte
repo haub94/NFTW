@@ -3,6 +3,15 @@
 
   const isGetInContact = $page.url.pathname.includes("/getInContact");
   const isContact = $page.url.pathname.includes("/contact");
+
+  //Haubold, Markus - add vars to style redundant parts
+  const labelStyle = "block text-sm font-semibold leading-6 text-NFTW-white";
+  const inputStyle = "block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6";
+  const dateStyle = "block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6";
+  const selectionStyling = "bg-NFTW-black-600 bg-opacity-90";
+
+
+
 </script>
 
 <!-- GET IN CONTACT -->
@@ -133,7 +142,6 @@
     </div>
 
     <!-- FORM -->
-
     <form
       action="#"
       method="POST"
@@ -145,85 +153,90 @@
             <div>
               <label
                 for="destination"
-                class="block text-sm font-semibold leading-6 text-NFTW-white"
+                class={labelStyle}
                 >Destination</label
               >
               <select
                 id="destination"
                 name="destination"
-                class="block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6"
+                class={dateStyle}
               >
-                <option selected class="bg-NFTW-black-600 bg-opacity-90"
+                <option selected class={selectionStyling}
                   >Nothing choosen</option
                 >
-                <option class="bg-NFTW-black-600 bg-opacity-90">Mars</option>
-                <option class="bg-NFTW-black-600 bg-opacity-90">Moon</option>
-                <option class="bg-NFTW-black-600 bg-opacity-90">Venus</option>
+                <option class={selectionStyling}>Mars</option>
+                <option class={selectionStyling}>Moon</option>
+                <option class={selectionStyling}>Venus</option>
               </select>
             </div>
             <div>
               <label
                 for="journeypurpose"
-                class="block text-sm font-semibold leading-6 text-NFTW-white"
+                class={labelStyle}
                 >Journey Purpose</label
               >
               <select
                 id="journeypurpose"
                 name="journeypurpose"
-                class="block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6"
+                class={dateStyle}
               >
-                <option selected class="bg-NFTW-black-600 bg-opacity-90"
+                <option selected class={selectionStyling}
                   >Nothing choosen</option
                 >
-                <option class="bg-NFTW-black-600 bg-opacity-90"
+                <option class={selectionStyling}
                   >Birthdayspecial</option
                 >
-                <option class="bg-NFTW-black-600 bg-opacity-90"
+                <option class={selectionStyling}
                   >Honeymoon</option
                 >
-                <option class="bg-NFTW-black-600 bg-opacity-90"
+                <option class={selectionStyling}
                   >Phototour</option
                 >
-                <option class="bg-NFTW-black-600 bg-opacity-90">Vacation</option
+                <option class={selectionStyling}>Vacation</option
                 >
               </select>
             </div>
 
             <!-- @MARKUS / @ANNA -------------------- {#if birthdayspecial||honeymoon} -->
+            <!--startdate-->
             <div>
               <label
                 for="startdate"
-                class="block text-sm font-semibold leading-6 text-NFTW-white"
+                class={labelStyle}
                 >Start Date</label
               >
               <input
                 id="startdate"
                 name="startdate"
                 type="date"
-                class="block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6"
+                class={dateStyle}
               />
             </div>
+            
+            <!--enddate-->
             <div>
               <label
                 for="enddate"
-                class="block text-sm font-semibold leading-6 text-NFTW-white"
+                class={labelStyle}
                 >End Date</label
               >
               <input
                 id="enddate"
                 name="enddate"
                 type="date"
-                class="block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6"
+                class={dateStyle}
               />
             </div>
             <!-- {/if} -->
 
             <div class="mb-10 sm:col-span-2" />
           {/if}
+          
+          <!--first name-->
           <div>
             <label
               for="first-name"
-              class="block text-sm font-semibold leading-6 text-NFTW-white"
+              class={labelStyle}
               >First name</label
             >
             <div class="mt-2.5">
@@ -232,14 +245,16 @@
                 name="first-name"
                 id="first-name"
                 autocomplete="given-name"
-                class="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6"
+                class={inputStyle}
               />
             </div>
           </div>
+
+          <!--last name-->
           <div>
             <label
               for="last-name"
-              class="block text-sm font-semibold leading-6 text-NFTW-white"
+              class={labelStyle}
               >Last name</label
             >
             <div class="mt-2.5">
@@ -248,15 +263,16 @@
                 name="last-name"
                 id="last-name"
                 autocomplete="family-name"
-                class="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6"
+                class={inputStyle}
               />
             </div>
           </div>
 
+          <!--email address-->
           <div class="sm:col-span-2">
             <label
               for="email"
-              class="block text-sm font-semibold leading-6 text-NFTW-white"
+              class={labelStyle}
               >Email</label
             >
             <div class="mt-2.5">
@@ -265,14 +281,16 @@
                 name="email"
                 id="email"
                 autocomplete="email"
-                class="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6"
+                class={inputStyle}
               />
             </div>
           </div>
+
+          <!--message-->
           <div class="sm:col-span-2">
             <label
               for="message"
-              class="block text-sm font-semibold leading-6 text-NFTW-white"
+              class={labelStyle}
               >Message</label
             >
             <div class="mt-2.5">
@@ -285,6 +303,8 @@
             </div>
           </div>
         </div>
+       
+        <!--submit-->
         <div class="mt-8 flex justify-end">
           <button
             type="submit"
