@@ -1,31 +1,20 @@
-<script>
-
-    import { getContext } from 'svelte';
-
+<script lang="ts">
+    import { getContext } from 'svelte'
     import { slide } from "svelte/transition";
-
-    export let id;
-
-    export let title;
-
-    export let subTitle = "";
+   
+    export let id: string = "id";
+    export let title: string = "title";
 
     let isHovered = false;
-
     let isFocused = false;
-
-    const active = getContext("context");
-
+    const active: any = getContext("context");
     $: isCurrentActive = $active === id;
-
+   
     const onClickHandler = () => {
-
         if (isCurrentActive) {
-
             $active = null;
         }
         else {
-
             $active = id;
         }
     }
@@ -52,12 +41,6 @@
                     {title}
                 </span>
             </div>
-
-            {#if !!subTitle}
-                <div class="text-gray-400 text-sm">
-                    {subTitle}
-                </div>
-            {/if}
         </div>
 
         <div class="text-xl transform transition text-gray-900"
