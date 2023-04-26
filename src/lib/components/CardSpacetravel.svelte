@@ -15,10 +15,11 @@
       class="absolute -inset-2 rounded-lg bg-gradient-to-br from-NFTW-lila-500 via-NFTW-blue-500 to-NFTW-pink-500 opacity-0 blur transition duration-700 group-hover:opacity-100"
     />
     <div
-      class="relative flex flex-col justify-between rounded-3xl bg-white p-8 shadow-xl ring-1 ring-gray-900/10 sm:p-10 bg-blend-multiply bg-no-repeat bg-{imgPosition}"
+      class="relative flex flex-col justify-between rounded-3xl bg-white p-8 shadow-xl ring-1 ring-gray-900/10 sm:p-10 bg-blend-multiply bg-no-repeat"
       style="
     background-image: url('{img}');
-    background-size: {imgSize}"
+    background-size: {imgSize};
+    background-position: {imgPosition}"
     >
       <div class="">
         <h3
