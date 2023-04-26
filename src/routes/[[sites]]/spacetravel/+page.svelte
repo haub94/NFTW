@@ -104,7 +104,7 @@
   />
 </SectionBg001>
 
-<SectionBg002>
+<SectionBg002 twoCols>
   <CardSpacetravel
     img="/planets/moon-planet.png"
     title="Destination"
