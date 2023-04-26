@@ -1,12 +1,12 @@
 <script lang="ts">
-  import FormularGic from "$lib/components/FormularGIC.svelte";
-  import SectionBg002 from "$lib/components/SectionBg002.svelte";
+  import Form from "$lib/sectionComponents/Form.svelte";
+  import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
 </script>
 
 <div class="pt-60 bg-NFTW-bg" />
 
 <SectionBg002>
-<FormularGic/>
+<Form/>
   <!-- LETS WORK TOGETHER -->
 
   <div class="relative bg-white">
