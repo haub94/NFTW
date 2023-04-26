@@ -1,7 +1,8 @@
 <script lang="ts">
-    // your script goes here
+  import Form from "$lib/sectionComponents/Form.svelte";
+  import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
 </script>
 
-<div>
-    <!-- your html goes here -->
-</div>
+<SectionBg002>
+  <Form />
+</SectionBg002>
