@@ -2,7 +2,7 @@
     // your script goes here
 
     import Card2 from "$lib/components/Card2.svelte";
-    import SectionBg001 from "$lib/components/SectionBg001.svelte";
+    import SectionBg001 from "$lib/sectionComponents/SectionBg001.svelte";
 
 
 </script>
