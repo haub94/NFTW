@@ -1,5 +1,8 @@
 <script lang="ts">
   import { page } from "$app/stores";
+  import { dev } from '$app/environment';
+  import emailjs from '@emailjs/browser'; //Haubold, Markus - mailing client 
+    import { stringify } from "postcss";
 
   const isGetInContact = $page.url.pathname.includes("/getInContact");
   const isContact = $page.url.pathname.includes("/contact");
@@ -10,6 +13,86 @@
   const dateStyle = "block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6";
   const selectionStyling = "bg-NFTW-black-600 bg-opacity-90";
 
+  //Haubold, Markus - Use input values to send mail to the customer
+  //config EmailJS
+  const SERVICE_ID: string = 'service_vzyr2ok';
+  const TEMPLATE_ID: string = 'template_3sdt4dk';
+  const PUPLIC_KEY: string = 'YYaLHQ2Bd6V9Rk4vS';
+
+  //form inputs
+  let inputData = {
+    destination: '',
+    purpose: '',
+    startdate: '',
+    enddate: '',
+    firstName:  '',
+    lastName: '',
+    emailAddress: '',
+    message: '',
+  }
+
+  let mailingStatus: number = 0;
+
+  function handleInputValues() {
+      if (dev) {
+        console.log("mailing data:")
+        console.log('destination :>> ',inputData.destination);
+        console.log('purpose :>> ',inputData.purpose);
+        console.log('start-date :>> ',inputData.startdate);
+        console.log('end-date :>> ',inputData.enddate);
+        console.log('firstName :>> ', inputData.firstName);
+        console.log('lastName :>> ', inputData.lastName);
+        console.log('emailAddress :>> ', inputData.emailAddress);
+        console.log('message :>> ', inputData.message);
+        console.log("call emailJS function to send mail");
+      }
+
+      //DO HERE CRAZY STUFF WITH THE DB!!!!!!!!!
+
+
+      //sendEmail(inputData.firstName, inputData.emailAddress);
+      //clearInputValues();
+  }
+
+  function clearInputValues(): boolean {
+    inputData.destination = '';
+    inputData.purpose = '';
+    inputData.startdate = '';
+    inputData.enddate = '';
+    inputData.firstName = '';
+    inputData.lastName = '';
+    inputData.emailAddress = '';
+    inputData.message = '';
+
+    return true;
+  }
+
+  function sendEmail(name: string, mail: string): boolean {
+      emailjs.send(SERVICE_ID, 
+      TEMPLATE_ID, 
+      //template variables
+      {
+          from_name: name,
+          to_mail: mail
+      }, 
+      PUPLIC_KEY)
+      
+      .then((result) => {
+          if (dev) { console.log('SUCCESS!', result.text)}
+          mailingStatus = 1;  
+
+      }, (error) => {
+          if (dev) { console.log('FAILED...', error.text)} 
+          mailingStatus = 999;  
+          clearInputValues();
+
+          return false
+      },);
+
+      clearInputValues();
+
+      return true
+  }
 
 
 </script>
@@ -143,8 +226,7 @@
 
     <!-- FORM -->
     <form
-      action="#"
-      method="POST"
+      on:submit|preventDefault={handleInputValues}
       class="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-48"
     >
       <div class="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
@@ -157,6 +239,7 @@
                 >Destination</label
               >
               <select
+                bind:value={inputData.destination}
                 id="destination"
                 name="destination"
                 class={dateStyle}
@@ -176,6 +259,7 @@
                 >Journey Purpose</label
               >
               <select
+                bind:value={inputData.purpose}
                 id="journeypurpose"
                 name="journeypurpose"
                 class={dateStyle}
@@ -206,6 +290,7 @@
                 >Start Date</label
               >
               <input
+                bind:value={inputData.startdate}
                 id="startdate"
                 name="startdate"
                 type="date"
@@ -221,6 +306,7 @@
                 >End Date</label
               >
               <input
+                bind:value={inputData.enddate}
                 id="enddate"
                 name="enddate"
                 type="date"
@@ -241,6 +327,7 @@
             >
             <div class="mt-2.5">
               <input
+                bind:value={inputData.firstName}
                 type="text"
                 name="first-name"
                 id="first-name"
@@ -259,6 +346,7 @@
             >
             <div class="mt-2.5">
               <input
+                bind:value={inputData.lastName}
                 type="text"
                 name="last-name"
                 id="last-name"
@@ -277,6 +365,7 @@
             >
             <div class="mt-2.5">
               <input
+                bind:value={inputData.emailAddress}
                 type="email"
                 name="email"
                 id="email"
@@ -295,6 +384,7 @@
             >
             <div class="mt-2.5">
               <textarea
+                bind:value={inputData.message}
                 name="message"
                 id="message"
                 rows="4"
