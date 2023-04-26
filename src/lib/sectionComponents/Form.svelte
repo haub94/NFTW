@@ -54,12 +54,8 @@
           {#if isGetInContact}Get in contact{/if}
         </h2>
         <p class="mt-6 text-lg leading-8 text-gray-300">
-          {#if isContact}Proin volutpat consequat porttitor cras nullam gravida
-            at. Orci molestie a eu arcu. Sed ut tincidunt integer elementum id
-            sem. Arcu sed malesuada et magna.{/if}
-          {#if isGetInContact}Proin volutpat consequat porttitor cras nullam
-            gravida at. Orci molestie a eu arcu. Sed ut tincidunt integer
-            elementum id sem. Arcu sed malesuada et magna.{/if}
+          {#if isContact}Text for Contact Site{/if}
+          {#if isGetInContact}Text for Get In Contact Site{/if}
         </p>
         {#if isContact}
           <dl class="mt-10 space-y-4 text-base leading-7 text-gray-300">
