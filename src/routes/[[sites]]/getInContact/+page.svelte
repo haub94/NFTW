@@ -14,7 +14,7 @@
   <DividerTextImage
     title="Title"
     caption={dividerCaption}
-    img="/planets/dark-planet.png"
+    img="/planets/red-planet.png"
     imgSize="cover"
     imgPosition="center"
   />

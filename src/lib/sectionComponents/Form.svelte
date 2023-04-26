@@ -53,17 +53,43 @@
           {#if isContact}Contact{/if}
           {#if isGetInContact}Get in contact{/if}
         </h2>
-        <p class="mt-6 text-lg leading-8 text-gray-300">
-          {#if isContact}Text for Contact Site{/if}
-          {#if isGetInContact}Text for Get In Contact Site{/if}
-        </p>
         {#if isContact}
-          <dl class="mt-10 space-y-4 text-base leading-7 text-gray-300">
+          <p class="mt-6 text-lg leading-8 text-NFTW-white">
+            Text for Contact Site
+          </p>
+        {/if}
+        {#if isGetInContact}
+          <p class="mt-6 text-lg leading-8 text-NFTW-white">
+            It is a pleasure to have you here and plan an unforgettable journey
+            with us.
+          </p>
+          <p class="mt-6 text-lg leading-8 text-NFTW-white">
+            In this final step, please review your information about your travel
+            preferences.
+          </p>
+          <p class="mt-6 text-lg leading-8 text-NFTW-white">
+            If you have selected the Birthday Special or Honeymoon option,
+            please also provide your preferred date.
+          </p>
+          <p class="mt-6 text-lg leading-8 text-NFTW-white">
+            Provide your contact information and send us a message with your
+            application for a guaranteed experience that is out of this world.
+          </p>
+          <p class="mt-6 text-lg leading-8 text-NFTW-white">
+            We appreciate your trust in us and we are committed to providing you
+            with the best possible service. Our team is dedicated to making your
+            journey memorable and ensuring that every detail is taken care of.
+            You can rest assured that with us, you will have an experience that
+            exceeds your expectations.
+          </p>
+        {/if}
+        {#if isContact}
+          <dl class="mt-10 space-y-4 text-base leading-7 text-NFTW-white">
             <div class="flex gap-x-4">
               <dt class="flex-none">
                 <span class="sr-only">Telephone</span>
                 <svg
-                  class="h-7 w-6 text-gray-400"
+                  class="h-7 w-6 text-NFTW-white"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
@@ -83,7 +109,7 @@
               <dt class="flex-none">
                 <span class="sr-only">Telephone</span>
                 <svg
-                  class="h-7 w-6 text-gray-400"
+                  class="h-7 w-6 text-NFTW-white"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
@@ -107,7 +133,7 @@
               <dt class="flex-none">
                 <span class="sr-only">Telephone</span>
                 <svg
-                  class="h-7 w-6 text-gray-400"
+                  class="h-7 w-6 text-NFTW-white"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
