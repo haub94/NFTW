@@ -5,7 +5,7 @@
 
 <div class="pt-60 bg-NFTW-bg" />
 
-<SectionBg002 twoCols>
+<SectionBg002>
 <FormularGic/>
   <!-- LETS WORK TOGETHER -->
 
