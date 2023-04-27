@@ -10,12 +10,12 @@
 <SectionBg002>
   <Form />
 </SectionBg002>
+<DividerTextImage
+title="Title"
+caption={dividerCaption}
+img="/planets/red-planet.png"
+imgSize="cover"
+imgPosition="center"
+/>
 <SectionBg002>
-  <DividerTextImage
-    title="Title"
-    caption={dividerCaption}
-    img="/planets/red-planet.png"
-    imgSize="cover"
-    imgPosition="center"
-  />
 </SectionBg002>
