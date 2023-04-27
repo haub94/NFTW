@@ -1,6 +1,12 @@
 import { prisma } from "$lib/server/prisma";
 import { fail } from "@sveltejs/kit";
-import type { Actions } from "./$types";
+import type { Actions, PageServerLoad } from "./$types";
+
+export const load: PageServerLoad = async () => {
+	return {
+		customers: await prisma.customers.findMany()
+	}
+}
 
 export const actions: Actions = {
     addCustomer: async ({ request }) => {

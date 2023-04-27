@@ -1,3 +1,13 @@
+<script lang="ts">
+  import type { PageData } from './$types'
+	export let data: PageData;
+
+	$: ({ customers } = data)
+
+  console.log('articles :>> ', customers);
+
+</script>
+
 
 <!--FORM--> 
 <div class="bg-white px-6 py-24 sm:py-32 lg:px-8">
@@ -39,33 +49,17 @@
   </form>
 </div>
 
+<h2 class="underline underline-offset-2 text-cyan-500 font-bold text-xl ml-4">Daten von der DB:</h2>
 
-<!--
-<div class="grid">
-	<div>
-		<h2>Articles:</h2>
-		
-			<article>
-				<header>Header</header>
-				<p>
-					blaaa
-				</p>
-				<form action="?/deleteArticle" method="POST">
-					<button type="submit" class="outline secondary">Delete Article</button>
-				</form>
-				<a href="/" role="button" class="outline constrast" style="width: 100%;"
-					>Edit Article</a
-				>
-			</article>
-
-	</div>
-	<form action="?/createArticle" method="POST">
-		<h3>New Article</h3>
-		<label for="title"> Title </label>
-		<input type="text" id="title" name="title" />
-		<label for="content"> Title </label>
-		<textarea id="content" name="content" rows={5} />
-		<button type="submit">Add Article</button>
-	</form>
+<div class="space-y-12 ml-10">
+  {#each customers as customer}
+  <div>
+    <p>customer.id: {customer.id}</p>
+    <p>customer.firstname: {customer.firstName}</p>
+    <p>customer.lastname: {customer.lastName}</p>
+    <p>customer.email: {customer.email}</p>
+  </div>
+  {/each}
 </div>
--->
+
+

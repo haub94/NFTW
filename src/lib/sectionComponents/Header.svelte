@@ -2,13 +2,7 @@
   import { fade, slide } from "svelte/transition";
   import { sineIn, quintInOut } from "svelte/easing";
 
-  export let publicVar = "defaultVaule";
-  let var1: string = "text_var";
-
-  function hello(): number {
-    console.log("hello :>> ");
-    return 1;
-  }
+  
 </script>
 
 <div class="group header-bg h-40 overflow-hidden bg-center relative bg-cover">
