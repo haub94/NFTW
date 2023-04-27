@@ -14,7 +14,7 @@
   const dateStyle = "block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6";
   const selectionStyling = "bg-NFTW-black-600 bg-opacity-90";
 
-  const overrideMemory: boolean = false;
+  const overrideMemory: boolean = true;
 
   //NEXT STEPS: CHECK STORE AND LOAD DATA TO THE SELECTION FIELDS TO SHOW THE CURRENT JOURNEY CONFIG
   if (dev && overrideMemory) {
@@ -33,16 +33,15 @@
     //binded form inputs
     let inputData = {
     destination: $configMemory.destination === "" ? "Nothing Choosen" : $configMemory.destination,
-    purpose: $configMemory.journeyPurpose === "" ? "Nothing Choosen" : $configMemory.journeyPurpose,
-    startdate: $configMemory.startDate === "" ? "" : $configMemory.startDate,
-    enddate: $configMemory.endDate === "" ? "" : $configMemory.endDate,
+    journeyPurpose: $configMemory.journeyPurpose === "" ? "Nothing Choosen" : $configMemory.journeyPurpose,
+    startDate: $configMemory.startDate === "" ? "" : $configMemory.startDate,
+    endDate: $configMemory.endDate === "" ? "" : $configMemory.endDate,
     firstName:  '',
     lastName: '',
     emailAddress: '',
     message: '',
   }
 
-  console.log('inputData.destination :>> ', inputData.destination);
 
   let test = "nothin";
 
@@ -58,9 +57,9 @@
   //clear inputbuffer after sending
   function clearInputValues(): boolean {
     inputData.destination = '';
-    inputData.purpose = '';
-    inputData.startdate = '';
-    inputData.enddate = '';
+    inputData.journeyPurpose = '';
+    inputData.startDate = '';
+    inputData.endDate = '';
     inputData.firstName = '';
     inputData.lastName = '';
     inputData.emailAddress = '';
@@ -115,9 +114,9 @@
   //load test-data during dev
   function loadDevData() {
     inputData.destination = "Moon";
-    inputData.purpose = "Vacation";
-    inputData.startdate = "2023-05-10";
-    inputData.enddate = "2023-05-15";
+    inputData.journeyPurpose = "Vacation";
+    inputData.startDate = "2023-05-10";
+    inputData.endDate = "2023-05-15";
     inputData.firstName = "Markus";
     inputData.lastName = "Haubold";
     inputData.emailAddress = "haubie94@web.de";
@@ -129,9 +128,9 @@
   function logInput() {
     console.log("mailing data:")
     console.log('destination :>> ',inputData.destination);
-    console.log('purpose :>> ',inputData.purpose);
-    console.log('start-date :>> ',inputData.startdate);
-    console.log('end-date :>> ',inputData.enddate);
+    console.log('journeyPurpose :>> ',inputData.journeyPurpose);
+    console.log('start-date :>> ',inputData.startDate);
+    console.log('end-date :>> ',inputData.endDate);
     console.log('firstName :>> ', inputData.firstName);
     console.log('lastName :>> ', inputData.lastName);
     console.log('emailAddress :>> ', inputData.emailAddress);
@@ -155,9 +154,9 @@
                 TEMPLATE_ID,
                 PUPLIC_KEY,
                 inputData.destination,
-                inputData.purpose,
-                inputData.startdate,
-                inputData.enddate,
+                inputData.journeyPurpose,
+                inputData.startDate,
+                inputData.endDate,
                 inputData.firstName, 
                 inputData.lastName,
                 inputData.emailAddress,
@@ -360,18 +359,18 @@
             </div>
             <div>
               <label
-                for="journeypurpose"
+                for="journeyjourneyPurpose"
                 class={labelStyle}
                 >Journey Purpose</label
               >
               <select
                 required
-                bind:value={inputData.purpose}
-                id="journeypurpose"
-                name="journeypurpose"
+                bind:value={inputData.journeyPurpose}
+                id="journeyjourneyPurpose"
+                name="journeyjourneyPurpose"
                 class={dateStyle}
               >
-                <option class={selectionStyling} selected>{inputData.purpose}</option>             
+                <option class={selectionStyling} selected>{inputData.journeyPurpose}</option>             
                 <option class={selectionStyling}
                   >Birthdayspecial</option
                 >
@@ -387,35 +386,35 @@
             </div>
 
             <!-- @MARKUS / @ANNA -------------------- {#if birthdayspecial||honeymoon} -->
-            <!--startdate-->
+            <!--startDate-->
             <div>
               <label
-                for="startdate"
+                for="startDate"
                 class={labelStyle}
                 >Start Date</label
               >
               <input
                 required
-                bind:value={inputData.startdate}
-                id="startdate"
-                name="startdate"
+                bind:value={inputData.startDate}
+                id="startDate"
+                name="startDate"
                 type="date"
                 class={dateStyle}
               />
             </div>
             
-            <!--enddate-->
+            <!--endDate-->
             <div>
               <label
-                for="enddate"
+                for="endDate"
                 class={labelStyle}
                 >End Date</label
               >
               <input
                 required
-                bind:value={inputData.enddate}
-                id="enddate"
-                name="enddate"
+                bind:value={inputData.endDate}
+                id="endDate"
+                name="endDate"
                 type="date"
                 class={dateStyle}
               />
