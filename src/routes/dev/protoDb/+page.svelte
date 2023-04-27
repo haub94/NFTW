@@ -2,9 +2,15 @@
   import type { PageData } from './$types'
 	export let data: PageData;
 
-	$: ({ customers } = data)
+  let customers: PageData;
+
+  function loadDbData() {
+	
+    ({ customers } = data)
 
   console.log('articles :>> ', customers);
+
+} 
 
 </script>
 
@@ -50,16 +56,18 @@
 </div>
 
 <h2 class="underline underline-offset-2 text-cyan-500 font-bold text-xl ml-4">Daten von der DB:</h2>
+<button on:click={loadDbData}  class="border-2 ml-4 mt-2 rounded-full p-2 bg-indigo-500 border-indigo-800 hover:bg-indigo-600">LOAD DATA</button>
 
-<div class="space-y-12 ml-10">
-  {#each customers as customer}
-  <div>
-    <p>customer.id: {customer.id}</p>
-    <p>customer.firstname: {customer.firstName}</p>
-    <p>customer.lastname: {customer.lastName}</p>
-    <p>customer.email: {customer.email}</p>
+{#if customers !== undefined}
+  <div class="space-y-12 ml-10">
+    {#each customers as customer}
+    <div>
+      <p>customer.id: {customer.id}</p>
+      <p>customer.firstname: {customer.firstName}</p>
+      <p>customer.lastname: {customer.lastName}</p>
+      <p>customer.email: {customer.email}</p>
+    </div>
+    {/each}
   </div>
-  {/each}
-</div>
-
+{/if}
 
