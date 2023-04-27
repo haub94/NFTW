@@ -3,7 +3,7 @@
   import { dev } from '$app/environment';
   import emailjs from '@emailjs/browser'; //Haubold, Markus - mailing client 
   import Banner from "$lib/elements/Banner.svelte";
-  import configMemory from '../../stores/journeyConfig.ts'; //import the config store
+  import configMemory from '../../stores/journeyConfigMemory.ts'; //import the config store
 
   const isGetInContact = $page.url.pathname.includes("/getInContact");
   const isContact = $page.url.pathname.includes("/contact");
@@ -14,18 +14,37 @@
   const dateStyle = "block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6";
   const selectionStyling = "bg-NFTW-black-600 bg-opacity-90";
 
+  const overrideMemory: boolean = false;
 
   //NEXT STEPS: CHECK STORE AND LOAD DATA TO THE SELECTION FIELDS TO SHOW THE CURRENT JOURNEY CONFIG
-
-
-
-
+  if (dev && overrideMemory) {
+    $configMemory.destination = "Moon";
+    $configMemory.journeyPurpose = "Birthdayspecial";
+    $configMemory.startDate = "2023-05-12";
+    $configMemory.endDate = "2023-05-25";
+  }
 
   //Haubold, Markus - Use input values to send mail to the customer
   //config EmailJS
   const SERVICE_ID: string = 'service_vzyr2ok';
   let TEMPLATE_ID: string = ''; //depends on the formtype
   const PUPLIC_KEY: string = 'YYaLHQ2Bd6V9Rk4vS';
+
+    //binded form inputs
+    let inputData = {
+    destination: $configMemory.destination === "" ? "Nothing Choosen" : $configMemory.destination,
+    purpose: $configMemory.journeyPurpose === "" ? "Nothing Choosen" : $configMemory.journeyPurpose,
+    startdate: $configMemory.startDate === "" ? "" : $configMemory.startDate,
+    enddate: $configMemory.endDate === "" ? "" : $configMemory.endDate,
+    firstName:  '',
+    lastName: '',
+    emailAddress: '',
+    message: '',
+  }
+
+  console.log('inputData.destination :>> ', inputData.destination);
+
+  let test = "nothin";
 
   //select the template based on the current form type
   if (isContact) {
@@ -93,18 +112,6 @@
       return true
   }
 
-  //binded form inputs
-  let inputData = {
-    destination: '',
-    purpose: '',
-    startdate: '',
-    enddate: '',
-    firstName:  '',
-    lastName: '',
-    emailAddress: '',
-    message: '',
-  }
-
   //load test-data during dev
   function loadDevData() {
     inputData.destination = "Moon";
@@ -163,6 +170,11 @@
 
 
   }
+
+
+
+
+
 
 
 
@@ -339,10 +351,8 @@
                 id="destination"
                 name="destination"
                 class={dateStyle}
-              >
-                <option selected class={selectionStyling}
-                  >Nothing choosen</option
-                >
+              >  
+                <option class={selectionStyling} selected>{inputData.destination}</option>             
                 <option class={selectionStyling}>Mars</option>
                 <option class={selectionStyling}>Moon</option>
                 <option class={selectionStyling}>Venus</option>
@@ -361,9 +371,7 @@
                 name="journeypurpose"
                 class={dateStyle}
               >
-                <option selected class={selectionStyling}
-                  >Nothing choosen</option
-                >
+                <option class={selectionStyling} selected>{inputData.purpose}</option>             
                 <option class={selectionStyling}
                   >Birthdayspecial</option
                 >
