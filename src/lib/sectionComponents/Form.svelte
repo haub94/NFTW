@@ -20,11 +20,10 @@
   const PUPLIC_KEY: string = 'YYaLHQ2Bd6V9Rk4vS';
 
   //select the template based on the current filled form (contact / get in contact)
-  let mailType: number = 0;
   if (isContact) {
-    TEMPLATE_ID = 'template_3sdt4dk';
+    TEMPLATE_ID = 'template_contactRequest';
   } else if (isGetInContact) {
-    TEMPLATE_ID = 'template_3sdt4dk'; //adding new one is still in progress!!
+    TEMPLATE_ID = 'template_appRequest'; //adding new one is still in progress!!
   }
 
   //form inputs
@@ -73,6 +72,7 @@
 
       //DO HERE CRAZY STUFF WITH THE DB!!!!!!!!!
 
+      //send email to customer
       sendEmail(SERVICE_ID,
                 TEMPLATE_ID,
                 PUPLIC_KEY,
@@ -81,7 +81,7 @@
                 inputData.startdate,
                 inputData.enddate,
                 inputData.firstName, 
-                inputData.emailAddress,
+                inputData.lastName,
                 inputData.emailAddress,
                 inputData.message);
       clearInputValues();
@@ -106,21 +106,25 @@
                       T_ID: string,
                       P_KEY: string,
                       destination: string,
-                      purpose: string,
-                      startdate: string,
-                      enddate: string,
-                      firstname: string,
-                      lastname: string, 
+                      journeyPurpose: string,
+                      startDate: string,
+                      endDate: string,
+                      firstName: string,
+                      lastName: string, 
                       emailAddress: string,
                       message: string): boolean {
       
       emailjs.send(S_ID, 
                     T_ID, 
-                    //template variables
                     {
-                        from_name: firstname,
-                        to_mail: emailAddress,
-                        bla_blabla: lastname
+                      destination: destination,
+                      journeyPurpose: journeyPurpose,
+                      startDate: startDate,
+                      endDate: endDate,
+                      firstName: firstName,
+                      lastName: lastName,
+                      emailAddress: emailAddress,
+                      message: message
                     }, 
                     P_KEY)
 
