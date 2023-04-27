@@ -390,6 +390,7 @@
                   class={labelStyle}
                   >Start Date</label
                 >
+                <!--disable datepicker for vacation, phototour, oure recomendation-->
                 {#if (inputData.journeyPurpose === "Birthdayspecial") || (inputData.journeyPurpose === "Honeymoon") }
                   <input
                     required
