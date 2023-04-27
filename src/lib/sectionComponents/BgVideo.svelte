@@ -1,9 +1,11 @@
 <script lang="ts">
+  import { checkUndefinedNullOrEmpty } from "$lib/tools/Tools.svelte";
+
   export let title: string = "Lorem ipsum dolor";
   export let caption: string = "Lorem ipsum dolor";
-  export let video: string =
-    "/videos/SPACE_SD.mp4";
+  export let video: string = "/videos/SPACE_SD.mp4";
   export let videoHeight: string | number = "50vh";
+  export let captionPath: string = "";
 </script>
 
 <body class="bg-NFTW-bg text-NFTW-white">
@@ -32,7 +34,17 @@
       >
         {title}
       </h1>
-      <div class="caption" style="font-size:2vw">{caption}</div>
+      {#if checkUndefinedNullOrEmpty(captionPath)}
+        <div class="caption" style="font-size:2vw">
+          {caption}
+        </div>
+      {:else}
+        <a href={captionPath}>
+          <div class="caption" style="font-size:2vw">
+            {caption}
+          </div>
+        </a>
+      {/if}
     </div>
   </section>
 </body>
