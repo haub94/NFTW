@@ -177,10 +177,13 @@
 <!-- GET IN CONTACT -->
 <div class="relative isolate bg-NFTW-bg bg-opacity-50">
       
-  
   <!--status banner-->
   <div class="absolute z-30 top-0 w-full">
-    <Banner />
+    {#if mailingStatus === 1}
+      <Banner buzzWord="mailing successfull" text="Your mail was succesfully sent. Check your mailbox for the request confirmation." state="1" />
+    {:else if mailingStatus === 999}
+      <Banner buzzWord="mailing error" text="Uuups... It looks like there was an error during the transmission. Try again or contact us by phone: +99 123 456 789" state="999" />
+    {/if}
   </div>
 
   <div class="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
