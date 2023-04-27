@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { checkUndefinedNullOrEmpty } from "../tools/Tools.svelte";
-
   export let img: string = "/brokenImage.png";
   export let title: string = "Lorem ipsum dolor";
   export let caption: string = "Lorem ipsum dolor";
@@ -45,6 +43,3 @@
     </div>
   </div>
 </a>
-
-<style>
-</style>
