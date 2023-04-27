@@ -2,7 +2,7 @@
   import { page } from "$app/stores";
   import { dev } from '$app/environment';
   import emailjs from '@emailjs/browser'; //Haubold, Markus - mailing client 
-    import { stringify } from "postcss";
+  import Banner from "$lib/elements/Banner.svelte";
 
   const isGetInContact = $page.url.pathname.includes("/getInContact");
   const isContact = $page.url.pathname.includes("/contact");
@@ -16,76 +16,17 @@
   //Haubold, Markus - Use input values to send mail to the customer
   //config EmailJS
   const SERVICE_ID: string = 'service_vzyr2ok';
-  let TEMPLATE_ID: string = ''; //template_3sdt4dk
+  let TEMPLATE_ID: string = ''; //depends on the formtype
   const PUPLIC_KEY: string = 'YYaLHQ2Bd6V9Rk4vS';
 
-  //select the template based on the current filled form (contact / get in contact)
+  //select the template based on the current form type
   if (isContact) {
     TEMPLATE_ID = 'template_contactRequest';
   } else if (isGetInContact) {
-    TEMPLATE_ID = 'template_appRequest'; //adding new one is still in progress!!
-  }
-
-  //form inputs
-  let inputData = {
-    destination: '',
-    purpose: '',
-    startdate: '',
-    enddate: '',
-    firstName:  '',
-    lastName: '',
-    emailAddress: '',
-    message: '',
-  }
-
-  function loadDevData() {
-    inputData.destination = "Moon";
-    inputData.purpose = "Vacation";
-    inputData.startdate = "2023-05-10";
-    inputData.enddate = "2023-05-15";
-    inputData.firstName = "Markus";
-    inputData.lastName = "Haubold";
-    inputData.emailAddress = "haubie94@web.de";
-    inputData.message = "Hello, that's data are loaded during DEV-mode!";
-    console.log("DEV data loaded successfull!")
-  }
-
-  function logInput() {
-    console.log("mailing data:")
-    console.log('destination :>> ',inputData.destination);
-    console.log('purpose :>> ',inputData.purpose);
-    console.log('start-date :>> ',inputData.startdate);
-    console.log('end-date :>> ',inputData.enddate);
-    console.log('firstName :>> ', inputData.firstName);
-    console.log('lastName :>> ', inputData.lastName);
-    console.log('emailAddress :>> ', inputData.emailAddress);
-    console.log('message :>> ', inputData.message);
-    console.log("call emailJS function to send mail");
+    TEMPLATE_ID = 'template_appRequest';
   }
 
   let mailingStatus: number = 0;
-
-  function handleInputValues() {
-      if (dev) {
-        logInput();
-      }
-
-      //DO HERE CRAZY STUFF WITH THE DB!!!!!!!!!
-
-      //send email to customer
-      sendEmail(SERVICE_ID,
-                TEMPLATE_ID,
-                PUPLIC_KEY,
-                inputData.destination,
-                inputData.purpose,
-                inputData.startdate,
-                inputData.enddate,
-                inputData.firstName, 
-                inputData.lastName,
-                inputData.emailAddress,
-                inputData.message);
-      clearInputValues();
-  }
 
   //clear inputbuffer after sending
   function clearInputValues(): boolean {
@@ -144,6 +85,78 @@
       return true
   }
 
+  //binded form inputs
+  let inputData = {
+    destination: '',
+    purpose: '',
+    startdate: '',
+    enddate: '',
+    firstName:  '',
+    lastName: '',
+    emailAddress: '',
+    message: '',
+  }
+
+  //load test-data during dev
+  function loadDevData() {
+    inputData.destination = "Moon";
+    inputData.purpose = "Vacation";
+    inputData.startdate = "2023-05-10";
+    inputData.enddate = "2023-05-15";
+    inputData.firstName = "Markus";
+    inputData.lastName = "Haubold";
+    inputData.emailAddress = "haubie94@web.de";
+    inputData.message = "Hello, that's data are loaded during DEV-mode!";
+    console.log("DEV data loaded successfull!")
+  }
+
+  //log data from the input
+  function logInput() {
+    console.log("mailing data:")
+    console.log('destination :>> ',inputData.destination);
+    console.log('purpose :>> ',inputData.purpose);
+    console.log('start-date :>> ',inputData.startdate);
+    console.log('end-date :>> ',inputData.enddate);
+    console.log('firstName :>> ', inputData.firstName);
+    console.log('lastName :>> ', inputData.lastName);
+    console.log('emailAddress :>> ', inputData.emailAddress);
+    console.log('message :>> ', inputData.message);
+    console.log("call emailJS function to send mail");
+  }
+
+
+  //controller which is executed after submit
+  function inputController() {
+      if (dev) {
+        logInput();
+      }
+
+      //CALL HERE THE FUNTION TO WRITE THE DATA IN THE DB !!!!!!
+
+
+
+      //send email to customer
+      sendEmail(SERVICE_ID,
+                TEMPLATE_ID,
+                PUPLIC_KEY,
+                inputData.destination,
+                inputData.purpose,
+                inputData.startdate,
+                inputData.enddate,
+                inputData.firstName, 
+                inputData.lastName,
+                inputData.emailAddress,
+                inputData.message
+      );
+
+      clearInputValues();
+
+
+
+
+  }
+
+
 
 </script>
 
@@ -159,8 +172,17 @@
  {/if}
 
 
+
+
 <!-- GET IN CONTACT -->
 <div class="relative isolate bg-NFTW-bg bg-opacity-50">
+      
+  
+  <!--status banner-->
+  <div class="absolute z-30 top-0 w-full">
+    <Banner />
+  </div>
+
   <div class="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
     <div class="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-48">
       <div class="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
@@ -285,11 +307,10 @@
         {/if}
       </div>
     </div>
-
-   
+    
     <!-- FORM -->
     <form
-      on:submit|preventDefault={handleInputValues}
+      on:submit|preventDefault={inputController}
       class="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-48"
     >
       <div class="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
