@@ -14,9 +14,10 @@
   const dateStyle = "block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6";
   const selectionStyling = "bg-NFTW-black-600 bg-opacity-90";
 
-  const overrideMemory: boolean = true;
+  const overrideMemory: boolean = true; //DEV-ONLY
+  const empty: string = "";
 
-  //NEXT STEPS: CHECK STORE AND LOAD DATA TO THE SELECTION FIELDS TO SHOW THE CURRENT JOURNEY CONFIG
+  //helper to override the memory during dev
   if (dev && overrideMemory) {
     $configMemory.destination = "Moon";
     $configMemory.journeyPurpose = "Birthdayspecial";
@@ -32,18 +33,15 @@
 
     //binded form inputs
     let inputData = {
-    destination: $configMemory.destination === "" ? "Nothing Choosen" : $configMemory.destination,
-    journeyPurpose: $configMemory.journeyPurpose === "" ? "Nothing Choosen" : $configMemory.journeyPurpose,
-    startDate: $configMemory.startDate === "" ? "" : $configMemory.startDate,
-    endDate: $configMemory.endDate === "" ? "" : $configMemory.endDate,
+    destination: $configMemory.destination === empty ? "Nothing Choosen" : $configMemory.destination,
+    journeyPurpose: $configMemory.journeyPurpose === empty ? "Nothing Choosen" : $configMemory.journeyPurpose,
+    startDate: $configMemory.startDate === empty ? "" : $configMemory.startDate,
+    endDate: $configMemory.endDate === empty ? "" : $configMemory.endDate,
     firstName:  '',
     lastName: '',
     emailAddress: '',
     message: '',
   }
-
-
-  let test = "nothin";
 
   //select the template based on the current form type
   if (isContact) {
@@ -201,7 +199,7 @@
     {#if mailingStatus === 1}
       <Banner buzzWord="mailing successfull" text="Your mail was succesfully sent. Check your mailbox for the request confirmation." state="1" />
     {:else if mailingStatus === 999}
-      <Banner buzzWord="mailing error" text="Uuups... It looks like there was an error during the transmission. Try again or contact us by phone: +99 123 456 789" state="999" />
+      <Banner buzzWord="mailing error" text="UuupsiWhuupsi... It looks like there was an error during the transmission. Try again or contact us by phone: +99 123 456 789" state="999" />
     {/if}
   </div>
 
@@ -385,41 +383,66 @@
               </select>
             </div>
 
-            <!-- @MARKUS / @ANNA -------------------- {#if birthdayspecial||honeymoon} -->
             <!--startDate-->
-            <div>
-              <label
-                for="startDate"
-                class={labelStyle}
-                >Start Date</label
-              >
-              <input
-                required
-                bind:value={inputData.startDate}
-                id="startDate"
-                name="startDate"
-                type="date"
-                class={dateStyle}
-              />
-            </div>
+              <div>
+                <label
+                  for="startDate"
+                  class={labelStyle}
+                  >Start Date</label
+                >
+                {#if (inputData.journeyPurpose === "Birthdayspecial") || (inputData.journeyPurpose === "Honeymoon") }
+                  <input
+                    required
+                    bind:value={inputData.startDate}
+                    id="startDate"
+                    name="startDate"
+                    type="date"
+                    class={dateStyle}
+                  />
+                {:else}
+                  <input
+                  disabled
+                  required
+                  bind:value={inputData.startDate}
+                  id="startDate"
+                  name="startDate"
+                  type="date"
+                  class={dateStyle}
+                  />
+                {/if}
+              </div>
+              
+              <!--endDate-->
+              <div>
+                <label
+                  for="endDate"
+                  class={labelStyle}
+                  >End Date</label
+                >
+                <!--disable datepicker for vacation, phototour, oure recomendation-->
+                {#if (inputData.journeyPurpose === "Birthdayspecial") || (inputData.journeyPurpose === "Honeymoon") }
+                  <input
+                  required
+                  bind:value={inputData.endDate}
+                  id="endDate"
+                  name="endDate"
+                  type="date"
+                  class={dateStyle}
+                  />
+                {:else}
+                  <input
+                  disabled
+                  required
+                  bind:value={inputData.endDate}
+                  id="endDate"
+                  name="endDate"
+                  type="date"
+                  class={dateStyle}
+                  />
+                {/if}
+
+              </div>
             
-            <!--endDate-->
-            <div>
-              <label
-                for="endDate"
-                class={labelStyle}
-                >End Date</label
-              >
-              <input
-                required
-                bind:value={inputData.endDate}
-                id="endDate"
-                name="endDate"
-                type="date"
-                class={dateStyle}
-              />
-            </div>
-            <!-- {/if} -->
 
             <div class="mb-10 sm:col-span-2" />
           {/if}
@@ -488,8 +511,14 @@
           <div class="sm:col-span-2">
             <label
               for="message"
-              class={labelStyle}
-              >Message</label
+              class={labelStyle}>
+              {#if isContact}
+                Message
+              {:else}
+                 Application <br> (Convince us why we should take exactly YOU with us!)
+              {/if}
+              
+            </label
             >
             <div class="mt-2.5">
               <textarea
