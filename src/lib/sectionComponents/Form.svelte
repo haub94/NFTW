@@ -3,6 +3,7 @@
   import { dev } from '$app/environment';
   import emailjs from '@emailjs/browser'; //Haubold, Markus - mailing client 
   import Banner from "$lib/elements/Banner.svelte";
+  import configMemory from '../../stores/journeyConfig.ts'; //import the config store
 
   const isGetInContact = $page.url.pathname.includes("/getInContact");
   const isContact = $page.url.pathname.includes("/contact");
@@ -12,6 +13,13 @@
   const inputStyle = "block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6";
   const dateStyle = "block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6";
   const selectionStyling = "bg-NFTW-black-600 bg-opacity-90";
+
+
+  //NEXT STEPS: CHECK STORE AND LOAD DATA TO THE SELECTION FIELDS TO SHOW THE CURRENT JOURNEY CONFIG
+
+
+
+
 
   //Haubold, Markus - Use input values to send mail to the customer
   //config EmailJS
@@ -326,6 +334,7 @@
                 >Destination</label
               >
               <select
+                required
                 bind:value={inputData.destination}
                 id="destination"
                 name="destination"
@@ -346,6 +355,7 @@
                 >Journey Purpose</label
               >
               <select
+                required
                 bind:value={inputData.purpose}
                 id="journeypurpose"
                 name="journeypurpose"
@@ -377,6 +387,7 @@
                 >Start Date</label
               >
               <input
+                required
                 bind:value={inputData.startdate}
                 id="startdate"
                 name="startdate"
@@ -393,6 +404,7 @@
                 >End Date</label
               >
               <input
+                required
                 bind:value={inputData.enddate}
                 id="enddate"
                 name="enddate"
@@ -414,6 +426,7 @@
             >
             <div class="mt-2.5">
               <input
+                required
                 bind:value={inputData.firstName}
                 type="text"
                 name="first-name"
@@ -433,6 +446,7 @@
             >
             <div class="mt-2.5">
               <input
+                required
                 bind:value={inputData.lastName}
                 type="text"
                 name="last-name"
@@ -452,6 +466,7 @@
             >
             <div class="mt-2.5">
               <input
+                required
                 bind:value={inputData.emailAddress}
                 type="email"
                 name="email"
@@ -471,6 +486,7 @@
             >
             <div class="mt-2.5">
               <textarea
+                required
                 bind:value={inputData.message}
                 name="message"
                 id="message"
