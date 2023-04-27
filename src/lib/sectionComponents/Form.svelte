@@ -79,30 +79,36 @@
                       emailAddress: string,
                       message: string): boolean {
       
-      emailjs.send(S_ID, 
-                    T_ID, 
-                    {
-                      destination: destination,
-                      journeyPurpose: journeyPurpose,
-                      startDate: startDate,
-                      endDate: endDate,
-                      firstName: firstName,
-                      lastName: lastName,
-                      emailAddress: emailAddress,
-                      message: message
-                    }, 
-                    P_KEY)
+//HIER TESTEN OB DAS ENDDATUM IN WEITER WEG IST 
+// WENN NICHT DANN EINEN BANNER MITTEL MAILINGSTATUS=2 FEUERN!!!!!    
+if (startDate < endDate) {
 
-        .then((result) => {
-          if (dev) { console.log('SUCCESS!', result.text)}
-            mailingStatus = 1;  
-        }, (error) => {
-          if (dev) { console.log('FAILED...', error.text)} 
-            mailingStatus = 999;  
-            clearInputValues();
+    }
 
-            return false
-        },);
+    emailjs.send(S_ID, 
+                  T_ID, 
+                  {
+                    destination: destination,
+                    journeyPurpose: journeyPurpose,
+                    startDate: startDate,
+                    endDate: endDate,
+                    firstName: firstName,
+                    lastName: lastName,
+                    emailAddress: emailAddress,
+                    message: message
+                  }, 
+                  P_KEY)
+
+      .then((result) => {
+        if (dev) { console.log('SUCCESS!', result.text)}
+          mailingStatus = 1;  
+      }, (error) => {
+        if (dev) { console.log('FAILED...', error.text)} 
+          mailingStatus = 999;  
+          clearInputValues();
+
+          return false
+      },);
 
       clearInputValues();
 
