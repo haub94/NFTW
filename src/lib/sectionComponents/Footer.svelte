@@ -19,7 +19,7 @@
             Journeys not from this world: Explore the universe with us!.
           </p>
           <div class="flex space-x-6">
-            <a href="#" class="text-gray-500 hover:text-gray-400">
+            <a href="https://www.facebook.com/spacextechnologies/" class="text-gray-500 hover:text-gray-400">
               <span class="sr-only">Facebook</span>
               <svg
                 class="h-6 w-6"
@@ -35,7 +35,7 @@
               </svg>
             </a>
 
-            <a href="#" class="text-gray-500 hover:text-gray-400">
+            <a href="https://www.instagram.com/spacex/" class="text-gray-500 hover:text-gray-400">
               <span class="sr-only">Instagram</span>
               <svg
                 class="h-6 w-6"
@@ -51,7 +51,7 @@
               </svg>
             </a>
 
-            <a href="#" class="text-gray-500 hover:text-gray-400">
+            <a href="https://twitter.com/elonmusk/status/1625695877326340102" class="text-gray-500 hover:text-gray-400">
               <span class="sr-only">Twitter</span>
               <svg
                 class="h-6 w-6"
@@ -65,7 +65,7 @@
               </svg>
             </a>
 
-            <a href="#" class="text-gray-500 hover:text-gray-400">
+            <a href="https://de.linkedin.com/company/spacex" class="text-gray-500 hover:text-gray-400">
               <span class="sr-only">LinkedIn</span>
               <svg
                 class="h-6 w-6"

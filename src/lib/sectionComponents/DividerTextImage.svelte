@@ -1,8 +1,4 @@
 <script lang="ts">
-  import { page } from "$app/stores";
-
-  const isGetInContact = $page.url.pathname.includes("/getInContact");
-
   export let img: string = "/brokenImage.png";
   export let title: string = "Lorem ipsum dolor";
   export let caption: string = "Lorem ipsum dolor";
