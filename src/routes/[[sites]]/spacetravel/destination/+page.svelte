@@ -17,21 +17,30 @@
      title="MARS"
      caption="Have you ever been to the red planet?"
      price="375.000 €"
-     path="spacetravel/destination/mars">
+     path="spacetravel/destination/mars"
+     img="/planets/mars.png"
+     imgPosition="left"
+     imgSize="cover">
     </CardDestinations>
 
     <CardDestinations
     title="MOON"
     caption="Dancing in the moonlight, everybody."
     price="300.000 €"
-    path="spacetravel/destination/moon">
+    path="spacetravel/destination/moon"
+    img="/planets/moon.png"
+    imgPosition="left"
+    imgSize="cover">
     </CardDestinations>
 
     <CardDestinations
     title="VENUS"
     caption="Are you ready to explore the planet?"
     price="450.000 €"
-    path="spacetravel/destination/venus">
+    path="spacetravel/destination/venus"
+    img="/planets/venus.png"
+    imgPosition="left"
+    imgSize="cover">
     </CardDestinations>
     </div>
   </SectionBg001>
