@@ -17,6 +17,12 @@
   const overrideMemory: boolean = true; //DEV-ONLY
   const empty: string = "";
 
+
+
+
+
+
+
   //helper to override the memory during dev
   if (dev && overrideMemory) {
     $configMemory.destination = "Moon";
@@ -31,17 +37,17 @@
   let TEMPLATE_ID: string = ''; //depends on the formtype
   const PUPLIC_KEY: string = 'YYaLHQ2Bd6V9Rk4vS';
 
-    //binded form inputs
-    let inputData = {
-    destination: $configMemory.destination === empty ? "Nothing Choosen" : $configMemory.destination,
-    journeyPurpose: $configMemory.journeyPurpose === empty ? "Nothing Choosen" : $configMemory.journeyPurpose,
-    startDate: $configMemory.startDate === empty ? "" : $configMemory.startDate,
-    endDate: $configMemory.endDate === empty ? "" : $configMemory.endDate,
-    firstName:  '',
-    lastName: '',
-    emailAddress: '',
-    message: '',
-  }
+  //binded form inputs
+  let inputData = {
+  destination: $configMemory.destination === empty ? "Nothing Choosen" : $configMemory.destination,
+  journeyPurpose: $configMemory.journeyPurpose === empty ? "Nothing Choosen" : $configMemory.journeyPurpose,
+  startDate: $configMemory.startDate === empty ? "" : $configMemory.startDate,
+  endDate: $configMemory.endDate === empty ? "" : $configMemory.endDate,
+  firstName:  '',
+  lastName: '',
+  emailAddress: '',
+  message: '',
+}
 
   //select the template based on the current form type
   if (isContact) {
@@ -50,7 +56,7 @@
     TEMPLATE_ID = 'template_appRequest';
   }
 
-  let mailingStatus: number = 0;
+  let bannerStatus: number = 0;
 
   //clear inputbuffer after sending
   function clearInputValues(): boolean {
@@ -79,11 +85,8 @@
                       emailAddress: string,
                       message: string): boolean {
       
-//HIER TESTEN OB DAS ENDDATUM IN WEITER WEG IST 
-// WENN NICHT DANN EINEN BANNER MITTEL MAILINGSTATUS=2 FEUERN!!!!!    
-if (startDate < endDate) {
-
-    }
+ 
+                      
 
     emailjs.send(S_ID, 
                   T_ID, 
@@ -101,10 +104,10 @@ if (startDate < endDate) {
 
       .then((result) => {
         if (dev) { console.log('SUCCESS!', result.text)}
-          mailingStatus = 1;  
+          bannerStatus = 1;  
       }, (error) => {
         if (dev) { console.log('FAILED...', error.text)} 
-          mailingStatus = 999;  
+          bannerStatus = 999;  
           clearInputValues();
 
           return false
@@ -139,46 +142,75 @@ if (startDate < endDate) {
     console.log('lastName :>> ', inputData.lastName);
     console.log('emailAddress :>> ', inputData.emailAddress);
     console.log('message :>> ', inputData.message);
-    console.log("call emailJS function to send mail");
+    
   }
+
+  //proof valid date
+  function validateDate(start: string, end: string): boolean {  
+    const today = new Date();
+    const startAsDate = new Date(start);
+    const endAsDate = new Date(end);
+
+    //end after start
+    if (startAsDate.valueOf() > endAsDate.valueOf()) { 
+      bannerStatus = 100;
+      console.log("departure after arrival")
+      return false
+    } 
+    //start and end same
+    if (startAsDate.valueOf() === endAsDate.valueOf()) { 
+      bannerStatus = 101
+      console.log("start and end same")
+      return false
+    } 
+    //departure today
+    if ((startAsDate.getDate() === today.getDate()) &&
+        (startAsDate.getMonth() === today.getMonth()) &&
+        (startAsDate.getFullYear() === today.getFullYear())) { 
+      bannerStatus = 102
+      console.log("departure today")
+      return false
+    }
+    //start before today
+    if (startAsDate.valueOf() < today.valueOf()) { 
+      bannerStatus = 100;
+      console.log("start in past")
+      return false
+    } 
+
+    return true
+  }
+  validateDate("2023-05-12", "2023-05-10");
+
 
 
   //controller which is executed after submit
   function inputController() {
       if (dev) {
-        logInput();
+       // logInput();
       }
 
       //CALL HERE THE FUNTION TO WRITE THE DATA IN THE DB !!!!!!
 
 
-
-      //send email to customer
-      sendEmail(SERVICE_ID,
-                TEMPLATE_ID,
-                PUPLIC_KEY,
-                inputData.destination,
-                inputData.journeyPurpose,
-                inputData.startDate,
-                inputData.endDate,
-                inputData.firstName, 
-                inputData.lastName,
-                inputData.emailAddress,
-                inputData.message
-      );
-
-      clearInputValues();
-
-
-
+      if (validateDate(inputData.startDate, inputData.endDate)) {
+        console.log("call emailJS function to send mail");
+        //send email to customer
+        /*sendEmail(SERVICE_ID,
+                  TEMPLATE_ID,
+                  PUPLIC_KEY,
+                  inputData.destination,
+                  inputData.journeyPurpose,
+                  inputData.startDate,
+                  inputData.endDate,
+                  inputData.firstName, 
+                  inputData.lastName,
+                  inputData.emailAddress,
+                  inputData.message
+        ); */
+      }
 
   }
-
-
-
-
-
-
 
 
 </script>
@@ -202,10 +234,16 @@ if (startDate < endDate) {
       
   <!--status banner-->
   <div class="absolute z-30 top-0 w-full">
-    {#if mailingStatus === 1}
-      <Banner buzzWord="mailing successfull" text="Your mail was succesfully sent. Check your mailbox for the request confirmation." state="1" />
-    {:else if mailingStatus === 999}
-      <Banner buzzWord="mailing error" text="UuupsiWhuupsi... It looks like there was an error during the transmission. Try again or contact us by phone: +99 123 456 789" state="999" />
+    {#if bannerStatus === 100}
+      <Banner buzzWord="invalid date!" text="Please check the end- and startdate. The both must be in the future." color="red" />
+    {:else if bannerStatus === 101}
+      <Banner buzzWord="invalid date!" text="Departure and arrival at the same day is not possible...but we working on faster rockets to make this happen!" color="red" />
+    {:else if bannerStatus === 102}
+    <Banner buzzWord="invalid date!" text="Departure today is not possible!" color="red" />
+    {:else if bannerStatus === 1}
+      <Banner buzzWord="mailing successfull!" text="Your mail was succesfully sent. Check your mailbox for the request confirmation." color="green" />
+    {:else if bannerStatus === 999}
+      <Banner buzzWord="mailing error!" text="UuupsiWhuupsi... It looks like there was an error during the transmission. Try again or contact us by phone: +99 123 456 789" color="red" />
     {/if}
   </div>
 

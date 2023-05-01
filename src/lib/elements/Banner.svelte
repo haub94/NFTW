@@ -1,7 +1,7 @@
 <script lang="ts">
     export let buzzWord: string = "buzzword";
     export let text: string = "descripe buzzword here";
-    export let state: string = "1"; //color controling
+    export let color: string = "green"; //color controling
 
     let stateColor: string = "bg-white-600";
     let bannerHidden: boolean = false;
@@ -12,11 +12,11 @@
     }
 
     //color controller
-    switch (state) {
-        case "1":
+    switch (color) {
+        case "green":
             stateColor = "bg-lime-800"; //all good
             break;
-        case "999":
+        case "red":
             stateColor = "bg-red-800";  //error
             break;
         default:
