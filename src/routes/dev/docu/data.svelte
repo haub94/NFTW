@@ -459,11 +459,11 @@ export let path: string = "/"; // routing path "/home/user/config"
       name: "BgVideo",
       component: BgVideo,
       description:
-        "Shows a video in full width with variable height. In the center of the video you can show text als title and caption.",
+        "Shows a video in full width with variable height. In the center of the video you can show text as title and caption. The caption can also contain a link.",
       author: "Daniel Rittrich",
-      version: "1.0",
+      version: "1.1",
       usedBy: ["/ home"],
-      dependecies: ["none"],
+      dependecies: ["checkUndefinedNullOrEmpty (from lib/tools/Tools.svelte)"],
       variables: [
         {
           name: "title",
@@ -482,16 +482,23 @@ export let path: string = "/"; // routing path "/home/user/config"
           description:
             "string|number: You can set the height of the video like '50vh' for example ",
         },
+        {
+          name: "captionPath",
+          description:
+            "string: You can define a link. The clickable link will only be shown when one is set.",
+        },
       ],
       script: `
-        export let title: string = "Lorem ipsum dolor";
-  export let caption: string = "Lorem ipsum dolor";
-  export let video: string =
-    "/videos/SPACE_SD.mp4";
-  export let videoHeight: string | number = "50vh";
-        `,
+      import { checkUndefinedNullOrEmpty } from "$lib/tools/Tools.svelte";
+
+export let title: string = "Lorem ipsum dolor";
+export let caption: string = "Lorem ipsum dolor";
+export let video: string = "/videos/SPACE_SD.mp4";
+export let videoHeight: string | number = "50vh";
+export let captionPath: string = "";
+      `,
       html: `
-        <body class="bg-NFTW-bg text-NFTW-white">
+      <body class="bg-NFTW-bg text-NFTW-white">
   <section
     class="videoCon relative overflow-hidden"
     style="height:{videoHeight}"
@@ -517,7 +524,17 @@ export let path: string = "/"; // routing path "/home/user/config"
       >
         {title}
       </h1>
-      <div class="caption" style="font-size:2vw">{caption}</div>
+      {#if checkUndefinedNullOrEmpty(captionPath)}
+        <div class="caption" style="font-size:2vw">
+          {caption}
+        </div>
+      {:else}
+        <a href={captionPath}>
+          <div class="caption" style="font-size:2vw">
+            {caption}
+          </div>
+        </a>
+      {/if}
     </div>
   </section>
 </body>
@@ -1400,7 +1417,7 @@ export let caption: string = "Lorem ipsum dolor.";
       description:
         "Background for a section that can be filled with content. It comes with two variants. First one with full width and second one with two columns. This can be chossen with the variable 'twoCols'.",
       author: "Daniel Rittrich",
-      version: "1.0",
+      version: "2.0",
       usedBy: ["nearly all pages"],
       dependecies: ["randomPercentage (import from lib/tools/Tools.svelte)"],
       variables: [
