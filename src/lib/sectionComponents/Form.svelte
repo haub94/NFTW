@@ -23,6 +23,12 @@
 
 
 
+
+
+
+
+
+
   //helper to override the memory during dev
   if (dev && overrideMemory) {
     $configMemory.destination = "Moon";
@@ -48,6 +54,17 @@
   emailAddress: '',
   message: '',
 }
+  //binded form inputs
+  let inputData = {
+  destination: $configMemory.destination === empty ? "Nothing Choosen" : $configMemory.destination,
+  journeyPurpose: $configMemory.journeyPurpose === empty ? "Nothing Choosen" : $configMemory.journeyPurpose,
+  startDate: $configMemory.startDate === empty ? "" : $configMemory.startDate,
+  endDate: $configMemory.endDate === empty ? "" : $configMemory.endDate,
+  firstName:  '',
+  lastName: '',
+  emailAddress: '',
+  message: '',
+}
 
   //select the template based on the current form type
   if (isContact) {
@@ -56,6 +73,7 @@
     TEMPLATE_ID = 'template_appRequest';
   }
 
+  let bannerStatus: number = 0;
   let bannerStatus: number = 0;
 
   //clear inputbuffer after sending
@@ -87,6 +105,8 @@
       
  
                       
+ 
+                      
 
     emailjs.send(S_ID, 
                   T_ID, 
@@ -105,8 +125,10 @@
       .then((result) => {
         if (dev) { console.log('SUCCESS!', result.text)}
           bannerStatus = 1;  
+          bannerStatus = 1;  
       }, (error) => {
         if (dev) { console.log('FAILED...', error.text)} 
+          bannerStatus = 999;  
           bannerStatus = 999;  
           clearInputValues();
 
@@ -142,6 +164,7 @@
     console.log('lastName :>> ', inputData.lastName);
     console.log('emailAddress :>> ', inputData.emailAddress);
     console.log('message :>> ', inputData.message);
+    
     
   }
 
@@ -188,11 +211,28 @@
   function inputController() {
       if (dev) {
        // logInput();
+       // logInput();
       }
 
       //CALL HERE THE FUNTION TO WRITE THE DATA IN THE DB !!!!!!
 
 
+      if (validateDate(inputData.startDate, inputData.endDate)) {
+        console.log("call emailJS function to send mail");
+        //send email to customer
+        /*sendEmail(SERVICE_ID,
+                  TEMPLATE_ID,
+                  PUPLIC_KEY,
+                  inputData.destination,
+                  inputData.journeyPurpose,
+                  inputData.startDate,
+                  inputData.endDate,
+                  inputData.firstName, 
+                  inputData.lastName,
+                  inputData.emailAddress,
+                  inputData.message
+        ); */
+      }
       if (validateDate(inputData.startDate, inputData.endDate)) {
         console.log("call emailJS function to send mail");
         //send email to customer
