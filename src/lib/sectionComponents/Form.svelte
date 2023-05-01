@@ -173,9 +173,6 @@
     return true
   }
 
-
-
-
   //controller which is executed after submit
   function inputController() {
       if (dev) {
