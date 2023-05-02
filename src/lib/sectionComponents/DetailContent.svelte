@@ -1,13 +1,16 @@
 <script lang="ts">
+  import IoIosRocket from "svelte-icons/io/IoIosRocket.svelte";
   export let img: string = "/brokenImage.png";
   export let title: string = "Lorem ipsum dolor";
   export let caption: string = "Lorem ipsum dolor";
   export let imgSize: string | number = "cover"; // auto, cover, contain ... or own size: 50%, 200px
+  export let price: string = "Lorem ipsum dollar $";
+
   export let showButtons: boolean = false;
 
   let isPrototyping = true;
 
-  /* für Icons   <svelte:component this={...comp...} */
+  /* für Icons   <svelte:component this={...comp...} /> */
 
   const infoData = [
     {
@@ -110,31 +113,23 @@ background-position:center;
             class:border-blue-800={isPrototyping}
           >
             <div
-              id="icon"
+              id="services"
               class="grid items-center justify-center h-32 w-32 justify-self-center"
               class:border-4={isPrototyping}
               class:text-NFTW-white={!isPrototyping}
               class:border-orange-600={isPrototyping}
             >
-              Icon
-              <svg
-                class="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="violet"
-                aria-hidden="true"
+              <div
+                id="icon"
+                class="h-28 w-28"
+                class:text-NFTW-white={!isPrototyping}
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
+                <svelte:component this={IoIosRocket} />
+              </div>
             </div>
             <div
               id="descriptionText"
-              class="grid justify-center mt-5 text-xl"
+              class="grid justify-center mt-5 text-xl text-center"
               class:border-4={isPrototyping}
               class:border-green-500={isPrototyping}
               class:text-NFTW-white={!isPrototyping}
