@@ -1,6 +1,6 @@
 <script lang="ts">
-	import CompletedMissions from "$lib/sectionComponents/CompletedMissions.svelte";
     import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
+    import Stories from "$lib/sectionComponents/Stories.svelte";
 	import Testimonials from "$lib/sectionComponents/TestimonialSwiper.svelte";
 </script>
 
@@ -11,7 +11,7 @@
 
 
 <SectionBg002>
-	<CompletedMissions />
+	<Stories />
 	<Testimonials />
 </SectionBg002>
 

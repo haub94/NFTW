@@ -191,48 +191,6 @@
                     </StorieCard>
                 {/each}
             </div>
-
-            <div class="py-6 md:px-0 prose max-w-prose text-xl">
-                <div>
-                    <h2>Messen & Events</h2>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3 place-items-center">
-
-                    {#each caseCardsEvents as caseEvents}
-                    <!--
-                    <StorieCard logo={caseEvents.logo}
-                                  eventName={caseEvents.eventName}
-                                  textVisitor={caseEvents.textVisitor}
-                                  visitors={caseEvents.visitors}
-                                  business={caseEvents.business}
-                                  picture={caseEvents.picture}
-                                  leadV={caseEvents.leadsV}
-                                  leadA={caseEvents.leadsA}
-                                  gLeads={caseEvents.leads}
-                                  gStatistics={caseEvents.statistic}
-                                  gPercentuals={caseEvents.percentual}>
-                                <SvgCircleWavyCheck slot="iconUpperLeft" />
-                                <SvgTrophyThin slot="iconUpperRight" />
-                                <SvgChatBubble slot="iconDownLeft" />
-                                <SvgFlagWavy slot="iconDownRight" />
-                        </StorieCard>
-                        -->    
-                        <StorieCard logo={caseEvents.logo}
-                                  eventName={caseEvents.eventName}
-                                  textVisitor={caseEvents.textVisitor}
-                                  visitors={caseEvents.visitors}
-                                  business={caseEvents.business}
-                                  picture={caseEvents.picture}
-                                  leadV={caseEvents.leadsV}
-                                  leadA={caseEvents.leadsA}
-                                  gLeads={caseEvents.leads}
-                                  gStatistics={caseEvents.statistic}
-                                  gPercentuals={caseEvents.percentual}>
-                                
-                        </StorieCard>
-                    {/each}
-            </div>
         </div>
     </div>
 </div>

@@ -21,10 +21,6 @@
 	<div class="flex flex-col rounded-t-lg bg-zinc-50">
 		<div class="flex flex-col">
 		<div class='flex flex-row justify-center h-14 bg-white rounded-t-lg space-x-22'>
-			<!--logo-->
-			<div class='flex py-2 pl-2 w-1/2'>
-				<img height='100%' width='auto' src="{logo}" alt='Logo des Events {eventName}'>
-			</div>
 
 			<!--visitors-->
 			<div class='w-1/2 grid grid-flow-row auto-rows-min pr-2 pt-2 justify-items-end'>
