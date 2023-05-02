@@ -7,6 +7,8 @@
 
   let isPrototyping = true;
 
+  /* für Icons   <svelte:component this={...comp...} */
+
   const infoData = [
     {
       icon: "SVG PATH",
