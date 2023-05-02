@@ -11,7 +11,7 @@
             bookedDestination: "Moon",
             bookedPurpose: "Photosafarie",
             givenStars: "4",
-            reviewText: "I recently went on a photo safari to space with this company, and it was truly a remarkable experience. The team at this company were incredibly helpful, ensuring that we had all the necessary equipment to capture stunning photos of space and the Earth from above. See you next year!",
+            reviewText: "I recently went on a photosafari to space with this company, and it was truly a remarkable experience. The team at this company were incredibly helpful, ensuring that we had all the necessary equipment to capture stunning photos of space and the Earth from above. See you next year!",
             image: "/testimonials/DebiWorknesh.webp",
         },
         {
@@ -37,17 +37,15 @@
 
   </script>
   
-  <div class="m-6">
+
     <swiper-container
         space-between=20
         autoplay="true"
-        speed="400" 
+        speed="600" 
         loop="true"
         slides-per-view={1}
         centered-slides={false}
-        pagination={{
-        hideOnClick: true,
-        }}
+        
     >
         {#each testimonialData as person}
             <swiper-slide>        
@@ -63,4 +61,3 @@
         {/each}
     </swiper-container>
 
-</div>
