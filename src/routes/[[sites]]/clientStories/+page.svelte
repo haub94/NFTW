@@ -11,8 +11,10 @@
 
 
 <SectionBg002>
-	<Stories />
-	<Testimonials />
+	<div class="grid justify-center justify-self-center mx-auto max-w-7xl">
+		<Stories />
+		<Testimonials />
+	</div>
 </SectionBg002>
 
 

@@ -26,18 +26,16 @@
             name: "Sung-Hyun Aysha",
             bookedDestination: "Venus",
             bookedPurpose: "Honeymoon",
-            givenStars: "3",
+            givenStars: "5",
             reviewText: "If you're looking for a honeymoon that's truly out of this world, I highly recommend booking a trip to Venus with this company. The team provided us with an amazing two-week itinerary, filled with romantic excursions and once-in-a-lifetime experiences. Thank you soo much for this!",
             image: "/testimonials/Sung-HyunAysha.webp",
         }
     ]
 
 
-
-
   </script>
   
-
+<div class="w-full h-auto overflow-hidden">
     <swiper-container
         space-between=20
         autoplay="true"
@@ -60,4 +58,5 @@
             </swiper-slide>
         {/each}
     </swiper-container>
+</div>
 
