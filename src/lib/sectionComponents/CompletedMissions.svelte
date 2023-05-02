@@ -1,9 +1,9 @@
 <script>
-    import CaseCard from '$lib/cardTemplates/CaseCard.svelte';
-	import SvgCircleWavyCheck from '$lib/icons/svgCircleWavyCheckThin.svelte';
+    import StorieCard from '$lib/components/StorieCard.svelte';
+	/*import SvgCircleWavyCheck from '$lib/icons/svgCircleWavyCheckThin.svelte';
 	import SvgChatBubble from '$lib/icons/svgChatBubble.svelte';
 	import SvgTrophyThin from '$lib/icons/svgTrophyThin.svelte';
-	import SvgFlagWavy from '$lib/icons/svgFlagWavyThin.svelte';
+	import SvgFlagWavy from '$lib/icons/svgFlagWavyThin.svelte';*/
 
     const caseCardsConference = [
         {
@@ -153,9 +153,10 @@
                  </div>
             </div>
 
+            <!--
             <div class="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
                 {#each caseCardsConference as caseConference}
-                    <CaseCard logo={caseConference.logo}
+                    <StorieCard logo={caseConference.logo}
                               eventName={caseConference.eventName}
                               textVisitor={caseConference.textVisitor}
                               visitors={caseConference.visitors}
@@ -170,7 +171,24 @@
                         <SvgTrophyThin slot="iconUpperRight" />
                         <SvgChatBubble slot="iconDownLeft" />
                         <SvgFlagWavy slot="iconDownRight" />
-                    </CaseCard>
+                    </StorieCard>
+                {/each}
+            </div>-->
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
+                {#each caseCardsConference as caseConference}
+                    <StorieCard logo={caseConference.logo}
+                              eventName={caseConference.eventName}
+                              textVisitor={caseConference.textVisitor}
+                              visitors={caseConference.visitors}
+                              business={caseConference.business}
+                              picture={caseConference.picture}
+                              leadV={caseConference.leadsV}
+                              leadA={caseConference.leadsA}
+                              gLeads={caseConference.leads}
+                              gStatistics={caseConference.statistic}
+                              gPercentuals={caseConference.percentual}>
+                        
+                    </StorieCard>
                 {/each}
             </div>
 
@@ -182,7 +200,8 @@
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3 place-items-center">
 
                     {#each caseCardsEvents as caseEvents}
-                        <CaseCard logo={caseEvents.logo}
+                    <!--
+                    <StorieCard logo={caseEvents.logo}
                                   eventName={caseEvents.eventName}
                                   textVisitor={caseEvents.textVisitor}
                                   visitors={caseEvents.visitors}
@@ -197,7 +216,21 @@
                                 <SvgTrophyThin slot="iconUpperRight" />
                                 <SvgChatBubble slot="iconDownLeft" />
                                 <SvgFlagWavy slot="iconDownRight" />
-                        </CaseCard>
+                        </StorieCard>
+                        -->    
+                        <StorieCard logo={caseEvents.logo}
+                                  eventName={caseEvents.eventName}
+                                  textVisitor={caseEvents.textVisitor}
+                                  visitors={caseEvents.visitors}
+                                  business={caseEvents.business}
+                                  picture={caseEvents.picture}
+                                  leadV={caseEvents.leadsV}
+                                  leadA={caseEvents.leadsA}
+                                  gLeads={caseEvents.leads}
+                                  gStatistics={caseEvents.statistic}
+                                  gPercentuals={caseEvents.percentual}>
+                                
+                        </StorieCard>
                     {/each}
             </div>
         </div>
