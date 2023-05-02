@@ -51,26 +51,23 @@
 		<div class="bg-no-repeat bg-contain bg-center w-full h-96" style="background-image: url({destinationImage})"></div>
 	</div>
 	
-	<!--stats-->
-	{#each statsTemplate as stat}
-	<div class="">
-		<div class="mt-2 bg-NFTW-blue-200 grid grid-cols-1 w-full rounded-xl">
-			<div class="relative overflow-hidden bg-none px-4 py-1 sm:px-6">
-			<div>
-				<div class="absolute w-12 h-12 rounded-md bg-NFTW-lila-800 text-NFTW-lila-300 p-1">
-					<svelte:component this={stat.icon} />
+	<div class:pt-8={destination === "Moon"}></div>
+		<!--stats-->
+		{#each statsTemplate as stat}
+			<div class="mt-2 bg-NFTW-blue-200 grid grid-cols-1 w-full rounded-xl">
+				<div class="relative overflow-hidden bg-none px-4 py-1 sm:px-6">
+					<div class="absolute w-12 h-12 rounded-md bg-NFTW-lila-800 text-NFTW-lila-300 p-1">
+						<svelte:component this={stat.icon} />
+					</div>
+					<p class="ml-16 truncate text-sm font-medium text-NFTW-black-500 uppercase">{stat.header}</p>
+					<div class="ml-16 flex items-baseline">
+						<p class="text-2xl font-semibold text-NFTW-black-500">{stat.value}</p>
+					</div>
 				</div>
-				<p class="ml-16 truncate text-sm font-medium text-NFTW-black-500 uppercase">{stat.header}</p>
 			</div>
-			<div class="ml-16 flex items-baseline">
-				<p class="text-2xl font-semibold text-NFTW-black-500">{stat.value}</p>
-				
-			</div>
-			</div>
-		</div>
+		{/each}
 	</div>
-{/each}
-</div>
+
 
 
 

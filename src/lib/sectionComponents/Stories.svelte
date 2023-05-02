@@ -31,7 +31,7 @@
     
 </script>
 
-<div class="mb-28 flex flex-col md:flex-row md:flex-wrap w-full md:justify-around">
+<div class="mb-28 w-full grid grid-col md:grid-cols-2 xl:grid-cols-3">
     
     {#each cardData as card}
         <div class="mx-auto">
