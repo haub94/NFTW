@@ -40,7 +40,6 @@
             purpose={card.purpose}
             completedTrips={card.completedTrips}
         />
-        </div>
-        
+        </div> 
     {/each}
 </div>
