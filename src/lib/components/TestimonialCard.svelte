@@ -63,7 +63,7 @@
 
 </script>
 
-<section class="bg-NFTW-blue-100 px-6 py-10 lg:px-8 rounded-xl">
+<section class="bg-NFTW-blue-200 px-6 py-10 lg:px-8 rounded-xl">
     <figure class="mx-auto max-w-2xl">
       <p class="sr-only">5 out of 5 stars</p>
       <div class="flex gap-x-1 text-NFTW-pink-400">
