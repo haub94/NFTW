@@ -5,31 +5,37 @@
 
   const data = [
     {
-      name: "MARS",
-      promoText: "Have you ever been to the red planet?",
-      price: "375.000 €",
-      path: "/spacetravel/destination/mars",
-      image: "/planets/mars.png",
+      destName: "MARS",
+      destPromoText: "Have you ever been to the red planet?",
+      destPrice: "375.000 €",
+      routePath: "/spacetravel/destination/mars",
+      destImagePath: "/planets/mars.png",
       imgPosition: "left",
       imgSize: "cover",
+      destImageName: "",
+      destImageAltText: "",
     },
     {
-      name: "MOON",
-      promoText: "Dancing in the moonlight, everybody.",
-      price: "300.000 €",
-      path: "/spacetravel/destination/moon",
-      image: "/planets/moon.png",
+      destName: "MOON",
+      destPromoText: "Dancing in the moonlight, everybody.",
+      destPrice: "300.000 €",
+      routePath: "/spacetravel/destination/moon",
+      destImagePath: "/planets/moon.png",
       imgPosition: "left",
       imgSize: "cover",
+      destImageName: "",
+      destImageAltText: "",
     },
     {
-      name: "VENUS",
-      promoText: "Are you ready to explore the planet?",
-      price: "450.000 €",
-      path: "/spacetravel/destination/venus",
-      image: "/planets/venus.png",
+      destName: "VENUS",
+      destPromoText: "Are you ready to explore the planet?",
+      destPrice: "450.000 €",
+      routePath: "/spacetravel/destination/venus",
+      destImagePath: "/planets/venus.png",
       imgPosition: "left",
       imgSize: "cover",
+      destImageName: "",
+      destImageAltText: "",
     },
   ];
 </script>
@@ -42,13 +48,15 @@
     {#each data as data}
       <div class="grid col-span-1">
         <CardDestinations
-          name={data.name}
-          promoText={data.promoText}
-          price={data.price}
-          path={data.path}
-          image={data.image}
+          destName={data.destName}
+          destPromoText={data.destPromoText}
+          destPrice={data.destPrice}
+          routePath={data.routePath}
+          destImagePath={data.destImagePath}
           imgPosition={data.imgPosition}
           imgSize={data.imgSize}
+          destImageName={data.destImageName}
+          destImageAltText={data.destImageAltText}
         />
       </div>
     {/each}

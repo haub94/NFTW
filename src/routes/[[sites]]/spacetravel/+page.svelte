@@ -88,19 +88,19 @@
 
 <SectionBg001 title1of2="" title2of2="" caption="">
   <CardSpacetravel
-    img="/planets/moon-planet.png"
-    title="Destination"
-    caption={destinationCaption}
-    imgPosition="left"
-    imgSize="cover"
-    path="/spacetravel/destination"
+    imagePath="/planets/moon-planet.png"
+    name="Destination"
+    promoText={destinationCaption}
+    imagePosition="left"
+    imageSize="cover"
+    routePath="/spacetravel/destination"
   />
   <CardSpacetravel
-    img="/planets/blue-planet.png"
-    title="Journey Purpose"
-    caption={purposeCaption}
-    imgPosition="left"
-    imgSize="cover"
-    path="/spacetravel/journeyPurpose"
+    imagePath="/planets/blue-planet.png"
+    name="Journey Purpose"
+    promoText={purposeCaption}
+    imagePosition="left"
+    imageSize="cover"
+    routePath="/spacetravel/journeyPurpose"
   />
 </SectionBg001>
