@@ -1,12 +1,239 @@
 <script lang="ts">
   import { page } from "$app/stores";
+  import { dev } from '$app/environment';
+  import emailjs from '@emailjs/browser'; //Haubold, Markus - mailing client 
+  import Banner from "$lib/elements/Banner.svelte";
+  import configMemory from '../../stores/journeyConfigMemory.ts'; //import the config store
 
   const isGetInContact = $page.url.pathname.includes("/getInContact");
   const isContact = $page.url.pathname.includes("/contact");
+
+  //Haubold, Markus - add vars to style redundant parts
+  const labelStyle = "block text-sm font-semibold leading-6 text-NFTW-white";
+  const inputStyle = "block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6";
+  const dateStyle = "block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6";
+  const selectionStyling = "bg-NFTW-black-600 bg-opacity-90";
+
+  const overrideMemory: boolean = false; //DEV-ONLY
+  const empty: string = "";
+
+  //helper to override the memory during dev
+  if (dev && overrideMemory) {
+    $configMemory.destination = "Moon";
+    $configMemory.journeyPurpose = "Birthdayspecial";
+    $configMemory.startDate = "2023-05-12";
+    $configMemory.endDate = "2023-05-25";
+  }
+
+  //Haubold, Markus - Use input values to send mail to the customer
+  //config EmailJS
+  const SERVICE_ID: string = 'service_vzyr2ok';
+  let TEMPLATE_ID: string = ''; //depends on the formtype
+  const PUPLIC_KEY: string = 'YYaLHQ2Bd6V9Rk4vS';
+
+  //binded form inputs
+  let inputData = {
+  destination: $configMemory.destination === empty ? "Nothing Choosen" : $configMemory.destination,
+  journeyPurpose: $configMemory.journeyPurpose === empty ? "Nothing Choosen" : $configMemory.journeyPurpose,
+  startDate: $configMemory.startDate === empty ? "" : $configMemory.startDate,
+  endDate: $configMemory.endDate === empty ? "" : $configMemory.endDate,
+  firstName:  '',
+  lastName: '',
+  emailAddress: '',
+  message: '',
+}
+
+  //select the template based on the current form type
+  if (isContact) {
+    TEMPLATE_ID = 'template_contactRequest';
+  } else if (isGetInContact) {
+    TEMPLATE_ID = 'template_appRequest';
+  }
+
+  let bannerStatus: number = 0;
+
+  //clear inputbuffer after sending
+  function clearInputValues(): boolean {
+    inputData.destination = '';
+    inputData.journeyPurpose = '';
+    inputData.startDate = '';
+    inputData.endDate = '';
+    inputData.firstName = '';
+    inputData.lastName = '';
+    inputData.emailAddress = '';
+    inputData.message = '';
+
+    return true;
+  }
+
+  //send mail with emailJs client
+  function sendEmail( S_ID: string,
+                      T_ID: string,
+                      P_KEY: string,
+                      destination: string,
+                      journeyPurpose: string,
+                      startDate: string,
+                      endDate: string,
+                      firstName: string,
+                      lastName: string, 
+                      emailAddress: string,
+                      message: string): boolean {
+      
+    emailjs.send(S_ID, 
+                  T_ID, 
+                  {
+                    destination: destination,
+                    journeyPurpose: journeyPurpose,
+                    startDate: startDate,
+                    endDate: endDate,
+                    firstName: firstName,
+                    lastName: lastName,
+                    emailAddress: emailAddress,
+                    message: message
+                  }, 
+                  P_KEY)
+
+      .then((result) => {
+        if (dev) { console.log('SUCCESS!', result.text)}
+          bannerStatus = 1;  
+      }, (error) => {
+        if (dev) { console.log('FAILED...', error.text)} 
+          bannerStatus = 999;   
+          clearInputValues();
+
+          return false
+      },);
+
+      clearInputValues();
+
+      return true
+  }
+
+  //load test-data during dev
+  function loadDevData() {
+    inputData.destination = "Moon";
+    inputData.journeyPurpose = "Vacation";
+    inputData.startDate = "2023-05-10";
+    inputData.endDate = "2023-05-15";
+    inputData.firstName = "Markus";
+    inputData.lastName = "Haubold";
+    inputData.emailAddress = "haubie94@web.de";
+    inputData.message = "Hello, that's data are loaded during DEV-mode!";
+    console.log("DEV data loaded successfull!")
+  }
+
+  //log data from the input
+  function logInput() {
+    console.log("mailing data:")
+    console.log('destination :>> ',inputData.destination);
+    console.log('journeyPurpose :>> ',inputData.journeyPurpose);
+    console.log('start-date :>> ',inputData.startDate);
+    console.log('end-date :>> ',inputData.endDate);
+    console.log('firstName :>> ', inputData.firstName);
+    console.log('lastName :>> ', inputData.lastName);
+    console.log('emailAddress :>> ', inputData.emailAddress);
+    console.log('message :>> ', inputData.message);
+    
+    
+  }
+
+  //proof valid date
+  function validateDate(start: string, end: string): boolean {  
+    const today = new Date();
+    const startAsDate = new Date(start);
+    const endAsDate = new Date(end);
+
+    //end after start
+    if (startAsDate.valueOf() > endAsDate.valueOf()) { 
+      bannerStatus = 100;
+      console.log("departure after arrival")
+      return false
+    } 
+    //start and end same
+    if (startAsDate.valueOf() === endAsDate.valueOf()) { 
+      bannerStatus = 101
+      console.log("start and end same")
+      return false
+    } 
+    //departure today
+    if ((startAsDate.getDate() === today.getDate()) &&
+        (startAsDate.getMonth() === today.getMonth()) &&
+        (startAsDate.getFullYear() === today.getFullYear())) { 
+      bannerStatus = 102
+      console.log("departure today")
+      return false
+    }
+    //start before today
+    if (startAsDate.valueOf() < today.valueOf()) { 
+      bannerStatus = 100;
+      console.log("start in past")
+      return false
+    } 
+
+    return true
+  }
+
+  //controller which is executed after submit
+  function inputController() {
+      if (dev) {
+        logInput();
+      }
+
+      //CALL HERE THE FUNTION TO WRITE THE DATA IN THE DB !!!!!!
+
+      if (validateDate(inputData.startDate, inputData.endDate)) {
+        console.log("call emailJS function to send mail");
+        //send email to customer
+        sendEmail(SERVICE_ID,
+                  TEMPLATE_ID,
+                  PUPLIC_KEY,
+                  inputData.destination,
+                  inputData.journeyPurpose,
+                  inputData.startDate,
+                  inputData.endDate,
+                  inputData.firstName, 
+                  inputData.lastName,
+                  inputData.emailAddress,
+                  inputData.message
+        );
+      }
+  }
+
+
 </script>
+
+ <!--load testdate for dev-mode-->
+ {#if dev}
+    <div class="">
+      <button
+        on:click={loadDevData}
+        class="rounded-md bg-green-500 px-3.5 py-2.5 text-center text-sm font-semibold text-NFTW-white shadow-sm hover:bg-cyan-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+        >Load DEV-Data ...</button
+      >
+    </div>
+ {/if}
+
+
+
 
 <!-- GET IN CONTACT -->
 <div class="relative isolate bg-NFTW-bg bg-opacity-50">
+      
+  <!--status banner-->
+  <div class="absolute z-30 top-0 w-full">
+    {#if bannerStatus === 100}
+      <Banner buzzWord="invalid date!" text="Please check the end- and startdate. The both must be in the future." color="red" />
+    {:else if bannerStatus === 101}
+      <Banner buzzWord="invalid date!" text="Departure and arrival at the same day is not possible...but we working on faster rockets to make this happen!" color="red" />
+    {:else if bannerStatus === 102}
+    <Banner buzzWord="invalid date!" text="Departure today is not possible!" color="red" />
+    {:else if bannerStatus === 1}
+      <Banner buzzWord="mailing successfull!" text="Your mail was succesfully sent. Check your mailbox for the request confirmation." color="green" />
+    {:else if bannerStatus === 999}
+      <Banner buzzWord="mailing error!" text="UuupsiWhuupsi... It looks like there was an error during the transmission. Try again or contact us by phone: +99 123 456 789" color="red" />
+    {/if}
+  </div>
+
   <div class="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
     <div class="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-48">
       <div class="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
@@ -157,12 +384,10 @@
         {/if}
       </div>
     </div>
-
+    
     <!-- FORM -->
-
     <form
-      action="#"
-      method="POST"
+      on:submit|preventDefault={inputController}
       class="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-48"
     >
       <div class="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
@@ -171,138 +396,192 @@
             <div>
               <label
                 for="destination"
-                class="block text-sm font-semibold leading-6 text-NFTW-white"
+                class={labelStyle}
                 >Destination</label
               >
               <select
+                required
+                bind:value={inputData.destination}
                 id="destination"
                 name="destination"
-                class="block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6"
-              >
-                <option selected class="bg-NFTW-black-600 bg-opacity-90"
-                  >Nothing choosen</option
-                >
-                <option class="bg-NFTW-black-600 bg-opacity-90">Mars</option>
-                <option class="bg-NFTW-black-600 bg-opacity-90">Moon</option>
-                <option class="bg-NFTW-black-600 bg-opacity-90">Venus</option>
+                class={dateStyle}
+              >  
+                <option class={selectionStyling} selected>{inputData.destination}</option>             
+                <option class={selectionStyling}>Mars</option>
+                <option class={selectionStyling}>Moon</option>
+                <option class={selectionStyling}>Venus</option>
               </select>
             </div>
             <div>
               <label
-                for="journeypurpose"
-                class="block text-sm font-semibold leading-6 text-NFTW-white"
+                for="journeyjourneyPurpose"
+                class={labelStyle}
                 >Journey Purpose</label
               >
               <select
-                id="journeypurpose"
-                name="journeypurpose"
-                class="block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6"
+                required
+                bind:value={inputData.journeyPurpose}
+                id="journeyjourneyPurpose"
+                name="journeyjourneyPurpose"
+                class={dateStyle}
               >
-                <option selected class="bg-NFTW-black-600 bg-opacity-90"
-                  >Nothing choosen</option
-                >
-                <option class="bg-NFTW-black-600 bg-opacity-90"
+                <option class={selectionStyling} selected>{inputData.journeyPurpose}</option>             
+                <option class={selectionStyling}
                   >Birthdayspecial</option
                 >
-                <option class="bg-NFTW-black-600 bg-opacity-90"
+                <option class={selectionStyling}
                   >Honeymoon</option
                 >
-                <option class="bg-NFTW-black-600 bg-opacity-90"
+                <option class={selectionStyling}
                   >Phototour</option
                 >
-                <option class="bg-NFTW-black-600 bg-opacity-90">Vacation</option
+                <option class={selectionStyling}>Vacation</option
                 >
               </select>
             </div>
 
-            <!-- @MARKUS / @ANNA -------------------- {#if birthdayspecial||honeymoon} -->
-            <div>
-              <label
-                for="startdate"
-                class="block text-sm font-semibold leading-6 text-NFTW-white"
-                >Start Date</label
-              >
-              <input
-                id="startdate"
-                name="startdate"
-                type="date"
-                class="block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6"
-              />
-            </div>
-            <div>
-              <label
-                for="enddate"
-                class="block text-sm font-semibold leading-6 text-NFTW-white"
-                >End Date</label
-              >
-              <input
-                id="enddate"
-                name="enddate"
-                type="date"
-                class="block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6"
-              />
-            </div>
-            <!-- {/if} -->
+            <!--startDate-->
+              <div>
+                <label
+                  for="startDate"
+                  class={labelStyle}
+                  >Start Date</label
+                >
+                <!--disable datepicker for vacation, phototour, oure recomendation-->
+                {#if (inputData.journeyPurpose === "Birthdayspecial") || (inputData.journeyPurpose === "Honeymoon") }
+                  <input
+                    required
+                    bind:value={inputData.startDate}
+                    id="startDate"
+                    name="startDate"
+                    type="date"
+                    class={dateStyle}
+                  />
+                {:else}
+                  <input
+                  disabled
+                  required
+                  bind:value={inputData.startDate}
+                  id="startDate"
+                  name="startDate"
+                  type="date"
+                  class={dateStyle}
+                  />
+                {/if}
+              </div>
+              
+              <!--endDate-->
+              <div>
+                <label
+                  for="endDate"
+                  class={labelStyle}
+                  >End Date</label
+                >
+                <!--disable datepicker for vacation, phototour, oure recomendation-->
+                {#if (inputData.journeyPurpose === "Birthdayspecial") || (inputData.journeyPurpose === "Honeymoon") }
+                  <input
+                  required
+                  bind:value={inputData.endDate}
+                  id="endDate"
+                  name="endDate"
+                  type="date"
+                  class={dateStyle}
+                  />
+                {:else}
+                  <input
+                  disabled
+                  required
+                  bind:value={inputData.endDate}
+                  id="endDate"
+                  name="endDate"
+                  type="date"
+                  class={dateStyle}
+                  />
+                {/if}
+
+              </div>
+            
 
             <div class="mb-10 sm:col-span-2" />
           {/if}
+          
+          <!--first name-->
           <div>
             <label
               for="first-name"
-              class="block text-sm font-semibold leading-6 text-NFTW-white"
+              class={labelStyle}
               >First name</label
             >
             <div class="mt-2.5">
               <input
+                required
+                bind:value={inputData.firstName}
                 type="text"
                 name="first-name"
                 id="first-name"
                 autocomplete="given-name"
-                class="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6"
-              />
-            </div>
-          </div>
-          <div>
-            <label
-              for="last-name"
-              class="block text-sm font-semibold leading-6 text-NFTW-white"
-              >Last name</label
-            >
-            <div class="mt-2.5">
-              <input
-                type="text"
-                name="last-name"
-                id="last-name"
-                autocomplete="family-name"
-                class="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6"
+                class={inputStyle}
               />
             </div>
           </div>
 
+          <!--last name-->
+          <div>
+            <label
+              for="last-name"
+              class={labelStyle}
+              >Last name</label
+            >
+            <div class="mt-2.5">
+              <input
+                required
+                bind:value={inputData.lastName}
+                type="text"
+                name="last-name"
+                id="last-name"
+                autocomplete="family-name"
+                class={inputStyle}
+              />
+            </div>
+          </div>
+
+          <!--email address-->
           <div class="sm:col-span-2">
             <label
               for="email"
-              class="block text-sm font-semibold leading-6 text-NFTW-white"
+              class={labelStyle}
               >Email</label
             >
             <div class="mt-2.5">
               <input
+                required
+                bind:value={inputData.emailAddress}
                 type="email"
                 name="email"
                 id="email"
                 autocomplete="email"
-                class="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6"
+                class={inputStyle}
               />
             </div>
           </div>
+
+          <!--message-->
           <div class="sm:col-span-2">
             <label
               for="message"
-              class="block text-sm font-semibold leading-6 text-NFTW-white"
-              >Message</label
+              class={labelStyle}>
+              {#if isContact}
+                Message
+              {:else}
+                 Application <br> (Convince us why we should take exactly YOU with us!)
+              {/if}
+              
+            </label
             >
             <div class="mt-2.5">
               <textarea
+                required
+                bind:value={inputData.message}
                 name="message"
                 id="message"
                 rows="4"
@@ -311,6 +590,8 @@
             </div>
           </div>
         </div>
+       
+        <!--submit-->
         <div class="mt-8 flex justify-end">
           <button
             type="submit"
