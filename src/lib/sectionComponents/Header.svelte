@@ -8,15 +8,17 @@
   function closeMenu() {
     menuOpened = false;
   }
+  let screenSize: number;
 </script>
 
+<svelte:window bind:innerWidth={screenSize} />
 {#if dev}
   <div class="fixed top-1 left-3 z-50 flex text-white text-3xl gap-6">
-    <p class="sm:hidden">mobil</p>
-    <p class="hidden sm:block md:hidden">sm</p>
-    <p class="hidden md:block lg:hidden">md</p>
-    <p class="hidden lg:block xl:hidden">lg</p>
-    <p class="hidden xl:block">xl</p>
+    <p class="sm:hidden">{"mobil "}{screenSize}{"px"}</p>
+    <p class="hidden sm:block md:hidden">{"sm "}{screenSize}{"px"}</p>
+    <p class="hidden md:block lg:hidden">{"md "}{screenSize}{"px"}</p>
+    <p class="hidden lg:block xl:hidden">{"lg "}{screenSize}{"px"}</p>
+    <p class="hidden xl:block">{"xl "}{screenSize}{"px"}</p>
     <a
       href="/test"
       class="pt-1 text-lg hover:scale-125 hover:transition-all hover:text-NFTW-pink-500 ease-in-out duration-300"
