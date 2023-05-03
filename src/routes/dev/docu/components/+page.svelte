@@ -107,7 +107,7 @@
                                       </ScriptBlock>  
                                   </pre>
                                 {/if}
-                                <pre>
+                                <pre class="text-gray-900">
                                   {comp.html}
                                 </pre>
                             </div> 
