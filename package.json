@@ -25,6 +25,7 @@
 	"type": "module",
 	"dependencies": {
 		"@emailjs/browser": "^3.11.0",
-		"svelte-icons": "^2.1.0"
+		"svelte-icons": "^2.1.0",
+		"swiper": "^9.2.4"
 	}
 }
