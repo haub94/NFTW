@@ -4,8 +4,8 @@
 	import FaGrav from 'svelte-icons/fa/FaGrav.svelte';
 
 	export let destination: string = "Mars";
-	export let purpose: string = "Honeymoon";
-	export let completedTrips: string = "99";
+	export let purpose: string = "purpose";
+	export let completedTrips: string = "amaount trips";
 
 
 	let destinationImage: string = "";

@@ -15,6 +15,9 @@
   import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
   import SectionBg001 from "$lib/sectionComponents/SectionBg001.svelte";
   import SectionHeader from "$lib/components/SectionHeader.svelte";
+  import TestimonialCard from "$lib/components/TestimonialCard.svelte";
+  import StorrieCard from "$lib/components/StorieCard.svelte";
+  import Stories from "$lib/sectionComponents/Stories.svelte";
 
   export const componentData = [
     /*
@@ -1142,42 +1145,326 @@ export let twoCols: boolean = false;
     },
     {
       ID: 21,
-      name: "SectionHeader",
-      component: SectionHeader,
-      description: "Used as the intro part of every site. It contents a header for a few of buzzwords and a description to mention the core of the site.",
+      name: "TestimonialCard",
+      component: TestimonialCard,
+      description: "Used as a card which can slide forced by the swiper-component (component TestimonialSwiper).",
       author: "Markus Haubold",
       version: "1.0",
       usedBy: [
-        "Route /clientStories",
+        "Route /clientStorries",
+        "TestimonialSwiper.svelte",
       ],
       dependecies: [
         "-", 
       ],
       variables: [
         {
-          name: "title",
-          description: "string: content for the header / buzzwords",
+          name: "givenStars",
+          description: "string: number of stars for the review",
         },
         {
-          name: "description",
-          description: "string: content for the site-description",
+          name: "name",
+          description: "string: name of the testimonial",
+        },
+        {
+          name: "bookedDestination",
+          description: "string: name of the reviewed destination",
+        },
+        {
+          name: "bookedPurpose",
+          description: "string: name of the reviewed journey purpose",
+        },
+        {
+          name: "text",
+          description: "string: text of the review",
+        },
+        {
+          name: "image",
+          description: "string: path to the image of the testimonial",
+        },
+        {
+          name: "starColor",
+          description: "array of string: contains the tailwind-class to colorize / hide (color=none) the given stars",
+        },
+
+       
+      ],
+      script: 
+  `
+    export let givenStars: string = "5";
+    export let name: string = "testimonial name";
+    export let bookedDestination: string = "destination";
+    export let bookedPurpose: string = "purpose";
+    export let text: string = "review text...";
+    export let image: string = "/testimonials/DebiWorknesh.webp";
+
+    let starColor: string[] = [
+        "currentColor",
+        "currentColor",
+        "currentColor",
+        "currentColor",
+        "currentColor",
+    ]
+
+    switch (parseInt(givenStars)) {
+        case 1:
+            starColor[0] = "currentColor";
+            starColor[1] = "";
+            starColor[2] = "";
+            starColor[3] = "";
+            starColor[4] = "";
+            break;
+        case 2:
+            starColor[0] = "currentColor";
+            starColor[1] = "currentColor";
+            starColor[2] = "";
+            starColor[3] = "";
+            starColor[4] = "";
+            break;
+        case 3:
+            starColor[0] = "currentColor";
+            starColor[1] = "currentColor";
+            starColor[2] = "currentColor";
+            starColor[3] = "";
+            starColor[4] = "";
+            break;
+        case 4:
+            starColor[0] = "currentColor";
+            starColor[1] = "currentColor";
+            starColor[2] = "currentColor";
+            starColor[3] = "currentColor";
+            starColor[4] = "";
+            break;
+        case 4:
+            starColor[0] = "currentColor";
+            starColor[1] = "currentColor";
+            starColor[2] = "currentColor";
+            starColor[3] = "currentColor";
+            starColor[4] = "currentColor";
+            break;
+    
+        default:
+            starColor[0] = "currentColor";
+            starColor[1] = "currentColor";
+            starColor[2] = "currentColor";
+            starColor[3] = "currentColor";
+            starColor[4] = "currentColor";
+            break;
+    }
+  `,
+      html: 
+  `
+  <section class="bg-NFTW-blue-200 px-6 py-10 lg:px-8 rounded-xl">
+    <figure class="mx-auto max-w-2xl">
+      <p class="sr-only">5 out of 5 stars</p>
+      <div class="flex gap-x-1 text-NFTW-pink-400">
+        <svg class="h-5 w-5 flex-none" viewBox="0 0 20 20" fill={starColor[0]} aria-hidden="true">
+          <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+        </svg>
+        <svg class="h-5 w-5 flex-none" viewBox="0 0 20 20" fill={starColor[1]} aria-hidden="true">
+          <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+        </svg>
+        <svg class="h-5 w-5 flex-none" viewBox="0 0 20 20" fill={starColor[2]} aria-hidden="true">
+          <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+        </svg>
+        <svg class="h-5 w-5 flex-none" viewBox="0 0 20 20" fill={starColor[3]} aria-hidden="true">
+          <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+        </svg>
+        <svg class="h-5 w-5 flex-none" viewBox="0 0 20 20" fill={starColor[4]} aria-hidden="true">
+          <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+        </svg>
+      </div>
+      <blockquote class="mt-10 text-xl font-semibold leading-8 tracking-tight text-NFTW-lila-900 sm:text-2xl sm:leading-9">
+        <p>“{text}”</p>
+      </blockquote>
+      <figcaption class="mt-10 flex items-center gap-x-6">
+        <img class="h-16 w-16 rounded-full bg-gray-50" src={image} alt="Portrait of the testimonial {name}">
+        <div class="text-sm leading-6">
+          <div class="font-semibold text-NFTW-lila-900">{name}</div>
+          <div class="mt-0.5 text-NFTW-lila-900 italic">Booked Packages: {bookedDestination} & {bookedPurpose}</div>
+        </div>
+      </figcaption>
+    </figure>
+  </section>
+  `,
+    },
+    {
+      ID: 22,
+      name: "StorrieCard",
+      component: StorrieCard,
+      description: "Used as a card which contains the stats about completed journeys.",
+      author: "Markus Haubold",
+      version: "1.0",
+      usedBy: [
+        "Route /clientStories",
+        "Stories.svelte",
+      ],
+      dependecies: [
+        "IoMdPlanet (import from svelte-icons)", 
+        "FaUsers (import from svelte-icons)", 
+        "FaGrav (import from svelte-icons)", 
+      ],
+      variables: [
+        {
+          name: "destination",
+          description: "string: name of the destination",
+        },
+        {
+          name: "purpose",
+          description: "string: name of the journey purpose",
+        },
+        {
+          name: "completedTrips",
+          description: "string: amount of the completed journeys in the past with this destination and journey purpose",
+        },
+        {
+          name: "destinationImage",
+          description: "string: contains the path to the image for the given destination (moon, mars, venus)",
+        },
+        {
+          name: "statsTemplate",
+          description: "array of objects: datastructure (header, value, icon) with the content for the three stat-points",
         },
        
       ],
       script: 
   `
-    export let title: string = "title";
-    export let description: string = "description";
+    import IoMdPlanet from 'svelte-icons/io/IoMdPlanet.svelte';
+    import FaUsers from 'svelte-icons/fa/FaUsers.svelte';
+    import FaGrav from 'svelte-icons/fa/FaGrav.svelte';
+
+    export let destination: string = "Mars";
+    export let purpose: string = "Honeymoon";
+    export let completedTrips: string = "99";
+
+
+    let destinationImage: string = "";
+
+    switch (destination) {
+      case "Moon":
+        destinationImage = "/planetsWithoutBg/moon.webp";
+        break;
+      case "Mars":
+        destinationImage = "/planetsWithoutBg/mars.webp";
+        break;
+      case "Venus":
+        destinationImage = "/planetsWithoutBg/venus.webp";
+        break;
+    
+      default:
+        break;
+    }
+
+    const statsTemplate = [
+      {
+        header: "destination",
+        value: destination,
+        icon: IoMdPlanet
+      },
+      {
+        header: "purpose",
+        value: purpose,
+        icon: FaGrav
+      },
+      {
+        header: "Completed trips",
+        value: completedTrips,
+        icon: FaUsers
+      }
+    ]
   `,
       html: 
   `
-  <div class="w-full flex flex-col text-center space-y-6 mb-20">
-    <h1 class="font-bold text-4xl text-NFTW-pink-400">{title}</h1>
-    <p class="text-NFTW-pink-100 text-lg lg:text-2xl">{description}</p>
-  </div>
+  <div class="flex flex-col bg-NFTW-blue-900 p-2 rounded-xl border-2 border-NFTW-blue-700 w-80 mb-12">
+	<!--image-->
+	<div class="w-full p-4" class:p-4={destination != "Moon"}> <!--moon is smaller than the other, so give the other padding-->
+		<div class="bg-no-repeat bg-contain bg-center w-full h-96" style="background-image: url({destinationImage})"></div>
+	</div>
+	
+	<div class:pt-8={destination === "Moon"}></div>
+		<!--stats-->
+		{#each statsTemplate as stat}
+			<div class="mt-2 bg-NFTW-blue-200 grid grid-cols-1 w-full rounded-xl">
+				<div class="relative overflow-hidden bg-none px-4 py-1 sm:px-6">
+					<div class="absolute w-12 h-12 rounded-md bg-NFTW-lila-800 text-NFTW-lila-300 p-1">
+						<svelte:component this={stat.icon} />
+					</div>
+					<p class="ml-16 truncate text-sm font-medium text-NFTW-black-500 uppercase">{stat.header}</p>
+					<div class="ml-16 flex items-baseline">
+						<p class="text-2xl font-semibold text-NFTW-black-500">{stat.value}</p>
+					</div>
+				</div>
+			</div>
+		{/each}
+	</div>
   `,
     },
+    {
+      ID: 23,
+      name: "Stories",
+      component: Stories,
+      description: "Section component which containes all StorrieCards (component StorrieCard)",
+      author: "Markus Haubold",
+      version: "1.0",
+      usedBy: [
+        "Route /clientStories",
+      ],
+      dependecies: [
+        "StorrieCard.svelte",  
+      ],
+      variables: [
+        {
+          name: "cardData",
+          description: "array of objects: contains the datastructure (destination, purpose, completedTrips) to generate the needed StorrieCards with it.",
+        },       
+      ],
+      script: 
+  `
+  import StorieCard from "$lib/components/StorieCard.svelte";
 
+  const cardData = [
+      {
+          destination: "Venus",
+          purpose: "Honeymoon",
+          completedTrips: "23"
+      },
+      {
+          destination: "Mars",
+          purpose: "Vacation",
+          completedTrips: "49"
+      },
+      {
+          destination: "Moon",
+          purpose: "Birthdayspecial",
+          completedTrips: "11"
+      },
+      {
+          destination: "Mars",
+          purpose: "Photosafarie",
+          completedTrips: "36"
+      },
+      {
+          destination: "Venus",
+          purpose: "Saisonal Offer",
+          completedTrips: "9"
+      },
+  ]
+  `,
+      html: 
+`
+  <div class="mb-28 w-full grid grid-col md:grid-cols-2 xl:grid-cols-3">
+    {#each cardData as card}
+        <div class="mx-auto">
+            <StorieCard 
+            destination={card.destination}
+            purpose={card.purpose}
+            completedTrips={card.completedTrips}
+        />
+        </div> 
+    {/each}
+  </div>
+`,
+    },
     //-------------------------------------------------------------------------------------------
   ];
 
