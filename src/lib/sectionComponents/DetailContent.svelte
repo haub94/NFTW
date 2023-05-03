@@ -8,9 +8,7 @@
 
   export let showButtons: boolean = false;
 
-  let isPrototyping = true;
-
-  /* für Icons   <svelte:component this={...comp...} /> */
+  let isPrototyping = false;
 
   const infoData = [
     {
