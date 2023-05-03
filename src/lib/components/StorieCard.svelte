@@ -5,7 +5,7 @@
 
 	export let destination: string = "Mars";
 	export let purpose: string = "purpose";
-	export let completedTrips: string = "amaount trips";
+	export let completedTrips: string = "amount trips";
 
 
 	let destinationImage: string = "";

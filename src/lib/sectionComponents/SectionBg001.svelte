@@ -16,7 +16,7 @@
       </p>
     </div>
     <div class="relative mt-6">
-      <p class="mx-auto max-w-2xl text-lg leading-8 text-white/60">
+      <p class="mx-auto max-w-2xl text-lg leading-8 text-NFTW-white/60">
         {caption}
       </p>
       <svg
