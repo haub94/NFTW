@@ -1,16 +1,51 @@
 <script lang="ts">
+  import { checkUndefinedNullOrEmpty } from "$lib/tools/Tools.svelte";
   import IoIosRocket from "svelte-icons/io/IoIosRocket.svelte";
-  export let img: string = "/brokenImage.png";
-  export let title: string = "Lorem ipsum dolor";
-  export let caption: string = "Lorem ipsum dolor";
-  export let imgSize: string | number = "cover"; // auto, cover, contain ... or own size: 50%, 200px
-  export let price: string = "Lorem ipsum dollar $";
+
+  export let destName: string | undefined = undefined;
+  export let destPromoText: string | undefined = undefined;
+  export let destTimeslot: string | undefined = undefined;
+  export let destPrice: string | undefined = undefined;
+  export let destDays: string | undefined = undefined;
+  export let destAvailableUnits: string | undefined = undefined;
+  export let destImageName: string | undefined = undefined;
+  export let destImagePath: string | undefined = undefined;
+  export let destImageAltText: string | undefined = undefined;
+  export let destHotelName: string | undefined = undefined;
+  export let destHotelRanking: string | undefined = undefined;
+  export let destHotelRoomCapacity: string | undefined = undefined;
+  export let destHotelRoomClass: string | undefined = undefined;
+  export let destHotelDescription: string | undefined = undefined;
+
+  /*  dafür gibts noch kein Feld in der DB */
+  export let destHotelImageName: string | undefined = undefined;
+  export let destHotelImagePath: string | undefined = undefined;
+  export let destHotelImageAltText: string | undefined = undefined;
+  /*  */
+
+  export let jpName: string | undefined = undefined;
+  export let jpPromotext: string | undefined = undefined;
+  export let jpPrice: string | undefined = undefined;
+  export let jpIncludedServices: string | undefined = undefined;
+  export let jpImageName: string | undefined = undefined;
+  export let jpImagePath: string | undefined = undefined;
+  export let jpImageAltText: string | undefined = undefined;
+
+  /*  !!!! in case of multiple options use this syntax to show all data dynamically:
+            {!checkUndefinedNullOrEmpty(destName)
+            ? destName
+            : !checkUndefinedNullOrEmpty(jpName)
+            ? jpName
+            : !checkUndefinedNullOrEmpty(hotelName)
+            ? hotelName
+            : "none"}
+*/
+
+  export let imageSize: string | number = "cover"; // auto, cover, contain ... or own size: 50%, 200px
 
   export let showButtons: boolean = false;
 
-  let isPrototyping = true;
-
-  /* für Icons   <svelte:component this={...comp...} /> */
+  let isPrototyping = false; /* only for dev */
 
   const infoData = [
     {
@@ -42,14 +77,22 @@
   class:border-4={isPrototyping}
 >
   <div
-    id="img"
+    id="image"
     class="relative bg-blend-multiply bg-no-repeat grid justify-center"
     class:border-blue-500={isPrototyping}
     class:border-4={isPrototyping}
     style="
-background-image: url('{isPrototyping ? '' : img}');
+background-image: url('{isPrototyping
+      ? ''
+      : !checkUndefinedNullOrEmpty(destImagePath)
+      ? destImagePath
+      : !checkUndefinedNullOrEmpty(jpImagePath)
+      ? jpImagePath
+      : !checkUndefinedNullOrEmpty(destHotelImagePath)
+      ? destHotelImagePath
+      : 'none'}');
 background-color:#ddd;
-background-size: {imgSize};
+background-size: {imageSize};
 background-position:center;
  "
   >
@@ -78,25 +121,37 @@ background-position:center;
         class:border-green-500={isPrototyping}
       >
         <h2
-          id="titleText"
+          id="nameText"
           class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mx-5 text-center mt-20"
           class:text-NFTW-white={!isPrototyping}
           class:border-4={isPrototyping}
           class:border-pink-500={isPrototyping}
           style="font-weight: 900;"
         >
-          {title}
+          {!checkUndefinedNullOrEmpty(destName)
+            ? destName
+            : !checkUndefinedNullOrEmpty(jpName)
+            ? jpName
+            : !checkUndefinedNullOrEmpty(destHotelName)
+            ? destHotelName
+            : "none"}
         </h2>
 
         <div
-          id="captionText"
+          id="promoText"
           class="text-2xl lg:text-3xl max-w-lg mx-5 mt-5"
           class:text-NFTW-white={!isPrototyping}
           class:border-4={isPrototyping}
           class:border-NFTW-lila-500={isPrototyping}
           style="font-weight:600"
         >
-          {caption}
+          {!checkUndefinedNullOrEmpty(destPromoText)
+            ? destPromoText
+            : !checkUndefinedNullOrEmpty(jpPromotext)
+            ? jpPromotext
+            : !checkUndefinedNullOrEmpty(destHotelDescription)
+            ? destHotelDescription
+            : "none"}
         </div>
       </div>
       <div

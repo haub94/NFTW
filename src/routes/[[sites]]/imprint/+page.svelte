@@ -1,4 +1,5 @@
 <script lang="ts">
+  import SectionHeader from "$lib/components/SectionHeader.svelte";
   import ImpressumContent from "$lib/sectionComponents/ImprintContent.svelte";
   import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
 </script>
@@ -10,6 +11,7 @@
 
 <main class="h-full">
   <SectionBg002>
+    <SectionHeader title="Imprint" />
     <ImpressumContent />
   </SectionBg002>
 </main>
