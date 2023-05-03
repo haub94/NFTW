@@ -3,7 +3,7 @@
   export let title: string = "Lorem ipsum dolor";
   export let caption: string = "Lorem ipsum dolor";
   export let price: string = "Lorem ipsum dolor";
-  export let imgPosition: string = "center";
+  export let imgPosition: string = "left";
   export let imgSize: string | number = "cover";
   export let path: string = "/";
 </script>
