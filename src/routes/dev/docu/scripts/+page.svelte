@@ -74,11 +74,7 @@
                               <!--code preview-->
                               <div class="flex-row">
                                 <pre>
-                                    <ScriptBlock>
-                                    <slot>
-                                        {script.script}
-                                    </slot>
-                                    </ScriptBlock>  
+                                    {script.script} 
                                 </pre>
                             </div> 
                           </div>
