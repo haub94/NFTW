@@ -6,47 +6,47 @@
 
   const data = [
     {
-      title:"BIRTHDAY SPECIAL",
-      caption:"Make your birthday unforgettable!",
+      name:"BIRTHDAY SPECIAL",
+      promoText:"Make your birthday unforgettable!",
       price:"13.000 €",
       path:"spacetravel/journeyPurpose/birthdayspecial",
-      img:"/journeypurpose/birthday.png",
+      image:"/journeypurpose/birthday.png",
       imgPosition:"left",
       imgSize:"cover",
     },
     {
-      title:"HONEYMOON",
-      caption:"Start your new chapter with an adventure.",
+      name:"HONEYMOON",
+      promoText:"Start your new chapter with an adventure.",
       price:"20.000 €",
       path:"spacetravel/journeyPurpose/honeymoon",
-      img:"/journeypurpose/honeymoon.png",
+      image:"/journeypurpose/honeymoon.png",
       imgPosition:"left",
       imgSize:"cover",
     },
     {
-      title:"PHOTOTOUR",
-      caption:"Capture your memories.",
+      name:"PHOTOTOUR",
+      promoText:"Capture your memories.",
       price:"8.000 €",
       path:"spacetravel/journeyPurpose/phototour",
-      img:"/journeypurpose/astronautSelfie.png",
+      image:"/journeypurpose/astronautSelfie.png",
       imgPosition:"left",
       imgSize:"cover",
     },
     {
-      title:"VACATION",
-      caption:"Get out of the earth.",
+      name:"VACATION",
+      promoText:"Get out of the earth.",
       price:"16.000 €",
       path:"spacetravel/journeyPurpose/vacation",
-      img:"/journeypurpose/vacation.png",
+      image:"/journeypurpose/vacation.png",
       imgPosition:"left",
       imgSize:"cover",
     },
     {
-      title:"OUR REMMOMENDATIONS",
-      caption:"What we would recommend ...",
+      name:"OUR REMMOMENDATIONS",
+      promoText:"What we would recommend ...",
       price:"16.000 €",
       path:"spacetravel/journeyPurpose/ourRecomandations",
-      img:"/journeypurpose/recommendations.png",
+      image:"/journeypurpose/recommendations.png",
       imgPosition:"left",
       imgSize:"cover",
     },
@@ -59,11 +59,11 @@
    {#each data as data}
      <div class="col-span-1">
      <CardDestinations
-     title={data.title}
-     caption={data.caption}
+     name={data.name}
+     promoText={data.promoText}
      price={data.price}
      path={data.path}
-     img={data.img}
+     image={data.image}
      imgPosition={data.imgPosition}
      imgSize={data.imgSize}/>
      </div>
