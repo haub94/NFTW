@@ -5,29 +5,29 @@
 
   const data = [
     {
-      title: "MARS",
-      caption: "Have you ever been to the red planet?",
+      name: "MARS",
+      promoText: "Have you ever been to the red planet?",
       price: "375.000 €",
       path: "/spacetravel/destination/mars",
-      img: "/planets/mars.png",
+      image: "/planets/mars.png",
       imgPosition: "left",
       imgSize: "cover",
     },
     {
-      title: "MOON",
-      caption: "Dancing in the moonlight, everybody.",
+      name: "MOON",
+      promoText: "Dancing in the moonlight, everybody.",
       price: "300.000 €",
       path: "/spacetravel/destination/moon",
-      img: "/planets/moon.png",
+      image: "/planets/moon.png",
       imgPosition: "left",
       imgSize: "cover",
     },
     {
-      title: "VENUS",
-      caption: "Are you ready to explore the planet?",
+      name: "VENUS",
+      promoText: "Are you ready to explore the planet?",
       price: "450.000 €",
       path: "/spacetravel/destination/venus",
-      img: "/planets/venus.png",
+      image: "/planets/venus.png",
       imgPosition: "left",
       imgSize: "cover",
     },
@@ -42,11 +42,11 @@
     {#each data as data}
       <div class="grid col-span-1">
         <CardDestinations
-          title={data.title}
-          caption={data.caption}
+          name={data.name}
+          promoText={data.promoText}
           price={data.price}
           path={data.path}
-          img={data.img}
+          image={data.image}
           imgPosition={data.imgPosition}
           imgSize={data.imgSize}
         />
