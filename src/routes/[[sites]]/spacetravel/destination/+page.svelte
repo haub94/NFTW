@@ -1,5 +1,6 @@
 <script lang="ts">
   import CardDestinations from "$lib/components/CardDestinations.svelte";
+  import SectionHeader from "$lib/components/SectionHeader.svelte";
   import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
 
   const data = [
@@ -34,13 +35,7 @@
 </script>
 
 <SectionBg002>
-  <div class="mx-auto max-w-4xl mb-20">
-    <p
-      class="mt-2 text-4xl font-bold tracking-tight justify-self-center text-center text-NFTW-white sm:text-5xl"
-    >
-      Destinations
-    </p>
-  </div>
+  <SectionHeader title="Destinations" />
   <div
     class="grid justify-center justify-self-center mx-auto max-w-7xl gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
   >
