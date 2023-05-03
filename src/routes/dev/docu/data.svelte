@@ -14,6 +14,7 @@
   import Form from "$lib/sectionComponents/Form.svelte";
   import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
   import SectionBg001 from "$lib/sectionComponents/SectionBg001.svelte";
+  import SectionHeader from "$lib/components/SectionHeader.svelte";
 
   export const componentData = [
     /*
@@ -1101,6 +1102,80 @@ export let twoCols: boolean = false;
   {/if}
 </div>
         `,
+    },
+    {
+      ID: 20,
+      name: "SectionHeader",
+      component: SectionHeader,
+      description: "Used as the intro part of every site. It contents a header for a few of buzzwords and a description to mention the core of the site.",
+      author: "Markus Haubold",
+      version: "1.0",
+      usedBy: [
+        "Route /clientStories",
+      ],
+      dependecies: [
+        "-", 
+      ],
+      variables: [
+        {
+          name: "title",
+          description: "string: content for the header / buzzwords",
+        },
+        {
+          name: "description",
+          description: "string: content for the site-description",
+        },
+       
+      ],
+      script: 
+  `
+    export let title: string = "title";
+    export let description: string = "description";
+  `,
+      html: 
+  `
+  <div class="w-full flex flex-col text-center space-y-6 mb-20">
+    <h1 class="font-bold text-4xl text-NFTW-pink-400">{title}</h1>
+    <p class="text-NFTW-pink-100 text-lg lg:text-2xl">{description}</p>
+  </div>
+  `,
+    },
+    {
+      ID: 21,
+      name: "SectionHeader",
+      component: SectionHeader,
+      description: "Used as the intro part of every site. It contents a header for a few of buzzwords and a description to mention the core of the site.",
+      author: "Markus Haubold",
+      version: "1.0",
+      usedBy: [
+        "Route /clientStories",
+      ],
+      dependecies: [
+        "-", 
+      ],
+      variables: [
+        {
+          name: "title",
+          description: "string: content for the header / buzzwords",
+        },
+        {
+          name: "description",
+          description: "string: content for the site-description",
+        },
+       
+      ],
+      script: 
+  `
+    export let title: string = "title";
+    export let description: string = "description";
+  `,
+      html: 
+  `
+  <div class="w-full flex flex-col text-center space-y-6 mb-20">
+    <h1 class="font-bold text-4xl text-NFTW-pink-400">{title}</h1>
+    <p class="text-NFTW-pink-100 text-lg lg:text-2xl">{description}</p>
+  </div>
+  `,
     },
 
     //-------------------------------------------------------------------------------------------
