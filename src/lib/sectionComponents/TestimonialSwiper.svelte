@@ -32,7 +32,6 @@
         }
     ]
 
-
   </script>
   
 <div class="w-full h-auto overflow-hidden">

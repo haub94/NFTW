@@ -18,6 +18,7 @@
   import TestimonialCard from "$lib/components/TestimonialCard.svelte";
   import StorrieCard from "$lib/components/StorieCard.svelte";
   import Stories from "$lib/sectionComponents/Stories.svelte";
+  import TestimonialSwiper from "$lib/sectionComponents/TestimonialSwiper.svelte";
 
   export const componentData = [
     /*
@@ -1462,6 +1463,91 @@ export let twoCols: boolean = false;
         />
         </div> 
     {/each}
+  </div>
+`,
+    },
+    {
+      ID: 24,
+      name: "TestimonialSwiper",
+      component: TestimonialSwiper,
+      description: "Section component to swipe the TestimonialCards automaticly one by one along the horizontal axis.",
+      author: "Markus Haubold",
+      version: "1.0",
+      usedBy: [
+        "Route /clientStories",
+      ],
+      dependecies: [
+        "TestimonialCard.svelte",
+        "register (import from swiper)",
+        "swiper-container (comes with swiper package v9.2.4)",  
+        "swiper-slide (comes with swiper package v9.2.4)",  
+      ],
+      variables: [
+        {
+          name: "testimonialData",
+          description: "array of objects: contains the datastructure (name, bookedDestination, bookedPurpose, givenStars, reviewText, image) to generate the needed TestimonialCards.",
+        },       
+      ],
+      script: 
+`
+  import TestimonialCard from '$lib/components/TestimonialCard.svelte';
+  import { register } from 'swiper/element/bundle';
+
+  register();
+
+
+  const testimonialData = [
+      {
+          name: "Debi Worknesh",
+          bookedDestination: "Moon",
+          bookedPurpose: "Photosafarie",
+          givenStars: "4",
+          reviewText: "I recently went on a photosafari to space with this company, and it was truly a remarkable experience. The team at this company were incredibly helpful, ensuring that we had all the necessary equipment to capture stunning photos of space and the Earth from above. See you next year!",
+          image: "/testimonials/DebiWorknesh.webp",
+      },
+      {
+          name: "Marcius Cecilio",
+          bookedDestination: "Mars",
+          bookedPurpose: "Vacation",
+          givenStars: "3",
+          reviewText: "I highly recommend this company for anyone interested in a trip to Mars. They offer top-notch accommodations and an unforgettable journey through space. The team is knowledgeable and experienced, and they go above and beyond to ensure that your trip is safe, and out of this world.",
+          image: "/testimonials/MarciusCecilio.webp",
+      },
+      {
+          name: "Sung-Hyun Aysha",
+          bookedDestination: "Venus",
+          bookedPurpose: "Honeymoon",
+          givenStars: "5",
+          reviewText: "If you're looking for a honeymoon that's truly out of this world, I highly recommend booking a trip to Venus with this company. The team provided us with an amazing two-week itinerary, filled with romantic excursions and once-in-a-lifetime experiences. Thank you soo much for this!",
+          image: "/testimonials/Sung-HyunAysha.webp",
+      }
+  ]
+`,
+      html: 
+`
+  <div class="w-full h-auto overflow-hidden">
+    <swiper-container
+        space-between=20
+        autoplay="true"
+        speed="600" 
+        loop="true"
+        slides-per-view={1}
+        centered-slides={false}
+        
+    >
+        {#each testimonialData as person}
+            <swiper-slide>        
+                <TestimonialCard 
+                    name={person.name}
+                    bookedDestination={person.bookedDestination}
+                    bookedPurpose={person.bookedPurpose}
+                    givenStars={person.givenStars}
+                    text={person.reviewText}
+                    image={person.image}
+                />    
+            </swiper-slide>
+        {/each}
+    </swiper-container>
   </div>
 `,
     },
