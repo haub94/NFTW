@@ -56,5 +56,9 @@ The documentation is in the project integrated.
 3. switch into the created directory and install dependencies: ``` npm install ```
 4. run the localhost: ``` npm run dev ``` or ``` npm run dev -- --open ``` to open a new tab in the browser
 
+## TEMP DB CLI
+- update schema ``` npx prisma db push ```
+- start prisma studio: ``` npx prisma studio ```
+
 
 
