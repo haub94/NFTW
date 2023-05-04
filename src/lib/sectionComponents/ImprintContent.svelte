@@ -60,20 +60,20 @@
 		},
 	]
 </script>
-<div class="relative bg-NFTW-bg">
+<div class="relative bg-NFTW-bg bg-transparent">
     <div class="max-w-7xl mx-auto pb-16 pt-10 px-4 sm:px-6 lg:px-8">
-        <div class="overflow-hidden bg-white shadow sm:rounded-lg">
+        <div class="overflow-hidden bg-NFTW-bg bg-opacity-50 shadow sm:rounded-lg">
             <div class="px-4 py-5 sm:px-6">
-                <h1 class="mt-2 text-3xl font-bold text-gray-900 tracking-tight sm:text-3xl">Imprint</h1>
-                <h2 class="mt-1 max-w-2xl text-base text-gray-500">Information according to §5 TMG</h2>
+                <h1 class="mt-2 text-3xl font-bold text-NFTW-white tracking-tight sm:text-3xl">Imprint</h1>
+                <h2 class="mt-1 max-w-2xl text-base text-NFTW-blue-100">Information according to §5 TMG</h2>
             </div>
-                <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
+                <div class="border-t border-NFTW-lila-100 px-4 py-5 sm:px-6">
                  <div class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
                     
 					{#each imprintData as imDate}
 						<div class="sm:col-span-1">
-							<p class=" font-medium text-gray-500">{imDate.header}</p>
-							<p class="mt-1  text-gray-900">
+							<p class=" font-medium text-NFTW-white">{imDate.header}</p>
+							<p class="mt-1  text-NFTW-blue-100">
 								{imDate.descriptionLine1} 
 								{#if imDate.descriptionLine2 !== ""}
 									<br/>{imDate.descriptionLine2} <br/>
@@ -86,13 +86,16 @@
 					{/each}
 
                     <div class="sm:col-span-2">
-                        <h2 class="mt-3 mb-6 text-lg font-semibold tracking-tight text-gray-900">Legal information on this website</h2>
+                        <h2 class="mt-3 mb-6 text-lg font-semibold tracking-tight text-NFTW-white">Legal information on this website</h2>
                         <div class="space-y-2">
                             <Body bind:active>
 								{#each accordionData as accDate}
-									<Item id={accDate.id} title={accDate.header}>
+								
+								<Item id={accDate.id} title={accDate.header}>
+									<div class="mb-10">
 										{accDate.description}
-									</Item>
+									</div>
+								</Item>
 								{/each}
                             </Body>
                         </div>

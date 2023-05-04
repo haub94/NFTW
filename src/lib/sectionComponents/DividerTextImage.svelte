@@ -1,13 +1,10 @@
 <script lang="ts">
-  import { page } from "$app/stores";
-
-  const isGetInContact = $page.url.pathname.includes("/getInContact");
-
   export let img: string = "/brokenImage.png";
   export let title: string = "Lorem ipsum dolor";
   export let caption: string = "Lorem ipsum dolor";
   export let imgPosition: string = "center"; // center, bottom, top, left, left-bottom, left-top, right, right-bottom, right-top
   export let imgSize: string | number = "cover"; // auto, cover, contain ... or own size: 50%, 200px
+  export let imgHeight: string | number = "";
 </script>
 
 <div class="relative bg-NFTW-bg bg-opacity-30">
@@ -17,11 +14,12 @@
       style="
     background-image: url('{img}');
     background-size: {imgSize};
-    background-position: {imgPosition}"
+    background-position: {imgPosition};"
     />
   </div>
   <div
     class="pb-24 pt-16 sm:pb-32 sm:pt-24 lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:pt-32"
+    style="height:{imgHeight}"
   >
     <div class="px-6 lg:px-8">
       <div class="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">

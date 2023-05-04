@@ -149,6 +149,16 @@
           </a>
           <div class="flex flex-1 flex-col">
             <div class="flex flex-1 flex-col gap-y-7">
+                <!--about docu-->
+                <div class="space-y-2 px-2 mt-4">
+                  <a href={pathToAboutDocu} on:click={toggleVisibilitySidebar}>
+                    <h3 class="text-white font-bold">About this Documentation</h3>  
+                  </a>
+                  <a on:click={toggleVisibilitySidebar} href={pathToAboutDocu} class={sidebarButtonStyle}>
+                    get help
+                  </a>
+                </div>
+                
                 <!--component names-->
                 <div class="space-y-2 px-2">
                   <a href={pathToComponentsDocu} on:click={toggleVisibilitySidebar}>
@@ -199,16 +209,6 @@
                         </a> 
                       {/each}   
                   {/each}
-                </div>
-
-                <!--about docu-->
-                <div class="space-y-2 px-2 mt-4 absolute bottom-8">
-                  <a href={pathToAboutDocu} on:click={toggleVisibilitySidebar}>
-                    <h3 class="text-white font-bold">About Documentation</h3>  
-                  </a>
-                  <a on:click={toggleVisibilitySidebar} href={pathToAboutDocu} class={sidebarButtonStyle}>
-                    get help
-                  </a>
                 </div>
             </div>
           </div>

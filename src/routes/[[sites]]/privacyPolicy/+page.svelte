@@ -1,7 +1,8 @@
 <script lang="ts">
-    // your script goes here
+  import SectionHeader from "$lib/components/SectionHeader.svelte";
+  import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
 </script>
 
-<div>
-    <!-- your html goes here -->
-</div>
+<SectionBg002>
+  <SectionHeader title="Privacy Policy" />
+</SectionBg002>

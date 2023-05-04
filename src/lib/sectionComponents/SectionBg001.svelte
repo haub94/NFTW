@@ -9,14 +9,14 @@
 <div class="isolate overflow-hidden bg-NFTW-bg">
   <div class="mx-auto max-w-7xl px-6 pb-96 pt-24 text-center sm:pt-32 lg:px-8">
     <div class="mx-auto max-w-4xl">
-      <p class="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+      <p class="mt-2 text-4xl font-bold tracking-tight text-NFTW-white sm:text-5xl">
         {checkUndefinedNullOrEmpty(title2of2) ? title1of2 : title1of2 + " "}<br
           class="hidden sm:inline lg:hidden"
         />{title2of2}
       </p>
     </div>
     <div class="relative mt-6">
-      <p class="mx-auto max-w-2xl text-lg leading-8 text-white/60">
+      <p class="mx-auto max-w-2xl text-lg leading-8 text-NFTW-white/60">
         {caption}
       </p>
       <svg
@@ -51,6 +51,3 @@
     </div>
   </div>
 </div>
-
-<style>
-</style>
