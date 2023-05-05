@@ -6,8 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.sqlite"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Customers {
@@ -17,6 +17,3 @@ model Customers {
   email String
 }
 
-
-
-//1:50 https://www.youtube.com/watch?v=E9J2VXd-bzE
