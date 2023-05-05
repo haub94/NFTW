@@ -42,7 +42,7 @@
     destImageName={data[0].destImageName}
     destImageAltText={data[0].destImageAltText}
   />
-  <DividerTextIFrame iFrameHeight={450} />
+  <DividerTextIFrame iFrameHeight={450} height={750} />
   <DetailContent
     destHotelName={data[1].destHotelName}
     destHotelImagePath={data[1].destHotelImagePath}
