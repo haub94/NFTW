@@ -43,8 +43,6 @@
 
   export let imageSize: string | number = "cover"; // auto, cover, contain ... or own size: 50%, 200px
 
-  export let showButtons: boolean = false;
-
   let isPrototyping = false; /* only for dev */
 
   const infoData = [
@@ -156,7 +154,7 @@ background-position:center;
       </div>
       <div
         id="info"
-        class="justify-center gap-x-20 gap-y-10 px-20 w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid mt-20 mb-10"
+        class="justify-center gap-x-20 gap-y-10 px-20 w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid mt-20 mb-32"
         class:border-4={isPrototyping}
         class:border-cyan-500={isPrototyping}
       >
@@ -194,31 +192,6 @@ background-position:center;
           </div>
         {/each}
       </div>
-      {#if showButtons || isPrototyping}<div
-          id="buttons"
-          class="flex h-16 mb-10 justify-end gap-10 pr-10"
-          class:border-4={isPrototyping}
-          class:border-red-500={isPrototyping}
-        >
-          <div
-            id="buttonPlanetJourneyPurpose"
-            class="h-14 w-60 text-center"
-            class:border-4={isPrototyping}
-            class:border-yellow-500={isPrototyping}
-            class:text-NFTW-white={!isPrototyping}
-          >
-            PlanetJourneyPurpose
-          </div>
-          <div
-            id="buttonGetInContact"
-            class="h-14 w-60 text-center"
-            class:border-4={isPrototyping}
-            class:border-orange-500={isPrototyping}
-            class:text-NFTW-white={!isPrototyping}
-          >
-            GetInContact
-          </div>
-        </div>{/if}
     </div>
   </div>
 </div>
