@@ -57,7 +57,8 @@ The documentation is in the project integrated.
 4. run the localhost: ``` npm run dev ``` or ``` npm run dev -- --open ``` to open a new tab in the browser
 
 ## TEMP DB CLI
-- update schema ``` npx prisma db push ```
+- generate the prisma/client ``` prisma generate ```
+- migrate the db ``` npx prisma migrate dev --name <MIGRATION NAME> ```
 - start prisma studio: ``` npx prisma studio ```
 
 
