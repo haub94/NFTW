@@ -30,7 +30,7 @@
   ];
 </script>
 
-<SectionBg002>
+<SectionBg002 paddingBottom="0px" paddingTop="0px">
   <DetailContent
     destName={data[0].destName}
     destImagePath={data[0].destImagePath}
@@ -42,7 +42,7 @@
     destImageName={data[0].destImageName}
     destImageAltText={data[0].destImageAltText}
   />
-  <DividerTextIFrame iFrameHeight={450} />
+  <DividerTextIFrame iFrameHeight={450} height={750} />
   <DetailContent
     destHotelName={data[1].destHotelName}
     destHotelImagePath={data[1].destHotelImagePath}

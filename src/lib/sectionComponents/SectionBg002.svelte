@@ -2,9 +2,11 @@
   import { randomPercentage } from "$lib/tools/Tools.svelte";
 
   export let twoCols: boolean = false;
+  export let paddingTop: string = "128px";
+  export let paddingBottom: string = "128px";
 </script>
 
-<div class="relative isolate bg-NFTW-bg px-6 py-24 sm:py-32 lg:px-8">
+<div class="relative isolate bg-NFTW-bg px-6 lg:px-8"style="padding-top:{paddingTop} ; padding-bottom:{paddingBottom};">
   <div
     class="absolute inset-x-0 -top-3 -z-10 transform-gpu overflow-hidden px-36 blur-3xl"
     aria-hidden="true"
@@ -17,7 +19,7 @@
   
     <!-- universal with full width -->
     {#if !twoCols}
-      <div class="mx-auto w-full mt-16 items-center sm:mt-20 sm:gap-y-0">
+      <div class="mx-auto w-full items-center sm:gap-y-0" >
         <slot />
       </div>
     {/if}
@@ -25,7 +27,7 @@
   <!-- 2 cols -->
   {#if twoCols}
     <div
-      class="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 gap-x-16 sm:mt-20 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-2"
+      class="mx-auto grid max-w-lg grid-cols-1 items-center gap-y-6 gap-x-16 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-2"
     >
       <slot />
     </div>

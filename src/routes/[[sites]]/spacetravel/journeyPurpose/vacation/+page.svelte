@@ -15,7 +15,7 @@
   ];
 </script>
 
-<SectionBg002>
+<SectionBg002 paddingBottom="0px" paddingTop="0px">
   <DetailContent
     jpName={data[0].jpName}
     jpPromotext={data[0].jpPromotext}

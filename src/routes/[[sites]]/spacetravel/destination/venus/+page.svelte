@@ -30,7 +30,7 @@
   ];
 </script>
 
-<SectionBg002>
+<SectionBg002 paddingBottom="0px" paddingTop="0px">
   <DetailContent
     destName={data[0].destName}
     destImagePath={data[0].destImagePath}
