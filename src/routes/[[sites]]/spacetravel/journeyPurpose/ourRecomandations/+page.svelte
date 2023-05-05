@@ -1,4 +1,5 @@
 <script lang="ts">
+  import ButtonsDestJpGic from "$lib/components/ButtonsDestJpGic.svelte";
   import DetailContent from "$lib/sectionComponents/DetailContent.svelte";
   import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
   const data = [
@@ -25,4 +26,5 @@
     jpImagePath={data[0].jpImagePath}
     jpImageAltText={data[0].jpImageAltText}
   />
+  <ButtonsDestJpGic />
 </SectionBg002>

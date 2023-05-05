@@ -1,4 +1,5 @@
 <script lang="ts">
+  import ButtonsDestJpGic from "$lib/components/ButtonsDestJpGic.svelte";
   import DetailContent from "$lib/sectionComponents/DetailContent.svelte";
   import DividerTextIFrame from "$lib/sectionComponents/DividerTextIFrame.svelte";
   import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
@@ -53,4 +54,5 @@
     destHotelImageName={data[1].destHotelImageName}
     destHotelImageAltText={data[1].destHotelImageAltText}
   />
+  <ButtonsDestJpGic />
 </SectionBg002>
