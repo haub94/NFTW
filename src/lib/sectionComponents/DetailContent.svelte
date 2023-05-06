@@ -1,6 +1,7 @@
 <script lang="ts">
   import { checkUndefinedNullOrEmpty } from "$lib/tools/Tools.svelte";
   import IoIosRocket from "svelte-icons/io/IoIosRocket.svelte";
+  import IoMdAlert from "svelte-icons/io/IoMdAlert.svelte";
 
   export let destName: string | undefined = undefined;
   export let destPromoText: string | undefined = undefined;
@@ -26,7 +27,9 @@
   export let jpName: string | undefined = undefined;
   export let jpPromotext: string | undefined = undefined;
   export let jpPrice: string | undefined = undefined;
-  export let jpIncludedServices: string | undefined = undefined;
+  export let jpIncludedServices: { icon: string; service: string }[] = [
+    { icon: "IoIosRocket", service: "Service 1" },
+  ];
   export let jpImageName: string | undefined = undefined;
   export let jpImagePath: string | undefined = undefined;
   export let jpImageAltText: string | undefined = undefined;
@@ -44,29 +47,6 @@
   export let imageSize: string | number = "cover"; // auto, cover, contain ... or own size: 50%, 200px
 
   let isPrototyping = false; /* only for dev */
-
-  const infoData = [
-    {
-      icon: "SVG PATH",
-      description:
-        "Descrip-tion text 1 Descrip-tion text 1 Descrip-tion text 1 Descrip-tion text 1",
-    },
-    {
-      icon: "SVG PATH",
-      description:
-        "Descrip-tion text 2 Descrip-tion text 2 Descrip-tion text 2 Descrip-tion text 2",
-    },
-    {
-      icon: "SVG PATH",
-      description:
-        "Descrip-tion text 3 Descrip-tion text 3 Descrip-tion text 3 Descrip-tion text 3",
-    },
-    {
-      icon: "SVG PATH",
-      description:
-        "Descrip-tion text 4 Descrip-tion text 4 Descrip-tion text 4 Descrip-tion text 4",
-    },
-  ];
 </script>
 
 <div
@@ -158,7 +138,7 @@ background-position:center;
         class:border-4={isPrototyping}
         class:border-cyan-500={isPrototyping}
       >
-        {#each infoData as data}
+        {#each jpIncludedServices as data}
           <div
             id="infos"
             class="justify-center grid w-full col-span-1"
@@ -177,7 +157,10 @@ background-position:center;
                 class="h-28 w-28"
                 class:text-NFTW-white={!isPrototyping}
               >
-                <svelte:component this={IoIosRocket} />
+                <!--   !!!!!!!!! write a function to manage and convert icon-names as string to icon as svelte:component !!!!!!!!!   -->
+                <svelte:component
+                  this={data.icon === "IoIosRocket" ? IoIosRocket : IoMdAlert}
+                />
               </div>
             </div>
             <div
@@ -187,7 +170,7 @@ background-position:center;
               class:border-green-500={isPrototyping}
               class:text-NFTW-white={!isPrototyping}
             >
-              {data.description}
+              {data.service}
             </div>
           </div>
         {/each}
