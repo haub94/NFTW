@@ -50,16 +50,19 @@ The documentation is in the project integrated.
 - You will find it by follow the route:  http://127.0.0.1:5173/dev/docu
 - Every componend must noted in the docu! --> add a new object to the data-object in the +page.svelte file from the route /dev/docu (use the template!)
 
+
+## 💾  Prisma and Supabase
+To interact with the database (from supabase) the project use Prisma (client). 
+
+some importent actions are:
+- to interact with the db it needs the prisma client --> generate them with ``` prisma generate ```
+- to generate new tables in the db, add a new model to the schema.prisma file and push it to supabase using ``` prisma db push ```
+- migrate the db ``` npx prisma migrate dev --name <MIGRATION NAME> ``` (do this only if you have insert in all needed datas) 
+- start prisma studio (manage data, tables and values): ``` npx prisma studio ``` (lighweight alternative to the web-dashboard from supabase)
+
 ## 🔥  Step-by-step instruction
 1. switch to the location where you want to have the project directory
 2. clone the repo: ``` git clone git@github.com:haub94/NFTW.git ```
 3. switch into the created directory and install dependencies: ``` npm install ```
-4. run the localhost: ``` npm run dev ``` or ``` npm run dev -- --open ``` to open a new tab in the browser
-
-## TEMP DB CLI
-- generate the prisma/client ``` prisma generate ```
-- migrate the db ``` npx prisma migrate dev --name <MIGRATION NAME> ```
-- start prisma studio: ``` npx prisma studio ```
-
-
-
+4. build the project ``` npm run build ``` (important because it generates the prisma client!)
+5. run the localhost: ``` npm run dev ``` or ``` npm run dev -- --open ``` to open a new tab in the browser
