@@ -1,5 +1,7 @@
 <script lang="ts">
-  import BgVideo from "$lib/sectionComponents/BgVideo.svelte";
+  import HomeSection from "$lib/components/HomeSection.svelte";
+import BgVideo from "$lib/sectionComponents/BgVideo.svelte";
+  import SectionBg001 from "$lib/sectionComponents/SectionBg001.svelte";
 </script>
 
 <BgVideo
@@ -9,3 +11,7 @@
   captionPath="/getInContact"
   videoHeight="70vh"
 />
+
+<SectionBg001
+title1of2="About us"></SectionBg001>
+<HomeSection></HomeSection>
