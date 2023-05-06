@@ -13,7 +13,15 @@
 
 <SectionBg002>
   <SectionHeader title="Spacetravel" />
-  <InfoSection />
+  <InfoSection
+    title="Where to go. When to go."
+    text1="Lorem Ipsum Dolor 1"
+    text2="Lorem Ipsum Dolor 2"
+    img1="/planets/blue-planet.png"
+    img2="/planets/rainbow-planet.png"
+    img3="/planets/water-planet.png"
+    img4="/planets/striped-planet.png"
+  />
 </SectionBg002>
 
 <SectionBg001 title1of2="" title2of2="" caption="">
