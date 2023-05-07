@@ -8,7 +8,10 @@
       jpPromotext:
         "This is a description about. How wonderful this journey is. And so on ... And so on ... And so on ... And so on ... And so on ... ",
       jpPrice: "",
-      jpIncludedServices: "",
+      jpIncludedServices: [
+        { icon: "icon 1", service: "Service 1" },
+        { icon: "icon 2", service: "Service 2" },
+      ],
       jpImageName: "",
       jpImagePath: "/journeypurpose/astronautSelfie.png",
       jpImageAltText: "",
