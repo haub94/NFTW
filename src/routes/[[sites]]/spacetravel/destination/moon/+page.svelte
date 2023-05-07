@@ -25,7 +25,7 @@
       destHotelDescription:
         "This is a description about. How wonderful this hotel is. And so on ... And so on ... And so on ... And so on ... And so on ... ",
       destHotelImageName: "",
-      destHotelImagePath: "/hotels/grande_centre.png",
+      destHotelImagePath: "/hotels/space_hotel_002.png",
       destHotelImageAltText: "",
     },
   ];

@@ -13,7 +13,7 @@
         { icon: "icon 2", service: "Service 2" },
       ],
       jpImageName: "",
-      jpImagePath: "/journeypurpose/astronautSelfie.png",
+      jpImagePath: "/journeypurpose/spacePhoto.png",
       jpImageAltText: "",
     },
   ];
