@@ -17,10 +17,10 @@
     title="Where to go. When to go."
     text1="Lorem Ipsum Dolor 1"
     text2="Lorem Ipsum Dolor 2"
-    img1="/planets/blue-planet.png"
-    img2="/planets/rainbow-planet.png"
-    img3="/planets/water-planet.png"
-    img4="/planets/striped-planet.png"
+    img1="/spacetravel/spaceWalk.png"
+    img2="/spacetravel/spaceWalkGroup.png"
+    img3="/spacetravel/astronautLove.png"
+    img4="/spacetravel/walkOnPlanet.png"
   />
 </SectionBg002>
 
