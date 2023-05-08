@@ -4,7 +4,6 @@
     import Stories from "$lib/sectionComponents/Stories.svelte";
 	import TestimonialCard from '$lib/components/TestimonialCard.svelte';
     import { register } from 'swiper/element/bundle';
-    import { onMount } from 'svelte';
     import { dev } from "$app/environment";
 
 	import type { PageData } from './$types'
@@ -13,14 +12,7 @@
 	import type { IMAGES } from "../../../../prisma/tableInterfaces";
 
 	const EMPTY_STRING = "";
-
-
 	export let data: PageData;
-  
-	//init the slider
-    register();
-  
-
 	let testimonialData = [
         {
             name: "",
@@ -36,6 +28,7 @@
   	let RATING_DATA: RATING_DATA[];
   	let IMAGES: IMAGES[];
 
+	//load data from the db (load-function from the page.server.ts)
 	function load() {
 		({ CUSTOMER_DATA } = data);
 		({ RATING_DATA } = data);
@@ -44,26 +37,30 @@
 			console.log('CUSTOMER_DATA @ clientStories :>> ', CUSTOMER_DATA);
 			console.log('RATING_DATA @ clientStories :>> ', RATING_DATA);
 			console.log('IMAGES @ clientStories :>> ', IMAGES);
-			
 		}
 	} 
 
+	//destination and purpose comes from one string
+	//split it by ";" to get the destination
 	function getDestinationFromString(destAndPurpose: string) {
 		let arraySplittedString = destAndPurpose.split(";");
 		return arraySplittedString[0];
 	}
 
+	//destination and purpose comes from one string
+	//split it by ";" to get the journey purpose
 	function getPurposeFromString(destAndPurpose: string) {
 		let arraySplittedString = destAndPurpose.split(";");
 		return arraySplittedString[1];
 	}
 
-
-	function setTestimonialData(): boolean {
+	//write data from the db into the testimonialData buffer 
+	function setTestimonialData() {
 		for (let customerIndex = 0; customerIndex < CUSTOMER_DATA.length; customerIndex++) {
 			if (CUSTOMER_DATA[customerIndex].testimonial !== EMPTY_STRING) {
-				//find the image from the current testimonial by crwaling the IMAGE-data with the 
-				//testimonial-identifier from the CUSTOMER_DATA 
+				//get the image for the current testimonial
+				//take the testimonial name from the CUSTOMER_DATA, search the same value in the IMAGES
+				//and if there is a match, use the data
 				let currentImagePath: string = "";
 				for (let imageIndex = 0; imageIndex < IMAGES.length; imageIndex++) {
 					if (IMAGES[imageIndex].name === CUSTOMER_DATA[customerIndex].testimonial) {
@@ -71,7 +68,9 @@
 					}
 				}
 
-				//get the rating data from the current testimonial
+				//get the rating data for the current testimonial
+				//take the testimonial name from the CUSTOMER_DATA, search the same value in the RATING_DATA
+				//and if there is a match, use the data
 				let ratingStars: string = "";
 				let ratingText: string = "";
 				for (let ratingIndex = 0; ratingIndex < RATING_DATA.length; ratingIndex++) {
@@ -81,7 +80,7 @@
 					}
 					
 				}
-				//fill testimonial data with the values from the db
+				//push into testimonialData
 				testimonialData.push({
 					name: CUSTOMER_DATA[customerIndex].firstName + " " + CUSTOMER_DATA[customerIndex].lastName,
 					bookedDestination: getDestinationFromString(CUSTOMER_DATA[customerIndex].journeyConfig),
@@ -97,11 +96,11 @@
 		if (dev) {
 			console.log('testimonalData @ clientStories :>> ', testimonialData);
 		}
-		return true
 	}
 
 	//###main
 	//load data from the db and push it to the testimonial data puffer
+	register(); //init the slider
 	load();
 	setTestimonialData();
 
@@ -120,7 +119,7 @@
 			title="Mission Completed."
 			description="Discover what our customers have to say about their unforgettable experiences with us. Read their stories and testimonials to see why we're the go-to company for unique and unforgettable holidays in space."
 			/>
-			
+		<!--cards for the completed trips-->	
 		<Stories />
 		
 		<!--Slider-->
@@ -135,7 +134,7 @@
 				
 			>
 				{#each testimonialData as person}
-					{#if person.name !== ""} <!--quick and dirty to kickoff the 0th, empty object-->
+					{#if person.name !== ""} <!--quick and dirty to kickoff the first (index=0), empty object-->
 						<swiper-slide>        
 							<TestimonialCard 
 								name={person.name}
