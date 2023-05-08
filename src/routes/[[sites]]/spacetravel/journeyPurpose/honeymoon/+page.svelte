@@ -6,11 +6,43 @@
     {
       jpName: "Honeymoon",
       jpPromotext:
-        "This is a description about. How wonderful this journey is. And so on ... And so on ... And so on ... And so on ... And so on ... ",
-      jpPrice: "",
+        "For wedding couples looking for an unforgettable honeymoon or a special wedding celebration in space.",
+      jpPrice: "20.000 EUR",
       jpIncludedServices: [
-        { icon: "icon 1", service: "Service 1" },
-        { icon: "icon 2", service: "Service 2" },
+        {
+          icon: "GiRocketFlight",
+          service: "A flight that adheres to strict safety standards",
+        },
+        {
+          icon: "MdHotel",
+          service:
+            "A private cabin where they can spend time alone during the flight",
+        },
+        {
+          icon: "icon",
+          service:
+            "Special meals tailored to the couple's individual preferences",
+        },
+        {
+          icon: "icon",
+          service:
+            "Personalized spacesuits embroidered with their names or a romantic phrase",
+        },
+        {
+          icon: "icon",
+          service:
+            "Special activities: a spacewalk and a romantic dinner with a view of Earth",
+        },
+        {
+          icon: "icon",
+          service:
+            "Souvenir set: a personalized certificate for the flight into space and a model of the spacecraft",
+        },
+        {
+          icon: "icon",
+          service:
+            "Exclusive to this offer: a personalized video recording of the trip so that the couple can always remember this special experience",
+        },
       ],
       jpImageName: "",
       jpImagePath: "/journeypurpose/honeymoon.png",

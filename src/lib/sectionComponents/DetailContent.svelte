@@ -2,6 +2,8 @@
   import { checkUndefinedNullOrEmpty } from "$lib/tools/Tools.svelte";
   import IoIosRocket from "svelte-icons/io/IoIosRocket.svelte";
   import IoMdAlert from "svelte-icons/io/IoMdAlert.svelte";
+  import GiRocketFlight from "svelte-icons/gi/GiRocketFlight.svelte";
+  import MdHotel from "svelte-icons/md/MdHotel.svelte";
 
   export let destName: string | undefined = undefined;
   export let destPromoText: string | undefined = undefined;
@@ -45,6 +47,21 @@
 */
 
   export let imageSize: string | number = "cover"; // auto, cover, contain ... or own size: 50%, 200px
+
+  let iconData = [GiRocketFlight, MdHotel];
+
+ /* ########################    unfertig   ######################## */
+  function getIcon(iconName: string) {
+    for (let i = 0; (i = iconData.length); i++) {
+      if (iconData[i].toString() === iconName) {
+        return iconData[i];
+      }
+      if (i >= iconData.length) {
+        console.warn("Found no matching icon in list");
+        return IoMdAlert;
+      }
+    }
+  }
 
   let isPrototyping = false; /* only for dev */
 </script>
@@ -159,7 +176,7 @@ background-position:center;
               >
                 <!--   !!!!!!!!! write a function to manage and convert icon-names as string to icon as svelte:component !!!!!!!!!   -->
                 <svelte:component
-                  this={data.icon === "IoIosRocket" ? IoIosRocket : IoMdAlert}
+                  this={iconData[0]} 
                 />
               </div>
             </div>
