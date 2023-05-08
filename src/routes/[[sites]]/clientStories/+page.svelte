@@ -113,7 +113,6 @@
 
 
 <SectionBg002>
-	<button on:click={setTestimonialData}  class="bg-indigo-500 w-28 h-20 rounded-lg">load function</button>
 	<div class="grid justify-center justify-self-center mx-auto max-w-7xl">
 		<SectionHeader 
 			title="Mission Completed."
