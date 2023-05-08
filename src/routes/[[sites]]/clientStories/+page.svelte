@@ -4,10 +4,33 @@
     import Stories from "$lib/sectionComponents/Stories.svelte";
 	import TestimonialCard from '$lib/components/TestimonialCard.svelte';
     import { register } from 'swiper/element/bundle';
+	import type { PageData } from './$types'
+    import { onMount } from 'svelte';
+    import { dev } from "$app/environment";
+	export let data: PageData;
   
 	//init the slider
     register();
   
+
+	let CUSTOMER_DATA: PageData;
+  	let RATING_DATA: PageData;
+
+	function load() {
+		({ CUSTOMER_DATA } = data);
+		({ RATING_DATA } = data);
+		if (dev) {
+			console.log('CUSTOMER_DATA @ clientStories :>> ', CUSTOMER_DATA);
+			console.log('RATING_DATA @ clientStories :>> ', RATING_DATA);
+		}
+	} 
+
+
+	//load data from the db during the page-mounting
+	onMount(async () => {
+		load();
+	});
+
 
     const testimonialData = [
         {
@@ -82,4 +105,5 @@
 			</swiper-container>
 		</div>
 	</div>
+
 </SectionBg002>
