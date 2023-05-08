@@ -33,6 +33,7 @@ model Journey_Purposes {
   price            String? @default("")
   includedServices String? @default("")
   image            String? @default("")
+  routePath        String? @default("")
 }
 
 model Rating_Data {
