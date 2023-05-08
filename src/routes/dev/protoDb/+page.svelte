@@ -65,7 +65,7 @@
       <p>customer.customerID: {customer.customerID}</p>
       <p>customer.firstname: {customer.firstName}</p>
       <p>customer.lastname: {customer.lastName}</p>
-      <p>customer.email: {customer.email}</p>
+      <p>customer.email: {customer.emailAddress}</p>
     </div>
     {/each}
   </div>
