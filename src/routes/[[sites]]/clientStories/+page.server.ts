@@ -6,7 +6,8 @@ export const load: PageServerLoad = async () => {
 	try {
         return {
             CUSTOMER_DATA: await prisma.Customer_Data.findMany(),
-            RATING_DATA: await prisma.Rating_Data.findMany()
+            RATING_DATA: await prisma.Rating_Data.findMany(),
+            IMAGES: await prisma.Images.findMany(),
         }
     } catch (error) {
         console.error(error);

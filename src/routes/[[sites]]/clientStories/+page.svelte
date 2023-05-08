@@ -4,63 +4,106 @@
     import Stories from "$lib/sectionComponents/Stories.svelte";
 	import TestimonialCard from '$lib/components/TestimonialCard.svelte';
     import { register } from 'swiper/element/bundle';
-	import type { PageData } from './$types'
     import { onMount } from 'svelte';
     import { dev } from "$app/environment";
+
+	import type { PageData } from './$types'
+	import type { CUSTOMER_DATA } from "../../../../prisma/tableInterfaces";
+	import type { RATING_DATA } from "../../../../prisma/tableInterfaces";
+	import type { IMAGES } from "../../../../prisma/tableInterfaces";
+
+	const EMPTY_STRING = "";
+
+
 	export let data: PageData;
   
 	//init the slider
     register();
   
 
-	let CUSTOMER_DATA: PageData;
-  	let RATING_DATA: PageData;
+	let testimonialData = [
+        {
+            name: "",
+            bookedDestination: "",
+            bookedPurpose: "",
+            givenStars: "",
+            reviewText: "",
+            image: "",
+        },
+	]
+
+	let CUSTOMER_DATA: CUSTOMER_DATA[];
+  	let RATING_DATA: RATING_DATA[];
+  	let IMAGES: IMAGES[];
 
 	function load() {
 		({ CUSTOMER_DATA } = data);
 		({ RATING_DATA } = data);
+		({ IMAGES } = data);
 		if (dev) {
 			console.log('CUSTOMER_DATA @ clientStories :>> ', CUSTOMER_DATA);
 			console.log('RATING_DATA @ clientStories :>> ', RATING_DATA);
+			console.log('IMAGES @ clientStories :>> ', IMAGES);
+			
 		}
 	} 
 
+	function getDestinationFromString(destAndPurpose: string) {
+		let arraySplittedString = destAndPurpose.split(";");
+		return arraySplittedString[0];
+	}
 
-	//load data from the db during the page-mounting
-	onMount(async () => {
-		load();
-	});
-
-
-    const testimonialData = [
-        {
-            name: "Debi Worknesh",
-            bookedDestination: "Moon",
-            bookedPurpose: "Photosafarie",
-            givenStars: "4",
-            reviewText: "I recently went on a photosafari to space with this company, and it was truly a remarkable experience. The team at this company were incredibly helpful, ensuring that we had all the necessary equipment to capture stunning photos of space and the Earth from above. See you next year!",
-            image: "/testimonials/DebiWorknesh.webp",
-        },
-        {
-            name: "Marcius Cecilio",
-            bookedDestination: "Mars",
-            bookedPurpose: "Vacation",
-            givenStars: "3",
-            reviewText: "I highly recommend this company for anyone interested in a trip to Mars. They offer top-notch accommodations and an unforgettable journey through space. The team is knowledgeable and experienced, and they go above and beyond to ensure that your trip is safe, and out of this world.",
-            image: "/testimonials/MarciusCecilio.webp",
-        },
-        {
-            name: "Sung-Hyun Aysha",
-            bookedDestination: "Venus",
-            bookedPurpose: "Honeymoon",
-            givenStars: "5",
-            reviewText: "If you're looking for a honeymoon that's truly out of this world, I highly recommend booking a trip to Venus with this company. The team provided us with an amazing two-week itinerary, filled with romantic excursions and once-in-a-lifetime experiences. Thank you soo much for this!",
-            image: "/testimonials/Sung-HyunAysha.webp",
-        }
-    ]
+	function getPurposeFromString(destAndPurpose: string) {
+		let arraySplittedString = destAndPurpose.split(";");
+		return arraySplittedString[1];
+	}
 
 
+	function setTestimonialData(): boolean {
+		for (let customerIndex = 0; customerIndex < CUSTOMER_DATA.length; customerIndex++) {
+			if (CUSTOMER_DATA[customerIndex].testimonial !== EMPTY_STRING) {
+				//find the image from the current testimonial by crwaling the IMAGE-data with the 
+				//testimonial-identifier from the CUSTOMER_DATA 
+				let currentImagePath: string = "";
+				for (let imageIndex = 0; imageIndex < IMAGES.length; imageIndex++) {
+					if (IMAGES[imageIndex].name === CUSTOMER_DATA[customerIndex].testimonial) {
+						currentImagePath = IMAGES[imageIndex].path;
+					}
+				}
 
+				//get the rating data from the current testimonial
+				let ratingStars: string = "";
+				let ratingText: string = "";
+				for (let ratingIndex = 0; ratingIndex < RATING_DATA.length; ratingIndex++) {
+					if (CUSTOMER_DATA[customerIndex].testimonial === RATING_DATA[ratingIndex].testimonial) {
+						ratingStars = RATING_DATA[ratingIndex].amountStars;
+						ratingText = RATING_DATA[ratingIndex].ratingText;
+					}
+					
+				}
+				//fill testimonial data with the values from the db
+				testimonialData.push({
+					name: CUSTOMER_DATA[customerIndex].firstName + " " + CUSTOMER_DATA[customerIndex].lastName,
+					bookedDestination: getDestinationFromString(CUSTOMER_DATA[customerIndex].journeyConfig),
+					bookedPurpose: getPurposeFromString(CUSTOMER_DATA[customerIndex].journeyConfig),
+					givenStars: ratingStars,
+					reviewText: ratingText,
+					image: currentImagePath,
+				})
+
+			}
+				
+		}
+		if (dev) {
+			console.log('testimonalData @ clientStories :>> ', testimonialData);
+		}
+		return true
+	}
+
+	//###main
+	//load data from the db and push it to the testimonial data puffer
+	load();
+	setTestimonialData();
 
 </script>
 
@@ -71,6 +114,7 @@
 
 
 <SectionBg002>
+	<button on:click={setTestimonialData}  class="bg-indigo-500 w-28 h-20 rounded-lg">load function</button>
 	<div class="grid justify-center justify-self-center mx-auto max-w-7xl">
 		<SectionHeader 
 			title="Mission Completed."
@@ -91,19 +135,20 @@
 				
 			>
 				{#each testimonialData as person}
-					<swiper-slide>        
-						<TestimonialCard 
-							name={person.name}
-							bookedDestination={person.bookedDestination}
-							bookedPurpose={person.bookedPurpose}
-							givenStars={person.givenStars}
-							text={person.reviewText}
-							image={person.image}
-						/>    
-					</swiper-slide>
+					{#if person.name !== ""} <!--quick and dirty to kickoff the 0th, empty object-->
+						<swiper-slide>        
+							<TestimonialCard 
+								name={person.name}
+								bookedDestination={person.bookedDestination}
+								bookedPurpose={person.bookedPurpose}
+								givenStars={person.givenStars}
+								text={person.reviewText}
+								image={person.image}
+							/>    
+						</swiper-slide>	 
+					{/if}	
 				{/each}
 			</swiper-container>
 		</div>
 	</div>
-
 </SectionBg002>
