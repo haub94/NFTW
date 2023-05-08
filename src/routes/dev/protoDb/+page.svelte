@@ -62,7 +62,7 @@
   <div class="space-y-12 ml-10">
     {#each customer_data as customer}
     <div>
-      <p>customer.id: {customer.id}</p>
+      <p>customer.customerID: {customer.customerID}</p>
       <p>customer.firstname: {customer.firstName}</p>
       <p>customer.lastname: {customer.lastName}</p>
       <p>customer.email: {customer.email}</p>
