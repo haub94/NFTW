@@ -2,13 +2,13 @@
   import type { PageData } from './$types'
 	export let data: PageData;
 
-  let customers: PageData;
+  let customer_data: PageData;
 
   function loadDbData() {
 	
-    ({ customers } = data)
+    ({ customer_data } = data)
 
-  console.log('articles :>> ', customers);
+  console.log('articles :>> ', customer_data);
 
 } 
 
@@ -44,7 +44,7 @@
       <div class="sm:col-span-2">
         <label for="email" class="block text-sm font-semibold leading-6 text-gray-900">Email</label>
         <div class="mt-2.5">
-          <input required type="email" name="email" id="email" autocomplete="email" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          <input required type="email" name="emailAddress" id="emailAddress" autocomplete="email" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
         </div>
       </div>
     <!--submit--> 
@@ -58,9 +58,9 @@
 <h2 class="underline underline-offset-2 text-cyan-500 font-bold text-xl ml-4">Daten von der DB:</h2>
 <button on:click={loadDbData}  class="border-2 ml-4 mt-2 rounded-full p-2 bg-indigo-500 border-indigo-800 hover:bg-indigo-600">LOAD DATA</button>
 
-{#if customers !== undefined}
+{#if customer_data !== undefined}
   <div class="space-y-12 ml-10">
-    {#each customers as customer}
+    {#each customer_data as customer}
     <div>
       <p>customer.id: {customer.id}</p>
       <p>customer.firstname: {customer.firstName}</p>

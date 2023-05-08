@@ -4,23 +4,23 @@ import type { Actions, PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async () => {
 	return {
-		customers: await prisma.customers.findMany()
+		customer_data: await prisma.Customer_Data.findMany()
 	}
 }
 
 export const actions: Actions = {
     addCustomer: async ({ request }) => {
-        const { firstName, lastName, email } = Object.fromEntries(await request.formData()) as {
+        const { firstName, lastName, emailAddress } = Object.fromEntries(await request.formData()) as {
             firstName: string, 
             lastName: string, 
-            email: string 
+            emailAddress: string 
         }
         try {
-            await prisma.customers.create({
+            await prisma.Customer_Data.create({
                 data: {
                     firstName,
                     lastName,
-                    email
+                    emailAddress
                 }
             })
         } catch (err) {
