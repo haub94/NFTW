@@ -17,9 +17,9 @@
         jpPromoText={data.promoText}
         jpPrice={data.price}
         routePath={data.routePath}
-        jpImagePath={''}
-        imgPosition={''}
-        imgSize={''}
+        jpImagePath={data.image}
+        imgPosition={'left'}
+        imgSize={'cover'}
         jpImageName={''}
         jpImageAltText={''} />
     </div>
