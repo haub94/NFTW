@@ -20,35 +20,37 @@
   import Stories from "$lib/sectionComponents/Stories.svelte";
   import TestimonialSwiper from "$lib/sectionComponents/TestimonialSwiper.svelte";
   import Banner from "$lib/elements/Banner.svelte";
+  import Bulletpoints from "$lib/elements/dataprotection/Bulletpoints.svelte";
 
   export const componentData = [
     /*
       ---------TEMPLATE--------- 
       {
-        ID: "LAST ID + 1",
-        name: "NAME OF THE COMPONENT",
-        component: NAME FROM THE USED IMPORT,
-        description: "DESCRIPTOPN OF THE FUNCTION / USAGE.",
-        author: "YOUR NAME",
-        version: "X.Y",
-        usedBy: "PARENTS",
-        dependecies: "WHICH COMPONENTS ARE NEEDED?!",
-        variables: [
-          {
-            name: 'NAME VAR1',
-            description: 'DESCRIPTION VAR1',
-          },
-          {
-            name: 'NAME VAR2',
-            description: 'DESCRIPTION VAR2',
-          }
-          ... ADD MORE VARIABLES IF NEEDED
-        ],
-        script: 
+        ID: 0,
+      name: "",
+      component: ,
+      description: "",
+      author: "",
+      version: ".",
+      usedBy: [
+        ""
+      ],
+      dependecies: [
+        "Dependecie 1", 
+      ],
+      variables: [
+        {
+          name: "",
+          description: "",
+        },
+      ],
+      script: 
     `
-    SCRIPT FROM THE COMPONENT (WITHOUT <SCRIPT><SCRIPT> !!!)
+
     `
-    HTML AND STYLE SECTIONS FROM THE COMPONENT
+      html:
+    `
+
     `
       },
       //-------------------------------------------------------------------------------------------
