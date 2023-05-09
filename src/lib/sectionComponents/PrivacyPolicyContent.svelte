@@ -179,7 +179,7 @@
 						<Paragraph
 							paragraph="IF YOUR PERSONAL DATA IS PROCESSED FOR THE PURPOSE OF DIRECT ADVERTISING, YOU HAVE THE RIGHT TO OBJECT AT ANY TIME TO THE PROCESSING OF YOUR PERSONAL DATA FOR THE PURPOSE OF SUCH ADVERTISING; THIS ALSO APPLIES TO PROFILING INSOFAR AS IT IS CONNECTED WITH SUCH DIRECT ADVERTISING. IF YOU OBJECT, YOUR PERSONAL DATA WILL SUBSEQUENTLY NO LONGER BE USED FOR THE PURPOSE OF DIRECT ADVERTISING (OBJECTION PURSUANT TO ART. 21 PARA. 2 DSGVO)."
 						/>
-					</LpAfterSubtitle>.
+					</LpAfterSubtitle>
 	
 					<Subtitle subtitle="Right of appeal to the competent supervisory authority" />
 					<LpAfterSubtitle>
@@ -250,7 +250,7 @@
 					</LpAfterSubtitle>
 					
 					<Subtitle subtitle="Contact form" />
-					<LpAfterSubtitle>.
+					<LpAfterSubtitle>
 						<Paragraph paragraph="If you send us inquiries via contact form, your information from the inquiry form, including the contact data you provide there, will be stored by us for the purpose of processing the inquiry and in case of follow-up questions. We do not pass on this data without your consent." />
 						<Paragraph paragraph="The processing of this data is based on Art. 6 (1) lit. b DSGVO, if your request is related to the performance of a contract or is necessary for the performance of pre-contractual measures. In all other cases, the processing is based on our legitimate interest in the effective processing of requests addressed to us (Art. 6 para. 1 lit. f DSGVO) or on your consent (Art. 6 para. 1 lit. a DSGVO) if this has been requested; the consent can be revoked at any time." />
 						<Paragraph paragraph="The data you enter in the contact form will remain with us until you request us to delete it, revoke your consent to store it, or the purpose for storing the data no longer applies (e.g. after we have completed processing your request). Mandatory legal provisions - in particular retention periods - remain unaffected." />
