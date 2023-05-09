@@ -16,7 +16,7 @@
         jpName={data.name}
         jpPromoText={data.promoText}
         jpPrice={data.price}
-        routePath={data.routePath}
+        routePath="/"
         jpImagePath={data.image}
         imgPosition={'left'}
         imgSize={'cover'}
