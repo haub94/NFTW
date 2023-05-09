@@ -17,6 +17,7 @@ model Destinations {
   availableUnits String? @default("")
   image          String? @default("")
   hotel          String? @default("")
+  routePath      String? @default("")
 }
 
 model Images {
