@@ -5,14 +5,11 @@
 	import LpAfterSubtitle from '$lib/elements/dataprotection/LpAfterSubtitle.svelte';
 	import Paragraph from '$lib/elements/dataprotection/Paragraph.svelte';
 	import SmallTitle from '$lib/elements/SmallTitle.svelte';
-	import Auftragsverarbeitung from '$lib/elements/dataprotection/Auftragsverarbeitung.svelte';
-	import ParagraphLink from '$lib/elements/dataprotection/ParagraphLink.svelte';
+	import OrderProcessing from '$lib/elements/dataprotection/OrderProcessing.svelte';
 	import Bulletpoints from '$lib/elements/dataprotection/Bulletpoints.svelte';
 	import SectionWrapper from '$lib/elements/dataprotection/SectionWrapper.svelte';
-	import SectionTitle from '$lib/elements/SectionTitle.svelte';
-	import SubSectionTitle from '$lib/elements/SubSectionTitle.svelte';
 
-	const bulletpoints = {
+	const BULLETPOINTS = {
 		rightToRestrictionOfProcessing: [
 			'If you dispute the accuracy of your personal data stored by us, we usually need time to verify this. For the duration of the review, you have the right to request the restriction of the processing of your personal data.',
 			'If the processing of your personal data happened/is happening unlawfully, you can request the restriction of data processing instead of deletion.',
@@ -104,7 +101,7 @@
 							Covina, CA 91723<br/>
 							privacy@vercel.com<br/><br />
 						</p>
-						<Auftragsverarbeitung
+						<OrderProcessing
 						text="We have concluded a contract on order processing (AVV) for the use of the above service. This is a contract required by data protection law, which ensures that this processes the personal data of our website visitors only according to our instructions and in compliance with the DSGVO."
 						/>
 					</LpAfterSubtitle>
@@ -207,7 +204,7 @@
 						<Paragraph
 							paragraph="You have the right to request the restriction of the processing of your personal data. For this purpose, you can contact us at any time. The right to restriction of processing exists in the following cases:"
 						/>
-						<Bulletpoints bulletpoints={bulletpoints.rightToRestrictionOfProcessing} />
+						<Bulletpoints bulletpoints={BULLETPOINTS.rightToRestrictionOfProcessing} />
 						<Paragraph
 							paragraph="If you have restricted the processing of your personal data, this data may - apart from being stored - only be processed with your consent or for the assertion, exercise or defense of legal claims or for the protection of the rights of another natural or legal person or for reasons of an important public interest of the European Union or a Member State."
 						/>
@@ -241,7 +238,7 @@
 						<Paragraph
 							paragraph="The provider of the pages automatically collects and stores information in so-called server log files, which your browser automatically transmits to us. These are:"
 						/>
-						<Bulletpoints bulletpoints={bulletpoints.serverLogData} />
+						<Bulletpoints bulletpoints={BULLETPOINTS.serverLogData} />
 
 						<Paragraph paragraph="We do not merge this data with other data sources." />
 
