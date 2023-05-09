@@ -1,12 +1,14 @@
 <script lang="ts" context="module">
+  //author shorthand
+  const MH: string = "Markus Haubold";
+  const DR: string = "Daniel Rittrich";
+  const LXT: string = "Le Xuan Tran";
+  const AK: string = "Anna Kozachuk";
+  
   //add all component-imports here
   import Card from "$lib/components/Card.svelte";
   import CardSpacetravel from "$lib/components/CardSpacetravel.svelte";
-
-  //imprint
   import ImprintContent from "$lib/sectionComponents/ImprintContent.svelte";
-
-  //accordion
   import Item from "$lib/tools/accordion/Item.svelte";
   import Body from "$lib/tools/accordion/Body.svelte";
   import BgVideo from "$lib/sectionComponents/BgVideo.svelte";
@@ -27,31 +29,31 @@
       ---------TEMPLATE--------- 
       {
         ID: 0,
-      name: "",
-      component: ,
-      description: "",
-      author: "",
-      version: ".",
-      usedBy: [
-        ""
-      ],
-      dependecies: [
-        "Dependecie 1", 
-      ],
-      variables: [
-        {
-          name: "",
-          description: "",
-        },
-      ],
-      script: 
-    `
+        name: "",
+        component: ,
+        description: "",
+        author: "",
+        version: ".",
+        usedBy: [
+          ""
+        ],
+        dependecies: [
+          "Dependecie 1", 
+        ],
+        variables: [
+          {
+            name: "",
+            description: "",
+          },
+        ],
+        script: 
+      `
 
-    `
-      html:
-    `
+      `
+        html:
+      `
 
-    `
+      `
       },
       //-------------------------------------------------------------------------------------------
       */
@@ -131,7 +133,7 @@
       component: CardSpacetravel,
       description:
         "Content card for spacetravel page that shows informations about the next steps you can go to choose your vacation. It's a clickable component that also has a button to click on.",
-      author: "Daniel Rittrich",
+      author: DR,
       version: "1.0",
       usedBy: ["Route /spacetravel"],
       dependecies: ["-"],
@@ -215,7 +217,7 @@ export let path: string = "/"; // routing path "/home/user/config"
       name: "ImprintContent",
       component: ImprintContent,
       description: "It's the component with the data for the imprint site.",
-      author: "Markus Haubold",
+      author: MH,
       version: "1.0",
       usedBy: ["Route imprint"],
       dependecies: ["Accordion Body", "Accordion Item"],
@@ -336,7 +338,7 @@ export let path: string = "/"; // routing path "/home/user/config"
       component: Item,
       description:
         "It handles the content from one item of a accordion. Its nested within the accordion body. Put the content inside of the <Input> tags; for the title you should use the variables!",
-      author: "Markus Haubold",
+      author: MH,
       version: "1.0",
       usedBy: ["ImprintContent"],
       dependecies: [
@@ -424,7 +426,7 @@ export let path: string = "/"; // routing path "/home/user/config"
       name: "Body",
       component: Body,
       description: "Its the wrapper for all accordion items per section.",
-      author: "Markus Haubold",
+      author: MH,
       version: "1.0",
       usedBy: ["Route imprint"],
       dependecies: [
@@ -467,7 +469,7 @@ export let path: string = "/"; // routing path "/home/user/config"
       component: BgVideo,
       description:
         "Shows a video in full width with variable height. In the center of the video you can show text as title and caption. The caption can also contain a link.",
-      author: "Daniel Rittrich",
+      author: DR,
       version: "1.1",
       usedBy: ["/ home"],
       dependecies: ["checkUndefinedNullOrEmpty (from lib/tools/Tools.svelte)"],
@@ -567,7 +569,7 @@ export let captionPath: string = "";
       component: DividerTextImage,
       description:
         "Section component that shows text on the left side and a image on the right side. .",
-      author: "Daniel Rittrich",
+      author: DR,
       version: "1.0",
       usedBy: ["Route /imprint"],
       dependecies: ["none"],
@@ -1342,7 +1344,7 @@ export let captionPath: string = "";
       name: "SectionBg001",
       component: SectionBg001,
       description: "Background for a section that can be filled with content",
-      author: "Daniel Rittrich",
+      author: DR,
       version: "1.0",
       usedBy: ["on some pages"],
       dependecies: [
@@ -1423,7 +1425,7 @@ export let caption: string = "Lorem ipsum dolor.";
       component: SectionBg002,
       description:
         "Background for a section that can be filled with content. It comes with two variants. First one with full width and second one with two columns. This can be chossen with the variable 'twoCols'.",
-      author: "Daniel Rittrich",
+      author: DR,
       version: "2.0",
       usedBy: ["nearly all pages"],
       dependecies: ["randomPercentage (import from lib/tools/Tools.svelte)"],
@@ -1474,7 +1476,7 @@ export let twoCols: boolean = false;
       name: "Banner",
       component: Banner,
       description: "Shows buzzwords, the messages to this and differnt background colors",
-      author: "Markus Haubold",
+      author: MH,
       version: "1.0",
       usedBy: ["Form.svelte"],
       dependecies: ["-"],
@@ -1553,7 +1555,7 @@ switch (color) {
       name: "SectionHeader",
       component: SectionHeader,
       description: "Used as the intro part of every site. It contents a header for a few of buzzwords and a description to mention the core of the site.",
-      author: "Markus Haubold",
+      author: MH,
       version: "1.0",
       usedBy: [
         "Route /clientStories",
@@ -1590,7 +1592,7 @@ switch (color) {
       name: "TestimonialCard",
       component: TestimonialCard,
       description: "Used as a card which can slide forced by the swiper-component (component TestimonialSwiper).",
-      author: "Markus Haubold",
+      author: MH,
       version: "1.0",
       usedBy: [
         "Route /clientStorries",
@@ -1735,7 +1737,7 @@ switch (color) {
       name: "StorrieCard",
       component: StorrieCard,
       description: "Used as a card which contains the stats about completed journeys.",
-      author: "Markus Haubold",
+      author: MH,
       version: "1.0",
       usedBy: [
         "Route /clientStories",
@@ -1846,7 +1848,7 @@ switch (color) {
       name: "Stories",
       component: Stories,
       description: "Section component which containes all StorrieCards (component StorrieCard)",
-      author: "Markus Haubold",
+      author: MH,
       version: "1.0",
       usedBy: [
         "Route /clientStories",
@@ -1912,7 +1914,7 @@ switch (color) {
       name: "TestimonialSwiper",
       component: TestimonialSwiper,
       description: "Section component to swipe the TestimonialCards automaticly one by one along the horizontal axis.",
-      author: "Markus Haubold",
+      author: MH,
       version: "1.0",
       usedBy: [
         "Route /clientStories",
@@ -1991,6 +1993,34 @@ switch (color) {
   </div>
 `,
     },
+    {
+        ID: 30,
+        name: "Bulletpoints",
+        component: Bulletpoints,
+        description: "Generates a unsorted list with the list-symbol disc.",
+        author: MH,
+        version: "1.0",
+        usedBy: [
+          "Route /privacyPolicy"
+        ],
+        dependecies: [
+          "Dependecie 1", 
+        ],
+        variables: [
+          {
+            name: "",
+            description: "",
+          },
+        ],
+        script: 
+      `
+
+      `,
+        html:
+      `
+
+      `
+      },
     //-------------------------------------------------------------------------------------------
   ];
 
@@ -2055,7 +2085,7 @@ switch (color) {
       ID: 2,
       name: "journeyConfigMemory.ts",
       description: "Its a svelte-store to save the current choosen journey-configuration for global usage. It is used from the form (@get in contact site) to load the data for prefill the input fields.",
-      author: "Markus Haubold",
+      author: MH,
       version: "1.0",
       usedBy: ["Form.svelte", ],
       dependecies: ["writable (import from svelte/store)"],
@@ -2097,7 +2127,7 @@ export default config;
       ID: 0,
       name: "",
       description: "Beschreibung zu Test_Script.",
-      author: "Markus Haubold",
+      author: MH,
       version: "1.0",
       usedBy: "",
       dependecies: "",
@@ -2122,7 +2152,7 @@ export default config;
       ID: 0,
       name: "",
       description: "Beschreibung zu Test_Script.",
-      author: "Markus Haubold",
+      author: MH,
       version: "1.0",
       usedBy: "",
       dependecies: "",
