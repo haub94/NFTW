@@ -37,6 +37,7 @@
 
 <SectionBg002 paddingBottom="0px" paddingTop="0px">
   <DetailContent
+    isJPComponent={true}
     jpName={data[0].jpName}
     jpPromotext={data[0].jpPromotext}
     jpPrice={data[0].jpPrice}

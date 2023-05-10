@@ -12,7 +12,10 @@
           icon: "GiRocketFlight",
           service: "A flight that adheres to strict safety standards",
         },
-        { icon: "GiFeather", service: "Cozy accommodation in a 4-star space hotel" },
+        {
+          icon: "GiFeather",
+          service: "Cozy accommodation in a 4-star space hotel",
+        },
         {
           icon: "GiGlassCelebration",
           service: "Special meals tailored to individual preferences",
@@ -37,6 +40,7 @@
 
 <SectionBg002 paddingBottom="0px" paddingTop="0px">
   <DetailContent
+    isJPComponent={true}
     jpName={data[0].jpName}
     jpPromotext={data[0].jpPromotext}
     jpPrice={data[0].jpPrice}

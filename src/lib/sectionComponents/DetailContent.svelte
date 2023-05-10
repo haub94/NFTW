@@ -13,10 +13,17 @@
   import GiAstronautHelmet from "svelte-icons/gi/GiAstronautHelmet.svelte";
   import GiHotMeal from "svelte-icons/gi/GiHotMeal.svelte";
   import FaUserAstronaut from "svelte-icons/fa/FaUserAstronaut.svelte";
-  import GiStarGate from 'svelte-icons/gi/GiStarGate.svelte';
-  import GiFruitBowl from 'svelte-icons/gi/GiFruitBowl.svelte';
-  import MdCameraEnhance from 'svelte-icons/md/MdCameraEnhance.svelte';
-  import FaSafari from 'svelte-icons/fa/FaSafari.svelte';
+  import GiStarGate from "svelte-icons/gi/GiStarGate.svelte";
+  import GiFruitBowl from "svelte-icons/gi/GiFruitBowl.svelte";
+  import MdCameraEnhance from "svelte-icons/md/MdCameraEnhance.svelte";
+  import FaSafari from "svelte-icons/fa/FaSafari.svelte";
+  import FaCalendarWeek from "svelte-icons/fa/FaCalendarWeek.svelte";
+  import GiPriceTag from "svelte-icons/gi/GiPriceTag.svelte";
+  import MdToday from "svelte-icons/md/MdToday.svelte";
+  import MdEventAvailable from "svelte-icons/md/MdEventAvailable.svelte";
+  import MdStarHalf from "svelte-icons/md/MdStarHalf.svelte";
+  import GiHouseKeys from "svelte-icons/gi/GiHouseKeys.svelte";
+  import MdClass from "svelte-icons/md/MdClass.svelte";
 
   export let destName: string | undefined = undefined;
   export let destPromoText: string | undefined = undefined;
@@ -24,6 +31,10 @@
   export let destPrice: string | undefined = undefined;
   export let destDays: string | undefined = undefined;
   export let destAvailableUnits: string | undefined = undefined;
+  export let destServices: { icon: string; service: string }[] = [
+    { icon: "IoIosRocket", service: "destService 1" },
+  ];
+
   export let destImageName: string | undefined = undefined;
   export let destImagePath: string | undefined = undefined;
   export let destImageAltText: string | undefined = undefined;
@@ -32,6 +43,9 @@
   export let destHotelRoomCapacity: string | undefined = undefined;
   export let destHotelRoomClass: string | undefined = undefined;
   export let destHotelDescription: string | undefined = undefined;
+  export let destHotelServices: { icon: string; service: string }[] = [
+    { icon: "IoIosRocket", service: "destHotelService 1" },
+  ];
 
   /*  dafür gibts noch kein Feld in der DB */
   export let destHotelImageName: string | undefined = undefined;
@@ -61,8 +75,14 @@
 
   export let imageSize: string | number = "cover"; // auto, cover, contain ... or own size: 50%, 200px
 
+  export let isJPComponent: boolean | undefined = undefined;
+  export let isDestComponent: boolean | undefined = undefined;
+  export let isDestHotelComponent: boolean | undefined = undefined;
+
   /* Array musst be filled with all used icons */
   let iconData = [
+    { iconString: "IoIosRocket", iconObject: IoIosRocket },
+    { iconString: "IoMdAlert", iconObject: IoMdAlert },
     { iconString: "GiRocketFlight", iconObject: GiRocketFlight },
     { iconString: "MdHotel", iconObject: MdHotel },
     { iconString: "GiGlassCelebration", iconObject: GiGlassCelebration },
@@ -78,12 +98,17 @@
     { iconString: "GiFruitBowl", iconObject: GiFruitBowl },
     { iconString: "MdCameraEnhance", iconObject: MdCameraEnhance },
     { iconString: "FaSafari", iconObject: FaSafari },
-    { iconString: "MdHotel", iconObject: MdHotel },
-    { iconString: "MdHotel", iconObject: MdHotel },
-    { iconString: "MdHotel", iconObject: MdHotel },
-    { iconString: "MdHotel", iconObject: MdHotel },
-    { iconString: "MdHotel", iconObject: MdHotel },
+    { iconString: "FaCalendarWeek", iconObject: FaCalendarWeek },
+    { iconString: "GiPriceTag", iconObject: GiPriceTag },
+    { iconString: "MdToday", iconObject: MdToday },
+    { iconString: "MdEventAvailable", iconObject: MdEventAvailable },
+    { iconString: "MdStarHalf", iconObject: MdStarHalf },
+    { iconString: "GiHouseKeys", iconObject: GiHouseKeys },
+    { iconString: "MdClass", iconObject: MdClass },
   ];
+
+  /* is used if data from component not found or valid */
+  let errorData = [{ icon: "IoMdAlert", service: "Service 1" }];
 
   function getIcon(iconName: string) {
     let icon = IoMdAlert;
@@ -189,7 +214,7 @@ background-position:center;
         class:border-4={isPrototyping}
         class:border-cyan-500={isPrototyping}
       >
-        {#each jpIncludedServices as data}
+        {#each isJPComponent ? jpIncludedServices : isDestComponent ? destServices : isDestHotelComponent ? destHotelServices : errorData as data}
           <div
             id="infos"
             class="justify-center grid w-full col-span-1"
