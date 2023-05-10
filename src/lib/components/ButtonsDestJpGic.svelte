@@ -66,12 +66,6 @@
     }
   }
 
-  console.log('PAGE_IS_DESTINATION :>> ', PAGE_IS_DESTINATION);
-  console.log('PAGE_IS_JOURNEY_PURPOSE :>> ', PAGE_IS_JOURNEY_PURPOSE);
-  console.log('configCompleted :>> ', configCompleted);
-
-
-
 </script>
 
 <div
