@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-const EMPTY_STRING: string = "empty";
+const EMPTY_STRING: string = "";
 
 let config = writable({
     destination: EMPTY_STRING,
