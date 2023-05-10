@@ -19,27 +19,27 @@
             "A private cabin where they can spend time alone during the flight",
         },
         {
-          icon: "icon",
+          icon: "GiGlassCelebration",
           service:
             "Special meals tailored to the couple's individual preferences",
         },
         {
-          icon: "icon",
+          icon: "FaSignature",
           service:
             "Personalized spacesuits embroidered with their names or a romantic phrase",
         },
         {
-          icon: "icon",
+          icon: "FaHandHoldingHeart",
           service:
             "Special activities: a spacewalk and a romantic dinner with a view of Earth",
         },
         {
-          icon: "icon",
+          icon: "FaCertificate",
           service:
             "Souvenir set: a personalized certificate for the flight into space and a model of the spacecraft",
         },
         {
-          icon: "icon",
+          icon: "GiFilmStrip",
           service:
             "Exclusive to this offer: a personalized video recording of the trip so that the couple can always remember this special experience",
         },

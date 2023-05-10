@@ -4,6 +4,19 @@
   import IoMdAlert from "svelte-icons/io/IoMdAlert.svelte";
   import GiRocketFlight from "svelte-icons/gi/GiRocketFlight.svelte";
   import MdHotel from "svelte-icons/md/MdHotel.svelte";
+  import GiGlassCelebration from "svelte-icons/gi/GiGlassCelebration.svelte";
+  import FaSignature from "svelte-icons/fa/FaSignature.svelte";
+  import FaHandHoldingHeart from "svelte-icons/fa/FaHandHoldingHeart.svelte";
+  import FaCertificate from "svelte-icons/fa/FaCertificate.svelte";
+  import GiFilmStrip from "svelte-icons/gi/GiFilmStrip.svelte";
+  import GiFeather from "svelte-icons/gi/GiFeather.svelte";
+  import GiAstronautHelmet from "svelte-icons/gi/GiAstronautHelmet.svelte";
+  import GiHotMeal from "svelte-icons/gi/GiHotMeal.svelte";
+  import FaUserAstronaut from "svelte-icons/fa/FaUserAstronaut.svelte";
+  import GiStarGate from 'svelte-icons/gi/GiStarGate.svelte';
+  import GiFruitBowl from 'svelte-icons/gi/GiFruitBowl.svelte';
+  import MdCameraEnhance from 'svelte-icons/md/MdCameraEnhance.svelte';
+  import FaSafari from 'svelte-icons/fa/FaSafari.svelte';
 
   export let destName: string | undefined = undefined;
   export let destPromoText: string | undefined = undefined;
@@ -48,19 +61,40 @@
 
   export let imageSize: string | number = "cover"; // auto, cover, contain ... or own size: 50%, 200px
 
-  let iconData = [GiRocketFlight, MdHotel];
+  /* Array musst be filled with all used icons */
+  let iconData = [
+    { iconString: "GiRocketFlight", iconObject: GiRocketFlight },
+    { iconString: "MdHotel", iconObject: MdHotel },
+    { iconString: "GiGlassCelebration", iconObject: GiGlassCelebration },
+    { iconString: "FaSignature", iconObject: FaSignature },
+    { iconString: "FaHandHoldingHeart", iconObject: FaHandHoldingHeart },
+    { iconString: "FaCertificate", iconObject: FaCertificate },
+    { iconString: "GiFilmStrip", iconObject: GiFilmStrip },
+    { iconString: "GiFeather", iconObject: GiFeather },
+    { iconString: "GiAstronautHelmet", iconObject: GiAstronautHelmet },
+    { iconString: "GiHotMeal", iconObject: GiHotMeal },
+    { iconString: "FaUserAstronaut", iconObject: FaUserAstronaut },
+    { iconString: "GiStarGate", iconObject: GiStarGate },
+    { iconString: "GiFruitBowl", iconObject: GiFruitBowl },
+    { iconString: "MdCameraEnhance", iconObject: MdCameraEnhance },
+    { iconString: "FaSafari", iconObject: FaSafari },
+    { iconString: "MdHotel", iconObject: MdHotel },
+    { iconString: "MdHotel", iconObject: MdHotel },
+    { iconString: "MdHotel", iconObject: MdHotel },
+    { iconString: "MdHotel", iconObject: MdHotel },
+    { iconString: "MdHotel", iconObject: MdHotel },
+  ];
 
- /* ########################    unfertig   ######################## */
   function getIcon(iconName: string) {
-    for (let i = 0; (i = iconData.length); i++) {
-      if (iconData[i].toString() === iconName) {
-        return iconData[i];
-      }
-      if (i >= iconData.length) {
+    let icon = IoMdAlert;
+    for (let i = 0; i < iconData.length; i++) {
+      if (iconData[i].iconString === iconName) {
+        icon = iconData[i].iconObject;
+      } else {
         console.warn("Found no matching icon in list");
-        return IoMdAlert;
       }
     }
+    return icon;
   }
 
   let isPrototyping = false; /* only for dev */
@@ -171,13 +205,10 @@ background-position:center;
             >
               <div
                 id="icon"
-                class="h-28 w-28"
+                class="h-20 w-20"
                 class:text-NFTW-white={!isPrototyping}
               >
-                <!--   !!!!!!!!! write a function to manage and convert icon-names as string to icon as svelte:component !!!!!!!!!   -->
-                <svelte:component
-                  this={iconData[0]} 
-                />
+                <svelte:component this={getIcon(data.icon)} />
               </div>
             </div>
             <div

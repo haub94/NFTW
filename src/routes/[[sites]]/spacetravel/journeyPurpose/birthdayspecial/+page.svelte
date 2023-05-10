@@ -5,12 +5,28 @@
   const data = [
     {
       jpName: "Birthdayspecial",
-      jpPromotext:
-        "This is a description about. How wonderful this journey is. And so on ... And so on ... And so on ... And so on ... And so on ... ",
+      jpPromotext: "Celebrate your birthday or family anniversary with us.",
       jpPrice: "",
       jpIncludedServices: [
-        { icon: "icon 1", service: "Service 1" },
-        { icon: "icon 2", service: "Service 2" },
+        {
+          icon: "GiRocketFlight",
+          service: "A flight that adheres to strict safety standards",
+        },
+        { icon: "GiFeather", service: "Cozy accommodation in a 4-star space hotel" },
+        {
+          icon: "GiGlassCelebration",
+          service: "Special meals tailored to individual preferences",
+        },
+        {
+          icon: "FaSignature",
+          service: "Personalized spacesuits adorned with the name and age",
+        },
+        { icon: "GiAstronautHelmet", service: "Special activity: a spacewalk" },
+        {
+          icon: "FaCertificate",
+          service:
+            "Souvenir set: a personalized certificate for the flight into space, a photo in space, and a model of the spacecraft",
+        },
       ],
       jpImageName: "",
       jpImagePath: "/journeypurpose/birthday.png",

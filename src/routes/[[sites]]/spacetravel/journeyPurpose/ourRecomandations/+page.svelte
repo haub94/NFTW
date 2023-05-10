@@ -6,11 +6,27 @@
     {
       jpName: "Our Recomandations",
       jpPromotext:
-        "This is a description about. How wonderful this journey is. And so on ... And so on ... And so on ... And so on ... And so on ... ",
+        "Training for Space - package: This provides intensive training for individuals, including spaceflight simulations or zero-gravity training.",
       jpPrice: "",
       jpIncludedServices: [
-        { icon: "icon 1", service: "Service 1" },
-        { icon: "icon 2", service: "Service 2" },
+        {
+          icon: "GiRocketFlight",
+          service: "A flight that adheres to strict safety standards",
+        },
+        {
+          icon: "GiFeather",
+          service: "Cozy accommodation in a 4-star space hotel",
+        },
+        {
+          icon: "GiHotMeal",
+          service: "Breakfast buffet, lunch buffet, and dinner buffet",
+        },
+        { icon: "FaUserAstronaut", service: "Training sessions" },
+        {
+          icon: "FaCertificate",
+          service:
+            "Souvenir set: a personalized certificate for the flight into space and a model of the spacecraft",
+        },
       ],
       jpImageName: "",
       jpImagePath: "/journeypurpose/recommendations.png",
