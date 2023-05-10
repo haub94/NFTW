@@ -4,7 +4,7 @@
 	import Subtitle from '$lib/elements/dataprotection/Subtitle.svelte';
 	import LpAfterSubtitle from '$lib/elements/dataprotection/LpAfterSubtitle.svelte';
 	import Paragraph from '$lib/elements/dataprotection/Paragraph.svelte';
-	import SmallTitle from '$lib/elements/SmallTitle.svelte';
+	import SmallTitle from '$lib/elements/dataprotection/SmallTitle.svelte';
 	import OrderProcessing from '$lib/elements/dataprotection/OrderProcessing.svelte';
 	import Bulletpoints from '$lib/elements/dataprotection/Bulletpoints.svelte';
 	import SectionWrapper from '$lib/elements/dataprotection/SectionWrapper.svelte';
