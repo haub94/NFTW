@@ -33,10 +33,11 @@
   import LpAfterSubtitle from "$lib/elements/dataprotection/LpAfterSubtitle.svelte";
   import LpAfterTitle from "$lib/elements/dataprotection/LpAfterTitle.svelte";
   import OrderProcessing from "$lib/elements/dataprotection/OrderProcessing.svelte";
-    import Paragraph from "$lib/elements/dataprotection/Paragraph.svelte";
-    import SectionWrapper from "$lib/elements/dataprotection/SectionWrapper.svelte";
-    import Subtitle from "$lib/elements/dataprotection/Subtitle.svelte";
-    import Title from "$lib/elements/dataprotection/Title.svelte";
+  import Paragraph from "$lib/elements/dataprotection/Paragraph.svelte";
+  import SectionWrapper from "$lib/elements/dataprotection/SectionWrapper.svelte";
+  import Subtitle from "$lib/elements/dataprotection/Subtitle.svelte";
+  import Title from "$lib/elements/dataprotection/Title.svelte";
+  import SmallTitle from "$lib/elements/dataprotection/SmallTitle.svelte";
 
   export const componentData = [
     /*
@@ -2310,6 +2311,35 @@ switch (color) {
       html:
 `
 <h2 class="pb-2.5 text-xl font-bold">{title}</h2>
+`
+    },
+    {
+      ID: 38,
+      name: "SmallTitle",
+      component: SmallTitle,
+      description: "Styles the small titles from the privacy policy. Special component for PolicyPrivacyContent.",
+      author: MH,
+      version: "1.0",
+      usedBy: [
+        "Route /privacyPolicy",
+        "PrivacyPolicyContent.svelte"
+      ],
+      dependecies: [
+        "-", 
+      ],
+      variables: [
+        {
+          name: "smallTitle",
+          description: "string: the text for the nested title",
+        },
+      ],
+      script: 
+`
+  export let smallTitle: string = "";
+`,
+      html:
+`
+<h4 class="pt-1 pb-1 text-base font-bold italic">{smallTitle}</h4>
 `
     },
     //-------------------------------------------------------------------------------------------
