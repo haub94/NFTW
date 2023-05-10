@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Destinations {
+  destinationID  Int     @id @default(autoincrement())
+  name           String? @default("")
+  promoText      String? @default("")
+  timeslot       String? @default("")
+  price          String? @default("")
+  days           String? @default("")
+  availableUnits String? @default("")
+  image          String? @default("")
+  hotel          String? @default("")
+}
+
+model Images {
+  imageID Int     @id @default(autoincrement())
+  name    String? @default("")
+  path    String? @default("")
+  altText String? @default("")
+}
+
+model Journey_Purposes {
+  id               Int     @id @default(autoincrement())
+  name             String? @default("")
+  promoText        String? @default("")
+  price            String? @default("")
+  includedServices String? @default("")
+  image            String? @default("")
+  routePath        String? @default("")
+}
+
+model Rating_Data {
+  ratingID    Int     @id @default(autoincrement())
+  testimonial String? @default("")
+  amountStars String? @default("")
+  ratingText  String? @default("")
+}
+
+model Customer_Data {
+  customerID         Int     @id @default(autoincrement())
+  firstName          String? @default("")
+  lastName           String? @default("")
+  emailAddress       String? @default("")
+  contactMessage     String? @default("")
+  applicationMessage String? @default("")
+  journeyConfig      String? @default("")
+  image              String? @default("")
+  testimonial        String? @default("")
+}
