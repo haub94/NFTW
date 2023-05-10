@@ -1,5 +1,6 @@
 <script lang="ts">
   import { page } from "$app/stores";
+  import packageMemory from "../../stores/journeyConfigMemory.ts"; 
 
   const PAGE_IS_DESTINATION = $page.url.pathname.includes(
     "/spacetravel/destination"
@@ -32,30 +33,37 @@
     "ourRecomandations",
   ]
 
+
+
+  
   function getCurrentDestinationOrePurpose(list: string[], page: string) {
     for (let index = 0; index < list.length; index++) {
-      const SPLITTED_PAGE: string[] = page.split("/");        //splite the page-string into an array
-      const DEST_ORE_PURPOSE: string | undefined = SPLITTED_PAGE.at(-1);  //get last from array = destiation- ore purposename 
+      const SPLITTED_PAGE: string[] = (page.split("/"));        //splite the page-string into an array
+      const DEST_ORE_PURPOSE: string = (SPLITTED_PAGE.at(-1) as string);  //get last from array = destiation- ore purposename 
       
       return DEST_ORE_PURPOSE;
     }
   }
 
-  let CURRENT_PACKAGE: string | undefined = EMPTY_STRING;
+    let CURRENT_DESTINATION: string = "destination";  //initial value for button label
+    let CURRENT_PURPOSE: string = "journey purpose";  //initial value for button label
 
-  //set the current choosen package (destination / purpose)
-  if (PAGE_IS_DESTINATION) {
-    CURRENT_PACKAGE = getCurrentDestinationOrePurpose(DESTINATIONS, $page.url.pathname);
-  } 
-  if (PAGE_IS_JOURNEY_PURPOSE) {
-    CURRENT_PACKAGE = getCurrentDestinationOrePurpose(PURPOSES, $page.url.pathname);
+  function writeCurrentPackageToMemory() {
+    //write the current package (destination / purpose) to the configMemory
+    if (PAGE_IS_DESTINATION) {
+      CURRENT_DESTINATION = getCurrentDestinationOrePurpose(DESTINATIONS, $page.url.pathname) as string;
+      $packageMemory.destination = CURRENT_DESTINATION;
+    } 
+    if (PAGE_IS_JOURNEY_PURPOSE) {
+      CURRENT_PURPOSE = getCurrentDestinationOrePurpose(PURPOSES, $page.url.pathname) as string;
+      $packageMemory.journeyPurpose = CURRENT_PURPOSE;
+    }
+    
   }
 
-  console.log('CURRENT_PACKAGE :>> ', CURRENT_PACKAGE);
 
-
- 
 </script>
+<button class="text-black bg-white w-40 h-20" on:click={writeCurrentPackageToMemory}>test function</button>
 
 <div
   class="relative w-full grid justify-center bg-gradient-to-b from-NFTW-bg to-transparent"
@@ -80,9 +88,9 @@
       class:text-NFTW-white={!IS_PROTOTYPING}
       >
         {PAGE_IS_DESTINATION
-          ? "Choose the current destinatiomn and go to the Journey Purposes"
+          ? "Select the current destination and go to Journey Purposes"
           : PAGE_IS_JOURNEY_PURPOSE
-          ? "Choose your Destination"
+          ? "Select the current destination and go to Destination"
           : "none"}
     </a>
 
