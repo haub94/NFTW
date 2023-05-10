@@ -3,7 +3,7 @@
 </script>
 
 <div>
-<h1 class="text-3xl py-6 font-bold text-NFTW-blue-500 bg-NFTW-blue-200 border-b-2 border-white">Current Values from the journeyConfigMemory</h1>
+<h1 class="text-3xl py-6 font-bold text-NFTW-blue-500 bg-NFTW-blue-200 border-b-2 border-white">DEV-ONLY: Current Values from the journeyConfigMemory</h1>
   <div class="mx-auto max-w-7xl">
       <div class="grid grid-cols-1 gap-px bg-white/5 sm:grid-cols-2 lg:grid-cols-4">
         <div class="bg-NFTW-blue-200 px-4 py-6 sm:px-6 lg:px-8">
