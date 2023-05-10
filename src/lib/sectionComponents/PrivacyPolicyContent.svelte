@@ -29,7 +29,7 @@
 
 <SectionWrapper>
 	<slot>
-		<div class="text-NFTW-pink-100">	
+		<div class="text-NFTW-blue-50">	
 			<!--1. Privacy at a glance-->
 			<section>
 				<Title title="1. Privacy at a glance" />
@@ -86,7 +86,7 @@
 	
 			<!--2. Hosting-->
 			<section>
-				<title title="2. Hosting" />
+				<Title title="2. Hosting" />
 				<Paragraph paragraph="We host the content of our website with the following provider:" />
 				<LpAfterTitle>
 					<Subtitle subtitle="External hosting" />
