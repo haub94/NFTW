@@ -16,8 +16,17 @@
   let ROUTE_BUTTON_GIC: string = "/getInContact";
 
   const IS_PROTOTYPING = false; /* only for dev */
-  const EMPTY_STRING = "";
+  const EMPTY_STRING: string = "";
+  let configCompleted: boolean = false; //if the destination and purpose is != "" then activate the get in contact button
 
+  //activate button "get in contact"
+  if (PAGE_IS_DESTINATION && ($packageMemory.journeyPurpose !== EMPTY_STRING)) {
+    configCompleted = true;
+  } else if (PAGE_IS_JOURNEY_PURPOSE && ($packageMemory.destination !== EMPTY_STRING)) {
+    configCompleted = true;
+  } else {
+    configCompleted = false;
+  }
 
 
   const DESTINATIONS: string[] = [
@@ -34,7 +43,6 @@
   ]
 
 
-
   
   function getCurrentDestinationOrePurpose(list: string[], page: string) {
     for (let index = 0; index < list.length; index++) {
@@ -45,25 +53,26 @@
     }
   }
 
-    let CURRENT_DESTINATION: string = "destination";  //initial value for button label
-    let CURRENT_PURPOSE: string = "journey purpose";  //initial value for button label
 
   function writeCurrentPackageToMemory() {
     //write the current package (destination / purpose) to the configMemory
     if (PAGE_IS_DESTINATION) {
-      CURRENT_DESTINATION = getCurrentDestinationOrePurpose(DESTINATIONS, $page.url.pathname) as string;
+      const CURRENT_DESTINATION: string = getCurrentDestinationOrePurpose(DESTINATIONS, $page.url.pathname) as string;
       $packageMemory.destination = CURRENT_DESTINATION;
     } 
     if (PAGE_IS_JOURNEY_PURPOSE) {
-      CURRENT_PURPOSE = getCurrentDestinationOrePurpose(PURPOSES, $page.url.pathname) as string;
+      const CURRENT_PURPOSE: string = getCurrentDestinationOrePurpose(PURPOSES, $page.url.pathname) as string;
       $packageMemory.journeyPurpose = CURRENT_PURPOSE;
     }
-    
   }
+
+  console.log('PAGE_IS_DESTINATION :>> ', PAGE_IS_DESTINATION);
+  console.log('PAGE_IS_JOURNEY_PURPOSE :>> ', PAGE_IS_JOURNEY_PURPOSE);
+  console.log('configCompleted :>> ', configCompleted);
+
 
 
 </script>
-<button class="text-black bg-white w-40 h-20" on:click={writeCurrentPackageToMemory}>test function</button>
 
 <div
   class="relative w-full grid justify-center bg-gradient-to-b from-NFTW-bg to-transparent"
@@ -79,6 +88,7 @@
   >
   <!--button switch to site: destination / journey purpose-->
     <a
+      on:click={writeCurrentPackageToMemory}
       id="buttonDestinationJourneyPurpose"
       href={routeButtonDestinationJourneyPurpose}
       aria-describedby="link-DestinationOrJourneyPurpose"
@@ -88,14 +98,16 @@
       class:text-NFTW-white={!IS_PROTOTYPING}
       >
         {PAGE_IS_DESTINATION
-          ? "Select the current destination and go to Journey Purposes"
+          ? "Select current destination and go to Journey Purposes"
           : PAGE_IS_JOURNEY_PURPOSE
-          ? "Select the current destination and go to Destination"
+          ? "Select current destination and go to Destination"
           : "none"}
     </a>
 
     <!--button switch to site: get in contact-->
+    {#if configCompleted}
     <a
+      on:click={writeCurrentPackageToMemory}
       id="buttonGetInContact"
       href={ROUTE_BUTTON_GIC}
       aria-describedby="link-GetInContact"
@@ -103,5 +115,19 @@
       class:border-4={IS_PROTOTYPING}
       class:border-orange-500={IS_PROTOTYPING}
       class:text-NFTW-white={!IS_PROTOTYPING}>Start Your Journey With Us</a>
+    {:else}
+    <div
+      class="h-14 px-7 rounded-md col-span-1 bg-gray-600 py-2 text-center items-center grid text-sm font-semibold leading-6 text-white shadow-sm"
+      class:border-4={IS_PROTOTYPING}
+      class:border-orange-500={IS_PROTOTYPING}
+      class:text-NFTW-white={!IS_PROTOTYPING}>
+      {PAGE_IS_DESTINATION
+        ? "Select a journey purpose to start the trip."
+        : PAGE_IS_JOURNEY_PURPOSE
+        ? "Select a destination to start the trip." 
+        : ""}
+    </div>
+    {/if}
+    
   </div>
 </div>
