@@ -1,59 +1,81 @@
 <script lang="ts">
   import { page } from "$app/stores";
   import { dev } from "$app/environment";
-  import emailjs from "@emailjs/browser"; //Haubold, Markus - mailing client
+  import emailjs from "@emailjs/browser"; //mailing client
   import Banner from "$lib/elements/Banner.svelte";
   import configMemory from "../../stores/journeyConfigMemory.ts"; //import the config store
 
   const isGetInContact = $page.url.pathname.includes("/getInContact");
   const isContact = $page.url.pathname.includes("/contact");
 
-  //Haubold, Markus - add vars to style redundant parts
+  //add vars to style redundant parts
   const labelStyle = "block text-sm font-semibold leading-6 text-NFTW-white";
-  const labelStyleDisabled =
-    "block text-sm font-semibold leading-6 text-NFTW-white/20";
-  const inputStyle =
-    "block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6";
-  const dateStyle =
-    "block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6 cursor-pointer";
-  const dateStyleDisabled =
-    "block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white/20 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6 cursor-default";
+  const labelStyleDisabled = "block text-sm font-semibold leading-6 text-NFTW-white/20";
+  const inputStyle = "block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6";
+  const dateStyle = "block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6 cursor-pointer";
+  const dateStyleDisabled = "block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white/20 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6 cursor-default";
   const selectionStyling = "bg-NFTW-black-600 bg-opacity-90";
 
   const overrideMemory: boolean = false; //DEV-ONLY
-  const empty: string = "";
+  const EMPTY_STRING: string = "";
 
   //helper to override the memory during dev
   if (dev && overrideMemory) {
-    $configMemory.destination = "Moon";
-    $configMemory.journeyPurpose = "Birthdayspecial";
+    $configMemory.destination = "moon";
+    $configMemory.journeyPurpose = "birthdayspecial";
     $configMemory.startDate = "2023-05-12";
     $configMemory.endDate = "2023-05-25";
   }
 
-  //Haubold, Markus - Use input values to send mail to the customer
+  //Use input values to send mail to the customer
   //config EmailJS
   const SERVICE_ID: string = "service_vzyr2ok";
   let TEMPLATE_ID: string = ""; //depends on the formtype
   const PUPLIC_KEY: string = "YYaLHQ2Bd6V9Rk4vS";
 
-  //binded form inputs
   let inputData = {
     destination:
-      $configMemory.destination === empty
+      $configMemory.destination === EMPTY_STRING
         ? "Nothing Choosen"
         : $configMemory.destination,
     journeyPurpose:
-      $configMemory.journeyPurpose === empty
+      $configMemory.journeyPurpose === EMPTY_STRING
         ? "Nothing Choosen"
         : $configMemory.journeyPurpose,
-    startDate: $configMemory.startDate === empty ? "" : $configMemory.startDate,
-    endDate: $configMemory.endDate === empty ? "" : $configMemory.endDate,
+    startDate: $configMemory.startDate === EMPTY_STRING ? "" : $configMemory.startDate,
+    endDate: $configMemory.endDate === EMPTY_STRING ? "" : $configMemory.endDate,
     firstName: "",
     lastName: "",
     emailAddress: "",
     message: "",
   };
+
+
+  //if the customer changes the input => update the configMemory
+  function updateInputData(separator: string) {
+    switch (separator) {
+      case "destination":
+        $configMemory.destination = inputData.destination;
+        break;
+      case "purpose":
+        $configMemory.journeyPurpose = inputData.journeyPurpose;
+        break;
+      case "startDate":
+        $configMemory.startDate = inputData.startDate;
+        break;
+      case "endDate":
+        $configMemory.endDate = inputData.endDate;
+        break;
+      default:
+        break;
+    }
+    
+    /*
+    $configMemory.journeyPurpose = inputData.journeyPurpose;
+    $configMemory.startDate = inputData.startDate;
+    $configMemory.endDate = inputData.endDate; */
+    
+  }
 
   //select the template based on the current form type
   if (isContact) {
@@ -436,6 +458,9 @@
               <select
                 required
                 bind:value={inputData.destination}
+                on:change={() => {
+                  updateInputData("destination");
+                }}
                 id="destination"
                 name="destination"
                 class={dateStyle}
@@ -443,9 +468,9 @@
                 <option class={selectionStyling} selected
                   >{inputData.destination}</option
                 >
-                <option class={selectionStyling}>Mars</option>
-                <option class={selectionStyling}>Moon</option>
-                <option class={selectionStyling}>Venus</option>
+                <option class={selectionStyling}>mars</option>
+                <option class={selectionStyling}>moon</option>
+                <option class={selectionStyling}>venus</option>
               </select>
             </div>
             <div>
@@ -455,6 +480,9 @@
               <select
                 required
                 bind:value={inputData.journeyPurpose}
+                on:change={() => {
+                  updateInputData("purpose");
+                }}
                 id="journeyjourneyPurpose"
                 name="journeyjourneyPurpose"
                 class={dateStyle}
@@ -462,10 +490,10 @@
                 <option class={selectionStyling} selected
                   >{inputData.journeyPurpose}</option
                 >
-                <option class={selectionStyling}>Birthdayspecial</option>
-                <option class={selectionStyling}>Honeymoon</option>
-                <option class={selectionStyling}>Phototour</option>
-                <option class={selectionStyling}>Vacation</option>
+                <option class={selectionStyling}>birthdayspecial</option>
+                <option class={selectionStyling}>honeymoon</option>
+                <option class={selectionStyling}>phototour</option>
+                <option class={selectionStyling}>vacation</option>
               </select>
             </div>
 
@@ -473,16 +501,19 @@
             <div>
               <label
                 for="startDate"
-                class={inputData.journeyPurpose === "Birthdayspecial" ||
-                inputData.journeyPurpose === "Honeymoon"
+                class={inputData.journeyPurpose === "birthdayspecial" ||
+                inputData.journeyPurpose === "honeymoon"
                   ? labelStyle
                   : labelStyleDisabled}>Start Date</label
               >
               <!--disable datepicker for vacation, phototour, oure recomendation-->
-              {#if inputData.journeyPurpose === "Birthdayspecial" || inputData.journeyPurpose === "Honeymoon"}
+              {#if inputData.journeyPurpose === "birthdayspecial" || inputData.journeyPurpose === "honeymoon"}
                 <input
                   required
                   bind:value={inputData.startDate}
+                  on:change={() => {
+                    updateInputData("startDate");
+                  }}
                   id="startDate"
                   name="startDate"
                   type="date"
@@ -505,16 +536,19 @@
             <div>
               <label
                 for="endDate"
-                class={inputData.journeyPurpose === "Birthdayspecial" ||
-                inputData.journeyPurpose === "Honeymoon"
+                class={inputData.journeyPurpose === "birthdayspecial" ||
+                inputData.journeyPurpose === "honeymoon"
                   ? labelStyle
                   : labelStyleDisabled}>End Date</label
               >
               <!--disable datepicker for vacation, phototour, oure recomendation-->
-              {#if inputData.journeyPurpose === "Birthdayspecial" || inputData.journeyPurpose === "Honeymoon"}
+              {#if inputData.journeyPurpose === "birthdayspecial" || inputData.journeyPurpose === "honeymoon"}
                 <input
                   required
                   bind:value={inputData.endDate}
+                  on:change={() => {
+                    updateInputData("endDate");
+                  }}
                   id="endDate"
                   name="endDate"
                   type="date"
