@@ -4,10 +4,12 @@
     export let title1of2: string = "Lorem ipsum";
     export let title2of2: string = "";
     export let caption: string = "Lorem ipsum dolor.";
+    export let img: string = "/brokenImage.png";
+    export let minHeight: string = "70vh";
   </script>
   
   <div class="realitive overflow-hidden bg-cover bg-no-repeat"
-       style="background-image: url('/home/BgAboutUs.png'); height: 700px">
+       style="background-image: url({img}); min-height: {minHeight}">
     <div class="mx-auto max-w-7xl px-6 pb-96 pt-24 text-center sm:pt-32 lg:px-8">
       <div class="mx-auto max-w-4xl">
         <p class="mt-2 text-4xl font-bold tracking-tight text-NFTW-white sm:text-5xl">
@@ -20,27 +22,9 @@
         <p class="mx-auto max-w-2xl text-lg leading-8 text-NFTW-white/60">
           {caption}
         </p>
-        <svg
-          viewBox="0 0 1208 1024"
-          class="absolute -top-10 left-1/2 -z-10 h-[64rem] -translate-x-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:-top-12 md:-top-20 lg:-top-12 xl:top-0"
-        >
-          <ellipse
-            cx="604"
-            cy="512"
-            fill="url(#radialGradient_001)"
-            rx="604"
-            ry="512"
-          />
-          <defs>
-            <radialGradient id="radialGradient_001">
-              <stop stop-color="#3500BF" />
-              <stop offset="1" stop-color="#9300B9" />
-            </radialGradient>
-          </defs>
-        </svg>
       </div>
     </div>
-    <div class="flow-root pb-96">
+    <div class="flow-root pb-24">
       <div class="-mt-80">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
           <div
