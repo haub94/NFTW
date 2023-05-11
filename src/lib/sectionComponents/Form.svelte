@@ -91,13 +91,7 @@
         break;
       default:
         break;
-    }
-    
-    /*
-    $configMemory.journeyPurpose = inputData.journeyPurpose;
-    $configMemory.startDate = inputData.startDate;
-    $configMemory.endDate = inputData.endDate; */
-    
+    }  
   }
 
   //select the template based on the current form type

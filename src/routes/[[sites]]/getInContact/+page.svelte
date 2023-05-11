@@ -31,8 +31,6 @@
     }
   }
 
-
-
   //parse the journey purpose to get the index from array (than it will 
   //be easer to catch data from JOURNEY_PURPOSE[index])
   function parseJourneyPurpose(wantedIndex: string): number {
@@ -60,7 +58,6 @@
     }
   }
 
-  
 
 </script>
 
