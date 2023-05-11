@@ -62,7 +62,11 @@
     } 
     if (PAGE_IS_JOURNEY_PURPOSE) {
       const CURRENT_PURPOSE: string = getCurrentDestinationOrePurpose(PURPOSES, $page.url.pathname) as string;
-      $packageMemory.journeyPurpose = CURRENT_PURPOSE;
+      if (CURRENT_PURPOSE === "ourRecomandations") {  //reform string (not the best way...)
+        $packageMemory.journeyPurpose = "our recomandations";
+      } else {
+        $packageMemory.journeyPurpose = CURRENT_PURPOSE;
+      }
     }
   }
 
