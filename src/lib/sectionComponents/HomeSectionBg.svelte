@@ -7,7 +7,7 @@
   </script>
   
   <div class="realitive overflow-hidden bg-cover bg-no-repeat"
-       style="background-image: url('/home/BgAstronauts.png'); height: 1150px">
+       style="background-image: url('/home/BgAboutUs.png'); height: 700px">
     <div class="mx-auto max-w-7xl px-6 pb-96 pt-24 text-center sm:pt-32 lg:px-8">
       <div class="mx-auto max-w-4xl">
         <p class="mt-2 text-4xl font-bold tracking-tight text-NFTW-white sm:text-5xl">
