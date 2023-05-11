@@ -13,6 +13,8 @@
 
   export let data: PageData;
   const DIVIDER_CAPTION: string = "Get ready for take off";
+
+  
   let JOURNEY_PURPOSE: JourneyPurposeData[];
   ({ JOURNEY_PURPOSE } = data);  //get data from db
 
@@ -29,6 +31,37 @@
     }
   }
 
+
+
+  //parse the journey purpose to get the index from array (than it will 
+  //be easer to catch data from JOURNEY_PURPOSE[index])
+  function parseJourneyPurpose(wantedIndex: string): number {
+    for (let index = 0; index < JOURNEY_PURPOSE.length; index++) {
+      if (JOURNEY_PURPOSE[index].name === wantedIndex) {
+        return index;
+      }
+    }
+    return 0;
+  }
+
+  //start- and enddate for the upcoming trips
+  const NEXT_JOURNEY_DATES = {
+    VACATION: {
+      START_DATE: JOURNEY_PURPOSE[parseJourneyPurpose("vacation")].startDate,
+      END_DATE: JOURNEY_PURPOSE[parseJourneyPurpose("vacation")].endDate,
+    },
+    PHOTOTOUR: {
+      START_DATE: JOURNEY_PURPOSE[parseJourneyPurpose("phototour")].startDate,
+      END_DATE: JOURNEY_PURPOSE[parseJourneyPurpose("phototour")].endDate,
+    },
+    RECOMANDATIONS: {
+      START_DATE: JOURNEY_PURPOSE[parseJourneyPurpose("our recomandations")].startDate,
+      END_DATE: JOURNEY_PURPOSE[parseJourneyPurpose("our recomandations")].endDate,
+    }
+  }
+
+  
+
 </script>
 
 <SectionBg002>
@@ -41,6 +74,13 @@
     imgPosition="center"
     imgHeight="50vh"
   />
-  <Form />
+  <Form 
+    nextVacationStart = {NEXT_JOURNEY_DATES.VACATION.START_DATE}
+    nextVacationEnd = {NEXT_JOURNEY_DATES.VACATION.END_DATE}
+    nextPhototourStart = {NEXT_JOURNEY_DATES.PHOTOTOUR.START_DATE}
+    nextPhototourEnd = {NEXT_JOURNEY_DATES.PHOTOTOUR.END_DATE}
+    nextRecomandationsStart = {NEXT_JOURNEY_DATES.RECOMANDATIONS.START_DATE}
+    nextRecomandationsEnd = {NEXT_JOURNEY_DATES.RECOMANDATIONS.END_DATE}
+  />
 
 </SectionBg002>

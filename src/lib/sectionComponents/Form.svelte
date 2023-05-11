@@ -19,6 +19,16 @@
   const overrideMemory: boolean = false; //DEV-ONLY
   const EMPTY_STRING: string = "";
 
+  //variables for the date of the upcoming trips
+  export let nextVacationStart: string = "";
+  export let nextVacationEnd: string = ""; 
+  export let nextPhototourStart: string = "";
+  export let nextPhototourEnd: string = ""; 
+  export let nextRecomandationsStart: string = "";
+  export let nextRecomandationsEnd: string = "";
+  
+  
+
   //helper to override the memory during dev
   if (dev && overrideMemory) {
     $configMemory.destination = "moon";
@@ -59,6 +69,19 @@
         break;
       case "purpose":
         $configMemory.journeyPurpose = inputData.journeyPurpose;
+        if (inputData.journeyPurpose === "vacation") {
+          $configMemory.startDate = nextVacationStart;
+          $configMemory.endDate = nextVacationEnd;
+        };
+        if (inputData.journeyPurpose === "phototour") {
+          $configMemory.startDate = nextPhototourStart;
+          $configMemory.endDate = nextPhototourEnd;
+        };
+        if (inputData.journeyPurpose === "our recomandations") {
+          $configMemory.startDate = nextRecomandationsStart;
+          $configMemory.endDate = nextRecomandationsEnd;
+        };
+        
         break;
       case "startDate":
         $configMemory.startDate = inputData.startDate;
@@ -494,6 +517,7 @@
                 <option class={selectionStyling}>honeymoon</option>
                 <option class={selectionStyling}>phototour</option>
                 <option class={selectionStyling}>vacation</option>
+                <option class={selectionStyling}>our recomandations</option>
               </select>
             </div>
 
@@ -520,15 +544,14 @@
                   class={dateStyle}
                 />
               {:else}
-                <input
-                  disabled
-                  required
-                  bind:value={inputData.startDate}
-                  id="startDate"
-                  name="startDate"
-                  type="date"
-                  class={dateStyleDisabled}
-                />
+                <!--by using the select field, the date will not be shown after the customer changes the journey purpose-->
+                <div class="block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white/20 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6 cursor-default">
+                  {#if $configMemory.journeyPurpose === ""}
+                    <p>dd.mm.yyyy</p>
+                  {:else}
+                    <p>{$configMemory.startDate}</p>
+                  {/if}
+                </div>
               {/if}
             </div>
 
@@ -555,16 +578,15 @@
                   class={dateStyle}
                 />
               {:else}
-                <input
-                  disabled
-                  required
-                  bind:value={inputData.endDate}
-                  id="endDate"
-                  name="endDate"
-                  type="date"
-                  class={dateStyleDisabled}
-                />
-              {/if}
+                <!--by using the select field, the date will not be shown after the customer changes the journey purpose-->
+                <div class="block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white/20 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6 cursor-default">
+                  {#if $configMemory.journeyPurpose === ""}
+                    <p>dd.mm.yyyy</p>
+                  {:else}
+                    <p>{$configMemory.endDate}</p>
+                  {/if}
+                </div>
+                {/if}
             </div>
 
             <div class="mb-10 sm:col-span-2" />
