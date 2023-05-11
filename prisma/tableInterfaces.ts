@@ -20,7 +20,9 @@ export interface JourneyPurposeData {
     promoText: string        
     price: string            
     includedServices: string 
-    image: string            
+    image: string
+    startDate: string
+    endDate: string
 }
 
 export interface ImageData {
@@ -38,4 +40,6 @@ export interface DestinationData {
     availableUnits: string
     image: string
     hotel: string
+    startDate: string
+    endDate: string
 }
