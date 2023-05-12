@@ -7,9 +7,9 @@
     import { dev } from "$app/environment";
 
 	import type { PageData } from './$types'
-	import type { CUSTOMER_DATA } from "../../../../prisma/tableInterfaces";
-	import type { RATING_DATA } from "../../../../prisma/tableInterfaces";
-	import type { IMAGES } from "../../../../prisma/tableInterfaces";
+	import type { CustomerData } from "../../../../prisma/tableInterfaces";
+	import type { RatingData } from "../../../../prisma/tableInterfaces";
+	import type { ImageData } from "../../../../prisma/tableInterfaces";
 
 	const EMPTY_STRING = "";
 	export let data: PageData;
@@ -24,9 +24,9 @@
         },
 	]
 
-	let CUSTOMER_DATA: CUSTOMER_DATA[];
-  	let RATING_DATA: RATING_DATA[];
-  	let IMAGES: IMAGES[];
+	let CUSTOMER_DATA: CustomerData[];
+  	let RATING_DATA: RatingData[];
+  	let IMAGES: ImageData[];
 
 	//load data from the db (load-function from the page.server.ts)
 	function load() {
