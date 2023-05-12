@@ -1,12 +1,14 @@
 <script lang="ts" context="module">
+  //author shorthand
+  const MH: string = "Markus Haubold";
+  const DR: string = "Daniel Rittrich";
+  const LXT: string = "Le Xuan Tran";
+  const AK: string = "Anna Kozachuk";
+  
   //add all component-imports here
   import Card from "$lib/components/Card.svelte";
   import CardSpacetravel from "$lib/components/CardSpacetravel.svelte";
-
-  //imprint
   import ImprintContent from "$lib/sectionComponents/ImprintContent.svelte";
-
-  //accordion
   import Item from "$lib/tools/accordion/Item.svelte";
   import Body from "$lib/tools/accordion/Body.svelte";
   import BgVideo from "$lib/sectionComponents/BgVideo.svelte";
@@ -15,42 +17,59 @@
   import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
   import SectionBg001 from "$lib/sectionComponents/SectionBg001.svelte";
   import SectionHeader from "$lib/components/SectionHeader.svelte";
+  
+  //client stories
   import TestimonialCard from "$lib/components/TestimonialCard.svelte";
   import StorrieCard from "$lib/components/StorieCard.svelte";
   import Stories from "$lib/sectionComponents/Stories.svelte";
   import TestimonialSwiper from "$lib/sectionComponents/TestimonialSwiper.svelte";
+  
+  //some elements
   import Banner from "$lib/elements/Banner.svelte";
+  
+  //privacy policy
+  import Bulletpoints from "$lib/elements/dataprotection/Bulletpoints.svelte";
+  import LeftPaddingH3 from "$lib/elements/dataprotection/LeftPaddingH3.svelte";
+  import LpAfterSubtitle from "$lib/elements/dataprotection/LpAfterSubtitle.svelte";
+  import LpAfterTitle from "$lib/elements/dataprotection/LpAfterTitle.svelte";
+  import OrderProcessing from "$lib/elements/dataprotection/OrderProcessing.svelte";
+  import Paragraph from "$lib/elements/dataprotection/Paragraph.svelte";
+  import SectionWrapper from "$lib/elements/dataprotection/SectionWrapper.svelte";
+  import Subtitle from "$lib/elements/dataprotection/Subtitle.svelte";
+  import Title from "$lib/elements/dataprotection/Title.svelte";
+  import SmallTitle from "$lib/elements/dataprotection/SmallTitle.svelte";
 
   export const componentData = [
     /*
-      ---------TEMPLATE--------- 
-      {
-        ID: "LAST ID + 1",
-        name: "NAME OF THE COMPONENT",
-        component: NAME FROM THE USED IMPORT,
-        description: "DESCRIPTOPN OF THE FUNCTION / USAGE.",
-        author: "YOUR NAME",
-        version: "X.Y",
-        usedBy: "PARENTS",
-        dependecies: "WHICH COMPONENTS ARE NEEDED?!",
-        variables: [
-          {
-            name: 'NAME VAR1',
-            description: 'DESCRIPTION VAR1',
-          },
-          {
-            name: 'NAME VAR2',
-            description: 'DESCRIPTION VAR2',
-          }
-          ... ADD MORE VARIABLES IF NEEDED
-        ],
-        script: 
-    `
-    SCRIPT FROM THE COMPONENT (WITHOUT <SCRIPT><SCRIPT> !!!)
-    `
-    HTML AND STYLE SECTIONS FROM THE COMPONENT
-    `
-      },
+    ---------TEMPLATE--------- 
+    {
+      ID: 0,
+      name: "",
+      component: ,
+      description: "",
+      author: "",
+      version: ".",
+      usedBy: [
+        ""
+      ],
+      dependecies: [
+        "Dependecie 1", 
+      ],
+      variables: [
+        {
+          name: "",
+          description: "",
+        },
+      ],
+      script: 
+`
+
+`
+      html:
+`
+
+`
+    },
       //-------------------------------------------------------------------------------------------
       */
     {
@@ -129,7 +148,7 @@
       component: CardSpacetravel,
       description:
         "Content card for spacetravel page that shows informations about the next steps you can go to choose your vacation. It's a clickable component that also has a button to click on.",
-      author: "Daniel Rittrich",
+      author: DR,
       version: "1.0",
       usedBy: ["Route /spacetravel"],
       dependecies: ["-"],
@@ -213,7 +232,7 @@ export let path: string = "/"; // routing path "/home/user/config"
       name: "ImprintContent",
       component: ImprintContent,
       description: "It's the component with the data for the imprint site.",
-      author: "Markus Haubold",
+      author: MH,
       version: "1.0",
       usedBy: ["Route imprint"],
       dependecies: ["Accordion Body", "Accordion Item"],
@@ -334,7 +353,7 @@ export let path: string = "/"; // routing path "/home/user/config"
       component: Item,
       description:
         "It handles the content from one item of a accordion. Its nested within the accordion body. Put the content inside of the <Input> tags; for the title you should use the variables!",
-      author: "Markus Haubold",
+      author: MH,
       version: "1.0",
       usedBy: ["ImprintContent"],
       dependecies: [
@@ -422,7 +441,7 @@ export let path: string = "/"; // routing path "/home/user/config"
       name: "Body",
       component: Body,
       description: "Its the wrapper for all accordion items per section.",
-      author: "Markus Haubold",
+      author: MH,
       version: "1.0",
       usedBy: ["Route imprint"],
       dependecies: [
@@ -465,7 +484,7 @@ export let path: string = "/"; // routing path "/home/user/config"
       component: BgVideo,
       description:
         "Shows a video in full width with variable height. In the center of the video you can show text as title and caption. The caption can also contain a link.",
-      author: "Daniel Rittrich",
+      author: DR,
       version: "1.1",
       usedBy: ["/ home"],
       dependecies: ["checkUndefinedNullOrEmpty (from lib/tools/Tools.svelte)"],
@@ -565,7 +584,7 @@ export let captionPath: string = "";
       component: DividerTextImage,
       description:
         "Section component that shows text on the left side and a image on the right side. .",
-      author: "Daniel Rittrich",
+      author: DR,
       version: "1.0",
       usedBy: ["Route /imprint"],
       dependecies: ["none"],
@@ -1340,7 +1359,7 @@ export let captionPath: string = "";
       name: "SectionBg001",
       component: SectionBg001,
       description: "Background for a section that can be filled with content",
-      author: "Daniel Rittrich",
+      author: DR,
       version: "1.0",
       usedBy: ["on some pages"],
       dependecies: [
@@ -1421,7 +1440,7 @@ export let caption: string = "Lorem ipsum dolor.";
       component: SectionBg002,
       description:
         "Background for a section that can be filled with content. It comes with two variants. First one with full width and second one with two columns. This can be chossen with the variable 'twoCols'.",
-      author: "Daniel Rittrich",
+      author: DR,
       version: "2.0",
       usedBy: ["nearly all pages"],
       dependecies: ["randomPercentage (import from lib/tools/Tools.svelte)"],
@@ -1472,7 +1491,7 @@ export let twoCols: boolean = false;
       name: "Banner",
       component: Banner,
       description: "Shows buzzwords, the messages to this and differnt background colors",
-      author: "Markus Haubold",
+      author: MH,
       version: "1.0",
       usedBy: ["Form.svelte"],
       dependecies: ["-"],
@@ -1551,7 +1570,7 @@ switch (color) {
       name: "SectionHeader",
       component: SectionHeader,
       description: "Used as the intro part of every site. It contents a header for a few of buzzwords and a description to mention the core of the site.",
-      author: "Markus Haubold",
+      author: MH,
       version: "1.0",
       usedBy: [
         "Route /clientStories",
@@ -1588,7 +1607,7 @@ switch (color) {
       name: "TestimonialCard",
       component: TestimonialCard,
       description: "Used as a card which can slide forced by the swiper-component (component TestimonialSwiper).",
-      author: "Markus Haubold",
+      author: MH,
       version: "1.0",
       usedBy: [
         "Route /clientStorries",
@@ -1733,7 +1752,7 @@ switch (color) {
       name: "StorrieCard",
       component: StorrieCard,
       description: "Used as a card which contains the stats about completed journeys.",
-      author: "Markus Haubold",
+      author: MH,
       version: "1.0",
       usedBy: [
         "Route /clientStories",
@@ -1844,7 +1863,7 @@ switch (color) {
       name: "Stories",
       component: Stories,
       description: "Section component which containes all StorrieCards (component StorrieCard)",
-      author: "Markus Haubold",
+      author: MH,
       version: "1.0",
       usedBy: [
         "Route /clientStories",
@@ -1910,7 +1929,7 @@ switch (color) {
       name: "TestimonialSwiper",
       component: TestimonialSwiper,
       description: "Section component to swipe the TestimonialCards automaticly one by one along the horizontal axis.",
-      author: "Markus Haubold",
+      author: MH,
       version: "1.0",
       usedBy: [
         "Route /clientStories",
@@ -1963,31 +1982,365 @@ switch (color) {
 `,
       html: 
 `
-  <div class="w-full h-auto overflow-hidden">
-    <swiper-container
-        space-between=20
-        autoplay="true"
-        speed="600" 
-        loop="true"
-        slides-per-view={1}
-        centered-slides={false}
-        
-    >
-        {#each testimonialData as person}
-            <swiper-slide>        
-                <TestimonialCard 
-                    name={person.name}
-                    bookedDestination={person.bookedDestination}
-                    bookedPurpose={person.bookedPurpose}
-                    givenStars={person.givenStars}
-                    text={person.reviewText}
-                    image={person.image}
-                />    
-            </swiper-slide>
-        {/each}
-    </swiper-container>
-  </div>
+<div class="w-full h-auto overflow-hidden">
+  <swiper-container
+      space-between=20
+      autoplay="true"
+      speed="600" 
+      loop="true"
+      slides-per-view={1}
+      centered-slides={false}
+      
+  >
+      {#each testimonialData as person}
+          <swiper-slide>        
+              <TestimonialCard 
+                  name={person.name}
+                  bookedDestination={person.bookedDestination}
+                  bookedPurpose={person.bookedPurpose}
+                  givenStars={person.givenStars}
+                  text={person.reviewText}
+                  image={person.image}
+              />    
+          </swiper-slide>
+      {/each}
+  </swiper-container>
+</div>
 `,
+    },
+    {
+        ID: 30,
+        name: "Bulletpoints",
+        component: Bulletpoints,
+        description: "Generates a unsorted list with the list-symbol disc.",
+        author: MH,
+        version: "1.0",
+        usedBy: [
+          "Route /privacyPolicy",
+          "PrivacyPolicyContent.svelte"
+        ],
+        dependecies: [
+          "-", 
+        ],
+        variables: [
+          {
+            name: "bulletpoints",
+            description: "array of string: Collection of the list entrys",
+          },
+        ],
+        script: 
+`
+  export let bulletpoints: Array<string> = [];
+`,
+        html:
+`
+<ul class="list-disc space-y-1.5 pl-8 pb-4 text-base">
+  {#each bulletpoints as points}
+    <li>{points}</li>
+  {/each}
+</ul>
+`
+    },
+    {
+        ID: 31,
+        name: "LeftPaddingH3",
+        component: LeftPaddingH3,
+        description: "Section Wrapper which gives the nested Header3 the left padding pl-1.5. Special component for PolicyPrivacyContent.",
+        author: MH,
+        version: "1.0",
+        usedBy: [
+          "Route /privacyPolicy",
+          "PrivacyPolicyContent.svelte"
+        ],
+        dependecies: [
+          "-", 
+        ],
+        variables: [
+          {
+            name: "-",
+            description: "-",
+          },
+        ],
+        script: 
+`
+
+`,
+        html:
+`
+<div class="pl-1.5">
+	<slot />
+</div>
+`
+      },
+      {
+        ID: 32,
+        name: "LpAfterSubtitle",
+        component: LpAfterSubtitle,
+        description: "Section Wrapper which gives the nested content (after the subtitle) the left padding: pl-2. Special component for PolicyPrivacyContent.",
+        author: MH,
+        version: "1.0",
+        usedBy: [
+          "Route /privacyPolicy",
+          "PrivacyPolicyContent.svelte"
+        ],
+        dependecies: [
+          "-", 
+        ],
+        variables: [
+          {
+            name: "-",
+            description: "-",
+          },
+        ],
+        script: 
+`
+
+`,
+        html:
+`
+<div class="pl-2">
+	<slot />
+</div>
+`
+      },
+      {
+        ID: 33,
+        name: "LpAfterTitle",
+        component: LpAfterTitle,
+        description: "Section Wrapper which gives the nested content (after the title) the left padding: pl-2. Special component for PolicyPrivacyContent.",
+        author: MH,
+        version: "1.0",
+        usedBy: [
+          "Route /privacyPolicy",
+          "PrivacyPolicyContent.svelte"
+        ],
+        dependecies: [
+          "-", 
+        ],
+        variables: [
+          {
+            name: "-",
+            description: "-",
+          },
+        ],
+        script: 
+`
+
+`,
+        html:
+`
+<div class="pl-2">
+	<slot />
+</div>
+`
+      },
+      {
+        ID: 34,
+        name: "OrderProcessing",
+        component: OrderProcessing,
+        description: "Component with the content for the default Order-Processing-Paragraph (privacy policy). By using the exported variables it is possible the change the content. Special component for PolicyPrivacyContent.",
+        author: MH,
+        version: "1.0",
+        usedBy: [
+          "Route /privacyPolicy",
+          "PrivacyPolicyContent.svelte"
+        ],
+        dependecies: [
+          "-", 
+        ],
+        variables: [
+          {
+            name: "text",
+            description: "string: the content from the order-processing (use this to override the default text)",
+          },
+          {
+            name: "title",
+            description: "string: the title from the order-processing (use this to override the default title)",
+          },
+          {
+            name: "textToPrint",
+            description: "string: helper-variable which will be overridden from the text-variable (if the default value does not fit for the content).",
+          },
+          {
+            name: "titleToPrint",
+            description: "string: helper-variable which will be overridden from the title-variable (if the default value does not fit for the content).",
+          },
+        ],
+        script: 
+`
+  export let text = '';
+  export let title = '';
+  let textToPrint: string = "";
+  let titleToPrint: string = "";
+
+  if (text === '') {
+    //use mostly used text
+    textToPrint =
+      'We have concluded a contract on order processing (AVV) for the use of the above-mentioned service. This is a contract required by data protection law, which ensures that this processes the personal data of our website visitors only according to our instructions and in compliance with the GDPR.';
+  } else {
+    textToPrint = text;
+  }
+
+  if (title === '') {
+    //use mostly used text
+    titleToPrint = 'Order Processing';
+  } else {
+    titleToPrint = title;
+  }
+`,
+        html:
+`
+<div class="space-y-1">
+	<h3 class="text-nftw-pink-100 font-bold italic">{titleToPrint}</h3>
+	<p class="pb-4 text-base">{textToPrint}</p>
+</div>
+`
+      },
+      {
+      ID: 35,
+      name: "Paragraph",
+      component: Paragraph,
+      description: "Wrapper which styles the nested paragraph section. Special component for PolicyPrivacyContent.",
+      author: MH,
+      version: "1.0",
+      usedBy: [
+        "Route /privacyPolicy",
+        "PrivacyPolicyContent.svelte"
+      ],
+      dependecies: [
+        "-", 
+      ],
+      variables: [
+        {
+          name: "paragraph",
+          description: "string: the text for the nested paragraph",
+        },
+      ],
+      script: 
+`
+  export let paragraph: string = "";
+`,
+      html:
+`
+<p class="pb-4 text-base">{paragraph}</p>
+`
+    },
+    {
+      ID: 36,
+      name: "SectionWrapper",
+      component: SectionWrapper,
+      description: "Wrapper which styles the nested content for a section from the privacy policy site. Special component for PolicyPrivacyContent.",
+      author: MH,
+      version: "1.0",
+      usedBy: [
+        "Route /privacyPolicy",
+        "PrivacyPolicyContent.svelte"
+      ],
+      dependecies: [
+        "-", 
+      ],
+      variables: [
+        {
+          name: "paragraph",
+          description: "string: the text for the nested paragraph",
+        },
+      ],
+      script: 
+`
+`,
+      html:
+`
+<div class="mx-auto bg-none px-4 py-16 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8 lg:py-20">
+	<slot />
+</div>
+`
+    },
+    {
+      ID: 37,
+      name: "Subtitle",
+      component: Subtitle,
+      description: "Styles the subtitles from the privacy policy. Special component for PolicyPrivacyContent.",
+      author: MH,
+      version: "1.0",
+      usedBy: [
+        "Route /privacyPolicy",
+        "PrivacyPolicyContent.svelte"
+      ],
+      dependecies: [
+        "-", 
+      ],
+      variables: [
+        {
+          name: "subtitle",
+          description: "string: the text for the nested subtitle",
+        },
+      ],
+      script: 
+`
+  export let subtitle: string = "";
+`,
+      html:
+`
+<h3 class="pb-2.5 text-xl font-bold">{subtitle}</h3>
+`
+    },
+    {
+      ID: 37,
+      name: "Title",
+      component: Title,
+      description: "Styles the titles from the privacy policy. Special component for PolicyPrivacyContent.",
+      author: MH,
+      version: "1.0",
+      usedBy: [
+        "Route /privacyPolicy",
+        "PrivacyPolicyContent.svelte"
+      ],
+      dependecies: [
+        "-", 
+      ],
+      variables: [
+        {
+          name: "title",
+          description: "string: the text for the nested title",
+        },
+      ],
+      script: 
+`
+  export let title: string = "";
+`,
+      html:
+`
+<h2 class="pb-2.5 text-xl font-bold">{title}</h2>
+`
+    },
+    {
+      ID: 38,
+      name: "SmallTitle",
+      component: SmallTitle,
+      description: "Styles the small titles from the privacy policy. Special component for PolicyPrivacyContent.",
+      author: MH,
+      version: "1.0",
+      usedBy: [
+        "Route /privacyPolicy",
+        "PrivacyPolicyContent.svelte"
+      ],
+      dependecies: [
+        "-", 
+      ],
+      variables: [
+        {
+          name: "smallTitle",
+          description: "string: the text for the nested title",
+        },
+      ],
+      script: 
+`
+  export let smallTitle: string = "";
+`,
+      html:
+`
+<h4 class="pt-1 pb-1 text-base font-bold italic">{smallTitle}</h4>
+`
     },
     //-------------------------------------------------------------------------------------------
   ];
@@ -2053,7 +2406,7 @@ switch (color) {
       ID: 2,
       name: "journeyConfigMemory.ts",
       description: "Its a svelte-store to save the current choosen journey-configuration for global usage. It is used from the form (@get in contact site) to load the data for prefill the input fields.",
-      author: "Markus Haubold",
+      author: MH,
       version: "1.0",
       usedBy: ["Form.svelte", ],
       dependecies: ["writable (import from svelte/store)"],
@@ -2095,7 +2448,7 @@ export default config;
       ID: 0,
       name: "",
       description: "Beschreibung zu Test_Script.",
-      author: "Markus Haubold",
+      author: MH,
       version: "1.0",
       usedBy: "",
       dependecies: "",
@@ -2120,7 +2473,7 @@ export default config;
       ID: 0,
       name: "",
       description: "Beschreibung zu Test_Script.",
-      author: "Markus Haubold",
+      author: MH,
       version: "1.0",
       usedBy: "",
       dependecies: "",
