@@ -6,9 +6,44 @@
     {
       jpName: "Honeymoon",
       jpPromotext:
-        "This is a description about. How wonderful this journey is. And so on ... And so on ... And so on ... And so on ... And so on ... ",
-      jpPrice: "",
-      jpIncludedServices: "",
+        "For wedding couples looking for an unforgettable honeymoon or a special wedding celebration in space.",
+      jpPrice: "20.000 EUR",
+      jpIncludedServices: [
+        {
+          icon: "GiRocketFlight",
+          service: "A flight that adheres to strict safety standards",
+        },
+        {
+          icon: "MdHotel",
+          service:
+            "A private cabin where they can spend time alone during the flight",
+        },
+        {
+          icon: "GiGlassCelebration",
+          service:
+            "Special meals tailored to the couple's individual preferences",
+        },
+        {
+          icon: "FaSignature",
+          service:
+            "Personalized spacesuits embroidered with their names or a romantic phrase",
+        },
+        {
+          icon: "FaHandHoldingHeart",
+          service:
+            "Special activities: a spacewalk and a romantic dinner with a view of Earth",
+        },
+        {
+          icon: "FaCertificate",
+          service:
+            "Souvenir set: a personalized certificate for the flight into space and a model of the spacecraft",
+        },
+        {
+          icon: "GiFilmStrip",
+          service:
+            "Exclusive to this offer: a personalized video recording of the trip so that the couple can always remember this special experience",
+        },
+      ],
       jpImageName: "",
       jpImagePath: "/journeypurpose/honeymoon.png",
       jpImageAltText: "",
@@ -18,6 +53,7 @@
 
 <SectionBg002 paddingBottom="0px" paddingTop="0px">
   <DetailContent
+    isJPComponent={true}
     jpName={data[0].jpName}
     jpPromotext={data[0].jpPromotext}
     jpPrice={data[0].jpPrice}

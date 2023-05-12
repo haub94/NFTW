@@ -6,9 +6,28 @@
     {
       jpName: "Our Recomandations",
       jpPromotext:
-        "This is a description about. How wonderful this journey is. And so on ... And so on ... And so on ... And so on ... And so on ... ",
+        "Training for Space - package: This provides intensive training for individuals, including spaceflight simulations or zero-gravity training.",
       jpPrice: "",
-      jpIncludedServices: "",
+      jpIncludedServices: [
+        {
+          icon: "GiRocketFlight",
+          service: "A flight that adheres to strict safety standards",
+        },
+        {
+          icon: "GiFeather",
+          service: "Cozy accommodation in a 4-star space hotel",
+        },
+        {
+          icon: "GiHotMeal",
+          service: "Breakfast buffet, lunch buffet, and dinner buffet",
+        },
+        { icon: "FaUserAstronaut", service: "Training sessions" },
+        {
+          icon: "FaCertificate",
+          service:
+            "Souvenir set: a personalized certificate for the flight into space and a model of the spacecraft",
+        },
+      ],
       jpImageName: "",
       jpImagePath: "/journeypurpose/recommendations.png",
       jpImageAltText: "",
@@ -18,6 +37,7 @@
 
 <SectionBg002 paddingBottom="0px" paddingTop="0px">
   <DetailContent
+    isJPComponent={true}
     jpName={data[0].jpName}
     jpPromotext={data[0].jpPromotext}
     jpPrice={data[0].jpPrice}

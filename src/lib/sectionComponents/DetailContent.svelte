@@ -1,6 +1,29 @@
 <script lang="ts">
   import { checkUndefinedNullOrEmpty } from "$lib/tools/Tools.svelte";
   import IoIosRocket from "svelte-icons/io/IoIosRocket.svelte";
+  import IoMdAlert from "svelte-icons/io/IoMdAlert.svelte";
+  import GiRocketFlight from "svelte-icons/gi/GiRocketFlight.svelte";
+  import MdHotel from "svelte-icons/md/MdHotel.svelte";
+  import GiGlassCelebration from "svelte-icons/gi/GiGlassCelebration.svelte";
+  import FaSignature from "svelte-icons/fa/FaSignature.svelte";
+  import FaHandHoldingHeart from "svelte-icons/fa/FaHandHoldingHeart.svelte";
+  import FaCertificate from "svelte-icons/fa/FaCertificate.svelte";
+  import GiFilmStrip from "svelte-icons/gi/GiFilmStrip.svelte";
+  import GiFeather from "svelte-icons/gi/GiFeather.svelte";
+  import GiAstronautHelmet from "svelte-icons/gi/GiAstronautHelmet.svelte";
+  import GiHotMeal from "svelte-icons/gi/GiHotMeal.svelte";
+  import FaUserAstronaut from "svelte-icons/fa/FaUserAstronaut.svelte";
+  import GiStarGate from "svelte-icons/gi/GiStarGate.svelte";
+  import GiFruitBowl from "svelte-icons/gi/GiFruitBowl.svelte";
+  import MdCameraEnhance from "svelte-icons/md/MdCameraEnhance.svelte";
+  import FaSafari from "svelte-icons/fa/FaSafari.svelte";
+  import FaCalendarWeek from "svelte-icons/fa/FaCalendarWeek.svelte";
+  import GiPriceTag from "svelte-icons/gi/GiPriceTag.svelte";
+  import MdToday from "svelte-icons/md/MdToday.svelte";
+  import MdEventAvailable from "svelte-icons/md/MdEventAvailable.svelte";
+  import MdStarHalf from "svelte-icons/md/MdStarHalf.svelte";
+  import GiHouseKeys from "svelte-icons/gi/GiHouseKeys.svelte";
+  import MdClass from "svelte-icons/md/MdClass.svelte";
 
   export let destName: string | undefined = undefined;
   export let destPromoText: string | undefined = undefined;
@@ -8,6 +31,10 @@
   export let destPrice: string | undefined = undefined;
   export let destDays: string | undefined = undefined;
   export let destAvailableUnits: string | undefined = undefined;
+  export let destServices: { icon: string; service: string }[] = [
+    { icon: "IoIosRocket", service: "destService 1" },
+  ];
+
   export let destImageName: string | undefined = undefined;
   export let destImagePath: string | undefined = undefined;
   export let destImageAltText: string | undefined = undefined;
@@ -16,6 +43,9 @@
   export let destHotelRoomCapacity: string | undefined = undefined;
   export let destHotelRoomClass: string | undefined = undefined;
   export let destHotelDescription: string | undefined = undefined;
+  export let destHotelServices: { icon: string; service: string }[] = [
+    { icon: "IoIosRocket", service: "destHotelService 1" },
+  ];
 
   /*  dafür gibts noch kein Feld in der DB */
   export let destHotelImageName: string | undefined = undefined;
@@ -26,7 +56,9 @@
   export let jpName: string | undefined = undefined;
   export let jpPromotext: string | undefined = undefined;
   export let jpPrice: string | undefined = undefined;
-  export let jpIncludedServices: string | undefined = undefined;
+  export let jpIncludedServices: { icon: string; service: string }[] = [
+    { icon: "IoIosRocket", service: "Service 1" },
+  ];
   export let jpImageName: string | undefined = undefined;
   export let jpImagePath: string | undefined = undefined;
   export let jpImageAltText: string | undefined = undefined;
@@ -43,30 +75,54 @@
 
   export let imageSize: string | number = "cover"; // auto, cover, contain ... or own size: 50%, 200px
 
-  let isPrototyping = false; /* only for dev */
+  export let isJPComponent: boolean | undefined = undefined;
+  export let isDestComponent: boolean | undefined = undefined;
+  export let isDestHotelComponent: boolean | undefined = undefined;
 
-  const infoData = [
-    {
-      icon: "SVG PATH",
-      description:
-        "Descrip-tion text 1 Descrip-tion text 1 Descrip-tion text 1 Descrip-tion text 1",
-    },
-    {
-      icon: "SVG PATH",
-      description:
-        "Descrip-tion text 2 Descrip-tion text 2 Descrip-tion text 2 Descrip-tion text 2",
-    },
-    {
-      icon: "SVG PATH",
-      description:
-        "Descrip-tion text 3 Descrip-tion text 3 Descrip-tion text 3 Descrip-tion text 3",
-    },
-    {
-      icon: "SVG PATH",
-      description:
-        "Descrip-tion text 4 Descrip-tion text 4 Descrip-tion text 4 Descrip-tion text 4",
-    },
+  /* Array musst be filled with all used icons */
+  let iconData = [
+    { iconString: "IoIosRocket", iconObject: IoIosRocket },
+    { iconString: "IoMdAlert", iconObject: IoMdAlert },
+    { iconString: "GiRocketFlight", iconObject: GiRocketFlight },
+    { iconString: "MdHotel", iconObject: MdHotel },
+    { iconString: "GiGlassCelebration", iconObject: GiGlassCelebration },
+    { iconString: "FaSignature", iconObject: FaSignature },
+    { iconString: "FaHandHoldingHeart", iconObject: FaHandHoldingHeart },
+    { iconString: "FaCertificate", iconObject: FaCertificate },
+    { iconString: "GiFilmStrip", iconObject: GiFilmStrip },
+    { iconString: "GiFeather", iconObject: GiFeather },
+    { iconString: "GiAstronautHelmet", iconObject: GiAstronautHelmet },
+    { iconString: "GiHotMeal", iconObject: GiHotMeal },
+    { iconString: "FaUserAstronaut", iconObject: FaUserAstronaut },
+    { iconString: "GiStarGate", iconObject: GiStarGate },
+    { iconString: "GiFruitBowl", iconObject: GiFruitBowl },
+    { iconString: "MdCameraEnhance", iconObject: MdCameraEnhance },
+    { iconString: "FaSafari", iconObject: FaSafari },
+    { iconString: "FaCalendarWeek", iconObject: FaCalendarWeek },
+    { iconString: "GiPriceTag", iconObject: GiPriceTag },
+    { iconString: "MdToday", iconObject: MdToday },
+    { iconString: "MdEventAvailable", iconObject: MdEventAvailable },
+    { iconString: "MdStarHalf", iconObject: MdStarHalf },
+    { iconString: "GiHouseKeys", iconObject: GiHouseKeys },
+    { iconString: "MdClass", iconObject: MdClass },
   ];
+
+  /* is used if data from component not found or valid */
+  let errorData = [{ icon: "IoMdAlert", service: "Service 1" }];
+
+  function getIcon(iconName: string) {
+    let icon = IoMdAlert;
+    for (let i = 0; i < iconData.length; i++) {
+      if (iconData[i].iconString === iconName) {
+        icon = iconData[i].iconObject;
+      } else {
+        console.warn("Found no matching icon in list");
+      }
+    }
+    return icon;
+  }
+
+  let isPrototyping = false; /* only for dev */
 </script>
 
 <div
@@ -158,7 +214,7 @@ background-position:center;
         class:border-4={isPrototyping}
         class:border-cyan-500={isPrototyping}
       >
-        {#each infoData as data}
+        {#each isJPComponent ? jpIncludedServices : isDestComponent ? destServices : isDestHotelComponent ? destHotelServices : errorData as data}
           <div
             id="infos"
             class="justify-center grid w-full col-span-1"
@@ -174,10 +230,10 @@ background-position:center;
             >
               <div
                 id="icon"
-                class="h-28 w-28"
+                class="h-20 w-20"
                 class:text-NFTW-white={!isPrototyping}
               >
-                <svelte:component this={IoIosRocket} />
+                <svelte:component this={getIcon(data.icon)} />
               </div>
             </div>
             <div
@@ -187,7 +243,7 @@ background-position:center;
               class:border-green-500={isPrototyping}
               class:text-NFTW-white={!isPrototyping}
             >
-              {data.description}
+              {data.service}
             </div>
           </div>
         {/each}
