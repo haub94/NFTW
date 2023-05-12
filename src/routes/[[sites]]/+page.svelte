@@ -1,7 +1,11 @@
 <script lang="ts">
-    // your script goes here
+  import BgVideo from "$lib/sectionComponents/BgVideo.svelte";
 </script>
 
-<div>
-    <!-- your html goes here -->
-</div>
+<BgVideo
+  title="NFTW Adventures"
+  caption="Follow Us To Infinity"
+  video="/videos/SPACE_SD.mp4"
+  captionPath="/getInContact"
+  videoHeight="70vh"
+/>

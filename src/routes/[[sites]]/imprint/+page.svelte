@@ -1,7 +1,17 @@
 <script lang="ts">
-    // your script goes here
+  import SectionHeader from "$lib/components/SectionHeader.svelte";
+  import ImpressumContent from "$lib/sectionComponents/ImprintContent.svelte";
+  import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
 </script>
 
-<div>
-    <!-- your html goes here -->
-</div>
+<svelte:head>
+  <title>Imprint</title>
+  <meta name="description" content="Imprint details" />
+</svelte:head>
+
+<main class="h-full">
+  <SectionBg002>
+    <SectionHeader title="Imprint" />
+    <ImpressumContent />
+  </SectionBg002>
+</main>

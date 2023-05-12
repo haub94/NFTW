@@ -1,7 +1,44 @@
 <script lang="ts">
-    // your script goes here
+  import CardSpacetravel from "$lib/components/CardSpacetravel.svelte";
+  import SectionHeader from "$lib/components/SectionHeader.svelte";
+  import InfoSection from "$lib/sectionComponents/InfoSection.svelte";
+  import SectionBg001 from "$lib/sectionComponents/SectionBg001.svelte";
+  import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
+
+  let destinationCaption: string =
+    "Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination ";
+  let purposeCaption: string =
+    "Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose ";
 </script>
 
-<div>
-    <!-- your html goes here -->
-</div>
+<SectionBg002>
+  <SectionHeader title="Spacetravel" />
+  <InfoSection
+    title="Where to go. When to go."
+    text1="Lorem Ipsum Dolor 1"
+    text2="Lorem Ipsum Dolor 2"
+    img1="/planets/blue-planet.png"
+    img2="/planets/rainbow-planet.png"
+    img3="/planets/water-planet.png"
+    img4="/planets/striped-planet.png"
+  />
+</SectionBg002>
+
+<SectionBg001 title1of2="" title2of2="" caption="">
+  <CardSpacetravel
+    imagePath="/planets/moon-planet.png"
+    name="Destination"
+    promoText={destinationCaption}
+    imagePosition="left"
+    imageSize="cover"
+    routePath="/spacetravel/destination"
+  />
+  <CardSpacetravel
+    imagePath="/planets/blue-planet.png"
+    name="Journey Purpose"
+    promoText={purposeCaption}
+    imagePosition="left"
+    imageSize="cover"
+    routePath="/spacetravel/journeyPurpose"
+  />
+</SectionBg001>
