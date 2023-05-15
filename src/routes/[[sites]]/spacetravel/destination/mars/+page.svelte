@@ -1,4 +1,5 @@
 <script lang="ts">
+  import ButtonsDestJpGic from "$lib/components/ButtonsDestJpGic.svelte";
   import DetailContent from "$lib/sectionComponents/DetailContent.svelte";
   import DividerTextIFrame from "$lib/sectionComponents/DividerTextIFrame.svelte";
   import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
@@ -15,6 +16,12 @@
       destImageName: "",
       destImagePath: "/planets/mars.png",
       destImageAltText: "",
+      destServices : [
+    { icon: "FaCalendarWeek", service: "destTimeslot" },
+    { icon: "GiPriceTag", service: "destPrice" },
+    { icon: "MdToday", service: "destDays" },
+    { icon: "MdEventAvailable", service: "destAvailableUnits" },
+  ],
     },
     {
       destHotelName: "Hotel",
@@ -24,14 +31,20 @@
       destHotelDescription:
         "This is a description about. How wonderful this hotel is. And so on ... And so on ... And so on ... And so on ... And so on ... ",
       destHotelImageName: "",
-      destHotelImagePath: "/hotels/grande_centre.png",
+      destHotelImagePath: "/hotels/pyramid_hotel.png",
       destHotelImageAltText: "",
+      destHotelServices : [
+    { icon: "MdStarHalf", service: "destHotelRanking" },
+    { icon: "GiHouseKeys", service: "destHotelRoomCapacity" },
+    { icon: "MdClass", service: "destHotelRoomClass" },
+  ],
     },
   ];
 </script>
 
 <SectionBg002 paddingBottom="0px" paddingTop="0px">
   <DetailContent
+    isDestComponent={true}
     destName={data[0].destName}
     destImagePath={data[0].destImagePath}
     destPromoText={data[0].destPromoText}
@@ -41,9 +54,11 @@
     destAvailableUnits={data[0].destAvailableUnits}
     destImageName={data[0].destImageName}
     destImageAltText={data[0].destImageAltText}
+    destServices={data[0].destServices}
   />
   <DividerTextIFrame iFrameHeight={450} height={750} />
   <DetailContent
+    isDestHotelComponent={true}
     destHotelName={data[1].destHotelName}
     destHotelImagePath={data[1].destHotelImagePath}
     destHotelDescription={data[1].destHotelDescription}
@@ -52,5 +67,7 @@
     destHotelRoomClass={data[1].destHotelRoomClass}
     destHotelImageName={data[1].destHotelImageName}
     destHotelImageAltText={data[1].destHotelImageAltText}
+    destHotelServices={data[1].destHotelServices}
   />
+  <ButtonsDestJpGic />
 </SectionBg002>
