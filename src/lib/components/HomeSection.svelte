@@ -5,7 +5,7 @@
 
     <div class="container mx-auto flex flex-col md:flex-row items-center my-12 md:my-24">
         <div class="flex flex-col w-full lg:w-1/3 justify-center items-start p-8">
-            <h2 class="mt-2 text-4xl font-bold tracking-tight text-NFTW-white sm:text-5xl">What we offer</h2><br>
+            <h2 class="mt-2 text-4xl font-bold tracking-tight text-NFTW-white sm:text-5xl">What we offer</h2>
             <p class="text-NFTW-blue-50 text-2xl">We offer a variety of services for tourists who are interested in traveling to space.</p>
 
         </div>
