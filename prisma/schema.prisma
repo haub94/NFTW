@@ -35,13 +35,15 @@ model Journey_Purposes {
   includedServices String? @default("")
   image            String? @default("")
   routePath        String? @default("")
+  startDate        String? @default("")
+  endDate          String? @default("")
 }
 
 model Rating_Data {
   ratingID    Int     @id @default(autoincrement())
-  testimonial String? @default("")
   amountStars String? @default("")
   ratingText  String? @default("")
+  testimonial String? @default("")
 }
 
 model Customer_Data {

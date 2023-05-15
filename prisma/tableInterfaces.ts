@@ -1,4 +1,4 @@
-export interface CUSTOMER_DATA {
+export interface CustomerData {
     firstName: string,
     lastName: string,
     emailAddress: string       
@@ -9,27 +9,29 @@ export interface CUSTOMER_DATA {
     testimonial: string        
 }
 
-export interface RATING_DATA {
+export interface RatingData {
     testimonial: string
     amountStars: string
     ratingText: string 
 }
 
-export interface JOURNEY_PURPOSE {
+export interface JourneyPurposeData {
     name: string             
     promoText: string        
     price: string            
     includedServices: string 
-    image: string            
+    image: string
+    startDate: string
+    endDate: string
 }
 
-export interface IMAGES {
+export interface ImageData {
     name: string    
     path: string    
     altText: string 
 }
 
-export interface DESTINATION {
+export interface DestinationData {
     name: string
     promoText: string
     timeslot: string
@@ -38,4 +40,6 @@ export interface DESTINATION {
     availableUnits: string
     image: string
     hotel: string
+    startDate: string
+    endDate: string
 }
