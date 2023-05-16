@@ -2,15 +2,31 @@
   import CardDestinations from "$lib/components/CardDestinations.svelte";
   import SectionHeader from "$lib/components/SectionHeader.svelte";
   import SectionBg001 from "$lib/sectionComponents/SectionBg001.svelte";
+  import { dev } from "$app/environment";
+  
   import type { PageData } from "./$types";
+  import type { JourneyPurposeData } from "../../../../../prisma/tableInterfaces";
+  
   export let data: PageData;
+
+
+  let JOURNEY_PURPOSE_DATA: JourneyPurposeData[];
+
+
+	({ JOURNEY_PURPOSE_DATA } = data);
+		
+		if (dev) {
+			console.log('JOURNEY_POURPES_DATA @ clientStories :>> ', JOURNEY_PURPOSE_DATA);
+		}
+
+
 </script>
 
 <SectionBg001 title1of2="" caption="">
   <div class="col-span-2">
     <SectionHeader title="Journey Purposes" />
   </div>
-  {#each data.JOURNEY_PURPOSES as data}
+  {#each JOURNEY_PURPOSE_DATA as data}
     <div class="col-span-1">
       <CardDestinations
         jpName={data.name}

@@ -5,12 +5,12 @@ import type { PageServerLoad } from "./$types";
 export const load: PageServerLoad = async () => {
   try {
     return {
-      JOURNEY_PURPOSES: await prisma.Journey_Purposes.findMany(),
+      JOURNEY_PURPOSE_DATA: await prisma.Journey_Purposes.findMany(),
     };
   } catch (error) {
     console.error(error);
     return fail(500, {
-      message: "Could not load Customer_Data ore Rating_Data from DB!",
+      message: "Could not load Journey_Purposes data from DB!",
     });
   }
 };
