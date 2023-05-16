@@ -11,6 +11,7 @@
 
   let DESTINATION_DATA: DestinationData[];
 
+  //@ts-ignore
 	({ DESTINATION_DATA } = data);
 		
 		if (dev) {

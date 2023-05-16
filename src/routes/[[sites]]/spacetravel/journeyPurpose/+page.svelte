@@ -12,7 +12,7 @@
 
   let JOURNEY_PURPOSE_DATA: JourneyPurposeData[];
 
-
+  //@ts-ignore
 	({ JOURNEY_PURPOSE_DATA } = data);
 		
 		if (dev) {
