@@ -43,7 +43,7 @@
     <div class="-mt-80">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div
-          class="mx-auto grid max-w-md grid-cols-1 gap-16 lg:max-w-4xl lg:grid-cols-2"
+          class="mx-auto grid max-w-md grid-cols-1 lg:grid-cols-2 gap-16 lg:max-w-4xl"
         >
           <slot />
         </div>
