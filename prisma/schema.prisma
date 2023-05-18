@@ -37,6 +37,7 @@ model Journey_Purposes {
   routePath        String? @default("")
   startDate        String? @default("")
   endDate          String? @default("")
+  inclServices     Json[]
 }
 
 model Rating_Data {
