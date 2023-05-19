@@ -90,7 +90,7 @@
         <img class="h-16 w-16 rounded-full bg-gray-50" src={image} alt="Portrait of the testimonial {name}" loading="lazy">
         <div class="text-sm leading-6">
           <div class="font-semibold text-NFTW-lila-900">{name}</div>
-          <div class="mt-0.5 text-NFTW-lila-900 italic">Booked Packages: {bookedDestination} & {bookedPurpose}</div>
+          <div class="mt-0.5 text-NFTW-lila-900 italic h-12">Booked Packages: {bookedDestination} & {bookedPurpose}</div>
         </div>
       </figcaption>
     </figure>
