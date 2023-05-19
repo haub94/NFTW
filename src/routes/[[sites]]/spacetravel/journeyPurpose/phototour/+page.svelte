@@ -6,6 +6,11 @@
   export let data: PageData;
 </script>
 
+<svelte:head>
+  <title>Phototour</title>
+  <meta name="description" content="Let's take space photos" />
+</svelte:head>
+
 <SectionBg002 paddingBottom="0px" paddingTop="0px">
   <!--pass severel props to DatailContent with valiues from data.JOURNEY_PURPOSES-->
   <DetailContent

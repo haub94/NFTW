@@ -3,22 +3,26 @@
   import SectionHeader from "$lib/components/SectionHeader.svelte";
   import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
   import { dev } from "$app/environment";
-  
+
   import type { PageData } from "./$types";
   import type { DestinationData } from "../../../../../prisma/tableInterfaces";
-  
+
   export let data: PageData;
 
   let DESTINATION_DATA: DestinationData[];
 
   //@ts-ignore
-	({ DESTINATION_DATA } = data);
-		
-		if (dev) {
-			console.log('DESTINATION_DATA @ destinations :>> ', DESTINATION_DATA);
-		}
-	
+  ({ DESTINATION_DATA } = data);
+
+  if (dev) {
+    console.log("DESTINATION_DATA @ destinations :>> ", DESTINATION_DATA);
+  }
 </script>
+
+<svelte:head>
+  <title>Destination</title>
+  <meta name="description" content="Let's find your dream destination" />
+</svelte:head>
 
 <SectionBg002>
   <SectionHeader title="Destinations" />

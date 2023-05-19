@@ -11,6 +11,13 @@
     "Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose ";
 </script>
 
+<svelte:head>
+  <title>Space Travel</title>
+  <meta
+    name="description"
+    content="Let's find your dream destination for your spacial event" />
+</svelte:head>
+
 <SectionBg002>
   <SectionHeader title="Spacetravel" />
   <InfoSection
@@ -20,8 +27,7 @@
     img1="/spacetravel/spaceWalk.webp"
     img2="/spacetravel/spaceWalkGroup.webp"
     img3="/spacetravel/astronautLove.webp"
-    img4="/spacetravel/walkOnPlanet.webp"
-  />
+    img4="/spacetravel/walkOnPlanet.webp" />
 </SectionBg002>
 
 <SectionBg001 title1of2="" title2of2="" caption="">
@@ -31,14 +37,12 @@
     promoText={destinationCaption}
     imagePosition="left"
     imageSize="cover"
-    routePath="/spacetravel/destination"
-  />
+    routePath="/spacetravel/destination" />
   <CardSpacetravel
     imagePath="/planets/blue-planet.webp"
     name="Journey Purpose"
     promoText={purposeCaption}
     imagePosition="left"
     imageSize="cover"
-    routePath="/spacetravel/journeyPurpose"
-  />
+    routePath="/spacetravel/journeyPurpose" />
 </SectionBg001>
