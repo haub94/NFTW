@@ -15,7 +15,7 @@
 	({ DESTINATION_DATA } = data);
 		
 		if (dev) {
-			console.log('DESTINATION_DATA @ clientStories :>> ', DESTINATION_DATA);
+			console.log('DESTINATION_DATA @ destinations :>> ', DESTINATION_DATA);
 		}
 	
 </script>
