@@ -2,65 +2,20 @@
   import ButtonsDestJpGic from "$lib/components/ButtonsDestJpGic.svelte";
   import DetailContent from "$lib/sectionComponents/DetailContent.svelte";
   import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
-  const data = [
-    {
-      jpName: "Honeymoon",
-      jpPromotext:
-        "For wedding couples looking for an unforgettable honeymoon or a special wedding celebration in space.",
-      jpPrice: "20.000 EUR",
-      jpIncludedServices: [
-        {
-          icon: "GiRocketFlight",
-          service: "A flight that adheres to strict safety standards",
-        },
-        {
-          icon: "MdHotel",
-          service:
-            "A private cabin where they can spend time alone during the flight",
-        },
-        {
-          icon: "GiGlassCelebration",
-          service:
-            "Special meals tailored to the couple's individual preferences",
-        },
-        {
-          icon: "FaSignature",
-          service:
-            "Personalized spacesuits embroidered with their names or a romantic phrase",
-        },
-        {
-          icon: "FaHandHoldingHeart",
-          service:
-            "Special activities: a spacewalk and a romantic dinner with a view of Earth",
-        },
-        {
-          icon: "FaCertificate",
-          service:
-            "Souvenir set: a personalized certificate for the flight into space and a model of the spacecraft",
-        },
-        {
-          icon: "GiFilmStrip",
-          service:
-            "Exclusive to this offer: a personalized video recording of the trip so that the couple can always remember this special experience",
-        },
-      ],
-      jpImageName: "",
-      jpImagePath: "/journeypurpose/honeymoon.png",
-      jpImageAltText: "",
-    },
-  ];
+  import type { PageData } from "./$types";
+  export let data: PageData;
 </script>
 
 <SectionBg002 paddingBottom="0px" paddingTop="0px">
+  <!--pass severel props to DatailContent with valiues from data.JOURNEY_PURPOSES-->
   <DetailContent
     isJPComponent={true}
-    jpName={data[0].jpName}
-    jpPromotext={data[0].jpPromotext}
-    jpPrice={data[0].jpPrice}
-    jpIncludedServices={data[0].jpIncludedServices}
-    jpImageName={data[0].jpImageName}
-    jpImagePath={data[0].jpImagePath}
-    jpImageAltText={data[0].jpImageAltText}
-  />
+    jpName={data.JOURNEY_PURPOSES.name}
+    jpPromotext={data.JOURNEY_PURPOSES.promoText}
+    jpPrice={data.JOURNEY_PURPOSES.price}
+    jpIncludedServices={data.JOURNEY_PURPOSES.inclServices}
+    jpImageName={''}
+    jpImagePath={data.JOURNEY_PURPOSES.image}
+    jpImageAltText={''} />
   <ButtonsDestJpGic />
 </SectionBg002>
