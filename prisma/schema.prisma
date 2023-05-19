@@ -8,16 +8,13 @@ datasource db {
 }
 
 model Destinations {
-  destinationID  Int     @id @default(autoincrement())
-  name           String? @default("")
-  promoText      String? @default("")
-  timeslot       String? @default("")
-  price          String? @default("")
-  days           String? @default("")
-  availableUnits String? @default("")
-  image          String? @default("")
-  hotel          String? @default("")
-  routePath      String? @default("")
+  destinationID Int     @id @default(autoincrement())
+  name          String? @default("")
+  promoText     String? @default("")
+  price         String? @default("")
+  image         String? @default("")
+  routePath     String? @default("")
+  services      Json[]
 }
 
 model Images {
@@ -28,16 +25,15 @@ model Images {
 }
 
 model Journey_Purposes {
-  id               Int     @id @default(autoincrement())
-  name             String? @default("")
-  promoText        String? @default("")
-  price            String? @default("")
-  includedServices String? @default("")
-  image            String? @default("")
-  routePath        String? @default("")
-  startDate        String? @default("")
-  endDate          String? @default("")
-  inclServices     Json[]
+  id           Int     @id @default(autoincrement())
+  name         String? @default("")
+  promoText    String? @default("")
+  price        String? @default("")
+  image        String? @default("")
+  routePath    String? @default("")
+  startDate    String? @default("")
+  endDate      String? @default("")
+  inclServices Json[]
 }
 
 model Rating_Data {
@@ -57,4 +53,12 @@ model Customer_Data {
   journeyConfig      String? @default("")
   image              String? @default("")
   testimonial        String? @default("")
+}
+
+model Hotels {
+  hotelID     Int     @id @default(autoincrement())
+  name        String? @default("")
+  description String? @default("")
+  services    Json[]
+  image       String? @default("")
 }
