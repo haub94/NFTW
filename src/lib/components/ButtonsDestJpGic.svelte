@@ -96,7 +96,7 @@
       class:text-NFTW-white={!IS_PROTOTYPING}
       >
         {PAGE_IS_DESTINATION
-          ? "Select current destination and go to Journey xxxxxxxx xxxxxxx xxxxxxxx xxxxxxxxx xxxxxxxxx xxxxxxxxx xxxxxxxx xxxxxxxxx xxxxxxxx xxxxxxx Purposes"
+          ? "Select current destination and go to Journey Purposes"
           : PAGE_IS_JOURNEY_PURPOSE
           ? "Select current destination and go to Destination"
           : "none"}
