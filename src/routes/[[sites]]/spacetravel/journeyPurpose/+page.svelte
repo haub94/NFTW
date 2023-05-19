@@ -37,7 +37,7 @@
 <SectionBg002>
   <SectionHeader title="Journey Purposes" />
   <div
-    class="grid justify-center justify-self-center mx-auto max-w-7xl gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-8"
+    class="grid justify-center justify-self-center mx-auto max-w-7xl gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-16"
   >
     {#each JOURNEY_PURPOSE_DATA as data}
       <div class="grid col-span-1">
