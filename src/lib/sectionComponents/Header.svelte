@@ -55,7 +55,7 @@
           <span class="sr-only">Your Company</span>
           <img
             loading="lazy"
-            class="h-16 w-auto invert"
+            class="h-16 w-auto"
             src="/illustrations/nftwlogo.png"
             alt=""
           />
