@@ -1,4 +1,3 @@
-export const prerender = true;
 import { prisma } from "$lib/server/prisma";
 import { fail } from "@sveltejs/kit";
 import type { PageServerLoad } from "../../../../../../.svelte-kit/types/src/routes/[[sites]]/spacetravel/journeyPurpose/phototour/$types";
