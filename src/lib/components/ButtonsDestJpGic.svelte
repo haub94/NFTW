@@ -73,7 +73,7 @@
 </script>
 
 <div
-  class="relative w-full grid justify-center bg-gradient-to-b from-NFTW-bg to-transparent"
+  class="relative w-full grid justify-center bg-gradient-to-b from-NFTW-bg to-transparent px-8"
   class:border-red-500={IS_PROTOTYPING}
   class:border-4={IS_PROTOTYPING}
   class:bg-NFTW-white={IS_PROTOTYPING}
@@ -90,15 +90,15 @@
       id="buttonDestinationJourneyPurpose"
       href={routeButtonDestinationJourneyPurpose}
       aria-describedby="link-DestinationOrJourneyPurpose"
-      class="h-14 px-7 grid items-center rounded-md col-span-1 bg-NFTW-lila-800 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-NFTW-lila-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition duration-500"
+      class="h-auto min-h-full px-7 grid items-center rounded-md col-span-1 bg-NFTW-lila-800 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-NFTW-lila-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition duration-500"
       class:border-4={IS_PROTOTYPING}
       class:border-yellow-500={IS_PROTOTYPING}
       class:text-NFTW-white={!IS_PROTOTYPING}
       >
         {PAGE_IS_DESTINATION
-          ? "Select current destination and go to Journey Purposes"
+          ? "Select current destination and go to journey purposes"
           : PAGE_IS_JOURNEY_PURPOSE
-          ? "Select current destination and go to Destination"
+          ? "Select current journey purpose and go to destination"
           : "none"}
     </a>
 
@@ -109,20 +109,20 @@
       id="buttonGetInContact"
       href={ROUTE_BUTTON_GIC}
       aria-describedby="link-GetInContact"
-      class="h-14 px-7 rounded-md col-span-1 bg-NFTW-lila-800 py-2 text-center items-center grid text-sm font-semibold leading-6 text-white shadow-sm hover:bg-NFTW-lila-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition duration-500"
+      class="h-auto min-h-full px-7 rounded-md col-span-1 bg-NFTW-lila-800 py-2 text-center items-center grid text-sm font-semibold leading-6 text-white shadow-sm hover:bg-NFTW-lila-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition duration-500"
       class:border-4={IS_PROTOTYPING}
       class:border-orange-500={IS_PROTOTYPING}
       class:text-NFTW-white={!IS_PROTOTYPING}>Start Your Journey With Us</a>
     {:else}
     <div
-      class="h-14 px-7 rounded-md col-span-1 bg-gray-600 py-2 text-center items-center grid text-sm font-semibold leading-6 text-white shadow-sm"
+      class="h-auto min-h-full px-7 rounded-md col-span-1 bg-gray-600 py-2 text-center items-center grid text-sm font-semibold leading-6 text-white shadow-sm"
       class:border-4={IS_PROTOTYPING}
       class:border-orange-500={IS_PROTOTYPING}
       class:text-NFTW-white={!IS_PROTOTYPING}>
       {PAGE_IS_DESTINATION
-        ? "Select a journey purpose to start the trip."
+        ? "Select a journey purpose first to start the trip."
         : PAGE_IS_JOURNEY_PURPOSE
-        ? "Select a destination to start the trip." 
+        ? "Select a destination first to start the trip." 
         : ""}
     </div>
     {/if}
