@@ -32,7 +32,7 @@
 
 <a href={routePath}>
   <div
-    class="group rounded-3xl p-8 xl:p-10 ring-2 bg-NFTW-black-500 hover:scale-125 transition-all cursor-pointer"
+    class="group rounded-3xl p-8 xl:p-10 ring-2 bg-NFTW-black-500 hover:scale-110 transition-all cursor-pointer"
     style="background-image: url('{!checkUndefinedNullOrEmpty(destImagePath)
       ? destImagePath
       : !checkUndefinedNullOrEmpty(jpImagePath)
