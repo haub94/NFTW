@@ -1,26 +1,33 @@
 <script lang="ts">
   import CardSpacetravel from "$lib/components/CardSpacetravel.svelte";
   import SectionHeader from "$lib/components/SectionHeader.svelte";
-  import InfoSection from "$lib/sectionComponents/InfoSection.svelte";
+  import DividerTextImage from "$lib/sectionComponents/DividerTextImage.svelte";
   import SectionBg001 from "$lib/sectionComponents/SectionBg001.svelte";
   import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
 
   let destinationCaption: string =
-    "Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination Choose your Destination ";
+    "Explore the ultimate adventure in space! Journey to distant planets where alien worlds await you. Immerse yourself in breathtaking landscapes and experience unforgettable moments. Book your trip now and get up close and personal with the universe!";
   let purposeCaption: string =
-    "Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose Choose your Journey Purpose ";
+    "No matter the reason you want to go to space, we offer tailor-made space experiences for every occasion. Let yourself be enchanted by the infinite expanse of the universe and experience unforgettable adventures in space!";
+  let dividerCaption: string =
+    "Our packages are divided into destinations and journey purposes. You have the option to first choose a planet and then calmly select the appropriate trip. Alternatively, you can do it the other way around.";
+  let dividerCaption2: string =
+    "On the detail pages, you can learn about our services and step by step get closer to your dream journey. For our birthday specials and honeymoon offers, you can choose an individual travel date afterward.";
+  let dividerCaption3: string =
+    "After successfully completing the configuration, you can get in touch with us and provide us with your information using the form on the 'Get In Contact' page.";
 </script>
 
 <SectionBg002>
   <SectionHeader title="Spacetravel" />
-  <InfoSection
+  <DividerTextImage
     title="Where to go. When to go."
-    text1="Lorem Ipsum Dolor 1"
-    text2="Lorem Ipsum Dolor 2"
-    img1="/spacetravel/spaceWalk.png"
-    img2="/spacetravel/spaceWalkGroup.png"
-    img3="/spacetravel/astronautLove.png"
-    img4="/spacetravel/walkOnPlanet.png"
+    caption={dividerCaption}
+    caption2={dividerCaption2}
+    caption3={dividerCaption3}
+    img="/spacetravel/spaceWalkGroup.png"
+    imgSize="cover"
+    imgPosition="center"
+    imgHeight="90vh"
   />
 </SectionBg002>
 
