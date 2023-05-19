@@ -8,15 +8,13 @@ datasource db {
 }
 
 model Destinations {
-  destinationID  Int     @id @default(autoincrement())
-  name           String? @default("")
-  promoText      String? @default("")
-  price          String? @default("")
-  days           String? @default("")
-  availableUnits String? @default("")
-  image          String? @default("")
-  routePath      String? @default("")
-  services       Json[]
+  destinationID Int     @id @default(autoincrement())
+  name          String? @default("")
+  promoText     String? @default("")
+  price         String? @default("")
+  image         String? @default("")
+  routePath     String? @default("")
+  services      Json[]
 }
 
 model Images {

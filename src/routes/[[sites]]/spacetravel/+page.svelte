@@ -24,7 +24,7 @@
     caption={dividerCaption}
     caption2={dividerCaption2}
     caption3={dividerCaption3}
-    img="/spacetravel/spaceWalkGroup.png"
+    img="/spacetravel/spaceWalkGroup.webp"
     imgSize="cover"
     imgPosition="center"
     imgHeight="90vh"
@@ -33,7 +33,7 @@
 
 <SectionBg001 title1of2="" title2of2="" caption="">
   <CardSpacetravel
-    imagePath="/planets/moon-planet.png"
+    imagePath="/planets/moon-planet.webp"
     name="Destination"
     promoText={destinationCaption}
     imagePosition="left"
@@ -41,7 +41,7 @@
     routePath="/spacetravel/destination"
   />
   <CardSpacetravel
-    imagePath="/planets/blue-planet.png"
+    imagePath="/planets/blue-planet.webp"
     name="Journey Purpose"
     promoText={purposeCaption}
     imagePosition="left"
