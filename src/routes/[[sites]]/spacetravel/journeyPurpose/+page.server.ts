@@ -5,7 +5,8 @@ import type { PageServerLoad } from "./$types";
 export const load: PageServerLoad = async () => {
   try {
     return {
-      JOURNEY_PURPOSE_DATA: await prisma.Journey_Purposes.findMany(),
+      //the load function returns an object with a property named JOURNEY_PURPOSE_DATA.
+      JOURNEY_PURPOSE_DATA: await prisma.Journey_Purposes.findMany(), //findMany() is called on the Journey_Purposes model, which  represents a table in the database.
     };
   } catch (error) {
     console.error(error);
