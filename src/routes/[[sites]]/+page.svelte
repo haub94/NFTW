@@ -20,7 +20,7 @@
 
 <HomeSectionBg
   title1of2="About us"
-  title2of2=""
+  caption="Make your experience of a lifetime."
   img="/home/BgAboutUs.png"
   minHeight="90vh"
 >
