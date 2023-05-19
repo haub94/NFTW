@@ -2,49 +2,20 @@
   import ButtonsDestJpGic from "$lib/components/ButtonsDestJpGic.svelte";
   import DetailContent from "$lib/sectionComponents/DetailContent.svelte";
   import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
-  const data = [
-    {
-      jpName: "Our Recomandations",
-      jpPromotext:
-        "Training for Space - package: This provides intensive training for individuals, including spaceflight simulations or zero-gravity training.",
-      jpPrice: "",
-      jpIncludedServices: [
-        {
-          icon: "GiRocketFlight",
-          service: "A flight that adheres to strict safety standards",
-        },
-        {
-          icon: "GiFeather",
-          service: "Cozy accommodation in a 4-star space hotel",
-        },
-        {
-          icon: "GiHotMeal",
-          service: "Breakfast buffet, lunch buffet, and dinner buffet",
-        },
-        { icon: "FaUserAstronaut", service: "Training sessions" },
-        {
-          icon: "FaCertificate",
-          service:
-            "Souvenir set: a personalized certificate for the flight into space and a model of the spacecraft",
-        },
-      ],
-      jpImageName: "",
-      jpImagePath: "/journeypurpose/recommendations.png",
-      jpImageAltText: "",
-    },
-  ];
+  import type { PageData } from "./$types";
+  export let data: PageData;
 </script>
 
 <SectionBg002 paddingBottom="0px" paddingTop="0px">
+  <!--pass severel props to DatailContent with valiues from data.JOURNEY_PURPOSES-->
   <DetailContent
     isJPComponent={true}
-    jpName={data[0].jpName}
-    jpPromotext={data[0].jpPromotext}
-    jpPrice={data[0].jpPrice}
-    jpIncludedServices={data[0].jpIncludedServices}
-    jpImageName={data[0].jpImageName}
-    jpImagePath={data[0].jpImagePath}
-    jpImageAltText={data[0].jpImageAltText}
-  />
+    jpName={data.JOURNEY_PURPOSES.name}
+    jpPromotext={data.JOURNEY_PURPOSES.promoText}
+    jpPrice={data.JOURNEY_PURPOSES.price}
+    jpIncludedServices={data.JOURNEY_PURPOSES.inclServices}
+    jpImageName={''}
+    jpImagePath={data.JOURNEY_PURPOSES.image}
+    jpImageAltText={''} />
   <ButtonsDestJpGic />
 </SectionBg002>
