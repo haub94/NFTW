@@ -23,6 +23,7 @@ export interface JourneyPurposeData {
     image: string
     startDate: string
     endDate: string
+    routePath: string
 }
 
 export interface ImageData {
@@ -42,4 +43,5 @@ export interface DestinationData {
     hotel: string
     startDate: string
     endDate: string
+    routePath: string
 }
