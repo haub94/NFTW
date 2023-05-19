@@ -45,10 +45,10 @@
 
 </script>
 
-<div class="flex flex-col bg-NFTW-blue-900 p-2 rounded-xl border-2 border-NFTW-blue-700 w-80 mb-12">
+<div class="flex flex-col bg-NFTW-blue-900 p-2 rounded-xl border-2 border-NFTW-blue-700 w-72 lg:w-64 mb-12">
 	<!--image-->
 	<div class="w-full p-4" class:p-4={destination != "Moon"}> <!--moon is smaller than the other, so give the other padding-->
-		<div class="bg-no-repeat bg-contain bg-center w-full h-96" style="background-image: url({destinationImage})"></div>
+		<div class="bg-no-repeat bg-contain bg-center w-full h-64" style="background-image: url({destinationImage})"></div>
 	</div>
 	
 	<div class:pt-8={destination === "Moon"}></div>
@@ -61,7 +61,7 @@
 					</div>
 					<p class="ml-16 truncate text-sm font-medium text-NFTW-black-500 uppercase">{stat.header}</p>
 					<div class="ml-16 flex items-baseline">
-						<p class="text-2xl font-semibold text-NFTW-black-500">{stat.value}</p>
+						<p class="text-lg font-semibold text-NFTW-black-500">{stat.value}</p>
 					</div>
 				</div>
 			</div>

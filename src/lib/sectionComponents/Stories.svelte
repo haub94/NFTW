@@ -31,7 +31,7 @@
     
 </script>
 
-<div class="mb-28 w-full grid grid-col md:grid-cols-2 xl:grid-cols-3">
+<div class="mb-28 w-full grid grid-col sm:grid-cols-2 lg:grid-cols-3">
     {#each cardData as card}
         <div class="mx-auto">
             <StorieCard 
