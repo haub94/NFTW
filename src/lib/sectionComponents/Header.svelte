@@ -36,6 +36,7 @@
   class="group header-bg xl:h-52 lg:h-48 sm:h-44 h-40 overflow-hidden bg-center relative bg-cover"
 >
   <img
+    loading="lazy"
     class="transition delay-50 ease-in-out group-hover:scale-150 group-hover:rotate-2 absolute"
     style=" transition-duration: 10000ms;"
     src="/milkyway.png"
@@ -53,6 +54,7 @@
         <a href="/" class="-m-1.5 p-1.5" on:click={closeMenu}>
           <span class="sr-only">Your Company</span>
           <img
+            loading="lazy"
             class="h-8 w-auto"
             src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
             alt=""
@@ -120,6 +122,7 @@
             <a href="/" class="-m-1.5 p-1.5" on:click={closeMenu}>
               <span class="sr-only">Your Company</span>
               <img
+                loading="lazy"
                 class="h-8 w-auto"
                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                 alt=""

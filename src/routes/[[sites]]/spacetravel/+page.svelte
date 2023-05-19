@@ -17,16 +17,16 @@
     title="Where to go. When to go."
     text1="Lorem Ipsum Dolor 1"
     text2="Lorem Ipsum Dolor 2"
-    img1="/spacetravel/spaceWalk.png"
-    img2="/spacetravel/spaceWalkGroup.png"
-    img3="/spacetravel/astronautLove.png"
-    img4="/spacetravel/walkOnPlanet.png"
+    img1="/spacetravel/spaceWalk.webp"
+    img2="/spacetravel/spaceWalkGroup.webp"
+    img3="/spacetravel/astronautLove.webp"
+    img4="/spacetravel/walkOnPlanet.webp"
   />
 </SectionBg002>
 
 <SectionBg001 title1of2="" title2of2="" caption="">
   <CardSpacetravel
-    imagePath="/planets/moon-planet.png"
+    imagePath="/planets/moon-planet.webp"
     name="Destination"
     promoText={destinationCaption}
     imagePosition="left"
@@ -34,7 +34,7 @@
     routePath="/spacetravel/destination"
   />
   <CardSpacetravel
-    imagePath="/planets/blue-planet.png"
+    imagePath="/planets/blue-planet.webp"
     name="Journey Purpose"
     promoText={purposeCaption}
     imagePosition="left"

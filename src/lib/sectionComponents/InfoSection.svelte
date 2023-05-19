@@ -33,6 +33,7 @@
           class="w-0 flex-auto xl:ml-auto xl:w-auto xl:flex-none xl:self-end"
         >
           <img
+            loading="lazy"
             src={img2}
             alt=""
             class="aspect-[7/5] w-[37rem] max-w-none rounded-2xl bg-gray-50 object-cover"
@@ -45,6 +46,7 @@
             class="order-first flex w-64 flex-none justify-end self-end xl:w-auto"
           >
             <img
+              loading="lazy"
               src={img1}
               alt=""
               class="aspect-[4/3] w-[22rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover"
@@ -52,6 +54,7 @@
           </div>
           <div class="flex w-96 flex-auto justify-end xl:w-auto xl:flex-none">
             <img
+              loading="lazy"
               src={img3}
               alt=""
               class="aspect-[7/5] w-[30rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover"
@@ -61,6 +64,7 @@
             class="hidden md:block md:w-0 md:flex-auto xl:w-auto xl:flex-none"
           >
             <img
+              loading="lazy"
               src={img4}
               alt=""
               class="aspect-[4/3] w-[20rem] max-w-none rounded-2xl bg-gray-50 object-cover"

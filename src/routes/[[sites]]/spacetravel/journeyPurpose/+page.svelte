@@ -22,17 +22,6 @@
 
 </script>
 
-<!-- 
-<SectionBg002>
-  <SectionHeader title="Destinations" />
-  <div
-    class="grid justify-center justify-self-center mx-auto max-w-7xl gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-  >
-    {#each data as data}
-      <div class="grid col-span-1">
-
-
- -->
 
 <SectionBg002>
   <SectionHeader title="Journey Purposes" />

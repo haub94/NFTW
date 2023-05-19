@@ -34,7 +34,7 @@
                 </div>
               </div>
               <div class="-ml-12 -mt-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
-                <img class="bg-none" src="/illustrations/astronaut.png" alt="">
+                <img class="bg-none" src="/illustrations/astronaut.webp" alt="Illustration of an astronaut using a swing in galaxy." loading="lazy">
               </div>
               <div class="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
                 <div class="lg:pr-4">
@@ -42,7 +42,7 @@
                     <p>The documentation is divided into four sections: Components, Scripts, Database and Design. </p>
                     
 
-                    <ul role="list" class="mt-8 space-y-8 text-gray-600">
+                    <ul class="mt-8 space-y-8 text-gray-600">
                       <li class="flex gap-x-3">
                         <div class="mt-1 h-8 w-8 flex-none text-NFTW-pink-500">
                           <DiDropbox />

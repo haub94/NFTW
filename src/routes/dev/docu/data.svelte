@@ -104,7 +104,7 @@
         `,
       html: `
   <a href="/" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-    <img class="h-auto w-48 object-cover rounded-l-lg" src={checkUndefinedNullOrEmpty(img) ? "/brokenImage.png" : img} alt="" />
+    <img class="h-auto w-48 object-cover rounded-l-lg" src={checkUndefinedNullOrEmpty(img) ? "/brokenImage.png" : img} alt="" loading="lazy"/>
     <div class="flex flex-col justify-between p-4 leading-normal">
       <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         {title}
@@ -132,7 +132,7 @@
       script: "",
       html: `
   <a href="/" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-    <img class="h-auto w-48 object-cover rounded-l-lg" src={checkUndefinedNullOrEmpty(img) ? "/brokenImage.png" : img} alt="" />
+    <img class="h-auto w-48 object-cover rounded-l-lg" src={checkUndefinedNullOrEmpty(img) ? "/brokenImage.png" : img} alt="" loading="lazy"/>
     <div class="flex flex-col justify-between p-4 leading-normal">
       <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         {title}
@@ -1737,7 +1737,7 @@ switch (color) {
         <p>“{text}”</p>
       </blockquote>
       <figcaption class="mt-10 flex items-center gap-x-6">
-        <img class="h-16 w-16 rounded-full bg-gray-50" src={image} alt="Portrait of the testimonial {name}">
+        <img class="h-16 w-16 rounded-full bg-gray-50" src={image} alt="Portrait of the testimonial {name} loading="lazy"">
         <div class="text-sm leading-6">
           <div class="font-semibold text-NFTW-lila-900">{name}</div>
           <div class="mt-0.5 text-NFTW-lila-900 italic">Booked Packages: {bookedDestination} & {bookedPurpose}</div>

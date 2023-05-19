@@ -11,6 +11,7 @@
       <div class="xl:grid xl:grid-cols-3 xl:gap-8">
         <div class="space-y-8">
           <img
+            loading="lazy"
             class="h-7"
             src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
             alt="Company name"

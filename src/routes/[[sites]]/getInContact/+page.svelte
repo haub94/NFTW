@@ -66,7 +66,7 @@
   <DividerTextImage
     title="You are on the finish line"
     caption={DIVIDER_CAPTION}
-    img="/astronauts/astronautKid.png"
+    img="/astronauts/astronautKid.webp"
     imgSize="cover"
     imgPosition="center"
     imgHeight="50vh"
