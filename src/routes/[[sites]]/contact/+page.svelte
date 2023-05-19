@@ -5,6 +5,5 @@
 </script>
 
 <SectionBg002>
-  <SectionHeader title="Contact"/>
   <Form />
 </SectionBg002>
