@@ -19,6 +19,11 @@
   }
 </script>
 
+<svelte:head>
+  <title>Destination</title>
+  <meta name="description" content="Let's find your dream destination" />
+</svelte:head>
+
 <SectionBg002>
   <SectionHeader title="Destinations" />
   <div

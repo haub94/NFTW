@@ -7,6 +7,11 @@
   export let data: PageData;
 </script>
 
+<svelte:head>
+  <title>Venus</title>
+  <meta name="description" content="Let's go to Venus" />
+</svelte:head>
+
 <SectionBg002 paddingBottom="0px" paddingTop="0px">
   <!--pass severel props to DatailContent with valiues from data.DESTINATIONS and from data.HOTELS-->
   <DetailContent

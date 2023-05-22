@@ -6,6 +6,11 @@
   export let data: PageData;
 </script>
 
+<svelte:head>
+  <title>Birthday</title>
+  <meta name="description" content="Let's celebrate together" />
+</svelte:head>
+
 <SectionBg002 paddingBottom="0px" paddingTop="0px">
   <!--pass severel props to DatailContent with valiues from data.JOURNEY_PURPOSES-->
   <DetailContent

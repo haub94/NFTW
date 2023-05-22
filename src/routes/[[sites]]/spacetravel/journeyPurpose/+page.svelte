@@ -4,8 +4,10 @@
   import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
   import { dev } from "$app/environment";
 
+
   import type { PageData } from "./$types";
   import type { JourneyPurposeData } from "../../../../../prisma/tableInterfaces";
+
 
   export let data: PageData;
 
@@ -20,13 +22,25 @@
       JOURNEY_PURPOSE_DATA
     );
   }
+  ({ JOURNEY_PURPOSE_DATA } = data);
+
+  if (dev) {
+    console.log(
+      "JOURNEY_POURPES_DATA @ clientStories :>> ",
+      JOURNEY_PURPOSE_DATA
+    );
+  }
 </script>
+
+<svelte:head>
+  <title>Journey Purpose</title>
+  <meta name="description" content="Let's choose your special event" />
+</svelte:head>
 
 <SectionBg002>
   <SectionHeader title="Journey Purposes" />
   <div
-    class="grid justify-center justify-self-center mx-auto max-w-7xl gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-16">
-    <!--going over the JOURNEY_PURPOSE_DATA to render individual cards for each journey purpose-->
+    class="grid justify-center justify-self-center mx-auto max-w-7xl gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-16">  <!--going over the JOURNEY_PURPOSE_DATA to render individual cards for each journey purpose-->
     {#each JOURNEY_PURPOSE_DATA as data}
       <!--The card component (CardDestinations) receives various properties-->
       <div class="grid col-span-1">
@@ -36,6 +50,10 @@
           jpPrice={data.price}
           routePath={data.routePath}
           jpImagePath={data.image}
+          imgPosition={'left'}
+          imgSize={'cover'}
+          jpImageName={''}
+          jpImageAltText={''} />
           imgPosition={'left'}
           imgSize={'cover'}
           jpImageName={''}

@@ -17,6 +17,13 @@
     "After successfully completing the configuration, you can get in touch with us and provide us with your information using the form on the 'Get In Contact' page.";
 </script>
 
+<svelte:head>
+  <title>Space Travel</title>
+  <meta
+    name="description"
+    content="Let's find your dream destination for your spacial event" />
+</svelte:head>
+
 <SectionBg002>
   <SectionHeader title="Spacetravel" />
   <DividerTextImage
