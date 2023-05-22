@@ -34,10 +34,10 @@
           {caption}
         </p>
         <p class="mt-2 text-lg leading-8 text-NFTW-white">
-          {checkUndefinedNullOrEmpty(caption2) ? null : caption2}
+          {checkUndefinedNullOrEmpty(caption2) ? "" : caption2}
         </p>
         <p class="mt-2 text-lg leading-8 text-NFTW-white">
-          {checkUndefinedNullOrEmpty(caption3) ? null : caption3}
+          {checkUndefinedNullOrEmpty(caption3) ? "" : caption3}
         </p>
       </div>
     </div>
