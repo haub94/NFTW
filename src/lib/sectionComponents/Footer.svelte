@@ -35,10 +35,10 @@
 
 
 <footer class="bg-NFTW-bg text-NFTW-white pb-12">
-  <div class="mx-auto max-w-7xl overflow-hidden px-6 py-8 sm:py-12 lg:px-8">
+  <div class="mx-auto max-w-7xl overflow-hidden px-12 py-8 sm:py-12 lg:px-8">
     <nav class="-mb-6 columns-2 md:flex md:justify-center sm:space-x-12" aria-label="Footer">
       {#each SITES as SITE}
-      <div class="pb-6 first:ml-12">
+      <div class="pb-6 sm:first:ml-12 md:first:ml-0">
         <a href={SITE.anchor} class="text-lg hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300 text-white">{SITE.name}</a>
       </div>
       {/each} 
@@ -46,10 +46,10 @@
     <div class="mt-10 flex justify-center space-x-10">
       
       <div class="flex space-x-6">
-            <a href="https://www.facebook.com/spacextechnologies/" class="text-gray-500 hover:text-gray-400">
+            <a href="https://www.facebook.com/spacextechnologies/">
               <span class="sr-only">Facebook</span>
               <svg
-                class="h-6 w-6 text-NFTW-blue-200"
+                class="h-6 w-6 text-NFTW-blue-200 hover:scale-125 hover:transition-all hover:text-NFTW-blue-300 ease-in-out duration-300"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -62,10 +62,10 @@
               </svg>
             </a>
 
-            <a href="https://www.instagram.com/spacex/" class="text-gray-500 hover:text-gray-400">
+            <a href="https://www.instagram.com/spacex/">
               <span class="sr-only">Instagram</span>
               <svg
-                class="h-6 w-6 text-NFTW-blue-200"
+                class="h-6 w-6 text-NFTW-blue-200 hover:scale-125 hover:transition-all hover:text-NFTW-blue-300 ease-in-out duration-300"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -78,10 +78,10 @@
               </svg>
             </a>
 
-            <a href="https://twitter.com/elonmusk/status/1625695877326340102" class="text-gray-500 hover:text-gray-400">
+            <a href="https://twitter.com/elonmusk/status/1625695877326340102">
               <span class="sr-only">Twitter</span>
               <svg
-                class="h-6 w-6 text-NFTW-blue-200"
+                class="h-6 w-6 text-NFTW-blue-200 hover:scale-125 hover:transition-all hover:text-NFTW-blue-300 ease-in-out duration-300"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -92,10 +92,10 @@
               </svg>
             </a>
 
-            <a href="https://de.linkedin.com/company/spacex" class="text-gray-500 hover:text-gray-400">
+            <a href="https://de.linkedin.com/company/spacex">
               <span class="sr-only">LinkedIn</span>
               <svg
-                class="h-6 w-6 text-NFTW-blue-200"
+                class="h-6 w-6 text-NFTW-blue-200 hover:scale-125 hover:transition-all hover:text-NFTW-blue-300 ease-in-out duration-300"
                 viewBox="0 0 48 48"
                 fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg"
@@ -113,6 +113,6 @@
           </div>
         </div>
     </div>
-    <p class="text-lg text-center leading-6 text-NFTW-white mb-2 mt-12">Adventures not from this world: Explore the universe with us!</p>
+    <p class="text-lg text-center leading-6 text-NFTW-white mb-2">Adventures not from this world: Explore the universe with us!</p>
     <p class="text-center text-xs leading-5 text-NFTW-white">&copy; 2023 NFTW Adventures, Inc. All rights reserved.</p>
 </footer>
