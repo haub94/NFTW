@@ -36,10 +36,10 @@
 
 <footer class="bg-NFTW-bg text-NFTW-white pb-12">
   <div class="mx-auto max-w-7xl overflow-hidden px-6 py-8 sm:py-12 lg:px-8">
-    <nav class="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12" aria-label="Footer">
+    <nav class="-mb-6 columns-2 md:flex md:justify-center sm:space-x-12" aria-label="Footer">
       {#each SITES as SITE}
-      <div class="pb-6">
-        <a href={SITE.anchor} class="leading-6 text-lg hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300 text-white">{SITE.name}</a>
+      <div class="pb-6 first:ml-12">
+        <a href={SITE.anchor} class="text-lg hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300 text-white">{SITE.name}</a>
       </div>
       {/each} 
     </nav>
