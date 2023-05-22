@@ -1,7 +1,11 @@
 <script lang="ts">
+  import { checkUndefinedNullOrEmpty } from "$lib/tools/Tools.svelte";
+
   export let img: string = "/brokenImage.png";
   export let title: string = "Lorem ipsum dolor";
   export let caption: string = "Lorem ipsum dolor";
+  export let caption2: string = "";
+  export let caption3: string = "";
   export let imgPosition: string = "center"; // center, bottom, top, left, left-bottom, left-top, right, right-bottom, right-top
   export let imgSize: string | number = "cover"; // auto, cover, contain ... or own size: 50%, 200px
   export let imgHeight: string | number = "";
@@ -28,6 +32,12 @@
         </h2>
         <p class="mt-2 text-lg leading-8 text-NFTW-white">
           {caption}
+        </p>
+        <p class="mt-2 text-lg leading-8 text-NFTW-white">
+          {checkUndefinedNullOrEmpty(caption2) ? null : caption2}
+        </p>
+        <p class="mt-2 text-lg leading-8 text-NFTW-white">
+          {checkUndefinedNullOrEmpty(caption3) ? null : caption3}
         </p>
       </div>
     </div>

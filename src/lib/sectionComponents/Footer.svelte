@@ -1,28 +1,55 @@
 <script lang="ts">
+
+  const SITES = [
+    {
+      name: "Home",
+      anchor: "/",
+    },
+    {
+      name: "Spacetravel",
+      anchor: "/spacetravel",
+    },
+    {
+      name: "Client Stories",
+      anchor: "/clientStories",
+    },
+    {
+      name: "Get in Contact",
+      anchor: "/getInContact",
+    },
+    {
+      name: "Contact",
+      anchor: "/contact",
+    },
+    {
+      name: "Imprint",
+      anchor: "/imprint",
+    },
+    {
+      name: "Privacy Policy",
+      anchor: "/privacyPolicy",
+    }
+  ];
+
 </script>
 
-<!-- component -->
-<div
-  class="flex min-h-screen w-full items-center justify-center bg-NFTW-bg"
->
-  <footer aria-labelledby="footer-heading" class="z-10">
-    <h2 id="footer-heading" class="sr-only">Footer</h2>
-    <div class="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
-      <div class="xl:grid xl:grid-cols-3 xl:gap-8">
-        <div class="space-y-8">
-          <img
-            class="h-7"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-            alt="Company name"
-          />
-          <p class="text-sm leading-6 text-gray-300">
-            Journeys not from this world: Explore the universe with us!.
-          </p>
-          <div class="flex space-x-6">
+
+<footer class="bg-NFTW-bg text-NFTW-white pb-12">
+  <div class="mx-auto max-w-7xl overflow-hidden px-6 py-8 sm:py-12 lg:px-8">
+    <nav class="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12" aria-label="Footer">
+      {#each SITES as SITE}
+      <div class="pb-6">
+        <a href={SITE.anchor} class="leading-6 text-lg hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300 text-white">{SITE.name}</a>
+      </div>
+      {/each} 
+    </nav>
+    <div class="mt-10 flex justify-center space-x-10">
+      
+      <div class="flex space-x-6">
             <a href="https://www.facebook.com/spacextechnologies/" class="text-gray-500 hover:text-gray-400">
               <span class="sr-only">Facebook</span>
               <svg
-                class="h-6 w-6"
+                class="h-6 w-6 text-NFTW-blue-200"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -38,7 +65,7 @@
             <a href="https://www.instagram.com/spacex/" class="text-gray-500 hover:text-gray-400">
               <span class="sr-only">Instagram</span>
               <svg
-                class="h-6 w-6"
+                class="h-6 w-6 text-NFTW-blue-200"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -54,7 +81,7 @@
             <a href="https://twitter.com/elonmusk/status/1625695877326340102" class="text-gray-500 hover:text-gray-400">
               <span class="sr-only">Twitter</span>
               <svg
-                class="h-6 w-6"
+                class="h-6 w-6 text-NFTW-blue-200"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -68,7 +95,7 @@
             <a href="https://de.linkedin.com/company/spacex" class="text-gray-500 hover:text-gray-400">
               <span class="sr-only">LinkedIn</span>
               <svg
-                class="h-6 w-6"
+                class="h-6 w-6 text-NFTW-blue-200"
                 viewBox="0 0 48 48"
                 fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg"
@@ -85,46 +112,7 @@
             </a>
           </div>
         </div>
-        <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-          <div class="md:grid md:grid-cols-2">
-            <div>
-              <a
-                href="/imprint"
-                class="pt-1 text-lg hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300 text-white"
-                >Imprint</a
-              >
-            </div>
-            <div class="mt-10 md:mt-0">
-              <a
-                href="/privacyPolicy"
-                class="pt-1 text-lg hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300 text-white"
-                >Privacy policy</a
-              >
-            </div>
-          </div>
-          <div class="md:grid md:grid-cols-2 md:gap-8">
-            <div>
-              <a
-                href="/termsOfUse"
-                class="pt-1 text-lg hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300 text-white"
-                >Terms of use</a
-              >
-            </div>
-            <div class="mt-10 md:mt-0">
-              <a
-                href="/contact"
-                class="pt-1 text-lg hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300 text-white"
-                >Contact</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
-        <p class="text-xs leading-5 text-gray-400">
-          &copy; 2023 NFTW Adventures
-        </p>
-      </div>
     </div>
-  </footer>
-</div>
+    <p class="text-lg text-center leading-6 text-NFTW-white mb-2 mt-12">Adventures not from this world: Explore the universe with us!</p>
+    <p class="text-center text-xs leading-5 text-NFTW-white">&copy; 2023 NFTW Adventures, Inc. All rights reserved.</p>
+</footer>

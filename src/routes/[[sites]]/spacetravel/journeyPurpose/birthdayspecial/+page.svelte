@@ -2,29 +2,20 @@
   import ButtonsDestJpGic from "$lib/components/ButtonsDestJpGic.svelte";
   import DetailContent from "$lib/sectionComponents/DetailContent.svelte";
   import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
-  const data = [
-    {
-      jpName: "Birthdayspecial",
-      jpPromotext:
-        "This is a description about. How wonderful this journey is. And so on ... And so on ... And so on ... And so on ... And so on ... ",
-      jpPrice: "",
-      jpIncludedServices: "",
-      jpImageName: "",
-      jpImagePath: "/journeypurpose/birthday.png",
-      jpImageAltText: "",
-    },
-  ];
+  import type { PageData } from "./$types";
+  export let data: PageData;
 </script>
 
 <SectionBg002 paddingBottom="0px" paddingTop="0px">
+  <!--pass severel props to DatailContent with valiues from data.JOURNEY_PURPOSES-->
   <DetailContent
-    jpName={data[0].jpName}
-    jpPromotext={data[0].jpPromotext}
-    jpPrice={data[0].jpPrice}
-    jpIncludedServices={data[0].jpIncludedServices}
-    jpImageName={data[0].jpImageName}
-    jpImagePath={data[0].jpImagePath}
-    jpImageAltText={data[0].jpImageAltText}
-  />
+    isJPComponent={true}
+    jpName={data.JOURNEY_PURPOSES.name}
+    jpPromotext={data.JOURNEY_PURPOSES.promoText}
+    jpPrice={data.JOURNEY_PURPOSES.price}
+    jpIncludedServices={data.JOURNEY_PURPOSES.inclServices}
+    jpImageName={''}
+    jpImagePath={data.JOURNEY_PURPOSES.image}
+    jpImageAltText={''} />
   <ButtonsDestJpGic />
 </SectionBg002>
