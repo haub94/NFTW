@@ -70,7 +70,6 @@
 				for (let imageIndex = 0; imageIndex < IMAGES.length; imageIndex++) {
 					if (IMAGES[imageIndex].name === CUSTOMER_DATA[customerIndex].testimonial) {
 						currentImage = selectImageFromDb(CUSTOMER_DATA[customerIndex].testimonial, IMAGES) as string[];	
-						console.log("current testi: ", selectImageFromDb(CUSTOMER_DATA[customerIndex].testimonial, IMAGES))
 					}
 				}
 
