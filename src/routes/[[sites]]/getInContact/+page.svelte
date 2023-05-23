@@ -16,7 +16,6 @@
   export let data: PageData;
 
   const IMAGE_PATH_INDEX: number = 0;
-	const IMAGE_ALTTEXT_INDEX: number = 1;
   const DIVIDER_CAPTION: string = "Get ready for take off";
 
 
