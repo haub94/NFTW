@@ -128,7 +128,7 @@
 		<Stories />
 		
 		<!--Slider-->
-		<div class="w-full h-auto overflow-hidden">
+		<div class="w-9/12 h-auto mx-auto overflow-hidden">
 			<swiper-container
 				space-between=20
 				autoplay="true"
