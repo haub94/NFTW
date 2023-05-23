@@ -4,6 +4,21 @@
   import BgVideo from "$lib/sectionComponents/BgVideo.svelte";
   import HomeSectionBg from "$lib/sectionComponents/HomeSectionBg.svelte";
   import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
+  import { selectImageFromDb } from "$lib/functions/selectImageFromDb.ts";
+
+  //import ts types
+  import type { PageData } from "./$types";
+  import type { ImageData } from "../../../prisma/tableInterfaces";
+
+  export let data: PageData;
+
+  let IMAGES: ImageData[];
+
+  //@ts-ignore
+  ({ DESTINATION_DATA } = data);
+  ({ IMAGES } = data);
+
+  const IMAGE1 = selectImageFromDb("astronautKid", IMAGES) as string[];	
 </script>
 
 <BgVideo
