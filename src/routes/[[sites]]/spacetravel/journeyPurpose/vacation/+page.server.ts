@@ -9,6 +9,7 @@ export const load: PageServerLoad = async () => {
       JOURNEY_PURPOSES: await prisma.Journey_Purposes.findUnique({
         where: { id: 4 }, //taking the ID of 4 from the database using prisma.Journey_Purposes.findUnique().
       }),
+      IMAGES: await prisma.Images.findMany(),
     };
   } catch (error) {
     console.error(error);

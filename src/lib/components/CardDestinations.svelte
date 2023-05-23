@@ -4,14 +4,14 @@
   export let destName: string | undefined = undefined;
   export let destPromoText: string | undefined = undefined;
   //export let destImageName: string | undefined = undefined;
-  export let destImagePath: string[] | undefined = undefined;
+  export let destImage: string[] | undefined = undefined;
   //export let destImageAltText: string | undefined = undefined;
   export let destPrice: string | undefined = undefined;
 
   export let jpName: string | undefined = undefined;
   export let jpPromoText: string | undefined = undefined;
   //export let jpImageName: string | undefined = undefined;
-  export let jpImagePath: string[] | undefined = undefined;
+  export let jpImage: string[] = ["", ""];
   //export let jpImageAltText: string | undefined = undefined;
   export let jpPrice: string | undefined = undefined;
 
@@ -36,10 +36,10 @@
 <a href={routePath}>
   <div
     class="group rounded-3xl p-8 xl:p-10 ring-2 bg-NFTW-black-500 hover:scale-110 transition-all cursor-pointer"
-    style="background-image: url('{!checkUndefinedNullOrEmpty(destImagePath)
-      ? destImagePath[IMAGE_PATH_INDEX]
-      : !checkUndefinedNullOrEmpty(jpImagePath)
-      ? jpImagePath[IMAGE_PATH_INDEX]
+    style="background-image: url('{!checkUndefinedNullOrEmpty(destImage)
+      ? destImage[IMAGE_PATH_INDEX]
+      : !checkUndefinedNullOrEmpty(jpImage)
+      ? jpImage[IMAGE_PATH_INDEX]
       : 'none'}');
       background-size: {imgSize};
       background-position: {imgPosition}"

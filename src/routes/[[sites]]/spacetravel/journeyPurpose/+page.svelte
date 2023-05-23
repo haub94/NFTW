@@ -3,22 +3,24 @@
   import SectionHeader from "$lib/components/SectionHeader.svelte";
   import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
   import { dev } from "$app/environment";
+  import { selectImageFromDb } from "$lib/functions/selectImageFromDb.ts";
 
+  //import ts types
   import type { PageData } from "./$types";
   import type { JourneyPurposeData } from "../../../../../prisma/tableInterfaces";
-
+  import type { ImageData } from "../../../../../prisma/tableInterfaces";
+  
   export let data: PageData;
 
   let JOURNEY_PURPOSE_DATA: JourneyPurposeData[];
+  let IMAGES: ImageData[];
 
   //@ts-ignore
   ({ JOURNEY_PURPOSE_DATA } = data);
+  ({ IMAGES } = data);
 
   if (dev) {
-    console.log(
-      "JOURNEY_POURPES_DATA @ clientStories :>> ",
-      JOURNEY_PURPOSE_DATA
-    );
+    console.log("JOURNEY_POURPES_DATA @ journey purposes :>> ", JOURNEY_PURPOSE_DATA);
   }
 </script>
 
@@ -40,11 +42,10 @@
           jpPromoText={data.promoText}
           jpPrice={data.price}
           routePath={data.routePath}
-          jpImagePath={data.image}
+          jpImage={selectImageFromDb(data.image, IMAGES)}
           imgPosition={'left'}
           imgSize={'cover'}
-          jpImageName={''}
-          jpImageAltText={''} />
+         />
       </div>
     {/each}
   </div>

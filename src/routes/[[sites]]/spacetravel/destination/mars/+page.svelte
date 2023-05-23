@@ -28,7 +28,7 @@
     isDestComponent={true}
     destName={data.DESTINATIONS.name}
     destPromoText={data.DESTINATIONS.promoText}
-    destImage= {selectImageFromDb(data.DESTINATIONS.image, IMAGES)}
+    destImage={selectImageFromDb(data.DESTINATIONS.image, IMAGES)}
     destServices={data.DESTINATIONS.services} />
   <DividerTextIFrame iFrameHeight={450} height={750} />
   <DetailContent

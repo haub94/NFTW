@@ -10,8 +10,6 @@
   import type { DestinationData } from "../../../../../prisma/tableInterfaces";
   import type { ImageData } from "../../../../../prisma/tableInterfaces";
 
-  const IMAGE_PATH_INDEX: number = 0;
-
   export let data: PageData;
 
   let DESTINATION_DATA: DestinationData[];
@@ -44,7 +42,7 @@
           destPromoText={data.promoText}
           destPrice={data.price}
           routePath={data.routePath}
-          destImagePath= {selectImageFromDb(data.image, IMAGES)}
+          destImage= {selectImageFromDb(data.image, IMAGES)}
           imgPosition={'left'}
           imgSize={'cover'} />
       </div>
