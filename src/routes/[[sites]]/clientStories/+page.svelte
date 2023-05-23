@@ -5,13 +5,17 @@
 	import TestimonialCard from '$lib/components/TestimonialCard.svelte';
     import { register } from 'swiper/element/bundle';
     import { dev } from "$app/environment";
+	import { selectImageFromDb } from "$lib/functions/selectImageFromDb.ts"
 
 	import type { PageData } from './$types'
 	import type { CustomerData } from "../../../../prisma/tableInterfaces";
 	import type { RatingData } from "../../../../prisma/tableInterfaces";
 	import type { ImageData } from "../../../../prisma/tableInterfaces";
 
-	const EMPTY_STRING = "";
+	const EMPTY_STRING: string = "";
+	const IMAGE_PATH_INDEX: number = 0;
+	const IMAGE_ALTTEXT_INDEX: number = 1;
+
 	export let data: PageData;
 	let testimonialData = [
         {
@@ -20,7 +24,8 @@
             bookedPurpose: "",
             givenStars: "",
             reviewText: "",
-            image: "",
+            imagePath: "",
+			imageAltText: ""
         },
 	]
 
@@ -61,10 +66,11 @@
 				//get the image for the current testimonial
 				//take the testimonial name from the CUSTOMER_DATA, search the same value in the IMAGES
 				//and if there is a match, use the data
-				let currentImagePath: string = "";
+				let currentImage: string[] = ["", ""];
 				for (let imageIndex = 0; imageIndex < IMAGES.length; imageIndex++) {
 					if (IMAGES[imageIndex].name === CUSTOMER_DATA[customerIndex].testimonial) {
-						currentImagePath = IMAGES[imageIndex].path;
+						currentImage = selectImageFromDb(CUSTOMER_DATA[customerIndex].testimonial, IMAGES) as string[];	
+						console.log("current testi: ", selectImageFromDb(CUSTOMER_DATA[customerIndex].testimonial, IMAGES))
 					}
 				}
 
@@ -87,7 +93,8 @@
 					bookedPurpose: getPurposeFromString(CUSTOMER_DATA[customerIndex].journeyConfig),
 					givenStars: ratingStars,
 					reviewText: ratingText,
-					image: currentImagePath,
+					imagePath: currentImage[IMAGE_PATH_INDEX],
+					imageAltText: currentImage[IMAGE_ALTTEXT_INDEX],
 				})
 
 			}
@@ -141,7 +148,8 @@
 								bookedPurpose={person.bookedPurpose}
 								givenStars={person.givenStars}
 								text={person.reviewText}
-								image={person.image}
+								imagePath={person.imagePath}
+								imageAltText={person.imageAltText}
 							/>    
 						</swiper-slide>	 
 					{/if}	
