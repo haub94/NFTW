@@ -5,7 +5,7 @@
 	import TestimonialCard from '$lib/components/TestimonialCard.svelte';
     import { register } from 'swiper/element/bundle';
     import { dev } from "$app/environment";
-	import { selectImageFromDb } from "$lib/functions/selectImageFromDb.ts"
+	import { selectImageFromDb } from "$lib/functions/selectImageFromDb.ts";
 
 	import type { PageData } from './$types'
 	import type { CustomerData } from "../../../../prisma/tableInterfaces";

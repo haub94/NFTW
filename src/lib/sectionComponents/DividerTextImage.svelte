@@ -1,7 +1,7 @@
 <script lang="ts">
   import { checkUndefinedNullOrEmpty } from "$lib/tools/Tools.svelte";
 
-  export let img: string = "/brokenImage.png";
+  export let imagePath: string = "/brokenImage.png";
   export let title: string = "Lorem ipsum dolor";
   export let caption: string = "Lorem ipsum dolor";
   export let caption2: string = "";
@@ -16,7 +16,7 @@
     <div
       class="h-64 w-full bg-NFTW-white sm:h-80 lg:absolute lg:h-full bg-blend-multiply bg-no-repeat"
       style="
-    background-image: url('{img}');
+    background-image: url('{imagePath}');
     background-size: {imgSize};
     background-position: {imgPosition};"
     />
