@@ -199,7 +199,7 @@ background-position:center;
       </div>
       <div
         id="info"
-        class="justify-center gap-x-20 gap-y-10 px-20 w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid mt-20 mb-32"
+        class="justify-center gap-x-20 gap-y-10 px-20 w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid mt-20 mb-32"
         class:border-4={isPrototyping}
         class:border-cyan-500={isPrototyping}
       >
