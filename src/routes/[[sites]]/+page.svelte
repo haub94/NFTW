@@ -18,7 +18,6 @@
   ({ DESTINATION_DATA } = data);
   ({ IMAGES } = data);
 
-  const IMAGE1 = selectImageFromDb("astronautKid", IMAGES) as string[];	
 </script>
 
 <BgVideo
@@ -36,7 +35,7 @@
 <HomeSectionBg
   title1of2="About us"
   caption="Make your experience of a lifetime."
-  img="/home/BgAboutUs.png"
+  image={selectImageFromDb("BgAboutUs", IMAGES)}
   minHeight="90vh"
 >
   <div class="text-NFTW-blue-50 text-2xl">

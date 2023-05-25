@@ -4,12 +4,15 @@
     export let title1of2: string = "Lorem ipsum";
     export let title2of2: string = "";
     export let caption: string = "Lorem ipsum dolor.";
-    export let img: string = "/brokenImage.png";
+    export let image: string[] = ["", ""];
     export let minHeight: string = "70vh";
+
+    const IMAGE_PATH_INDEX: number = 0;
+
   </script>
   
   <div class="realitive overflow-hidden bg-cover bg-no-repeat"
-       style="background-image: url({img}); min-height: {minHeight}">
+       style="background-image: url({image[IMAGE_PATH_INDEX]}); min-height: {minHeight}">
     <div class="mx-auto max-w-7xl px-6 pb-96 pt-24 text-center sm:pt-32 lg:px-8">
       <div class="mx-auto max-w-4xl">
         <p class="mt-2 text-4xl font-bold tracking-tight text-NFTW-white sm:text-5xl">

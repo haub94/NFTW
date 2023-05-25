@@ -70,8 +70,6 @@
     },
   };
 
-  const IMAGE1 = selectImageFromDb("astronautKid", IMAGES) as string[];	
-
 </script>
 
 <svelte:head>
@@ -86,7 +84,7 @@
   <DividerTextImage
     title="You are on the finish line"
     caption={DIVIDER_CAPTION}
-    imagePath={IMAGE1[IMAGE_PATH_INDEX]}
+    image={selectImageFromDb("astronautKid", IMAGES)}
     imgSize="cover"
     imgPosition="center"
     imgHeight="50vh" />
