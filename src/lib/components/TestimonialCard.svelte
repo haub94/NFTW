@@ -4,7 +4,8 @@
     export let bookedDestination: string = "destination";
     export let bookedPurpose: string = "purpose";
     export let text: string = "review text...";
-    export let image: string = "/testimonials/DebiWorknesh.webp";
+    export let imagePath: string = "/testimonials/DebiWorknesh.webp";
+    export let imageAltText: string = "no alttext available";
 
     let starColor: string[] = [
         "currentColor",
@@ -87,7 +88,7 @@
         <p>“{text}”</p>
       </blockquote>
       <figcaption class="mt-10 flex items-center gap-x-6">
-        <img class="h-16 w-16 rounded-full bg-gray-50" src={image} alt="Portrait of the testimonial {name}" loading="lazy">
+        <img class="h-16 w-16 rounded-full bg-gray-50" src={imagePath} alt={imageAltText} loading="lazy">
         <div class="text-sm leading-6">
           <div class="font-semibold text-NFTW-lila-900">{name}</div>
           <div class="mt-0.5 text-NFTW-lila-900 italic h-12">Booked Packages: {bookedDestination} & {bookedPurpose}</div>

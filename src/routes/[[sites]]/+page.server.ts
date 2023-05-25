@@ -5,11 +5,10 @@ import type { PageServerLoad } from "./$types";
 export const load: PageServerLoad = async () => {
 	try {
         return {
-            JOURNEY_PURPOSE: await prisma.Journey_Purposes.findMany(),
             IMAGES: await prisma.Images.findMany(),
         }
     } catch (error) {
         console.error(error);
-            return fail(500, { message: 'Could not load Destination_Data from DB!'})
+            return fail(500, { message: 'Could not load Images from DB!'})
     }
 }

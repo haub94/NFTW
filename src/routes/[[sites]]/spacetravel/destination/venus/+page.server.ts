@@ -12,6 +12,7 @@ export const load: PageServerLoad = async () => {
       HOTELS: await prisma.Hotels.findUnique({
         where: { hotelID: 3 }, //taking the ID of 3 from the database using prisma.Hotels.findUnique().
       }),
+      IMAGES: await prisma.Images.findMany(),
     };
   } catch (error) {
     console.error(error);
