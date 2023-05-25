@@ -55,7 +55,13 @@
                 <a href={pathToDocu} on:click={toggleVisibilitySidebar}>
                   <div class="flex flex-row justify-center space-x-6">
                     <div class="flex h-16 shrink-0 items-center">
-                        <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=white" alt="Your Company" loading="lazy">
+                      <span class="sr-only">NFTW Adventures Logo: Illustration from a simple rocket during launch.</span>
+                      <img
+                        loading="lazy"
+                        class="h-16 w-auto"
+                        src="/illustrations/nftwlogo.png"
+                        alt=""
+                      />
                     </div>
                     <h1 class="font-bold text-2xl text-white my-auto">
                         Documentation
@@ -136,11 +142,17 @@
       <!-- Static sidebar for desktop -->
       <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
         <!-- Sidebar component, swap this element with another sidebar if you like -->
-        <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-NFTW-lila-800 px-6">
+        <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-NFTW-lila-800 px-6 no-scrollbar">
         <a href={pathToDocu} on:click={toggleVisibilitySidebar}>
-          <div class="flex flex-row justify-center space-x-6">
-            <div class="flex h-16 shrink-0 items-center">
-              <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=white" alt="NFTW Adventures" loading="lazy">
+          <div class="flex flex-row justify-center space-x-4 mt-4">
+            <div class="flex shrink-0 items-center">
+              <span class="sr-only">NFTW Adventures Logo: Illustration from a simple rocket during launch.</span>
+              <img
+                loading="lazy"
+                class="h-12 w-auto"
+                src="/illustrations/nftwlogo.png"
+                alt=""
+              />
             </div>
             <h1 class="font-bold text-2xl text-white my-auto">
                 Documentation
@@ -226,3 +238,16 @@
       </div>
       <slot></slot>
     </div>
+
+<style>
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+      display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+  }
+</style>
