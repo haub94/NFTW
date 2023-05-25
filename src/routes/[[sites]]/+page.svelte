@@ -14,8 +14,6 @@
 
   let IMAGES: ImageData[];
 
-  //@ts-ignore
-  ({ DESTINATION_DATA } = data);
   ({ IMAGES } = data);
 
 </script>

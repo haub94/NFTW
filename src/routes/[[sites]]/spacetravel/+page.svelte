@@ -12,8 +12,6 @@
 
   export let data: PageData;
 
-  const IMAGE_PATH_INDEX: number = 0;
-
   //get all images from db
   let IMAGES: ImageData[];
   ({ IMAGES } = data);
@@ -28,11 +26,6 @@
     "On the detail pages, you can learn about our services and step by step get closer to your dream journey. For our birthday specials and honeymoon offers, you can choose an individual travel date afterward.";
   let dividerCaption3: string =
     "After successfully completing the configuration, you can get in touch with us and provide us with your information using the form on the 'Get In Contact' page.";
-
-  //select the needed images
-  const IMAGE1 = selectImageFromDb("spaceWalkGroup", IMAGES) as string[];
-  const IMAGE2 = selectImageFromDb("moon-planet", IMAGES) as string[];
-  const IMAGE3 = selectImageFromDb("blue-planet", IMAGES) as string[];
 
 </script>
 
@@ -50,7 +43,7 @@
     caption={dividerCaption}
     caption2={dividerCaption2}
     caption3={dividerCaption3}
-    imagePath={IMAGE1[IMAGE_PATH_INDEX]}
+    image={selectImageFromDb("spaceWalkGroup", IMAGES)}
     imgSize="cover"
     imgPosition="center"
     imgHeight="90vh"
@@ -59,7 +52,7 @@
 
 <SectionBg001 title1of2="" title2of2="" caption="">
   <CardSpacetravel
-    imagePath={IMAGE2[IMAGE_PATH_INDEX]}
+    image={selectImageFromDb("moon-planet", IMAGES)}
     name="Destination"
     promoText={destinationCaption}
     imagePosition="left"
@@ -67,7 +60,7 @@
     routePath="/spacetravel/destination"
   />
   <CardSpacetravel
-    imagePath={IMAGE3[IMAGE_PATH_INDEX]}
+    image={selectImageFromDb("blue-planet", IMAGES)}
     name="Journey Purpose"
     promoText={purposeCaption}
     imagePosition="left"
