@@ -27,11 +27,8 @@
 
     function toggleVisibilitySidebar() {
         mobileSidebarOpen = !mobileSidebarOpen;
-        console.log("fire");
     }
-
-    console.log('mobileSIdebarOpen :>> ', mobileSidebarOpen);
-
+    
 </script>
 
 
