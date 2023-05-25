@@ -98,11 +98,14 @@
     for (let i = 0; i < iconData.length; i++) {
       if (iconData[i].iconString === iconName) {
         icon = iconData[i].iconObject;
-      } else {
-        console.warn("Found no matching icon in list");
+        return icon;
       }
     }
-    return icon;
+    console.warn(
+      "getIcon(string) warning - Found no matching icon in list for string :  " +
+        iconName
+    );
+    return;
   }
 
   let isPrototyping = false; /* only for dev */
