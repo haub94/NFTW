@@ -70,7 +70,9 @@
 </svelte:head>
 
 <SectionBg002>
-  <SectionHeader title="Get In Contact" />
+  <SectionHeader 
+  title="Get In Contact"
+  description="Are you ready to embark on an extraordinary adventure that will defy the limits of your imagination? Look no further! Just get in touch with us!" />
   <DividerTextImage
     title="You are on the finish line"
     caption={DIVIDER_CAPTION}
