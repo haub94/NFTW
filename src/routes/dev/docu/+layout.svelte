@@ -55,7 +55,7 @@
                 <a href={pathToDocu} on:click={toggleVisibilitySidebar}>
                   <div class="flex flex-row justify-center space-x-6">
                     <div class="flex h-16 shrink-0 items-center">
-                        <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=white" alt="Your Company" loading="lazy">
+                        <img class="h-8 w-auto" src="/illustrations/nftwlogo.png" alt="Your Company" loading="lazy">
                     </div>
                     <h1 class="font-bold text-2xl text-white my-auto">
                         Documentation
@@ -140,7 +140,7 @@
         <a href={pathToDocu} on:click={toggleVisibilitySidebar}>
           <div class="flex flex-row justify-center space-x-6">
             <div class="flex h-16 shrink-0 items-center">
-              <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=white" alt="NFTW Adventures" loading="lazy">
+              <img class="h-8 w-auto" src="/illustrations/nftwlogo.png" alt="NFTW Adventures" loading="lazy">
             </div>
             <h1 class="font-bold text-2xl text-white my-auto">
                 Documentation
