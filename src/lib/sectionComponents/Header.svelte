@@ -44,7 +44,7 @@
   />
 
   <header
-    class="bg-NFTW-bg bg-opacity-80 absolute w-full mt-10 sm:mt-12 lg:mt-14 xl:mt-16"
+    class="bg-NFTW-bg bg-opacity-60 lg:bg-opacity-80 absolute w-full mt-8 sm:mt-10 lg:mt-12 xl:mt-14"
   >
     <nav
       class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
@@ -55,7 +55,7 @@
           <span class="sr-only">Your Company</span>
           <img
             loading="lazy"
-            class="h-16 w-auto"
+            class="h-14 w-auto"
             src="/illustrations/nftwlogo.png"
             alt=""
           />
@@ -123,7 +123,7 @@
               <span class="sr-only">Your Company</span>
               <img
                 loading="lazy"
-                class="h-8 w-auto"
+                class="h-12 w-auto"
                 src="/illustrations/nftwlogo.png"
                 alt=""
               />
