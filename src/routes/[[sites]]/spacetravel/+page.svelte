@@ -4,6 +4,17 @@
   import DividerTextImage from "$lib/sectionComponents/DividerTextImage.svelte";
   import SectionBg001 from "$lib/sectionComponents/SectionBg001.svelte";
   import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
+  import { selectImageFromDb } from "$lib/functions/selectImageFromDb.ts";
+  import type { PageData } from './$types'
+
+  //import ts types
+  import type { ImageData } from "../../../../prisma/tableInterfaces";
+
+  export let data: PageData;
+
+  //get all images from db
+  let IMAGES: ImageData[];
+  ({ IMAGES } = data);
 
   let destinationCaption: string =
     "Explore the ultimate adventure in space! Journey to distant planets where alien worlds await you. Immerse yourself in breathtaking landscapes and experience unforgettable moments. Book your trip now and get up close and personal with the universe!";
@@ -15,6 +26,7 @@
     "On the detail pages, you can learn about our services and step by step get closer to your dream journey. For our birthday specials and honeymoon offers, you can choose an individual travel date afterward.";
   let dividerCaption3: string =
     "After successfully completing the configuration, you can get in touch with us and provide us with your information using the form on the 'Get In Contact' page.";
+
 </script>
 
 <svelte:head>
@@ -33,7 +45,7 @@
     caption={dividerCaption}
     caption2={dividerCaption2}
     caption3={dividerCaption3}
-    img="/spacetravel/spaceWalkGroup.webp"
+    image={selectImageFromDb("spaceWalkGroup", IMAGES)}
     imgSize="cover"
     imgPosition="center"
     imgHeight="90vh"
@@ -42,7 +54,7 @@
 
 <SectionBg001 title1of2="" title2of2="" caption="">
   <CardSpacetravel
-    imagePath="/planets/moon-planet.webp"
+    image={selectImageFromDb("moon-planet", IMAGES)}
     name="Destination"
     promoText={destinationCaption}
     imagePosition="left"
@@ -50,7 +62,7 @@
     routePath="/spacetravel/destination"
   />
   <CardSpacetravel
-    imagePath="/planets/blue-planet.webp"
+    image={selectImageFromDb("blue-planet", IMAGES)}
     name="Journey Purpose"
     promoText={purposeCaption}
     imagePosition="left"

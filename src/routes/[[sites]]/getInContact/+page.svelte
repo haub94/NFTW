@@ -3,19 +3,28 @@
   import DividerTextImage from "$lib/sectionComponents/DividerTextImage.svelte";
   import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
   import SectionHeader from "$lib/components/SectionHeader.svelte";
+  import { selectImageFromDb } from "$lib/functions/selectImageFromDb.ts";
 
   //journey config memory
   import packageMemory from "../../../stores/journeyConfigMemory.ts";
 
   //import ts-interfaces
   import type { JourneyPurposeData } from "../../../../prisma/tableInterfaces";
+  import type { ImageData } from "../../../../prisma/tableInterfaces";
   import type { PageData } from "./$types";
 
   export let data: PageData;
+
+  const IMAGE_PATH_INDEX: number = 0;
   const DIVIDER_CAPTION: string = "Get ready for take off";
 
+
   let JOURNEY_PURPOSE: JourneyPurposeData[];
-  ({ JOURNEY_PURPOSE } = data); //get data from db
+  let IMAGES: ImageData[];
+  ({ JOURNEY_PURPOSE } = data); 
+  ({ IMAGES } = data); 
+
+
 
   //get the current destination to load the start- /enddate
   for (let index = 0; index < JOURNEY_PURPOSE.length; index++) {
@@ -60,6 +69,7 @@
         JOURNEY_PURPOSE[parseJourneyPurpose("our recomandations")].endDate,
     },
   };
+
 </script>
 
 <svelte:head>
@@ -76,7 +86,7 @@
   <DividerTextImage
     title="You are on the finish line"
     caption={DIVIDER_CAPTION}
-    img="/astronauts/astronautKid.webp"
+    image={selectImageFromDb("astronautKid", IMAGES)}
     imgSize="cover"
     imgPosition="center"
     imgHeight="50vh" />

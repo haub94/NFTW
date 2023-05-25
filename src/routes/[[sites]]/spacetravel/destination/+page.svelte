@@ -3,16 +3,21 @@
   import SectionHeader from "$lib/components/SectionHeader.svelte";
   import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
   import { dev } from "$app/environment";
+  import { selectImageFromDb } from "$lib/functions/selectImageFromDb.ts";
 
+  //import ts types
   import type { PageData } from "./$types";
   import type { DestinationData } from "../../../../../prisma/tableInterfaces";
+  import type { ImageData } from "../../../../../prisma/tableInterfaces";
 
   export let data: PageData;
 
   let DESTINATION_DATA: DestinationData[];
+  let IMAGES: ImageData[];
 
   //@ts-ignore
   ({ DESTINATION_DATA } = data);
+  ({ IMAGES } = data);
 
   if (dev) {
     console.log("DESTINATION_DATA @ destinations :>> ", DESTINATION_DATA);
@@ -37,11 +42,9 @@
           destPromoText={data.promoText}
           destPrice={data.price}
           routePath={data.routePath}
-          destImagePath={data.image}
+          destImage= {selectImageFromDb(data.image, IMAGES)}
           imgPosition={'left'}
-          imgSize={'cover'}
-          destImageName={''}
-          destImageAltText={''} />
+          imgSize={'cover'} />
       </div>
     {/each}
   </div>
