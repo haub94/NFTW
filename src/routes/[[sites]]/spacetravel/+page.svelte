@@ -37,7 +37,9 @@
 </svelte:head>
 
 <SectionBg002>
-  <SectionHeader title="Spacetravel" />
+  <SectionHeader 
+  title="Spacetravel" 
+  description="Our travels are designed for adventure seekers, explorers, and those with a deep curiosity about the universe, our space travel package offers a once-in-a-lifetime experience."/>
   <DividerTextImage
     title="Where to go. When to go."
     caption={dividerCaption}
