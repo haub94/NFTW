@@ -17,6 +17,13 @@
   import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
   import SectionBg001 from "$lib/sectionComponents/SectionBg001.svelte";
   import SectionHeader from "$lib/components/SectionHeader.svelte";
+  import ButtonsDestJpGic from "$lib/components/ButtonsDestJpGic.svelte";
+  import DetailContent from "$lib/sectionComponents/DetailContent.svelte";
+  import DividerTextIFrame from "$lib/sectionComponents/DividerTextIFrame.svelte";
+  import Header from "$lib/sectionComponents/Header.svelte";
+  import Footer from "$lib/sectionComponents/Footer.svelte";
+  import HomeSectionBg from "$lib/sectionComponents/HomeSectionBg.svelte";
+  import InfoSection from "$lib/sectionComponents/InfoSection.svelte";
 
   //client stories
   import TestimonialCard from "$lib/components/TestimonialCard.svelte";
@@ -38,8 +45,6 @@
   import Subtitle from "$lib/elements/dataprotection/Subtitle.svelte";
   import Title from "$lib/elements/dataprotection/Title.svelte";
   import SmallTitle from "$lib/elements/dataprotection/SmallTitle.svelte";
-  import ButtonsDestJpGic from "$lib/components/ButtonsDestJpGic.svelte";
-  import DetailContent from "$lib/sectionComponents/DetailContent.svelte";
 
   export const componentData = [
     /*
@@ -151,47 +156,53 @@
       description:
         "Content card for spacetravel page that shows informations about the next steps you can go to choose your vacation. It's a clickable component that also has a button to click on.",
       author: DR,
-      version: "1.0",
+      version: "1.2",
       usedBy: ["Route /spacetravel"],
       dependecies: ["-"],
       variables: [
         {
-          name: "img",
+          name: "image",
           description: "string: image-path like '/brokenImage.png'",
         },
         {
-          name: "title",
+          name: "name",
           description: "string: title text ",
         },
         {
-          name: "caption",
+          name: "promoText",
           description: "string: caption text",
         },
         {
-          name: "imgPosition",
+          name: "imagePosition",
           description:
             "string: for image position - choose one out of (center, bottom, top, left, left-bottom, left-top, right, right-bottom, right-top)",
         },
         {
-          name: "imgSize",
+          name: "imageSize",
           description:
             "string | number: for image scaling (auto, cover, contain ... or own size: 50%, 200px)",
         },
         {
-          name: "path",
-          description: "string: for routing path '/home/user/config'",
+          name: "routePath",
+          description: "string: for routing path like '/home/user/config'",
+        },
+        {
+          name: "IMAGE_PATH_INDEX",
+          description: "number for getting correct image from db",
         },
       ],
       script: `
-export let img: string = "/brokenImage.png";
-export let title: string = "Lorem ipsum dolor";
-export let caption: string = "Lorem ipsum dolor";
-export let imgPosition: string = "center"; // center, bottom, top, left, left-bottom, left-top, right, right-bottom, right-top
-export let imgSize: string | number = "cover"; // auto, cover, contain ... or own size: 50%, 200px
-export let path: string = "/"; // routing path "/home/user/config"
+      export let image: string[] = ["", ""];
+  export let name: string = "Lorem ipsum dolor";
+  export let promoText: string = "Lorem ipsum dolor";
+  export let imagePosition: string = "center"; // center, bottom, top, left, left-bottom, left-top, right, right-bottom, right-top
+  export let imageSize: string | number = "cover"; // auto, cover, contain ... or own size: 50%, 200px
+  export let routePath: string = "/"; // routing path "/home/user/config"
+
+  const IMAGE_PATH_INDEX: number = 0;
         `,
       html: `
-        <a href={path}>
+      <a href={routePath}>
   <div class="group relative">
     <div
       class="absolute -inset-2 rounded-lg bg-gradient-to-br from-NFTW-lila-500 via-NFTW-blue-500 to-NFTW-pink-500 opacity-0 blur transition duration-700 group-hover:opacity-100"
@@ -199,27 +210,27 @@ export let path: string = "/"; // routing path "/home/user/config"
     <div
       class="relative flex flex-col justify-between rounded-3xl bg-white p-8 shadow-xl ring-1 ring-gray-900/10 sm:p-10 bg-blend-multiply bg-no-repeat"
       style="
-    background-image: url('{img}');
-    background-size: {imgSize};
-    background-position: {imgPosition}"
+    background-image: url('{image[IMAGE_PATH_INDEX]}');
+    background-size: {imageSize};
+    background-position: {imagePosition}"
     >
       <div class="">
         <h3
-          id="card-{title}"
+          id="card-{name}"
           class="text-4xl font-bold leading-7 text-NFTW-white mb-32"
         >
-          {title}
+          {name}
         </h3>
         <div class="w-3/4 h-64 grid content-end">
-          <p
+          <pF
             class="text-base leading-7 text-justify line-clamp-6 opacity-50 group-hover:opacity-100 transition duration-500 text-transparent bg-clip-text bg-gradient-to-b from-NFTW-white to-transparent group-hover:text-NFTW-white"
           >
-            {caption}
+            {promoText}
           </p>
         </div>
         <a
-          href={path}
-          aria-describedby="link-{title}"
+          href={routePath}
+          aria-describedby="link-{name}"
           class="mt-8 block rounded-md bg-NFTW-lila-800 px-3.5 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-NFTW-lila-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition duration-500"
           >Start Your Journey With Us</a
         >
@@ -227,7 +238,7 @@ export let path: string = "/"; // routing path "/home/user/config"
     </div>
   </div>
 </a>
-        `,
+F        `,
     },
     {
       ID: 3,
@@ -522,7 +533,7 @@ export let caption: string = "Lorem ipsum dolor";
 export let video: string = "/videos/SPACE_SD.mp4";
 export let videoHeight: string | number = "50vh";
 export let captionPath: string = "";
-      `,
+    `,
       html: `
       <body class="bg-NFTW-bg text-NFTW-white">
   <section
@@ -587,13 +598,15 @@ export let captionPath: string = "";
       description:
         "Section component that shows text on the left side and a image on the right side. .",
       author: DR,
-      version: "1.0",
-      usedBy: ["Route /imprint"],
-      dependecies: ["none"],
+      version: "1.1",
+      usedBy: ["Route /getInContact", "Route /spacetravel"],
+      dependecies: [
+        "{ checkUndefinedNullOrEmpty } from $lib/tools/Tools.svelte",
+      ],
       variables: [
         {
-          name: "img",
-          description: "string: For imagepath like '/brokenImage.png'",
+          name: "image",
+          description: "string[]: For imagepath like '/brokenImage.png'",
         },
         {
           name: "title",
@@ -601,7 +614,15 @@ export let captionPath: string = "";
         },
         {
           name: "caption",
-          description: "string: Inserts caption text",
+          description: "string: Inserts first caption text",
+        },
+        {
+          name: "caption2",
+          description: "string: Inserts second caption text",
+        },
+        {
+          name: "caption3",
+          description: "string: Inserts third caption text",
         },
         {
           name: "imgPosition",
@@ -613,27 +634,44 @@ export let captionPath: string = "";
           description:
             "string | number: For image scaling (auto, cover, contain ... or own size: 50%, 200px)",
         },
+        {
+          name: "imgHeight",
+          description:
+            "string | number: For image height - accepts input values like 200px, ...)",
+        },
+        {
+          name: "IMAGE_PATH_INDEX",
+          description: "number: For getting the correct image from db.",
+        },
       ],
       script: `
-        export let img: string = "/brokenImage.png";
-  export let title: string = "Lorem ipsum dolor";
-  export let caption: string = "Lorem ipsum dolor";
-  export let imgPosition: string = "center"; // center, bottom, top, left, left-bottom, left-top, right, right-bottom, right-top
-  export let imgSize: string | number = "cover"; // auto, cover, contain ... or own size: 50%, 200px
-        `,
+      import { checkUndefinedNullOrEmpty } from "$lib/tools/Tools.svelte";
+
+export let image: string[] = ["/brokenImage.png", ""];
+export let title: string = "Lorem ipsum dolor";
+export let caption: string = "Lorem ipsum dolor";
+export let caption2: string = "";
+export let caption3: string = "";
+export let imgPosition: string = "center"; // center, bottom, top, left, left-bottom, left-top, right, right-bottom, right-top
+export let imgSize: string | number = "cover"; // auto, cover, contain ... or own size: 50%, 200px
+export let imgHeight: string | number = "";
+
+const IMAGE_PATH_INDEX: number = 0;
+      `,
       html: `
-        <div class="relative bg-NFTW-bg bg-opacity-30">
+      <div class="relative bg-NFTW-bg bg-opacity-30">
   <div class="lg:absolute lg:inset-0 lg:left-1/2">
     <div
       class="h-64 w-full bg-NFTW-white sm:h-80 lg:absolute lg:h-full bg-blend-multiply bg-no-repeat"
       style="
-    background-image: url('{img}');
+    background-image: url({image[IMAGE_PATH_INDEX]});
     background-size: {imgSize};
-    background-position: {imgPosition}"
+    background-position: {imgPosition};"
     />
   </div>
   <div
     class="pb-24 pt-16 sm:pb-32 sm:pt-24 lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:pt-32"
+    style="height:{imgHeight}"
   >
     <div class="px-6 lg:px-8">
       <div class="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
@@ -642,6 +680,12 @@ export let captionPath: string = "";
         </h2>
         <p class="mt-2 text-lg leading-8 text-NFTW-white">
           {caption}
+        </p>
+        <p class="mt-2 text-lg leading-8 text-NFTW-white">
+          {checkUndefinedNullOrEmpty(caption2) ? "" : caption2}
+        </p>
+        <p class="mt-2 text-lg leading-8 text-NFTW-white">
+          {checkUndefinedNullOrEmpty(caption3) ? "" : caption3}
         </p>
       </div>
     </div>
@@ -655,7 +699,7 @@ export let captionPath: string = "";
       component: Form,
       description:
         "Form with all needed fields for contact and getInContact page. The form transforms into the correct version for each of the two pages.",
-      author: "Daniel Rittrich / Markus Haubold",
+      author: DR + " + " + MH,
       version: "1.1",
       usedBy: ["Route getInContact", "Route contact"],
       dependecies: [
@@ -1368,8 +1412,8 @@ export let captionPath: string = "";
       component: SectionBg001,
       description: "Background for a section that can be filled with content",
       author: DR,
-      version: "1.0",
-      usedBy: ["on some pages"],
+      version: "1.2",
+      usedBy: ["Route /spacetravel"],
       dependecies: [
         "checkUndefinedNullOrEmpty (import from lib/tools/Tools.svelte)",
       ],
@@ -1388,24 +1432,26 @@ export let captionPath: string = "";
         },
       ],
       script: `
-        import { checkUndefinedNullOrEmpty } from "$lib/tools/Tools.svelte";
+      import { checkUndefinedNullOrEmpty } from "$lib/tools/Tools.svelte";
 
 export let title1of2: string = "Lorem ipsum";
 export let title2of2: string = "";
 export let caption: string = "Lorem ipsum dolor.";
-    `,
+  `,
       html: `
-        <div class="isolate overflow-hidden bg-NFTW-bg">
+      <div class="isolate overflow-hidden bg-NFTW-bg">
   <div class="mx-auto max-w-7xl px-6 pb-96 pt-24 text-center sm:pt-32 lg:px-8">
     <div class="mx-auto max-w-4xl">
-      <p class="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+      <p
+        class="mt-2 text-4xl font-bold tracking-tight text-NFTW-white sm:text-5xl"
+      >
         {checkUndefinedNullOrEmpty(title2of2) ? title1of2 : title1of2 + " "}<br
           class="hidden sm:inline lg:hidden"
         />{title2of2}
       </p>
     </div>
     <div class="relative mt-6">
-      <p class="mx-auto max-w-2xl text-lg leading-8 text-white/60">
+      <p class="mx-auto max-w-2xl text-lg leading-8 text-NFTW-white/60">
         {caption}
       </p>
       <svg
@@ -1432,7 +1478,7 @@ export let caption: string = "Lorem ipsum dolor.";
     <div class="-mt-80">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div
-          class="mx-auto grid max-w-md grid-cols-1 gap-16 lg:max-w-4xl lg:grid-cols-2"
+          class="mx-auto grid max-w-md grid-cols-1 lg:grid-cols-2 gap-16 lg:max-w-4xl"
         >
           <slot />
         </div>
@@ -1449,7 +1495,7 @@ export let caption: string = "Lorem ipsum dolor.";
       description:
         "Background for a section that can be filled with content. It comes with two variants. First one with full width and second one with two columns. This can be chossen with the variable 'twoCols'.",
       author: DR,
-      version: "2.0",
+      version: "2.1",
       usedBy: ["nearly all pages"],
       dependecies: ["randomPercentage (import from lib/tools/Tools.svelte)"],
       variables: [
@@ -1458,14 +1504,27 @@ export let caption: string = "Lorem ipsum dolor.";
           description:
             "boolean: delivers the background with two columns for content insteat with full width",
         },
+        {
+          name: "paddingTop",
+          description: "string: For indivitual padding if needed",
+        },
+        {
+          name: "paddingBottom",
+          description: "string: For indivitual padding if needed",
+        },
       ],
       script: `
-        import { randomPercentage } from "$lib/tools/Tools.svelte";
+      import { randomPercentage } from "$lib/tools/Tools.svelte";
 
 export let twoCols: boolean = false;
-    `,
+export let paddingTop: string = "128px";
+export let paddingBottom: string = "128px";
+  `,
       html: `
-        <div class="relative isolate bg-NFTW-bg px-6 py-24 sm:py-32 lg:px-8">
+      <div
+  class="relative isolate bg-NFTW-bg"
+  style="padding-top:{paddingTop} ; padding-bottom:{paddingBottom};"
+>
   <div
     class="absolute inset-x-0 -top-3 -z-10 transform-gpu overflow-hidden px-36 blur-3xl"
     aria-hidden="true"
@@ -1475,18 +1534,18 @@ export let twoCols: boolean = false;
       style="clip-path: polygon({randomPercentage()} {randomPercentage()}, 100% 61.6%, 97.5% 26.9%, {randomPercentage()} 0.1%, 80.7% 2%, 72.5% 32.5%, {randomPercentage()} 62.4%, 52.4% 68.1%, 47.5% 58.3%, {randomPercentage()} 34.5%, 27.5% 76.7%, 0.1% 64.9%, {randomPercentage()} 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
     />
   </div>
-  
-    <!-- universal with full width -->
-    {#if !twoCols}
-      <div class="mx-auto w-full mt-16 items-center sm:mt-20 sm:gap-y-0">
-        <slot />
-      </div>
-    {/if}
-  
+
+  <!-- universal with full width -->
+  {#if !twoCols}
+    <div class="mx-auto w-full items-center sm:gap-y-0">
+      <slot />
+    </div>
+  {/if}
+
   <!-- 2 cols -->
   {#if twoCols}
     <div
-      class="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 gap-x-16 sm:mt-20 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-2"
+      class="mx-auto grid max-w-lg grid-cols-1 items-center gap-y-6 gap-x-16 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-2"
     >
       <slot />
     </div>
@@ -2280,7 +2339,7 @@ switch (color) {
       component: ButtonsDestJpGic,
       description:
         "Shows two buttons and forwards the user to destinations or journey purposes and to get in contact if the user has selected a destionation and a journey purpose.",
-      author: "Daniel Rittrich + Markus Haubold",
+      author: DR + " + " + MH,
       version: "1.0",
       usedBy: [
         "mars",
@@ -2458,7 +2517,7 @@ switch (color) {
       component: DetailContent,
       description:
         "Shows image and detailed informations about destinations, hotels and journey purposes.",
-      author: "Daniel Rittrich + BackendTeam for db connection",
+      author: DR + " + BackendTeam for db connection",
       version: "2.0",
       usedBy: [
         "mars",
@@ -2829,6 +2888,695 @@ background-position:center;
   </div>
 </div>
 
+        `,
+    },
+    {
+      ID: 42,
+      name: "DividerTextIFrame",
+      component: DividerTextIFrame,
+      description:
+        "Section component that shows text on the left side and a iFrame on the right side. The iFrame shows a 3D-Modell of the destination planet.",
+      author: DR,
+      version: "1.2",
+      usedBy: ["Moon", "Mars", "Venus"],
+      dependecies: ["{ page } from $app/stores"],
+      variables: [
+        {
+          name: "title",
+          description: "string: Inserts title text ",
+        },
+        {
+          name: "caption",
+          description: "string: Inserts caption text",
+        },
+        {
+          name: "iFrameHeight",
+          description: "number: For iFrame height - only accepts a number.",
+        },
+        {
+          name: "height",
+          description: "number: For component height - only accepts a number.",
+        },
+        {
+          name: "isMars",
+          description: "Boolean: Checks if user is on mars page.",
+        },
+        {
+          name: "isMoon",
+          description: "Boolean: Checks if user is on moon page.",
+        },
+        {
+          name: "isVenus",
+          description: "Boolean: Checks if user is on venus page.",
+        },
+        {
+          name: "iFrameTitle",
+          description: "Sets the correct iFrame title for mars, moon or venus.",
+        },
+        {
+          name: "iFrameSrc",
+          description:
+            "Sets the correct iFrame 3d-Modell for mars, moon or venus.",
+        },
+      ],
+      script: `
+      import { page } from "$app/stores";
+
+export let title: string = "Lorem ipsum dolor";
+export let caption: string = "Lorem ipsum dolor";
+export let iFrameHeight: number = 450;
+export let height: number = 450;
+
+const isMars = $page.url.pathname.includes("/spacetravel/destination/mars");
+const isMoon = $page.url.pathname.includes("/spacetravel/destination/moon");
+const isVenus = $page.url.pathname.includes("/spacetravel/destination/venus");
+
+const iFrameTitle = isMars
+  ? "mars3D"
+  : isMoon
+  ? "moon3D"
+  : isVenus
+  ? "venus3D"
+  : "none";
+const iFrameSrc = isMars
+  ? "https://solarsystem.nasa.gov/gltf_embed/2372"
+  : isMoon
+  ? "https://solarsystem.nasa.gov/gltf_embed/2366"
+  : isVenus
+  ? "https://solarsystem.nasa.gov/gltf_embed/2342"
+  : undefined;
+      `,
+      html: `
+      <div
+  class="relative bg-NFTW-bg bg-opacity-30 bg-gradient-to-l from-NFTW-bg to-transparent from-50% to-70%"
+  style="padding-top:{(height - iFrameHeight) / 2 +
+    'px'} ; padding-bottom:{(height - iFrameHeight) / 2 + 'px'} ;"
+>
+  <div class="lg:absolute lg:inset-0 lg:left-1/2 grid justify-center">
+    <div
+      class="w-full bg-NFTW-bg sm:h-80 lg:absolute lg:h-full bg-blend-multiply bg-no-repeat items-center grid"
+    >
+      <iframe
+        title={iFrameTitle}
+        src={iFrameSrc}
+        width={iFrameHeight + "px"}
+        height={iFrameHeight + "px"}
+        frameborder="0"
+        loading="lazy"
+      />
+    </div>
+  </div>
+  <div
+    class="pb-24 pt-16 sm:pb-32 sm:pt-24 lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:pt-32"
+    style="min-height:{iFrameHeight}px"
+  >
+    <div class="px-6 lg:px-8">
+      <div class="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
+        <h2 class="text-3xl font-bold tracking-tight text-NFTW-white">
+          {title}
+        </h2>
+        <p class="mt-2 text-lg leading-8 text-NFTW-white/60">
+          {caption}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+        `,
+    },
+    {
+      ID: 43,
+      name: "Header",
+      component: Header,
+      description:
+        "Header component with responsive design and hideable menu in mobile view. CLick on title texts navigate the user to the clicked sub page on this website.",
+      author: DR,
+      version: "2.0",
+      usedBy: ["on all pages"],
+      dependecies: ["{ dev } from $app/environment"],
+      variables: [
+        {
+          name: "menuOpened",
+          description: "Boolean for hidden menu logic",
+        },
+        {
+          name: "screenSize",
+          description: "only for dev - shows the actual screen size",
+        },
+      ],
+      script: `
+      import { dev } from "$app/environment";
+  
+  let menuOpened = false;
+  function openMenu() {
+    menuOpened = true;
+  }
+  function closeMenu() {
+    menuOpened = false;
+  }
+  let screenSize: number;
+        `,
+      html: `
+      <svelte:window bind:innerWidth={screenSize} />
+{#if dev}
+  <div class="fixed top-1 left-3 z-50 flex text-white text-3xl gap-6">
+    <p class="sm:hidden">{"mobil "}{screenSize}{"px"}</p>
+    <p class="hidden sm:block md:hidden">{"sm "}{screenSize}{"px"}</p>
+    <p class="hidden md:block lg:hidden">{"md "}{screenSize}{"px"}</p>
+    <p class="hidden lg:block xl:hidden">{"lg "}{screenSize}{"px"}</p>
+    <p class="hidden xl:block">{"xl "}{screenSize}{"px"}</p>
+    <a
+      href="/test"
+      class="pt-1 text-lg hover:scale-125 hover:transition-all hover:text-NFTW-pink-500 ease-in-out duration-300"
+      >Test</a
+    >
+    <a
+      href="/test2"
+      class="pt-1 text-lg hover:scale-125 hover:transition-all hover:text-NFTW-pink-500 ease-in-out duration-300"
+      >Test 2</a
+    >
+  </div>
+{/if}
+
+<div
+  class="group header-bg xl:h-52 lg:h-48 sm:h-44 h-40 overflow-hidden bg-center relative bg-cover"
+>
+  <img
+    loading="lazy"
+    class="transition delay-50 ease-in-out group-hover:scale-150 group-hover:rotate-2 absolute"
+    style=" transition-duration: 10000ms;"
+    src="/milkyway.png"
+    alt="milkyway"
+  />
+
+  <header
+    class="bg-NFTW-bg bg-opacity-60 lg:bg-opacity-80 absolute w-full mt-8 sm:mt-10 lg:mt-12 xl:mt-14"
+  >
+    <nav
+      class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+      aria-label="Global"
+    >
+      <div class="flex lg:flex-1">
+        <a
+          href="/"
+          class="-m-1.5 p-1.5 hover:scale-125 hover:transition-all ease-in-out duration-300"
+          on:click={closeMenu}
+        >
+          <span class="sr-only"
+            >NFTW Adventures Logo: Illustration from a simple rocket during
+            launch.</span
+          >
+          <img
+            loading="lazy"
+            class="h-14 w-auto"
+            src="/illustrations/nftwlogo.png"
+            alt=""
+          />
+        </a>
+      </div>
+      <div class="flex lg:hidden">
+        <button
+          type="button"
+          class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-NFTW-white"
+          on:click={openMenu}
+        >
+          <span class="sr-only">Open main menu</span>
+          <svg
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="hidden lg:flex lg:gap-x-12">
+        <a
+          href="/"
+          class="text-lg font-semibold leading-6 text-NFTW-white hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300"
+          on:click={closeMenu}>Home</a
+        >
+
+        <a
+          href="/spacetravel"
+          class="text-lg font-semibold leading-6 text-NFTW-white hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300"
+          on:click={closeMenu}>Spacetravel</a
+        >
+
+        <a
+          href="/clientStories"
+          class="text-lg font-semibold leading-6 text-NFTW-white hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300"
+          on:click={closeMenu}>Client Stories</a
+        >
+
+        <a
+          href="/getInContact"
+          class="text-lg font-semibold leading-6 text-NFTW-white hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300"
+          on:click={closeMenu}>Get In Contact</a
+        >
+      </div>
+      <div class="hidden lg:flex lg:flex-1 lg:justify-end" />
+    </nav>
+    <!-- Mobile menu, show/hide based on menu open state. -->
+    {#if menuOpened}<div class="lg:hidden z-20" role="dialog" aria-modal="true">
+        <!-- Background backdrop, show/hide based on slide-over state. -->
+        <div class="fixed inset-0 z-30" />
+        <div
+          class="fixed inset-y-0 right-0 z-30 w-full overflow-y-auto bg-NFTW-bg px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10"
+        >
+          <div class="flex items-center justify-between">
+            <a
+              href="/"
+              class="-m-1.5 p-1.5 hover:scale-125 hover:transition-all ease-in-out duration-300"
+              on:click={closeMenu}
+            >
+              <span class="sr-only">Your Company</span>
+              <img
+                loading="lazy"
+                class="h-12 w-auto"
+                src="/illustrations/nftwlogo.png"
+                alt=""
+              />
+            </a>
+            <button
+              type="button"
+              class="-m-2.5 rounded-md p-2.5 text-NFTW-white"
+              on:click={closeMenu}
+            >
+              <span class="sr-only">Close menu</span>
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="mt-6 flow-root">
+            <div class="-my-6 divide-y divide-NFTW-blue-200">
+              <div class="space-y-2 py-6">
+                <a
+                  href="/"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-NFTW-white hover:bg-gray-800 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-500"
+                  on:click={closeMenu}>Home</a
+                >
+
+                <a
+                  href="/spacetravel"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-NFTW-white hover:bg-gray-800 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-500"
+                  on:click={closeMenu}>Spacetravel</a
+                >
+
+                <a
+                  href="/clientStories"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-NFTW-white hover:bg-gray-800 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-500"
+                  on:click={closeMenu}>Client Stories</a
+                >
+
+                <a
+                  href="/getInContact"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-NFTW-white hover:bg-gray-800 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-500"
+                  on:click={closeMenu}>Get In Contact</a
+                >
+              </div>
+              <div class="py-6" />
+            </div>
+          </div>
+        </div>
+      </div>{/if}
+  </header>
+</div>
+        `,
+    },
+    {
+      ID: 44,
+      name: "Footer",
+      component: Footer,
+      description:
+        "Footer component with responsive design. CLick on text navigate the user to the clicked sub page on this website. It also shows clickable social links",
+      author: DR + " + " + MH,
+      version: "1.2",
+      usedBy: ["on all pages"],
+      dependecies: ["Dependecie 1", "Dependecie 2"],
+      variables: [
+        {
+          name: "SITES",
+          description:
+            "Array that contains all shown text and links that the user can click on.",
+        },
+      ],
+      script: `
+      const SITES = [
+    {
+      name: "Home",
+      anchor: "/",
+    },
+    {
+      name: "Spacetravel",
+      anchor: "/spacetravel",
+    },
+    {
+      name: "Client Stories",
+      anchor: "/clientStories",
+    },
+    {
+      name: "Get in Contact",
+      anchor: "/getInContact",
+    },
+    {
+      name: "Contact",
+      anchor: "/contact",
+    },
+    {
+      name: "Imprint",
+      anchor: "/imprint",
+    },
+    {
+      name: "Privacy Policy",
+      anchor: "/privacyPolicy",
+    },
+  ];
+        `,
+      html: `
+      <footer class="bg-NFTW-bg text-NFTW-white pb-12">
+  <div class="mx-auto max-w-7xl overflow-hidden px-12 py-8 sm:py-12 lg:px-8">
+    <nav
+      class="-mb-6 columns-2 md:flex md:justify-center sm:space-x-12"
+      aria-label="Footer"
+    >
+      {#each SITES as SITE}
+        <div class="pb-6 sm:first:ml-12 md:first:ml-0">
+          <a
+            href={SITE.anchor}
+            class="text-lg hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300 text-white"
+            >{SITE.name}</a
+          >
+        </div>
+      {/each}
+    </nav>
+    <div class="mt-10 flex justify-center space-x-10">
+      <div class="flex space-x-6">
+        <a href="https://www.facebook.com/spacextechnologies/">
+          <span class="sr-only">Facebook</span>
+          <svg
+            class="h-6 w-6 text-NFTW-blue-200 hover:scale-125 hover:transition-all hover:text-NFTW-blue-300 ease-in-out duration-300"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </a>
+
+        <a href="https://www.instagram.com/spacex/">
+          <span class="sr-only">Instagram</span>
+          <svg
+            class="h-6 w-6 text-NFTW-blue-200 hover:scale-125 hover:transition-all hover:text-NFTW-blue-300 ease-in-out duration-300"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </a>
+
+        <a href="https://twitter.com/elonmusk/status/1625695877326340102">
+          <span class="sr-only">Twitter</span>
+          <svg
+            class="h-6 w-6 text-NFTW-blue-200 hover:scale-125 hover:transition-all hover:text-NFTW-blue-300 ease-in-out duration-300"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"
+            />
+          </svg>
+        </a>
+
+        <a href="https://de.linkedin.com/company/spacex">
+          <span class="sr-only">LinkedIn</span>
+          <svg
+            class="h-6 w-6 text-NFTW-blue-200 hover:scale-125 hover:transition-all hover:text-NFTW-blue-300 ease-in-out duration-300"
+            viewBox="0 0 48 48"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>linkedin</title>
+            <g id="Layer_2" data-name="Layer 2">
+              <g id="icons_Q2" data-name="icons Q2">
+                <path
+                  d="M41,4.1H7A2.9,2.9,0,0,0,4,7V41.1A2.9,2.9,0,0,0,7,44H41a2.9,2.9,0,0,0,2.9-2.9V7A2.9,2.9,0,0,0,41,4.1Zm-25.1,34h-6v-19h6Zm-3-21.6A3.5,3.5,0,0,1,9.5,13a3.4,3.4,0,0,1,6.8,0A3.5,3.5,0,0,1,12.9,16.5ZM38,38.1H32.1V28.8c0-2.2,0-5-3.1-5s-3.5,2.4-3.5,4.9v9.4H19.6v-19h5.6v2.6h.1a6.2,6.2,0,0,1,5.6-3.1c6,0,7.1,3.9,7.1,9.1Z"
+                />
+              </g>
+            </g>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <p class="text-lg text-center leading-6 text-NFTW-white mb-2">
+    Adventures not from this world: Explore the universe with us!
+  </p>
+  <p class="text-center text-xs leading-5 text-NFTW-white">
+    &copy; 2023 NFTW Adventures, Inc. All rights reserved.
+  </p>
+</footer>
+        `,
+    },
+    {
+      ID: 45,
+      name: "HomeSectionBg",
+      component: HomeSectionBg,
+      description:
+        "Section component that shows a description text on an background image. On top is shown a title and a caption text.",
+      author: DR,
+      version: "1.1",
+      usedBy: ["Route /"],
+      dependecies: [
+        "{ checkUndefinedNullOrEmpty } from $lib/tools/Tools.svelte",
+      ],
+      variables: [
+        {
+          name: "title1of2",
+          description: "string: For title text 1 of 2",
+        },
+        {
+          name: "title2of2",
+          description: "string: For title text 2 of 2",
+        },
+        {
+          name: "caption",
+          description: "string: For caption text under the title text",
+        },
+        {
+          name: "image",
+          description: "string[]: For backgroubd image of the component",
+        },
+        {
+          name: "minHeight",
+          description:
+            "string: For variable min-height - accepts input values like 70vh, ...",
+        },
+        {
+          name: "IMAGE_PATH_INDEX",
+          description: "number: For geting the correct image from db",
+        },
+      ],
+      script: `
+      import { checkUndefinedNullOrEmpty } from "$lib/tools/Tools.svelte";
+
+export let title1of2: string = "Lorem ipsum";
+export let title2of2: string = "";
+export let caption: string = "Lorem ipsum dolor.";
+export let image: string[] = ["", ""];
+export let minHeight: string = "70vh";
+
+const IMAGE_PATH_INDEX: number = 0;
+
+        `,
+      html: `
+      <div
+  class="realitive overflow-hidden bg-cover bg-no-repeat"
+  style="background-image: url({image[
+    IMAGE_PATH_INDEX
+  ]}); min-height: {minHeight}"
+>
+  <div class="mx-auto max-w-7xl px-6 pb-96 pt-24 text-center sm:pt-32 lg:px-8">
+    <div class="mx-auto max-w-4xl">
+      <p
+        class="mt-2 text-4xl font-bold tracking-tight text-NFTW-white sm:text-5xl"
+      >
+        {checkUndefinedNullOrEmpty(title2of2) ? title1of2 : title1of2 + " "}<br
+          class="hidden sm:inline lg:hidden"
+        />{title2of2}
+      </p>
+    </div>
+    <div class="relative mt-6">
+      <p class="mx-auto max-w-2xl text-lg leading-8 text-NFTW-white/60">
+        {caption}
+      </p>
+    </div>
+  </div>
+  <div class="flow-root pb-24">
+    <div class="-mt-80">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div
+          class="mx-auto grid max-w-md grid-cols-1 gap-16 lg:max-w-4xl lg:grid-cols-2"
+        >
+          <slot />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+        `,
+    },
+    {
+      ID: 46,
+      name: "InfoSection",
+      component: InfoSection,
+      description:
+        "Section component that shows a description text on an background image. On top is shown a title and a caption text.",
+      author: DR,
+      version: "1.1",
+      usedBy: ["none"],
+      dependecies: ["none"],
+      variables: [
+        {
+          name: "title",
+          description: "string: For title text",
+        },
+        {
+          name: "text1",
+          description: "string: For description text",
+        },
+        {
+          name: "text2",
+          description: "string: For description text",
+        },
+        {
+          name: "img1",
+          description:
+            "string: For setting image number 1 - input values like /brokenImage.png",
+        },
+        {
+          name: "img2",
+          description:
+            "string: For setting image number 2 - input values like /brokenImage.png",
+        },
+        {
+          name: "img3",
+          description:
+            "string: For setting image number 3 - input values like /brokenImage.png",
+        },
+        {
+          name: "img4",
+          description:
+            "string: For setting image number 4 - input values like /brokenImage.png",
+        },
+      ],
+      script: `
+      export let title: string = "Title";
+  export let text1: string = "Text 1";
+  export let text2: string = "";
+  export let img1: string = "/brokenImage.png";
+  export let img2: string = "/brokenImage.png";
+  export let img3: string = "/brokenImage.png";
+  export let img4: string = "/brokenImage.png";
+        `,
+      html: `
+      <div class="overflow-hidden bg-NFTW-bg/50 py-32">
+  <div class="mx-auto max-w-7xl px-6 xl:flex xl:px-8">
+    <div
+      class="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 xl:mx-0 xl:min-w-full xl:max-w-none xl:flex-none xl:gap-y-8"
+    >
+      <div class="xl:col-end-1 xl:w-full xl:max-w-lg xl:pb-8">
+        <h2
+          class="text-3xl font-bold tracking-tight text-NFTW-white md:text-4xl"
+        >
+          {title}
+        </h2>
+        <p class="mt-6 text-xl leading-8 text-NFTW-white">
+          {text1}
+        </p>
+        <p class="mt-6 text-base leading-7 text-NFTW-white">
+          {text2}
+        </p>
+      </div>
+      <div
+        class="flex flex-wrap items-start justify-end gap-6 md:gap-8 xl:contents"
+      >
+        <div
+          class="w-0 flex-auto xl:ml-auto xl:w-auto xl:flex-none xl:self-end"
+        >
+          <img
+            loading="lazy"
+            src={img2}
+            alt=""
+            class="aspect-[7/5] w-[37rem] max-w-none rounded-2xl bg-gray-50 object-cover"
+          />
+        </div>
+        <div
+          class="contents xl:col-span-2 xl:col-end-2 xl:ml-auto xl:flex xl:w-[37rem] xl:items-start xl:justify-end xl:gap-x-8"
+        >
+          <div
+            class="order-first flex w-64 flex-none justify-end self-end xl:w-auto"
+          >
+            <img
+              loading="lazy"
+              src={img1}
+              alt=""
+              class="aspect-[4/3] w-[22rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover"
+            />
+          </div>
+          <div class="flex w-96 flex-auto justify-end xl:w-auto xl:flex-none">
+            <img
+              loading="lazy"
+              src={img3}
+              alt=""
+              class="aspect-[7/5] w-[30rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover"
+            />
+          </div>
+          <div
+            class="hidden md:block md:w-0 md:flex-auto xl:w-auto xl:flex-none"
+          >
+            <img
+              loading="lazy"
+              src={img4}
+              alt=""
+              class="aspect-[4/3] w-[20rem] max-w-none rounded-2xl bg-gray-50 object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
         `,
     },
 
