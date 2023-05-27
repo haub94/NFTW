@@ -4,16 +4,16 @@
   import Card from "../../../lib/components/Card.svelte";
 
   const planets = [
-    "/planets/green-planet.png",
-    "/planets/moon-planet.png",
-    "/planets/red-planet.png",
-    "/planets/blue-planet.png",
-    "/planets/dark-planet.png",
-    "/planets/grey-planet.png",
-    "/planets/network-planet.png",
-    "/planets/rainbow-planet.png",
-    "/planets/striped-planet.png",
-    "/planets/water-planet.png",
+    "/planets/green-planet.webp",
+    "/planets/moon-planet.webp",
+    "/planets/red-planet.webp",
+    "/planets/blue-planet.webp",
+    "/planets/dark-planet.webp",
+    "/planets/grey-planet.webp",
+    "/planets/network-planet.webp",
+    "/planets/rainbow-planet.webp",
+    "/planets/striped-planet.webp",
+    "/planets/water-planet.webp",
   ];
   function randomImg() {
     const random = Math.floor(Math.random() * planets.length);

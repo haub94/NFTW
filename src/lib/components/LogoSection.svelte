@@ -12,35 +12,35 @@
       loading="lazy"
       class="col-span-1 max-h-30 w-full object-contain invert"
       style="max-width:150px"
-      src="/logos/nasa.png"
+      src="/logos/nasa.webp"
       alt="Nasa"
     />
     <img
       loading="lazy"
       class="col-span-1 max-h-30 w-full object-contain invert brightness-0 ml-10 md:ml-5"
       style="max-width:200px"
-      src="/logos/spacex.png"
+      src="/logos/spacex.webp"
       alt="SpaceX"
     />
     <img
       loading="lazy"
       class="col-span-1 max-h-30 w-full object-contain invert mr-5 md:mr-0"
       style="max-width:130px"
-      src="/logos/esa.png"
+      src="/logos/esa.webp"
       alt="esa"
     />
     <img
       loading="lazy"
       class="col-span-1 max-h-30 w-full object-contain"
       style="max-width:130px"
-      src="/logos/spaceforce.png"
+      src="/logos/spaceforce.webp"
       alt="USspaceforce"
     />
     <img
       loading="lazy"
       class="col-span-1 max-h-30 w-full object-contain invert ml-20 md:ml-14 lg:ml-8 xl:ml-5"
       style="max-width:150px"
-      src="/logos/starlink.png"
+      src="/logos/starlink.webp"
       alt="Starlink"
     />
   </div>
