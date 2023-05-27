@@ -4,7 +4,7 @@
   const DR: string = "Daniel Rittrich";
   const LXT: string = "Le Xuan Tran";
   const AK: string = "Anna Kozachuk";
-  
+
   //add all component-imports here
   import Card from "$lib/components/Card.svelte";
   import CardSpacetravel from "$lib/components/CardSpacetravel.svelte";
@@ -17,16 +17,16 @@
   import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
   import SectionBg001 from "$lib/sectionComponents/SectionBg001.svelte";
   import SectionHeader from "$lib/components/SectionHeader.svelte";
-  
+
   //client stories
   import TestimonialCard from "$lib/components/TestimonialCard.svelte";
   import StorrieCard from "$lib/components/StorieCard.svelte";
   import Stories from "$lib/sectionComponents/Stories.svelte";
   import TestimonialSwiper from "$lib/sectionComponents/TestimonialSwiper.svelte";
-  
+
   //some elements
   import Banner from "$lib/elements/Banner.svelte";
-  
+
   //privacy policy
   import Bulletpoints from "$lib/elements/dataprotection/Bulletpoints.svelte";
   import LeftPaddingH3 from "$lib/elements/dataprotection/LeftPaddingH3.svelte";
@@ -38,6 +38,8 @@
   import Subtitle from "$lib/elements/dataprotection/Subtitle.svelte";
   import Title from "$lib/elements/dataprotection/Title.svelte";
   import SmallTitle from "$lib/elements/dataprotection/SmallTitle.svelte";
+  import ButtonsDestJpGic from "$lib/components/ButtonsDestJpGic.svelte";
+  import DetailContent from "$lib/sectionComponents/DetailContent.svelte";
 
   export const componentData = [
     /*
@@ -657,10 +659,11 @@ export let captionPath: string = "";
       version: "1.1",
       usedBy: ["Route getInContact", "Route contact"],
       dependecies: [
-        "page (import from app/stores)", 
-        "dev (import from $app/environment", 
-        "emailjs (import from @emailjs/browser)", 
-        "Banner.svelte", "configMemory (import from stores/journeyConfigMemory.ts"
+        "page (import from app/stores)",
+        "dev (import from $app/environment",
+        "emailjs (import from @emailjs/browser)",
+        "Banner.svelte",
+        "configMemory (import from stores/journeyConfigMemory.ts",
       ],
       variables: [
         {
@@ -675,79 +678,85 @@ export let captionPath: string = "";
         },
         {
           name: "labelStyle",
-          description:"string: styling classes for the form labels",
+          description: "string: styling classes for the form labels",
         },
         {
           name: "inputStyle",
-          description:"string: styling classes for the form input fields",
+          description: "string: styling classes for the form input fields",
         },
         {
           name: "dateStyle",
-          description:"string: styling classes for the form date fields",
+          description: "string: styling classes for the form date fields",
         },
         {
           name: "selectionStyling",
-          description:"string: styling classes for the form selection fields",
+          description: "string: styling classes for the form selection fields",
         },
         {
           name: "boolean: overrideMemory",
-          description:"allow to overrite the configMemory during the development",
+          description:
+            "allow to overrite the configMemory during the development",
         },
         {
           name: "empty",
-          description:"string: represents a empty string (syntax sugar)",
+          description: "string: represents a empty string (syntax sugar)",
         },
         {
           name: "$configMemory",
-          description:"interface of type journeyConfigMemory: contains the data from the svelte-store journeyConfigMemory",
+          description:
+            "interface of type journeyConfigMemory: contains the data from the svelte-store journeyConfigMemory",
         },
         {
           name: "SERVICE_ID",
-          description:"string: service identification number for the request with the emailjs-client",
+          description:
+            "string: service identification number for the request with the emailjs-client",
         },
         {
           name: "TEMPLATE_ID",
-          description:"string: selection for the choosen template for the request with the emailjs-client",
+          description:
+            "string: selection for the choosen template for the request with the emailjs-client",
         },
         {
           name: "PUPLIC_KEY",
-          description:"string: puplic key for the authetication at the emailjs-client",
+          description:
+            "string: puplic key for the authetication at the emailjs-client",
         },
         {
           name: "inputData.destination",
-          description:"string: value from the form-selection field destination",
+          description:
+            "string: value from the form-selection field destination",
         },
         {
           name: "inputData.journeyPurpose",
-          description:"string: value from the form-selection field journeyPurpes",
+          description:
+            "string: value from the form-selection field journeyPurpes",
         },
         {
           name: "inputData.startDate",
-          description:"string: value from the form-date field startDate",
+          description: "string: value from the form-date field startDate",
         },
         {
           name: "inputData.endDate",
-          description:"string: value from the form-date field endDate",
+          description: "string: value from the form-date field endDate",
         },
         {
           name: "inputData.firstname",
-          description:"string: value from the form-input field firstName",
+          description: "string: value from the form-input field firstName",
         },
         {
           name: "inputData.lastName",
-          description:"string: value from the form-input field lastName",
+          description: "string: value from the form-input field lastName",
         },
         {
           name: "inputData.emailAddress",
-          description:"string: value from the form-input field emailAdress",
+          description: "string: value from the form-input field emailAdress",
         },
         {
           name: "inputData.message",
-          description:"string: value from the form-input field message",
+          description: "string: value from the form-input field message",
         },
       ],
-      script: 
-  `
+      script: `
   import { page } from "$app/stores";
   import { dev } from '$app/environment';
   import emailjs from '@emailjs/browser'; //Haubold, Markus - mailing client 
@@ -948,8 +957,7 @@ export let captionPath: string = "";
       }
   }
   `,
-      html: 
-  `
+      html: `
   <!--load testdate for dev-mode-->
  {#if dev}
     <div class="">
@@ -1487,10 +1495,11 @@ export let twoCols: boolean = false;
         `,
     },
     {
-          ID: 11,
+      ID: 11,
       name: "Banner",
       component: Banner,
-      description: "Shows buzzwords, the messages to this and differnt background colors",
+      description:
+        "Shows buzzwords, the messages to this and differnt background colors",
       author: MH,
       version: "1.0",
       usedBy: ["Form.svelte"],
@@ -1506,19 +1515,21 @@ export let twoCols: boolean = false;
         },
         {
           name: "color",
-          description: "string: the backgroundcolor of the banner (no tailwind-classes!). Look inside the component to see the possibilities (or add new ones).",
+          description:
+            "string: the backgroundcolor of the banner (no tailwind-classes!). Look inside the component to see the possibilities (or add new ones).",
         },
         {
           name: "stateColor",
-          description: "string: depending on the variable color, it is set with a tailwind background color-class",
+          description:
+            "string: depending on the variable color, it is set with a tailwind background color-class",
         },
         {
           name: "bannerHidden",
-          description: "boolean: switchs the visibiltiy of the banner. Triggered with the litte cross on the right side of the banner.",
+          description:
+            "boolean: switchs the visibiltiy of the banner. Triggered with the litte cross on the right side of the banner.",
         },
       ],
-      script: 
-`
+      script: `
 export let buzzWord: string = "buzzword";
 export let text: string = "descripe buzzword here";
 export let color: string = "green"; //color controling
@@ -1544,8 +1555,7 @@ switch (color) {
         break;
 }
 `,
-      html: 
-`
+      html: `
   <div class:hidden={bannerHidden} class="pointer-events-none sm:px-6 sm:pb-5 lg:px-8">
     <div class="pointer-events-auto flex items-center justify-between gap-x-6 px-6 py-2.5 sm:rounded-xl sm:py-3 sm:pl-4 sm:pr-3.5 {stateColor}">     
       <p class="text-sm leading-6 text-white">
@@ -1569,15 +1579,12 @@ switch (color) {
       ID: 20,
       name: "SectionHeader",
       component: SectionHeader,
-      description: "Used as the intro part of every site. It contents a header for a few of buzzwords and a description to mention the core of the site.",
+      description:
+        "Used as the intro part of every site. It contents a header for a few of buzzwords and a description to mention the core of the site.",
       author: MH,
       version: "1.0",
-      usedBy: [
-        "Route /clientStories",
-      ],
-      dependecies: [
-        "-", 
-      ],
+      usedBy: ["Route /clientStories"],
+      dependecies: ["-"],
       variables: [
         {
           name: "title",
@@ -1587,15 +1594,12 @@ switch (color) {
           name: "description",
           description: "string: content for the site-description",
         },
-       
       ],
-      script: 
-  `
+      script: `
     export let title: string = "title";
     export let description: string = "description";
   `,
-      html: 
-  `
+      html: `
   <div class="w-full flex flex-col text-center space-y-6 mb-20">
     <h1 class="font-bold text-4xl text-NFTW-pink-400">{title}</h1>
     <p class="text-NFTW-pink-100 text-lg lg:text-2xl">{description}</p>
@@ -1606,16 +1610,12 @@ switch (color) {
       ID: 21,
       name: "TestimonialCard",
       component: TestimonialCard,
-      description: "Used as a card which can slide forced by the swiper-component (component TestimonialSwiper).",
+      description:
+        "Used as a card which can slide forced by the swiper-component (component TestimonialSwiper).",
       author: MH,
       version: "1.0",
-      usedBy: [
-        "Route /clientStorries",
-        "TestimonialSwiper.svelte",
-      ],
-      dependecies: [
-        "-", 
-      ],
+      usedBy: ["Route /clientStorries", "TestimonialSwiper.svelte"],
+      dependecies: ["-"],
       variables: [
         {
           name: "givenStars",
@@ -1643,13 +1643,11 @@ switch (color) {
         },
         {
           name: "starColor",
-          description: "array of string: contains the tailwind-class to colorize / hide (color=none) the given stars",
+          description:
+            "array of string: contains the tailwind-class to colorize / hide (color=none) the given stars",
         },
-
-       
       ],
-      script: 
-  `
+      script: `
     export let givenStars: string = "5";
     export let name: string = "testimonial name";
     export let bookedDestination: string = "destination";
@@ -1711,8 +1709,7 @@ switch (color) {
             break;
     }
   `,
-      html: 
-  `
+      html: `
   <section class="bg-NFTW-blue-200 px-6 py-10 lg:px-8 rounded-xl">
     <figure class="mx-auto max-w-2xl">
       <p class="sr-only">5 out of 5 stars</p>
@@ -1751,17 +1748,15 @@ switch (color) {
       ID: 22,
       name: "StorrieCard",
       component: StorrieCard,
-      description: "Used as a card which contains the stats about completed journeys.",
+      description:
+        "Used as a card which contains the stats about completed journeys.",
       author: MH,
       version: "1.0",
-      usedBy: [
-        "Route /clientStories",
-        "Stories.svelte",
-      ],
+      usedBy: ["Route /clientStories", "Stories.svelte"],
       dependecies: [
-        "IoMdPlanet (import from svelte-icons)", 
-        "FaUsers (import from svelte-icons)", 
-        "FaGrav (import from svelte-icons)", 
+        "IoMdPlanet (import from svelte-icons)",
+        "FaUsers (import from svelte-icons)",
+        "FaGrav (import from svelte-icons)",
       ],
       variables: [
         {
@@ -1774,20 +1769,21 @@ switch (color) {
         },
         {
           name: "completedTrips",
-          description: "string: amount of the completed journeys in the past with this destination and journey purpose",
+          description:
+            "string: amount of the completed journeys in the past with this destination and journey purpose",
         },
         {
           name: "destinationImage",
-          description: "string: contains the path to the image for the given destination (moon, mars, venus)",
+          description:
+            "string: contains the path to the image for the given destination (moon, mars, venus)",
         },
         {
           name: "statsTemplate",
-          description: "array of objects: datastructure (header, value, icon) with the content for the three stat-points",
+          description:
+            "array of objects: datastructure (header, value, icon) with the content for the three stat-points",
         },
-       
       ],
-      script: 
-  `
+      script: `
     import IoMdPlanet from 'svelte-icons/io/IoMdPlanet.svelte';
     import FaUsers from 'svelte-icons/fa/FaUsers.svelte';
     import FaGrav from 'svelte-icons/fa/FaGrav.svelte';
@@ -1832,8 +1828,7 @@ switch (color) {
       }
     ]
   `,
-      html: 
-  `
+      html: `
   <div class="flex flex-col bg-NFTW-blue-900 p-2 rounded-xl border-2 border-NFTW-blue-700 w-80 mb-12">
 	<!--image-->
 	<div class="w-full p-4" class:p-4={destination != "Moon"}> <!--moon is smaller than the other, so give the other padding-->
@@ -1862,23 +1857,20 @@ switch (color) {
       ID: 23,
       name: "Stories",
       component: Stories,
-      description: "Section component which containes all StorrieCards (component StorrieCard)",
+      description:
+        "Section component which containes all StorrieCards (component StorrieCard)",
       author: MH,
       version: "1.0",
-      usedBy: [
-        "Route /clientStories",
-      ],
-      dependecies: [
-        "StorrieCard.svelte",  
-      ],
+      usedBy: ["Route /clientStories"],
+      dependecies: ["StorrieCard.svelte"],
       variables: [
         {
           name: "cardData",
-          description: "array of objects: contains the datastructure (destination, purpose, completedTrips) to generate the needed StorrieCards with it.",
-        },       
+          description:
+            "array of objects: contains the datastructure (destination, purpose, completedTrips) to generate the needed StorrieCards with it.",
+        },
       ],
-      script: 
-  `
+      script: `
   import StorieCard from "$lib/components/StorieCard.svelte";
 
   const cardData = [
@@ -1909,8 +1901,7 @@ switch (color) {
       },
   ]
   `,
-      html: 
-`
+      html: `
   <div class="mb-28 w-full grid grid-col md:grid-cols-2 xl:grid-cols-3">
     {#each cardData as card}
         <div class="mx-auto">
@@ -1928,26 +1919,25 @@ switch (color) {
       ID: 24,
       name: "TestimonialSwiper",
       component: TestimonialSwiper,
-      description: "Section component to swipe the TestimonialCards automaticly one by one along the horizontal axis.",
+      description:
+        "Section component to swipe the TestimonialCards automaticly one by one along the horizontal axis.",
       author: MH,
       version: "1.0",
-      usedBy: [
-        "Route /clientStories",
-      ],
+      usedBy: ["Route /clientStories"],
       dependecies: [
         "TestimonialCard.svelte",
         "register (import from swiper)",
-        "swiper-container (comes with swiper package v9.2.4)",  
-        "swiper-slide (comes with swiper package v9.2.4)",  
+        "swiper-container (comes with swiper package v9.2.4)",
+        "swiper-slide (comes with swiper package v9.2.4)",
       ],
       variables: [
         {
           name: "testimonialData",
-          description: "array of objects: contains the datastructure (name, bookedDestination, bookedPurpose, givenStars, reviewText, image) to generate the needed TestimonialCards.",
-        },       
+          description:
+            "array of objects: contains the datastructure (name, bookedDestination, bookedPurpose, givenStars, reviewText, image) to generate the needed TestimonialCards.",
+        },
       ],
-      script: 
-`
+      script: `
   import TestimonialCard from '$lib/components/TestimonialCard.svelte';
   import { register } from 'swiper/element/bundle';
 
@@ -1980,8 +1970,7 @@ switch (color) {
       }
   ]
 `,
-      html: 
-`
+      html: `
 <div class="w-full h-auto overflow-hidden">
   <swiper-container
       space-between=20
@@ -2009,165 +1998,139 @@ switch (color) {
 `,
     },
     {
-        ID: 30,
-        name: "Bulletpoints",
-        component: Bulletpoints,
-        description: "Generates a unsorted list with the list-symbol disc.",
-        author: MH,
-        version: "1.0",
-        usedBy: [
-          "Route /privacyPolicy",
-          "PrivacyPolicyContent.svelte"
-        ],
-        dependecies: [
-          "-", 
-        ],
-        variables: [
-          {
-            name: "bulletpoints",
-            description: "array of string: Collection of the list entrys",
-          },
-        ],
-        script: 
-`
+      ID: 30,
+      name: "Bulletpoints",
+      component: Bulletpoints,
+      description: "Generates a unsorted list with the list-symbol disc.",
+      author: MH,
+      version: "1.0",
+      usedBy: ["Route /privacyPolicy", "PrivacyPolicyContent.svelte"],
+      dependecies: ["-"],
+      variables: [
+        {
+          name: "bulletpoints",
+          description: "array of string: Collection of the list entrys",
+        },
+      ],
+      script: `
   export let bulletpoints: Array<string> = [];
 `,
-        html:
-`
+      html: `
 <ul class="list-disc space-y-1.5 pl-8 pb-4 text-base">
   {#each bulletpoints as points}
     <li>{points}</li>
   {/each}
 </ul>
-`
+`,
     },
     {
-        ID: 31,
-        name: "LeftPaddingH3",
-        component: LeftPaddingH3,
-        description: "Section Wrapper which gives the nested Header3 the left padding pl-1.5. Special component for PolicyPrivacyContent.",
-        author: MH,
-        version: "1.0",
-        usedBy: [
-          "Route /privacyPolicy",
-          "PrivacyPolicyContent.svelte"
-        ],
-        dependecies: [
-          "-", 
-        ],
-        variables: [
-          {
-            name: "-",
-            description: "-",
-          },
-        ],
-        script: 
-`
+      ID: 31,
+      name: "LeftPaddingH3",
+      component: LeftPaddingH3,
+      description:
+        "Section Wrapper which gives the nested Header3 the left padding pl-1.5. Special component for PolicyPrivacyContent.",
+      author: MH,
+      version: "1.0",
+      usedBy: ["Route /privacyPolicy", "PrivacyPolicyContent.svelte"],
+      dependecies: ["-"],
+      variables: [
+        {
+          name: "-",
+          description: "-",
+        },
+      ],
+      script: `
 
 `,
-        html:
-`
+      html: `
 <div class="pl-1.5">
 	<slot />
 </div>
-`
-      },
-      {
-        ID: 32,
-        name: "LpAfterSubtitle",
-        component: LpAfterSubtitle,
-        description: "Section Wrapper which gives the nested content (after the subtitle) the left padding: pl-2. Special component for PolicyPrivacyContent.",
-        author: MH,
-        version: "1.0",
-        usedBy: [
-          "Route /privacyPolicy",
-          "PrivacyPolicyContent.svelte"
-        ],
-        dependecies: [
-          "-", 
-        ],
-        variables: [
-          {
-            name: "-",
-            description: "-",
-          },
-        ],
-        script: 
-`
+`,
+    },
+    {
+      ID: 32,
+      name: "LpAfterSubtitle",
+      component: LpAfterSubtitle,
+      description:
+        "Section Wrapper which gives the nested content (after the subtitle) the left padding: pl-2. Special component for PolicyPrivacyContent.",
+      author: MH,
+      version: "1.0",
+      usedBy: ["Route /privacyPolicy", "PrivacyPolicyContent.svelte"],
+      dependecies: ["-"],
+      variables: [
+        {
+          name: "-",
+          description: "-",
+        },
+      ],
+      script: `
 
 `,
-        html:
-`
+      html: `
 <div class="pl-2">
 	<slot />
 </div>
-`
-      },
-      {
-        ID: 33,
-        name: "LpAfterTitle",
-        component: LpAfterTitle,
-        description: "Section Wrapper which gives the nested content (after the title) the left padding: pl-2. Special component for PolicyPrivacyContent.",
-        author: MH,
-        version: "1.0",
-        usedBy: [
-          "Route /privacyPolicy",
-          "PrivacyPolicyContent.svelte"
-        ],
-        dependecies: [
-          "-", 
-        ],
-        variables: [
-          {
-            name: "-",
-            description: "-",
-          },
-        ],
-        script: 
-`
+`,
+    },
+    {
+      ID: 33,
+      name: "LpAfterTitle",
+      component: LpAfterTitle,
+      description:
+        "Section Wrapper which gives the nested content (after the title) the left padding: pl-2. Special component for PolicyPrivacyContent.",
+      author: MH,
+      version: "1.0",
+      usedBy: ["Route /privacyPolicy", "PrivacyPolicyContent.svelte"],
+      dependecies: ["-"],
+      variables: [
+        {
+          name: "-",
+          description: "-",
+        },
+      ],
+      script: `
 
 `,
-        html:
-`
+      html: `
 <div class="pl-2">
 	<slot />
 </div>
-`
-      },
-      {
-        ID: 34,
-        name: "OrderProcessing",
-        component: OrderProcessing,
-        description: "Component with the content for the default Order-Processing-Paragraph (privacy policy). By using the exported variables it is possible the change the content. Special component for PolicyPrivacyContent.",
-        author: MH,
-        version: "1.0",
-        usedBy: [
-          "Route /privacyPolicy",
-          "PrivacyPolicyContent.svelte"
-        ],
-        dependecies: [
-          "-", 
-        ],
-        variables: [
-          {
-            name: "text",
-            description: "string: the content from the order-processing (use this to override the default text)",
-          },
-          {
-            name: "title",
-            description: "string: the title from the order-processing (use this to override the default title)",
-          },
-          {
-            name: "textToPrint",
-            description: "string: helper-variable which will be overridden from the text-variable (if the default value does not fit for the content).",
-          },
-          {
-            name: "titleToPrint",
-            description: "string: helper-variable which will be overridden from the title-variable (if the default value does not fit for the content).",
-          },
-        ],
-        script: 
-`
+`,
+    },
+    {
+      ID: 34,
+      name: "OrderProcessing",
+      component: OrderProcessing,
+      description:
+        "Component with the content for the default Order-Processing-Paragraph (privacy policy). By using the exported variables it is possible the change the content. Special component for PolicyPrivacyContent.",
+      author: MH,
+      version: "1.0",
+      usedBy: ["Route /privacyPolicy", "PrivacyPolicyContent.svelte"],
+      dependecies: ["-"],
+      variables: [
+        {
+          name: "text",
+          description:
+            "string: the content from the order-processing (use this to override the default text)",
+        },
+        {
+          name: "title",
+          description:
+            "string: the title from the order-processing (use this to override the default title)",
+        },
+        {
+          name: "textToPrint",
+          description:
+            "string: helper-variable which will be overridden from the text-variable (if the default value does not fit for the content).",
+        },
+        {
+          name: "titleToPrint",
+          description:
+            "string: helper-variable which will be overridden from the title-variable (if the default value does not fit for the content).",
+        },
+      ],
+      script: `
   export let text = '';
   export let title = '';
   let textToPrint: string = "";
@@ -2188,160 +2151,687 @@ switch (color) {
     titleToPrint = title;
   }
 `,
-        html:
-`
+      html: `
 <div class="space-y-1">
 	<h3 class="text-nftw-pink-100 font-bold italic">{titleToPrint}</h3>
 	<p class="pb-4 text-base">{textToPrint}</p>
 </div>
-`
-      },
-      {
+`,
+    },
+    {
       ID: 35,
       name: "Paragraph",
       component: Paragraph,
-      description: "Wrapper which styles the nested paragraph section. Special component for PolicyPrivacyContent.",
+      description:
+        "Wrapper which styles the nested paragraph section. Special component for PolicyPrivacyContent.",
       author: MH,
       version: "1.0",
-      usedBy: [
-        "Route /privacyPolicy",
-        "PrivacyPolicyContent.svelte"
-      ],
-      dependecies: [
-        "-", 
-      ],
+      usedBy: ["Route /privacyPolicy", "PrivacyPolicyContent.svelte"],
+      dependecies: ["-"],
       variables: [
         {
           name: "paragraph",
           description: "string: the text for the nested paragraph",
         },
       ],
-      script: 
-`
+      script: `
   export let paragraph: string = "";
 `,
-      html:
-`
+      html: `
 <p class="pb-4 text-base">{paragraph}</p>
-`
+`,
     },
     {
       ID: 36,
       name: "SectionWrapper",
       component: SectionWrapper,
-      description: "Wrapper which styles the nested content for a section from the privacy policy site. Special component for PolicyPrivacyContent.",
+      description:
+        "Wrapper which styles the nested content for a section from the privacy policy site. Special component for PolicyPrivacyContent.",
       author: MH,
       version: "1.0",
-      usedBy: [
-        "Route /privacyPolicy",
-        "PrivacyPolicyContent.svelte"
-      ],
-      dependecies: [
-        "-", 
-      ],
+      usedBy: ["Route /privacyPolicy", "PrivacyPolicyContent.svelte"],
+      dependecies: ["-"],
       variables: [
         {
           name: "paragraph",
           description: "string: the text for the nested paragraph",
         },
       ],
-      script: 
-`
+      script: `
 `,
-      html:
-`
+      html: `
 <div class="mx-auto bg-none px-4 py-16 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8 lg:py-20">
 	<slot />
 </div>
-`
+`,
     },
     {
       ID: 37,
       name: "Subtitle",
       component: Subtitle,
-      description: "Styles the subtitles from the privacy policy. Special component for PolicyPrivacyContent.",
+      description:
+        "Styles the subtitles from the privacy policy. Special component for PolicyPrivacyContent.",
       author: MH,
       version: "1.0",
-      usedBy: [
-        "Route /privacyPolicy",
-        "PrivacyPolicyContent.svelte"
-      ],
-      dependecies: [
-        "-", 
-      ],
+      usedBy: ["Route /privacyPolicy", "PrivacyPolicyContent.svelte"],
+      dependecies: ["-"],
       variables: [
         {
           name: "subtitle",
           description: "string: the text for the nested subtitle",
         },
       ],
-      script: 
-`
+      script: `
   export let subtitle: string = "";
 `,
-      html:
-`
+      html: `
 <h3 class="pb-2.5 text-xl font-bold">{subtitle}</h3>
-`
+`,
     },
     {
-      ID: 37,
+      ID: 38,
       name: "Title",
       component: Title,
-      description: "Styles the titles from the privacy policy. Special component for PolicyPrivacyContent.",
+      description:
+        "Styles the titles from the privacy policy. Special component for PolicyPrivacyContent.",
       author: MH,
       version: "1.0",
-      usedBy: [
-        "Route /privacyPolicy",
-        "PrivacyPolicyContent.svelte"
-      ],
-      dependecies: [
-        "-", 
-      ],
+      usedBy: ["Route /privacyPolicy", "PrivacyPolicyContent.svelte"],
+      dependecies: ["-"],
       variables: [
         {
           name: "title",
           description: "string: the text for the nested title",
         },
       ],
-      script: 
-`
+      script: `
   export let title: string = "";
 `,
-      html:
-`
+      html: `
 <h2 class="pb-2.5 text-xl font-bold">{title}</h2>
-`
+`,
     },
     {
-      ID: 38,
+      ID: 39,
       name: "SmallTitle",
       component: SmallTitle,
-      description: "Styles the small titles from the privacy policy. Special component for PolicyPrivacyContent.",
+      description:
+        "Styles the small titles from the privacy policy. Special component for PolicyPrivacyContent.",
       author: MH,
       version: "1.0",
-      usedBy: [
-        "Route /privacyPolicy",
-        "PrivacyPolicyContent.svelte"
-      ],
-      dependecies: [
-        "-", 
-      ],
+      usedBy: ["Route /privacyPolicy", "PrivacyPolicyContent.svelte"],
+      dependecies: ["-"],
       variables: [
         {
           name: "smallTitle",
           description: "string: the text for the nested title",
         },
       ],
-      script: 
-`
+      script: `
   export let smallTitle: string = "";
 `,
-      html:
-`
+      html: `
 <h4 class="pt-1 pb-1 text-base font-bold italic">{smallTitle}</h4>
-`
+`,
     },
+    {
+      ID: 40,
+      name: "ButtonsDestJPGic",
+      component: ButtonsDestJpGic,
+      description:
+        "Shows two buttons and forwards the user to destinations or journey purposes and to get in contact if the user has selected a destionation and a journey purpose.",
+      author: "Daniel Rittrich + Markus Haubold",
+      version: "1.0",
+      usedBy: [
+        "mars",
+        "moon",
+        "venus",
+        "birthdayspecial",
+        "vacation",
+        "honeymoon",
+        "phototour",
+        "ourRecomandations",
+      ],
+      dependecies: ["package", "packageMemory"],
+      variables: [
+        {
+          name: "PAGE_IS_DESTINATION",
+          description: "Checks if user is on destinations page.",
+        },
+        {
+          name: "PAGE_IS_JOURNEY_PURPOSE",
+          description: "Checks if user is on journey purpose page.",
+        },
+        {
+          name: "ROUTE_BUTTON_GIC",
+          description: "Link for get in contact",
+        },
+        {
+          name: "IS_PROTOTYPING",
+          description: "Boolean - only for dev",
+        },
+        {
+          name: "EMPTY_STRING",
+          description: "only for checking if input is empty",
+        },
+        {
+          name: "configCompleted",
+          description:
+            "if the destination and purpose is != empty - then activate the get in contact button",
+        },
+      ],
+      script: `
+      import { page } from "$app/stores";
+  import packageMemory from "../../stores/journeyConfigMemory.ts"; 
+
+  const PAGE_IS_DESTINATION = $page.url.pathname.includes(
+    "/spacetravel/destination"
+  );
+  const PAGE_IS_JOURNEY_PURPOSE = $page.url.pathname.includes(
+    "/spacetravel/journeyPurpose"
+  );
+  let routeButtonDestinationJourneyPurpose: string = PAGE_IS_DESTINATION
+    ? "/spacetravel/journeyPurpose"
+    : PAGE_IS_JOURNEY_PURPOSE
+    ? "/spacetravel/destination"
+    : "/404";
+  let ROUTE_BUTTON_GIC: string = "/getInContact";
+
+  const IS_PROTOTYPING = false; /* only for dev */
+  const EMPTY_STRING: string = "";
+  let configCompleted: boolean = false; //if the destination and purpose is != "" then activate the get in contact button
+
+  //activate button "get in contact"
+  if (PAGE_IS_DESTINATION && ($packageMemory.journeyPurpose !== EMPTY_STRING)) {
+    configCompleted = true;
+  } else if (PAGE_IS_JOURNEY_PURPOSE && ($packageMemory.destination !== EMPTY_STRING)) {
+    configCompleted = true;
+  } else {
+    configCompleted = false;
+  }
+
+
+  const DESTINATIONS: string[] = [
+    "mars",
+    "moon",
+    "venus",
+  ];
+  const PURPOSES: string[] = [
+    "birthdayspecial",
+    "vacation",
+    "honeymoon",
+    "phototour",
+    "ourRecomandations",
+  ]
+
+
+  
+  function getCurrentDestinationOrePurpose(list: string[], page: string) {
+    for (let index = 0; index < list.length; index++) {
+      const SPLITTED_PAGE: string[] = (page.split("/"));        //splite the page-string into an array
+      const DEST_ORE_PURPOSE: string = (SPLITTED_PAGE.at(-1) as string);  //get last from array = destiation- ore purposename 
+      
+      return DEST_ORE_PURPOSE;
+    }
+  }
+
+
+  function writeCurrentPackageToMemory() {
+    //write the current package (destination / purpose) to the configMemory
+    if (PAGE_IS_DESTINATION) {
+      const CURRENT_DESTINATION: string = getCurrentDestinationOrePurpose(DESTINATIONS, $page.url.pathname) as string;
+      $packageMemory.destination = CURRENT_DESTINATION;
+    } 
+    if (PAGE_IS_JOURNEY_PURPOSE) {
+      const CURRENT_PURPOSE: string = getCurrentDestinationOrePurpose(PURPOSES, $page.url.pathname) as string;
+      if (CURRENT_PURPOSE === "ourRecomandations") {  //reform string (not the best way...)
+        $packageMemory.journeyPurpose = "our recomandations";
+      } else {
+        $packageMemory.journeyPurpose = CURRENT_PURPOSE;
+      }
+    }
+  }
+        `,
+      html: `
+      <div
+  class="relative w-full grid justify-center bg-gradient-to-b from-NFTW-bg to-transparent px-8"
+  class:border-red-500={IS_PROTOTYPING}
+  class:border-4={IS_PROTOTYPING}
+  class:bg-NFTW-white={IS_PROTOTYPING}
+>
+  <div
+    id="buttons"
+    class="grid relative xl:pl-96 lg:pl-80 mt-10 mb-28 justify-end gap-10 lg:pr-10 max-w-7xl grid-cols-1 sm:grid-cols-2"
+    class:border-4={IS_PROTOTYPING}
+    class:border-black={IS_PROTOTYPING}
+  >
+  <!--button switch to site: destination / journey purpose-->
+    <a
+      on:click={writeCurrentPackageToMemory}
+      id="buttonDestinationJourneyPurpose"
+      href={routeButtonDestinationJourneyPurpose}
+      aria-describedby="link-DestinationOrJourneyPurpose"
+      class="h-auto min-h-full px-7 grid items-center rounded-md col-span-1 bg-NFTW-lila-800 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-NFTW-lila-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition duration-500"
+      class:border-4={IS_PROTOTYPING}
+      class:border-yellow-500={IS_PROTOTYPING}
+      class:text-NFTW-white={!IS_PROTOTYPING}
+      >
+        {PAGE_IS_DESTINATION
+          ? "Select current destination and go to journey purposes"
+          : PAGE_IS_JOURNEY_PURPOSE
+          ? "Select current journey purpose and go to destination"
+          : "none"}
+    </a>
+
+    <!--button switch to site: get in contact-->
+    {#if configCompleted}
+    <a
+      on:click={writeCurrentPackageToMemory}
+      id="buttonGetInContact"
+      href={ROUTE_BUTTON_GIC}
+      aria-describedby="link-GetInContact"
+      class="h-auto min-h-full px-7 rounded-md col-span-1 bg-NFTW-lila-800 py-2 text-center items-center grid text-sm font-semibold leading-6 text-white shadow-sm hover:bg-NFTW-lila-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition duration-500"
+      class:border-4={IS_PROTOTYPING}
+      class:border-orange-500={IS_PROTOTYPING}
+      class:text-NFTW-white={!IS_PROTOTYPING}>Start Your Journey With Us</a>
+    {:else}
+    <div
+      class="h-auto min-h-full px-7 rounded-md col-span-1 bg-gray-600 py-2 text-center items-center grid text-sm font-semibold leading-6 text-white shadow-sm"
+      class:border-4={IS_PROTOTYPING}
+      class:border-orange-500={IS_PROTOTYPING}
+      class:text-NFTW-white={!IS_PROTOTYPING}>
+      {PAGE_IS_DESTINATION
+        ? "Select a journey purpose first to start the trip."
+        : PAGE_IS_JOURNEY_PURPOSE
+        ? "Select a destination first to start the trip." 
+        : ""}
+    </div>
+    {/if}
+    
+  </div>
+</div>
+        `,
+    },
+    {
+      ID: 41,
+      name: "DetailContent",
+      component: DetailContent,
+      description:
+        "Shows image and detailed informations about destinations, hotels and journey purposes.",
+      author: "Daniel Rittrich + BackendTeam for db connection",
+      version: "2.0",
+      usedBy: [
+        "mars",
+        "moon",
+        "venus",
+        "birthdayspecial",
+        "vacation",
+        "honeymoon",
+        "phototour",
+        "ourRecomandations",
+      ],
+      dependecies: ["checkUndefinedNullOrEmpty", "Many Icon's"],
+      variables: [
+        {
+          name: "destName",
+          description: "For data input from db.",
+        },
+        {
+          name: "destPromoText",
+          description: "For data input from db.",
+        },
+        {
+          name: "destTimeslot",
+          description: "For data input from db.",
+        },
+        {
+          name: "destPrice",
+          description: "For data input from db.",
+        },
+        {
+          name: "destDays",
+          description: "For data input from db.",
+        },
+        {
+          name: "destAvailableUnits",
+          description: "For data input from db.",
+        },
+        {
+          name: "destServices",
+          description: "For data input from db.",
+        },
+        {
+          name: "destImage",
+          description: "For data input from db.",
+        },
+        {
+          name: "destHotelName",
+          description: "For data input from db.",
+        },
+        {
+          name: "destHotelRanking",
+          description: "For data input from db.",
+        },
+        {
+          name: "destHotelRoomCapacity",
+          description: "For data input from db.",
+        },
+        {
+          name: "destHotelRoomClass",
+          description: "For data input from db.",
+        },
+        {
+          name: "destHotelDescription",
+          description: "For data input from db.",
+        },
+        {
+          name: "destHotelServices",
+          description: "For data input from db.",
+        },
+        {
+          name: "destHotelImage",
+          description: "For data input from db.",
+        },
+        {
+          name: "jpName",
+          description: "For data input from db.",
+        },
+        {
+          name: "jpPromotext",
+          description: "For data input from db.",
+        },
+        {
+          name: "jpPrice",
+          description: "For data input from db.",
+        },
+        {
+          name: "jpIncludedServices",
+          description: "For data input from db.",
+        },
+        {
+          name: "jpImage",
+          description: "For data input from db.",
+        },
+        {
+          name: "imageSize",
+          description:
+            "For image sizing like cover mod or manual pixel value input",
+        },
+        {
+          name: "isJPComponent",
+          description: "Trigger if component is used as JP Component",
+        },
+        {
+          name: "isDestComponent",
+          description: "Trigger if component is used as Dest Component",
+        },
+        {
+          name: "isDestHotelComponent",
+          description: "Trigger if component is used as DestHotel Component",
+        },
+        {
+          name: "iconData",
+          description: "Array for icon comparing and icon delivering",
+        },
+        {
+          name: "errorData",
+          description: "Fallback option if no icon exists or can't be compared",
+        },
+        {
+          name: "isPrototyping",
+          description: "only for dev",
+        },
+        {
+          name: "IMAGE_PATH_INDEX",
+          description: "Marker for correct image selection",
+        },
+      ],
+      script: `
+      import { checkUndefinedNullOrEmpty } from "$lib/tools/Tools.svelte";
+  import IoIosRocket from "svelte-icons/io/IoIosRocket.svelte";
+  import IoMdAlert from "svelte-icons/io/IoMdAlert.svelte";
+  import GiRocketFlight from "svelte-icons/gi/GiRocketFlight.svelte";
+  import MdHotel from "svelte-icons/md/MdHotel.svelte";
+  import GiGlassCelebration from "svelte-icons/gi/GiGlassCelebration.svelte";
+  import FaSignature from "svelte-icons/fa/FaSignature.svelte";
+  import FaHandHoldingHeart from "svelte-icons/fa/FaHandHoldingHeart.svelte";
+  import FaCertificate from "svelte-icons/fa/FaCertificate.svelte";
+  import GiFilmStrip from "svelte-icons/gi/GiFilmStrip.svelte";
+  import GiFeather from "svelte-icons/gi/GiFeather.svelte";
+  import GiAstronautHelmet from "svelte-icons/gi/GiAstronautHelmet.svelte";
+  import GiHotMeal from "svelte-icons/gi/GiHotMeal.svelte";
+  import FaUserAstronaut from "svelte-icons/fa/FaUserAstronaut.svelte";
+  import GiStarGate from "svelte-icons/gi/GiStarGate.svelte";
+  import GiFruitBowl from "svelte-icons/gi/GiFruitBowl.svelte";
+  import MdCameraEnhance from "svelte-icons/md/MdCameraEnhance.svelte";
+  import FaSafari from "svelte-icons/fa/FaSafari.svelte";
+  import FaCalendarWeek from "svelte-icons/fa/FaCalendarWeek.svelte";
+  import GiPriceTag from "svelte-icons/gi/GiPriceTag.svelte";
+  import MdToday from "svelte-icons/md/MdToday.svelte";
+  import MdEventAvailable from "svelte-icons/md/MdEventAvailable.svelte";
+  import MdStarHalf from "svelte-icons/md/MdStarHalf.svelte";
+  import GiHouseKeys from "svelte-icons/gi/GiHouseKeys.svelte";
+  import MdClass from "svelte-icons/md/MdClass.svelte";
+
+  export let destName: string | undefined = undefined;
+  export let destPromoText: string | undefined = undefined;
+  export let destTimeslot: string | undefined = undefined;
+  export let destPrice: string | undefined = undefined;
+  export let destDays: string | undefined = undefined;
+  export let destAvailableUnits: string | undefined = undefined;
+  export let destServices: { icon: string; service: string }[] = [
+    { icon: "IoIosRocket", service: "destService 1" },
+  ];
+
+  export let destImage: string[] = ["", ""];
+  export let destHotelName: string | undefined = undefined;
+  export let destHotelRanking: string | undefined = undefined;
+  export let destHotelRoomCapacity: string | undefined = undefined;
+  export let destHotelRoomClass: string | undefined = undefined;
+  export let destHotelDescription: string | undefined = undefined;
+  export let destHotelServices: { icon: string; service: string }[] = [
+    { icon: "IoIosRocket", service: "destHotelService 1" },
+  ];
+
+  export let destHotelImage: string[] = ["", ""];
+
+  export let jpName: string | undefined = undefined;
+  export let jpPromotext: string | undefined = undefined;
+  export let jpPrice: string | undefined = undefined;
+  export let jpIncludedServices: { icon: string; service: string }[] = [
+    { icon: "IoIosRocket", service: "Service 1" },
+  ];
+  
+  export let jpImage: string[] = ["", ""];
+
+  export let imageSize: string | number = "cover"; // auto, cover, contain ... or own size: 50%, 200px
+
+  export let isJPComponent: boolean | undefined = undefined;
+  export let isDestComponent: boolean | undefined = undefined;
+  export let isDestHotelComponent: boolean | undefined = undefined;
+
+  /* Array musst be filled with all used icons */
+  let iconData = [
+    { iconString: "IoIosRocket", iconObject: IoIosRocket },
+    { iconString: "IoMdAlert", iconObject: IoMdAlert },
+    { iconString: "GiRocketFlight", iconObject: GiRocketFlight },
+    { iconString: "MdHotel", iconObject: MdHotel },
+    { iconString: "GiGlassCelebration", iconObject: GiGlassCelebration },
+    { iconString: "FaSignature", iconObject: FaSignature },
+    { iconString: "FaHandHoldingHeart", iconObject: FaHandHoldingHeart },
+    { iconString: "FaCertificate", iconObject: FaCertificate },
+    { iconString: "GiFilmStrip", iconObject: GiFilmStrip },
+    { iconString: "GiFeather", iconObject: GiFeather },
+    { iconString: "GiAstronautHelmet", iconObject: GiAstronautHelmet },
+    { iconString: "GiHotMeal", iconObject: GiHotMeal },
+    { iconString: "FaUserAstronaut", iconObject: FaUserAstronaut },
+    { iconString: "GiStarGate", iconObject: GiStarGate },
+    { iconString: "GiFruitBowl", iconObject: GiFruitBowl },
+    { iconString: "MdCameraEnhance", iconObject: MdCameraEnhance },
+    { iconString: "FaSafari", iconObject: FaSafari },
+    { iconString: "FaCalendarWeek", iconObject: FaCalendarWeek },
+    { iconString: "GiPriceTag", iconObject: GiPriceTag },
+    { iconString: "MdToday", iconObject: MdToday },
+    { iconString: "MdEventAvailable", iconObject: MdEventAvailable },
+    { iconString: "MdStarHalf", iconObject: MdStarHalf },
+    { iconString: "GiHouseKeys", iconObject: GiHouseKeys },
+    { iconString: "MdClass", iconObject: MdClass },
+  ];
+
+  /* is used if data from component not found or valid */
+  let errorData = [{ icon: "IoMdAlert", service: "Service 1" }];
+
+  function getIcon(iconName: string) {
+    let icon = IoMdAlert;
+    for (let i = 0; i < iconData.length; i++) {
+      if (iconData[i].iconString === iconName) {
+        icon = iconData[i].iconObject;
+        return icon;
+      }
+    }
+    console.warn(
+      "getIcon(string) warning - Found no matching icon in list for string :  " +
+        iconName
+    );
+    return;
+  }
+
+  let isPrototyping = false; /* only for dev */
+
+  const IMAGE_PATH_INDEX: number = 0;
+
+        `,
+      html: `
+      <div
+  class="relative w-full bg-NFTW-bg"
+  class:border-red-500={isPrototyping}
+  class:border-4={isPrototyping}
+>
+  <div
+    id="image"
+    class="relative bg-blend-multiply bg-no-repeat grid justify-center"
+    class:border-blue-500={isPrototyping}
+    class:border-4={isPrototyping}
+    style="
+background-image: url('{isPrototyping
+      ? ''
+      : !checkUndefinedNullOrEmpty(destImage[IMAGE_PATH_INDEX])
+      ? destImage[IMAGE_PATH_INDEX]
+      : !checkUndefinedNullOrEmpty(jpImage[IMAGE_PATH_INDEX])
+      ? jpImage[IMAGE_PATH_INDEX]
+      : !checkUndefinedNullOrEmpty(destHotelImage[IMAGE_PATH_INDEX])
+      ? destHotelImage[IMAGE_PATH_INDEX]
+      : 'none'}');
+background-color:#ddd;
+background-size: {imageSize};
+background-position:center;
+ "
+  >
+    <div
+      id="gradient"
+      class="absolute w-full h-full"
+      class:bg-gradient-to-t={!isPrototyping}
+      class:from-NFTW-bg={!isPrototyping}
+      class:via-NFTW-bg={!isPrototyping}
+      class:via-20%={!isPrototyping}
+      class:to-transparent={!isPrototyping}
+      class:to-60%={!isPrototyping}
+      class:border-4={isPrototyping}
+      class:border-yellow-500={isPrototyping}
+    />
+    <div
+      id="content"
+      class="max-w-7xl relative grid justify-center"
+      class:border-4={isPrototyping}
+      class:border-black={isPrototyping}
+    >
+      <div
+        id="headlineText"
+        class="justify-center grid"
+        class:border-4={isPrototyping}
+        class:border-green-500={isPrototyping}
+      >
+        <h2
+          id="nameText"
+          class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mx-5 text-center mt-20"
+          class:text-NFTW-white={!isPrototyping}
+          class:border-4={isPrototyping}
+          class:border-pink-500={isPrototyping}
+          style="font-weight: 900;"
+        >
+          {!checkUndefinedNullOrEmpty(destName)
+            ? destName
+            : !checkUndefinedNullOrEmpty(jpName)
+            ? jpName
+            : !checkUndefinedNullOrEmpty(destHotelName)
+            ? destHotelName
+            : "none"}
+        </h2>
+
+        <div
+          id="promoText"
+          class="text-2xl lg:text-3xl max-w-lg mx-5 mt-5"
+          class:text-NFTW-white={!isPrototyping}
+          class:border-4={isPrototyping}
+          class:border-NFTW-lila-500={isPrototyping}
+          style="font-weight:600"
+        >
+          {!checkUndefinedNullOrEmpty(destPromoText)
+            ? destPromoText
+            : !checkUndefinedNullOrEmpty(jpPromotext)
+            ? jpPromotext
+            : !checkUndefinedNullOrEmpty(destHotelDescription)
+            ? destHotelDescription
+            : "none"}
+        </div>
+      </div>
+      <div
+        id="info"
+        class="justify-center gap-x-20 gap-y-10 px-20 w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid mt-20 mb-32"
+        class:border-4={isPrototyping}
+        class:border-cyan-500={isPrototyping}
+      >
+        {#each isJPComponent ? jpIncludedServices : isDestComponent ? destServices : isDestHotelComponent ? destHotelServices : errorData as data}
+          <div
+            id="infos"
+            class="justify-center grid w-full col-span-1"
+            class:border-4={isPrototyping}
+            class:border-blue-800={isPrototyping}
+          >
+            <div
+              id="services"
+              class="grid items-center justify-center h-32 w-32 justify-self-center"
+              class:border-4={isPrototyping}
+              class:text-NFTW-white={!isPrototyping}
+              class:border-orange-600={isPrototyping}
+            >
+              <div
+                id="icon"
+                class="h-20 w-20"
+                class:text-NFTW-white={!isPrototyping}
+              >
+                <svelte:component this={getIcon(data.icon)} />
+              </div>
+            </div>
+            <div
+              id="descriptionText"
+              class="grid justify-center mt-5 text-xl text-center"
+              class:border-4={isPrototyping}
+              class:border-green-500={isPrototyping}
+              class:text-NFTW-white={!isPrototyping}
+            >
+              {data.service}
+            </div>
+          </div>
+        {/each}
+      </div>
+    </div>
+  </div>
+</div>
+
+        `,
+    },
+
     //-------------------------------------------------------------------------------------------
   ];
 
@@ -2405,15 +2895,17 @@ switch (color) {
     {
       ID: 2,
       name: "journeyConfigMemory.ts",
-      description: "Its a svelte-store to save the current choosen journey-configuration for global usage. It is used from the form (@get in contact site) to load the data for prefill the input fields.",
+      description:
+        "Its a svelte-store to save the current choosen journey-configuration for global usage. It is used from the form (@get in contact site) to load the data for prefill the input fields.",
       author: MH,
       version: "1.0",
-      usedBy: ["Form.svelte", ],
+      usedBy: ["Form.svelte"],
       dependecies: ["writable (import from svelte/store)"],
       variables: [
         {
           name: "config",
-          description: "Represents the datastructure for: destination, journeyDurpose, startDate, endDate",
+          description:
+            "Represents the datastructure for: destination, journeyDurpose, startDate, endDate",
         },
         {
           name: "var2",
@@ -2424,8 +2916,7 @@ switch (color) {
           description: "tempVar3",
         },
       ],
-      script: 
-`
+      script: `
 import { writable } from 'svelte/store';
 
 let config = writable({
