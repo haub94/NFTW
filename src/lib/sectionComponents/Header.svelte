@@ -1,6 +1,6 @@
 <script lang="ts">
   import { dev } from "$app/environment";
-  
+
   let menuOpened = false;
   function openMenu() {
     menuOpened = true;
@@ -51,8 +51,15 @@
       aria-label="Global"
     >
       <div class="flex lg:flex-1">
-        <a href="/" class="-m-1.5 p-1.5 hover:scale-125 hover:transition-all ease-in-out duration-300" on:click={closeMenu}>
-          <span class="sr-only">NFTW Adventures Logo: Illustration from a simple rocket during launch.</span>
+        <a
+          href="/"
+          class="-m-1.5 p-1.5 hover:scale-125 hover:transition-all ease-in-out duration-300"
+          on:click={closeMenu}
+        >
+          <span class="sr-only"
+            >NFTW Adventures Logo: Illustration from a simple rocket during
+            launch.</span
+          >
           <img
             loading="lazy"
             class="h-14 w-auto"
@@ -119,7 +126,11 @@
           class="fixed inset-y-0 right-0 z-30 w-full overflow-y-auto bg-NFTW-bg px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10"
         >
           <div class="flex items-center justify-between">
-            <a href="/" class="-m-1.5 p-1.5 hover:scale-125 hover:transition-all ease-in-out duration-300" on:click={closeMenu}>
+            <a
+              href="/"
+              class="-m-1.5 p-1.5 hover:scale-125 hover:transition-all ease-in-out duration-300"
+              on:click={closeMenu}
+            >
               <span class="sr-only">Your Company</span>
               <img
                 loading="lazy"
@@ -184,6 +195,3 @@
       </div>{/if}
   </header>
 </div>
-
-<style>
-</style>
