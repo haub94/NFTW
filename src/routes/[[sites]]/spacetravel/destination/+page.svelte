@@ -30,7 +30,7 @@
 </svelte:head>
 
 <SectionBg002>
-  <SectionHeader title="Destinations" />
+  <SectionHeader title="Destinations" description="Embark on a thrilling journey through the cosmos and explore three captivating celestial destinations: the Moon, Mars, and Venus. Discover the wonders of the planets now." />
   <div
     class="grid justify-center justify-self-center mx-auto max-w-7xl gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-16">
     <!--going over the DESTINATION_DATA to render individual cards for each destination-->
