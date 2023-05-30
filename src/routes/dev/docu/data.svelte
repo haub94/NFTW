@@ -45,6 +45,9 @@
   import Subtitle from "$lib/elements/dataprotection/Subtitle.svelte";
   import Title from "$lib/elements/dataprotection/Title.svelte";
   import SmallTitle from "$lib/elements/dataprotection/SmallTitle.svelte";
+  import CardDestinations from "$lib/components/CardDestinations.svelte";
+  import HomeSection from "$lib/components/HomeSection.svelte";
+  import LogoSection from "$lib/components/LogoSection.svelte";
 
   export const componentData = [
     /*
@@ -3373,7 +3376,7 @@ const iFrameSrc = isMars
       component: HomeSectionBg,
       description:
         "Section component that shows a description text on an background image. On top is shown a title and a caption text.",
-      author: DR,
+      author: DR + " + " + LXT,
       version: "1.1",
       usedBy: ["Route /"],
       dependecies: [
@@ -3579,7 +3582,233 @@ const IMAGE_PATH_INDEX: number = 0;
 </div>
         `,
     },
+    
+    {
+      ID: 47,
+      name: "CardDestinations",
+      component: CardDestinations,
+      description:
+        "Component that shows cards of destinations and journey puposes.",
+      author: LXT + " + " + DR,
+      version: "1.1",
+      usedBy: ["none"],
+      dependecies: ["none"],
+      variables: [
+        {
+          name: "destName",
+          description: "For data input from db.",
+        },
+        {
+          name: "destPromoText",
+          description: "For data input from db.",
+        },
+        {
+          name: "destPrice",
+          description: "For data input from db.",
+        },
+      ],
+      script: `
+      export let destName: string | undefined = undefined;
+  export let destPromoText: string | undefined = undefined;
+  //export let destImageName: string | undefined = undefined;
+  export let destImage: string[] | undefined = undefined;
+  //export let destImageAltText: string | undefined = undefined;
+  export let destPrice: string | undefined = undefined;
 
+  export let jpName: string | undefined = undefined;
+  export let jpPromoText: string | undefined = undefined;
+  //export let jpImageName: string | undefined = undefined;
+  export let jpImage: string[] = ["", ""];
+  //export let jpImageAltText: string | undefined = undefined;
+  export let jpPrice: string | undefined = undefined;
+        `,
+      html: `
+      <a href={routePath}>
+  <div
+    class="group rounded-3xl p-8 xl:p-10 ring-2 bg-NFTW-black-500 hover:scale-110 transition-all cursor-pointer"
+    style="background-image: url('{!checkUndefinedNullOrEmpty(destImage)
+      ? destImage[IMAGE_PATH_INDEX]
+      : !checkUndefinedNullOrEmpty(jpImage)
+      ? jpImage[IMAGE_PATH_INDEX]
+      : 'none'}');
+      background-size: {imgSize};
+      background-position: {imgPosition}"
+  >
+    <div class="flex items-center justify-between gap-x-4">
+      <h3
+        id="card-{!checkUndefinedNullOrEmpty(destName)
+          ? destName
+          : !checkUndefinedNullOrEmpty(jpName)
+          ? jpName
+          : 'none'}"
+        class="text-lg font-semibold leading-8 text-NFTW-blue-50"
+      >
+        {!checkUndefinedNullOrEmpty(destName)
+          ? destName
+          : !checkUndefinedNullOrEmpty(jpName)
+          ? jpName
+          : "none"}
+      </h3>
+    </div>
+    <p class="mt-4 text-sm leading-6 text-NFTW-blue-50">
+      {!checkUndefinedNullOrEmpty(destPromoText)
+        ? destPromoText
+        : !checkUndefinedNullOrEmpty(jpPromoText)
+        ? jpPromoText
+        : "none"}
+    </p>
+    <p class="mt-6 flex items-baseline gap-x-1">
+      <span class="text-4xl font-bold tracking-tight text-NFTW-blue-50"
+        >{!checkUndefinedNullOrEmpty(destPrice)
+          ? destPrice
+          : !checkUndefinedNullOrEmpty(jpPrice)
+          ? jpPrice
+          : "none"}</span
+      >
+    </p>
+    <a
+      href={routePath}
+      aria-describedby="link-{!checkUndefinedNullOrEmpty(destName)
+        ? destName
+        : !checkUndefinedNullOrEmpty(jpName)
+        ? jpName
+        : 'none'}"
+      class="mt-6 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 bg-NFTW-lila-800 text-NFTW-blue-50 shadow-sm hover:bg-NFTW-lila-600"
+      >Get more details</a
+    >
+  </div>
+</a>
+        `,
+    },  
+    {
+      ID: 48,
+      name: "HomeSection",
+      component: HomeSection,
+      description:
+        "Section on the homepage that shows what we offer.",
+      author: LXT,
+      version: "1.1",
+      usedBy: ["Homepage"],
+      dependecies: ["none"],
+      variables: [
+        {
+          name: "none",
+          description: "none",
+        },
+      ],
+      script: `
+        `,
+      html: `
+      <svelte:head>
+    <title>Home Page</title>
+    <meta name="description" content="Welcome to our space tourism company" />
+</svelte:head>
+
+<div
+    class="container mx-auto flex flex-col md:flex-row items-center my-12 md:my-24">
+    <div class="flex flex-col w-full lg:w-1/3 justify-center items-start p-8">
+        <h2
+            class="mt-2 text-4xl font-bold tracking-tight text-NFTW-white sm:text-5xl">
+            What we offer
+        </h2>
+        <p class="text-NFTW-blue-50 text-2xl">
+            We offer a variety of services for tourists who are interested in
+            traveling to space.
+        </p>
+    </div>
+    <div
+        class="p-8 mt-12 mb-6 md:mb-0 md:mt-0 ml-0 md:ml-12 lg:w-2/3  justify-center">
+        <div class="h-48 flex flex-wrap content-center">
+            <div>
+                <img
+                    class="inline-block mt-28 hidden xl:block"
+                    src="/home/spacecraftPill.webp"
+                    loading="lazy" />
+            </div>
+            <div>
+                <img
+                    class="inline-block mt-24 md:mt-0 p-8 md:p-0"
+                    src="/home/astronautPill.webp"
+                    loading="lazy" />
+            </div>
+            <div>
+                <img
+                    class="inline-block mt-28 hidden lg:block"
+                    src="/home/rocketPill.webp"
+                    loading="lazy" />
+            </div>
+        </div>
+    </div>
+</div>
+
+        `,
+    },
+    {
+      ID: 49,
+      name: "LogoSection",
+      component: LogoSection,
+      description:
+        "Section on the homepage that shows logos of important partners.",
+      author: LXT,
+      version: "1.1",
+      usedBy: ["Homepage"],
+      dependecies: ["none"],
+      variables: [
+        {
+          name: "none",
+          description: "none",
+        },
+      ],
+      script: `
+        `,
+      html: `
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+  <h1 class="text-NFTW-blue-50 text-2xl text-center font-bold">
+    Trusted by the world's most innovative teams
+  </h1>
+  <div
+    class="mx-auto mt-10 grid max-w-lg grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 justify-items-center items-center gap-x-8 gap-y-10 sm:max-w-xl sm:gap-x-10 lg:mx-0 lg:max-w-none"
+  >
+    <img
+      loading="lazy"
+      class="col-span-1 max-h-30 w-full object-contain invert"
+      style="max-width:150px"
+      src="/logos/nasa.webp"
+      alt="Nasa"
+    />
+    <img
+      loading="lazy"
+      class="col-span-1 max-h-30 w-full object-contain invert brightness-0 ml-10 md:ml-5"
+      style="max-width:200px"
+      src="/logos/spacex.webp"
+      alt="SpaceX"
+    />
+    <img
+      loading="lazy"
+      class="col-span-1 max-h-30 w-full object-contain invert mr-5 md:mr-0"
+      style="max-width:130px"
+      src="/logos/esa.webp"
+      alt="esa"
+    />
+    <img
+      loading="lazy"
+      class="col-span-1 max-h-30 w-full object-contain"
+      style="max-width:130px"
+      src="/logos/spaceforce.webp"
+      alt="USspaceforce"
+    />
+    <img
+      loading="lazy"
+      class="col-span-1 max-h-30 w-full object-contain invert ml-20 md:ml-14 lg:ml-8 xl:ml-5"
+      style="max-width:150px"
+      src="/logos/starlink.webp"
+      alt="Starlink"
+    />
+  </div>
+</div>
+
+        `,
+    },
     //-------------------------------------------------------------------------------------------
   ];
 
@@ -3677,6 +3906,7 @@ let config = writable({
 export default config;
 `,
     },
+
     //-------------------------------------------------------------------------------------------
   ];
 
