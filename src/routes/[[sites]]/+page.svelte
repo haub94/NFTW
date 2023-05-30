@@ -4,6 +4,18 @@
   import BgVideo from "$lib/sectionComponents/BgVideo.svelte";
   import HomeSectionBg from "$lib/sectionComponents/HomeSectionBg.svelte";
   import SectionBg002 from "$lib/sectionComponents/SectionBg002.svelte";
+  import { selectImageFromDb } from "$lib/functions/selectImageFromDb.ts";
+
+  //import ts types
+  import type { PageData } from "./$types";
+  import type { ImageData } from "../../../prisma/tableInterfaces";
+
+  export let data: PageData;
+
+  let IMAGES: ImageData[];
+
+  ({ IMAGES } = data);
+
 </script>
 
 <BgVideo
@@ -21,7 +33,7 @@
 <HomeSectionBg
   title1of2="About us"
   caption="Make your experience of a lifetime."
-  img="/home/BgAboutUs.png"
+  image={selectImageFromDb("BgAboutUs", IMAGES)}
   minHeight="90vh"
 >
   <div class="text-NFTW-blue-50 text-2xl">

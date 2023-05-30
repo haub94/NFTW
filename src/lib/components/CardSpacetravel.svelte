@@ -1,10 +1,12 @@
 <script lang="ts">
-  export let imagePath: string = "/brokenImage.png";
+  export let image: string[] = ["", ""];
   export let name: string = "Lorem ipsum dolor";
   export let promoText: string = "Lorem ipsum dolor";
   export let imagePosition: string = "center"; // center, bottom, top, left, left-bottom, left-top, right, right-bottom, right-top
   export let imageSize: string | number = "cover"; // auto, cover, contain ... or own size: 50%, 200px
   export let routePath: string = "/"; // routing path "/home/user/config"
+
+  const IMAGE_PATH_INDEX: number = 0;
 </script>
 
 <a href={routePath}>
@@ -15,7 +17,7 @@
     <div
       class="relative flex flex-col justify-between rounded-3xl bg-white p-8 shadow-xl ring-1 ring-gray-900/10 sm:p-10 bg-blend-multiply bg-no-repeat"
       style="
-    background-image: url('{imagePath}');
+    background-image: url('{image[IMAGE_PATH_INDEX]}');
     background-size: {imageSize};
     background-position: {imagePosition}"
     >

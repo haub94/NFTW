@@ -35,9 +35,7 @@
     { icon: "IoIosRocket", service: "destService 1" },
   ];
 
-  export let destImageName: string | undefined = undefined;
-  export let destImagePath: string | undefined = undefined;
-  export let destImageAltText: string | undefined = undefined;
+  export let destImage: string[] = ["", ""];
   export let destHotelName: string | undefined = undefined;
   export let destHotelRanking: string | undefined = undefined;
   export let destHotelRoomCapacity: string | undefined = undefined;
@@ -47,11 +45,7 @@
     { icon: "IoIosRocket", service: "destHotelService 1" },
   ];
 
-  /*  dafür gibts noch kein Feld in der DB */
-  export let destHotelImageName: string | undefined = undefined;
-  export let destHotelImagePath: string | undefined = undefined;
-  export let destHotelImageAltText: string | undefined = undefined;
-  /*  */
+  export let destHotelImage: string[] = ["", ""];
 
   export let jpName: string | undefined = undefined;
   export let jpPromotext: string | undefined = undefined;
@@ -59,19 +53,8 @@
   export let jpIncludedServices: { icon: string; service: string }[] = [
     { icon: "IoIosRocket", service: "Service 1" },
   ];
-  export let jpImageName: string | undefined = undefined;
-  export let jpImagePath: string | undefined = undefined;
-  export let jpImageAltText: string | undefined = undefined;
-
-  /*  !!!! in case of multiple options use this syntax to show all data dynamically:
-            {!checkUndefinedNullOrEmpty(destName)
-            ? destName
-            : !checkUndefinedNullOrEmpty(jpName)
-            ? jpName
-            : !checkUndefinedNullOrEmpty(hotelName)
-            ? hotelName
-            : "none"}
-*/
+  
+  export let jpImage: string[] = ["", ""];
 
   export let imageSize: string | number = "cover"; // auto, cover, contain ... or own size: 50%, 200px
 
@@ -115,14 +98,20 @@
     for (let i = 0; i < iconData.length; i++) {
       if (iconData[i].iconString === iconName) {
         icon = iconData[i].iconObject;
-      } else {
-        console.warn("Found no matching icon in list");
+        return icon;
       }
     }
-    return icon;
+    console.warn(
+      "getIcon(string) warning - Found no matching icon in list for string :  " +
+        iconName
+    );
+    return;
   }
 
   let isPrototyping = false; /* only for dev */
+
+  const IMAGE_PATH_INDEX: number = 0;
+
 </script>
 
 <div
@@ -138,12 +127,12 @@
     style="
 background-image: url('{isPrototyping
       ? ''
-      : !checkUndefinedNullOrEmpty(destImagePath)
-      ? destImagePath
-      : !checkUndefinedNullOrEmpty(jpImagePath)
-      ? jpImagePath
-      : !checkUndefinedNullOrEmpty(destHotelImagePath)
-      ? destHotelImagePath
+      : !checkUndefinedNullOrEmpty(destImage[IMAGE_PATH_INDEX])
+      ? destImage[IMAGE_PATH_INDEX]
+      : !checkUndefinedNullOrEmpty(jpImage[IMAGE_PATH_INDEX])
+      ? jpImage[IMAGE_PATH_INDEX]
+      : !checkUndefinedNullOrEmpty(destHotelImage[IMAGE_PATH_INDEX])
+      ? destHotelImage[IMAGE_PATH_INDEX]
       : 'none'}');
 background-color:#ddd;
 background-size: {imageSize};
@@ -210,7 +199,7 @@ background-position:center;
       </div>
       <div
         id="info"
-        class="justify-center gap-x-20 gap-y-10 px-20 w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid mt-20 mb-32"
+        class="justify-center gap-x-20 gap-y-10 px-20 w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid mt-20 mb-32"
         class:border-4={isPrototyping}
         class:border-cyan-500={isPrototyping}
       >
