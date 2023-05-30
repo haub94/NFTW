@@ -3,7 +3,11 @@
   import { dev } from "$app/environment";
   import emailjs from "@emailjs/browser"; //mailing client
   import Banner from "$lib/elements/Banner.svelte";
+
   import configMemory from "../../stores/journeyConfigMemory.ts"; //import the config store
+  import customerData from "../../stores/customerData.ts";
+
+  import type formData from "$lib/types/formData"
 
   const isGetInContact = $page.url.pathname.includes("/getInContact");
   const isContact = $page.url.pathname.includes("/contact");
@@ -13,7 +17,6 @@
   const labelStyleDisabled = "block text-sm font-semibold leading-6 text-NFTW-white/20";
   const inputStyle = "block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6";
   const dateStyle = "block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6 cursor-pointer";
-  const dateStyleDisabled = "block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white/20 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6 cursor-default";
   const selectionStyling = "bg-NFTW-black-600 bg-opacity-90";
 
   const overrideMemory: boolean = false; //DEV-ONLY
@@ -26,8 +29,9 @@
   export let nextPhototourEnd: string = ""; 
   export let nextRecomandationsStart: string = "";
   export let nextRecomandationsEnd: string = "";
-  
-  
+
+  //export the inputData to use it with the parent (+page)
+    //export let inputData: formData;
 
   //helper to override the memory during dev
   if (dev && overrideMemory) {
@@ -43,7 +47,7 @@
   let TEMPLATE_ID: string = ""; //depends on the formtype
   const PUPLIC_KEY: string = "YYaLHQ2Bd6V9Rk4vS";
 
-  let inputData = {
+  let inputData: formData = {
     destination:
       $configMemory.destination === EMPTY_STRING
         ? "Nothing Choosen"
@@ -238,15 +242,19 @@
   //controller which is executed after submit
   function inputController() {
     if (dev) {
-      logInput();
+      //logInput();
     }
+
+      $customerData.firstName = inputData.firstName;
+      $customerData.lastName = inputData.lastName;
+      $customerData.emailAddress = inputData.emailAddress;
 
     //CALL HERE THE FUNTION TO WRITE THE DATA IN THE DB !!!!!!
 
     if (validateDate(inputData.startDate, inputData.endDate)) {
-      console.log("call emailJS function to send mail");
       //send email to customer
-      sendEmail(
+      
+      /*sendEmail(
         SERVICE_ID,
         TEMPLATE_ID,
         PUPLIC_KEY,
@@ -258,7 +266,7 @@
         inputData.lastName,
         inputData.emailAddress,
         inputData.message
-      );
+      );*/
     }
   }
 </script>
@@ -311,6 +319,7 @@
     {/if}
   </div>
 
+  
   <div class="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
     <div class="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-48">
       <div class="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
