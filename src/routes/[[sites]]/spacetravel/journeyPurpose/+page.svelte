@@ -30,7 +30,7 @@
 </svelte:head>
 
 <SectionBg002>
-  <SectionHeader title="Journey Purposes" />
+  <SectionHeader title="Journey Purposes" description="Unlock the mysteries of the universe and embark on a transcendent journey to space. Whether on your birthday, your honeymoon or on a phototour, yearning for adventure, this is your chance to witness the grandeur of the cosmos firsthand." />
   <div
     class="grid justify-center justify-self-center mx-auto max-w-7xl gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-16">
     <!--going over the JOURNEY_PURPOSE_DATA to render individual cards for each journey purpose-->
