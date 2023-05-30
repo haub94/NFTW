@@ -50,7 +50,7 @@
       class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
       aria-label="Global"
     >
-      <div class="flex lg:flex-1">
+      <div class="flex lg:flex-1 gap-x-6">
         <a
           href="/"
           class="-m-1.5 p-1.5 hover:scale-125 hover:transition-all ease-in-out duration-300"
@@ -67,7 +67,13 @@
             alt=""
           />
         </a>
+        <a
+          href="/"
+          class="self-center text-3xl font-semibold leading-6 text-NFTW-white hover:scale-110 hover:transition-all ease-in-out duration-300 lg:hidden"
+          on:click={closeMenu}>NFTW Adventures</a
+        >
       </div>
+
       <div class="flex lg:hidden">
         <button
           type="button"
