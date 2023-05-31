@@ -11,6 +11,6 @@
 
 <Footer />
 
-<!--
+
 <StoreDebugger />
--->
+

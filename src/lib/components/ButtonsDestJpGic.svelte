@@ -58,14 +58,48 @@
     //write the current package (destination / purpose) to the configMemory
     if (PAGE_IS_DESTINATION) {
       const CURRENT_DESTINATION: string = getCurrentDestinationOrePurpose(DESTINATIONS, $page.url.pathname) as string;
-      $packageMemory.destination = CURRENT_DESTINATION;
+      //change naming => first character lowercase -> upercase / so its equal with the naming in the DB
+      //its little bit shitty but works first...
+      switch (CURRENT_DESTINATION) {
+        
+        case "moon":
+          $packageMemory.destination = "Moon";
+          break;
+        case "mars":
+          $packageMemory.destination = "Mars";
+          break;
+        case "venus":
+          $packageMemory.destination = "Venus";
+          break;
+      
+        default:
+          break;
+      }
     } 
+
     if (PAGE_IS_JOURNEY_PURPOSE) {
       const CURRENT_PURPOSE: string = getCurrentDestinationOrePurpose(PURPOSES, $page.url.pathname) as string;
-      if (CURRENT_PURPOSE === "ourRecomandations") {  //reform string (not the best way...)
-        $packageMemory.journeyPurpose = "our recomandations";
-      } else {
-        $packageMemory.journeyPurpose = CURRENT_PURPOSE;
+      //change naming => first character lowercase -> upercase / so its equal with the naming in the DB
+      //its little bit shitty but ok...
+      switch (CURRENT_PURPOSE) {
+        case "ourRecomandations":
+          $packageMemory.journeyPurpose = "Our recommendations";
+          break;
+        case "birthdayspecial":
+          $packageMemory.journeyPurpose = "Birthday special";
+          break;
+        case "vacation":
+          $packageMemory.journeyPurpose = "Vacation";
+          break;
+        case "phototour":
+          $packageMemory.journeyPurpose = "Phototour";
+          break;
+        case "honeymoon":
+          $packageMemory.journeyPurpose = "Honeymoon";
+          break;
+        
+        default:
+          break;
       }
     }
   }

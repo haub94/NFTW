@@ -35,6 +35,7 @@
     <div
       class="w-full bg-NFTW-bg sm:h-80 lg:absolute lg:h-full bg-blend-multiply bg-no-repeat items-center grid"
     >
+    <!--
       <iframe
         title={iFrameTitle}
         src={iFrameSrc}
@@ -43,6 +44,7 @@
         frameborder="0"
         loading="lazy"
       />
+      -->
     </div>
   </div>
   <div
