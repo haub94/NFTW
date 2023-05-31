@@ -48,6 +48,7 @@
   import CardDestinations from "$lib/components/CardDestinations.svelte";
   import HomeSection from "$lib/components/HomeSection.svelte";
   import LogoSection from "$lib/components/LogoSection.svelte";
+  import ButtonLink from "$lib/components/ButtonLink.svelte";
 
   export const componentData = [
     /*
@@ -3582,7 +3583,7 @@ const IMAGE_PATH_INDEX: number = 0;
 </div>
         `,
     },
-    
+
     {
       ID: 47,
       name: "CardDestinations",
@@ -3679,13 +3680,12 @@ const IMAGE_PATH_INDEX: number = 0;
   </div>
 </a>
         `,
-    },  
+    },
     {
       ID: 48,
       name: "HomeSection",
       component: HomeSection,
-      description:
-        "Section on the homepage that shows what we offer.",
+      description: "Section on the homepage that shows what we offer.",
       author: LXT,
       version: "1.1",
       usedBy: ["Homepage"],
@@ -3809,6 +3809,140 @@ const IMAGE_PATH_INDEX: number = 0;
 
         `,
     },
+    {
+      ID: 50,
+      name: "ButtonLink",
+      component: ButtonLink,
+      description:
+        "Button with link to get back to destinations, journey purposes or spacetravel site",
+      author: DR,
+      version: "1.0",
+      usedBy: [
+        "Moon",
+        "Mars",
+        "Venus",
+        "Birthdayspecial",
+        "Vacation",
+        "OurRecomandations",
+        "Phototour",
+        "Honeymoon",
+        "Destinations",
+        "JourneyPurposes",
+      ],
+      dependecies: ["{ page } from $app/stores"],
+      variables: [
+        {
+          name: "PAGE_IS_DEST",
+          description: "Checks if PAGE_IS_DEST",
+        },
+        {
+          name: "PAGE_IS_JP",
+          description: "Checks if PAGE_IS_JP",
+        },
+        {
+          name: "PAGE_IS_MOON",
+          description: "Checks if PAGE_IS_MOON",
+        },
+        {
+          name: "PAGE_IS_MARS",
+          description: "Checks if PAGE_IS_MARS",
+        },
+        {
+          name: "PAGE_IS_VENUS",
+          description: "Checks if PAGE_IS_VENUS",
+        },
+        {
+          name: "PAGE_IS_BIRTHDAY",
+          description: "Checks if PAGE_IS_BIRTHDAY",
+        },
+        {
+          name: "PAGE_IS_VACATION",
+          description: "Checks if PAGE_IS_VACATION",
+        },
+        {
+          name: "PAGE_IS_HONEYMOON",
+          description: "Checks if PAGE_IS_HONEYMOON",
+        },
+        {
+          name: "PAGE_IS_PHOTOTOUR",
+          description: "Checks if PAGE_IS_PHOTOTOUR",
+        },
+        {
+          name: "PAGE_IS_OURRECOMANDATIONS",
+          description: "Checks if PAGE_IS_OURRECOMANDATIONS",
+        },
+        {
+          name: "checkIfDestDetailPage",
+          description: "Checks if page one out of the destination pages",
+        },
+        {
+          name: "checkIfJPDetailPage",
+          description:
+            "Checks if page is one out of the journey purposes pages",
+        },
+        {
+          name: "buttonText",
+          description: "Set the correct button text",
+        },
+        {
+          name: "buttonRoute",
+          description: "Set the correct buton link",
+        },
+      ],
+      script: `
+      import { page } from "$app/stores";
+
+const PAGE_IS_DEST = $page.url.pathname.includes("/spacetravel/destination");
+const PAGE_IS_JP = $page.url.pathname.includes("/spacetravel/journeyPurpose");
+const PAGE_IS_MOON = $page.url.pathname.includes("/moon");
+const PAGE_IS_MARS = $page.url.pathname.includes("/mars");
+const PAGE_IS_VENUS = $page.url.pathname.includes("/venus");
+const PAGE_IS_BIRTHDAY = $page.url.pathname.includes("/birthdayspecial");
+const PAGE_IS_VACATION = $page.url.pathname.includes("/vacation");
+const PAGE_IS_HONEYMOON = $page.url.pathname.includes("/honeymoon");
+const PAGE_IS_PHOTOTOUR = $page.url.pathname.includes("/phototour");
+const PAGE_IS_OURRECOMANDATIONS =
+  $page.url.pathname.includes("/ourRecomandations");
+
+let checkIfDestDetailPage: boolean =
+  PAGE_IS_MARS || PAGE_IS_MOON || PAGE_IS_VENUS;
+let checkIfJPDetailPage: boolean =
+  PAGE_IS_BIRTHDAY ||
+  PAGE_IS_VACATION ||
+  PAGE_IS_HONEYMOON ||
+  PAGE_IS_PHOTOTOUR ||
+  PAGE_IS_OURRECOMANDATIONS;
+
+let buttonRoute: string = checkIfDestDetailPage
+  ? "/spacetravel/destination"
+  : checkIfJPDetailPage
+  ? "/spacetravel/journeyPurpose"
+  : PAGE_IS_DEST || PAGE_IS_JP
+  ? "/spacetravel/#cardsSpacetravel"
+  : "/";
+
+let buttonText: string = checkIfDestDetailPage
+  ? "< Back to destinations"
+  : checkIfJPDetailPage
+  ? "< Back to journey purposes"
+  : PAGE_IS_DEST || PAGE_IS_JP
+  ? "< Back to spacetravel"
+  : "< Back to home";
+      `,
+      html: `
+      <div class="absolute left-5 top-5 flex">
+  <a
+    id="backButton"
+    href={buttonRoute}
+    aria-describedby="link-BackToSpacetravel"
+    class="h-auto min-h-full px-7 grid items-center rounded-md col-span-1 bg-NFTW-lila-800 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-NFTW-lila-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition duration-500"
+  >
+    {buttonText}
+  </a>
+</div>
+        `,
+    },
+
     //-------------------------------------------------------------------------------------------
   ];
 
