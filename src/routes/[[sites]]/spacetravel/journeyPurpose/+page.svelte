@@ -9,7 +9,8 @@
   import type { PageData } from "./$types";
   import type { JourneyPurposeData } from "../../../../../prisma/tableInterfaces";
   import type { ImageData } from "../../../../../prisma/tableInterfaces";
-  
+  import ButtonLink from "$lib/components/ButtonLink.svelte";
+
   export let data: PageData;
 
   let JOURNEY_PURPOSE_DATA: JourneyPurposeData[];
@@ -20,7 +21,10 @@
   ({ IMAGES } = data);
 
   if (dev) {
-    console.log("JOURNEY_POURPES_DATA @ journey purposes :>> ", JOURNEY_PURPOSE_DATA);
+    console.log(
+      "JOURNEY_POURPES_DATA @ journey purposes :>> ",
+      JOURNEY_PURPOSE_DATA
+    );
   }
 </script>
 
@@ -30,9 +34,14 @@
 </svelte:head>
 
 <SectionBg002>
-  <SectionHeader title="Journey Purposes" description="Unlock the mysteries of the universe and embark on a transcendent journey to space. Whether on your birthday, your honeymoon or on a phototour, yearning for adventure, this is your chance to witness the grandeur of the cosmos firsthand." />
+  <SectionHeader
+    title="Journey Purposes"
+    description="Unlock the mysteries of the universe and embark on a transcendent journey to space. Whether on your birthday, your honeymoon or on a phototour, yearning for adventure, this is your chance to witness the grandeur of the cosmos firsthand."
+  />
+  <ButtonLink />
   <div
-    class="grid justify-center justify-self-center mx-auto max-w-7xl gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-16">
+    class="grid justify-center justify-self-center mx-auto max-w-7xl gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-16"
+  >
     <!--going over the JOURNEY_PURPOSE_DATA to render individual cards for each journey purpose-->
     {#each JOURNEY_PURPOSE_DATA as data}
       <!--The card component (CardDestinations) receives various properties-->
@@ -43,9 +52,9 @@
           jpPrice={data.price}
           routePath={data.routePath}
           jpImage={selectImageFromDb(data.image, IMAGES)}
-          imgPosition={'left'}
-          imgSize={'cover'}
-         />
+          imgPosition={"left"}
+          imgSize={"cover"}
+        />
       </div>
     {/each}
   </div>

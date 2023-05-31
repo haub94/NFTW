@@ -7,12 +7,12 @@
   //import ts-types
   import type { PageData } from "./$types";
   import type { ImageData } from "../../../../../../prisma/tableInterfaces";
+  import ButtonLink from "$lib/components/ButtonLink.svelte";
 
   export let data: PageData;
 
   let IMAGES: ImageData[];
   ({ IMAGES } = data);
-
 </script>
 
 <svelte:head>
@@ -29,6 +29,7 @@
     jpPrice={data.JOURNEY_PURPOSES.price}
     jpIncludedServices={data.JOURNEY_PURPOSES.inclServices}
     jpImage={selectImageFromDb(data.JOURNEY_PURPOSES.image, IMAGES)}
-    />
+  />
+  <ButtonLink />
   <ButtonsDestJpGic />
 </SectionBg002>

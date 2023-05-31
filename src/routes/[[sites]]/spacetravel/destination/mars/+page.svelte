@@ -8,6 +8,7 @@
   //import ts types
   import type { PageData } from "./$types";
   import type { ImageData } from "../../../../../../prisma/tableInterfaces";
+  import ButtonLink from "$lib/components/ButtonLink.svelte";
 
   export let data: PageData;
 
@@ -33,6 +34,7 @@
     destImage={selectImageFromDb(data.DESTINATIONS.image, IMAGES)}
     destServices={data.DESTINATIONS.services}
   />
+  <ButtonLink />
   <DividerTextIFrame
     iFrameHeight={450}
     height={750}
