@@ -110,6 +110,7 @@
 	load();
 	setTestimonialData();
 
+
 </script>
 
 <svelte:head>
@@ -130,6 +131,7 @@
 		<!--Slider-->
 		<div class="w-9/12 h-auto mx-auto overflow-hidden">
 			<swiper-container
+				pagination={true}
 				space-between=20
 				autoplay="true"
 				speed="600" 
