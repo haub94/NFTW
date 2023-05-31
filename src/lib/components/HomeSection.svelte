@@ -24,19 +24,19 @@
             <div>
                 <img
                     class="inline-block mt-28 hidden xl:block"
-                    src="/home/spacecraftPill.png"
+                    src="/home/spacecraftPill.webp"
                     loading="lazy" />
             </div>
             <div>
                 <img
                     class="inline-block mt-24 md:mt-0 p-8 md:p-0"
-                    src="/home/astronautPill.png"
+                    src="/home/astronautPill.webp"
                     loading="lazy" />
             </div>
             <div>
                 <img
                     class="inline-block mt-28 hidden lg:block"
-                    src="/home/rocketPill.png"
+                    src="/home/rocketPill.webp"
                     loading="lazy" />
             </div>
         </div>

@@ -13,7 +13,6 @@
   const labelStyleDisabled = "block text-sm font-semibold leading-6 text-NFTW-white/20";
   const inputStyle = "block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6";
   const dateStyle = "block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6 cursor-pointer";
-  const dateStyleDisabled = "block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white/20 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6 cursor-default";
   const selectionStyling = "bg-NFTW-black-600 bg-opacity-90";
 
   const overrideMemory: boolean = false; //DEV-ONLY
@@ -24,15 +23,13 @@
   export let nextVacationEnd: string = ""; 
   export let nextPhototourStart: string = "";
   export let nextPhototourEnd: string = ""; 
-  export let nextRecomandationsStart: string = "";
-  export let nextRecomandationsEnd: string = "";
-  
-  
+  export let nextRecommandationsStart: string = "";
+  export let nextRecommandationsEnd: string = "";
 
   //helper to override the memory during dev
   if (dev && overrideMemory) {
-    $configMemory.destination = "moon";
-    $configMemory.journeyPurpose = "birthdayspecial";
+    $configMemory.destination = "Moon";
+    $configMemory.journeyPurpose = "Birthday special";
     $configMemory.startDate = "2023-05-12";
     $configMemory.endDate = "2023-05-25";
   }
@@ -63,23 +60,25 @@
 
   //if the customer changes the input => update the configMemory
   function updateInputData(separator: string) {
+    console.log('inputData.journeyPurpose :>> ', inputData.journeyPurpose);
+    console.log('nextRecomandationsStart :>> ', nextRecommandationsStart);
     switch (separator) {
       case "destination":
         $configMemory.destination = inputData.destination;
         break;
       case "purpose":
         $configMemory.journeyPurpose = inputData.journeyPurpose;
-        if (inputData.journeyPurpose === "vacation") {
+        if (inputData.journeyPurpose === "Vacation") {
           $configMemory.startDate = nextVacationStart;
           $configMemory.endDate = nextVacationEnd;
         };
-        if (inputData.journeyPurpose === "phototour") {
+        if (inputData.journeyPurpose === "Phototour") {
           $configMemory.startDate = nextPhototourStart;
           $configMemory.endDate = nextPhototourEnd;
         };
-        if (inputData.journeyPurpose === "our recomandations") {
-          $configMemory.startDate = nextRecomandationsStart;
-          $configMemory.endDate = nextRecomandationsEnd;
+        if (inputData.journeyPurpose === "Our recommandations") {
+          $configMemory.startDate = nextRecommandationsStart;
+          $configMemory.endDate = nextRecommandationsEnd;
         };
         
         break;
@@ -206,13 +205,11 @@
     //end after start
     if (startAsDate.valueOf() > endAsDate.valueOf()) {
       bannerStatus = 100;
-      console.log("departure after arrival");
       return false;
     }
     //start and end same
     if (startAsDate.valueOf() === endAsDate.valueOf()) {
       bannerStatus = 101;
-      console.log("start and end same");
       return false;
     }
     //departure today
@@ -222,17 +219,37 @@
       startAsDate.getFullYear() === today.getFullYear()
     ) {
       bannerStatus = 102;
-      console.log("departure today");
       return false;
     }
     //start before today
     if (startAsDate.valueOf() < today.valueOf()) {
       bannerStatus = 100;
-      console.log("start in past");
       return false;
     }
 
     return true;
+  }
+
+  //check if there is an SQL injection or XSS attack within the input
+  function sanitizeInput(inputString: string) {
+    if(inputString.includes("<") ||
+      inputString.includes(">") ||
+      inputString.includes("'") ||
+      inputString.includes("#") ||
+      inputString.includes("--") ||
+      inputString.includes("SELECT") ||
+      inputString.includes("DROP") ||
+      inputString.includes("FROM") ||
+      inputString.includes("TABLE") ||
+      inputString.includes("IF") ||
+      inputString.includes("admin") ||
+      inputString.includes("/") ||
+      inputString.includes("=")) {
+     
+      bannerStatus = 666;
+      return true;
+
+    }
   }
 
   //controller which is executed after submit
@@ -241,10 +258,16 @@
       logInput();
     }
 
-    //CALL HERE THE FUNTION TO WRITE THE DATA IN THE DB !!!!!!
+    //proof input of dangerous content
+    if(sanitizeInput(inputData.firstName) ||
+      sanitizeInput(inputData.lastName) ||
+      sanitizeInput(inputData.emailAddress) ||
+      sanitizeInput(inputData.message)
+    ){
+      return false;
+    }
 
     if (validateDate(inputData.startDate, inputData.endDate)) {
-      console.log("call emailJS function to send mail");
       //send email to customer
       sendEmail(
         SERVICE_ID,
@@ -261,17 +284,16 @@
       );
     }
   }
+
 </script>
 
 <!--load testdate for dev-mode-->
 {#if dev}
-  <div class="">
     <button
       on:click={loadDevData}
       class="rounded-md bg-green-500 px-3.5 py-2.5 text-center text-sm font-semibold text-NFTW-white shadow-sm hover:bg-cyan-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
       >Load DEV-Data ...</button
     >
-  </div>
 {/if}
 
 <!-- GET IN CONTACT -->
@@ -306,6 +328,12 @@
       <Banner
         buzzWord="mailing error!"
         text="UuupsiWhuupsi... It looks like there was an error during the transmission. Try again or contact us by phone: +99 123 456 789"
+        color="red"
+      />
+      {:else if bannerStatus === 666}
+      <Banner
+        buzzWord="Nice Try"
+        text="You should improve your hacking skills to hit our database ...little script kiddy"
         color="red"
       />
     {/if}
@@ -485,9 +513,9 @@
                 <option class={selectionStyling} selected
                   >{inputData.destination}</option
                 >
-                <option class={selectionStyling}>mars</option>
-                <option class={selectionStyling}>moon</option>
-                <option class={selectionStyling}>venus</option>
+                <option class={selectionStyling}>Mars</option>
+                <option class={selectionStyling}>Moon</option>
+                <option class={selectionStyling}>Venus</option>
               </select>
             </div>
             <div>
@@ -507,11 +535,11 @@
                 <option class={selectionStyling} selected
                   >{inputData.journeyPurpose}</option
                 >
-                <option class={selectionStyling}>birthdayspecial</option>
-                <option class={selectionStyling}>honeymoon</option>
-                <option class={selectionStyling}>phototour</option>
-                <option class={selectionStyling}>vacation</option>
-                <option class={selectionStyling}>our recomandations</option>
+                <option class={selectionStyling}>Birthday special</option>
+                <option class={selectionStyling}>Honeymoon</option>
+                <option class={selectionStyling}>Phototour</option>
+                <option class={selectionStyling}>Vacation</option>
+                <option class={selectionStyling}>Our recommandations</option>
               </select>
             </div>
 
@@ -519,13 +547,13 @@
             <div>
               <label
                 for="startDate"
-                class={inputData.journeyPurpose === "birthdayspecial" ||
-                inputData.journeyPurpose === "honeymoon"
+                class={inputData.journeyPurpose === "Birthday special" ||
+                inputData.journeyPurpose === "Honeymoon"
                   ? labelStyle
                   : labelStyleDisabled}>Start Date</label
               >
               <!--disable datepicker for vacation, phototour, oure recomendation-->
-              {#if inputData.journeyPurpose === "birthdayspecial" || inputData.journeyPurpose === "honeymoon"}
+              {#if inputData.journeyPurpose === "Birthday special" || inputData.journeyPurpose === "Honeymoon"}
                 <input
                   required
                   bind:value={inputData.startDate}
@@ -553,13 +581,13 @@
             <div>
               <label
                 for="endDate"
-                class={inputData.journeyPurpose === "birthdayspecial" ||
-                inputData.journeyPurpose === "honeymoon"
+                class={inputData.journeyPurpose === "Birthday special" ||
+                inputData.journeyPurpose === "Honeymoon"
                   ? labelStyle
                   : labelStyleDisabled}>End Date</label
               >
               <!--disable datepicker for vacation, phototour, oure recomendation-->
-              {#if inputData.journeyPurpose === "birthdayspecial" || inputData.journeyPurpose === "honeymoon"}
+              {#if inputData.journeyPurpose === "Birthday special" || inputData.journeyPurpose === "Honeymoon"}
                 <input
                   required
                   bind:value={inputData.endDate}

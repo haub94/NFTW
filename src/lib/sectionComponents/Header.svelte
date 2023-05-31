@@ -1,6 +1,6 @@
 <script lang="ts">
   import { dev } from "$app/environment";
-  
+
   let menuOpened = false;
   function openMenu() {
     menuOpened = true;
@@ -50,9 +50,16 @@
       class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
       aria-label="Global"
     >
-      <div class="flex lg:flex-1">
-        <a href="/" class="-m-1.5 p-1.5 hover:scale-125 hover:transition-all ease-in-out duration-300" on:click={closeMenu}>
-          <span class="sr-only">NFTW Adventures Logo: Illustration from a simple rocket during launch.</span>
+      <div class="flex lg:flex-1 gap-x-6">
+        <a
+          href="/"
+          class="-m-1.5 p-1.5 hover:scale-125 hover:transition-all ease-in-out duration-300"
+          on:click={closeMenu}
+        >
+          <span class="sr-only"
+            >NFTW Adventures Logo: Illustration from a simple rocket during
+            launch.</span
+          >
           <img
             loading="lazy"
             class="h-14 w-auto"
@@ -60,7 +67,13 @@
             alt=""
           />
         </a>
+        <a
+          href="/"
+          class="self-center text-3xl font-semibold leading-6 text-NFTW-white hover:scale-110 hover:transition-all ease-in-out duration-300 lg:hidden"
+          on:click={closeMenu}>NFTW Adventures</a
+        >
       </div>
+
       <div class="flex lg:hidden">
         <button
           type="button"
@@ -119,7 +132,11 @@
           class="fixed inset-y-0 right-0 z-30 w-full overflow-y-auto bg-NFTW-bg px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10"
         >
           <div class="flex items-center justify-between">
-            <a href="/" class="-m-1.5 p-1.5 hover:scale-125 hover:transition-all ease-in-out duration-300" on:click={closeMenu}>
+            <a
+              href="/"
+              class="-m-1.5 p-1.5 hover:scale-125 hover:transition-all ease-in-out duration-300"
+              on:click={closeMenu}
+            >
               <span class="sr-only">Your Company</span>
               <img
                 loading="lazy"
@@ -184,6 +201,3 @@
       </div>{/if}
   </header>
 </div>
-
-<style>
-</style>

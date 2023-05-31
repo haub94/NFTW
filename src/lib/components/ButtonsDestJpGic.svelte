@@ -58,14 +58,48 @@
     //write the current package (destination / purpose) to the configMemory
     if (PAGE_IS_DESTINATION) {
       const CURRENT_DESTINATION: string = getCurrentDestinationOrePurpose(DESTINATIONS, $page.url.pathname) as string;
-      $packageMemory.destination = CURRENT_DESTINATION;
+      //change naming => first character lowercase -> upercase / so its equal with the naming in the DB
+      //its little bit shitty but works first...
+      switch (CURRENT_DESTINATION) {
+        
+        case "moon":
+          $packageMemory.destination = "Moon";
+          break;
+        case "mars":
+          $packageMemory.destination = "Mars";
+          break;
+        case "venus":
+          $packageMemory.destination = "Venus";
+          break;
+      
+        default:
+          break;
+      }
     } 
+
     if (PAGE_IS_JOURNEY_PURPOSE) {
       const CURRENT_PURPOSE: string = getCurrentDestinationOrePurpose(PURPOSES, $page.url.pathname) as string;
-      if (CURRENT_PURPOSE === "ourRecomandations") {  //reform string (not the best way...)
-        $packageMemory.journeyPurpose = "our recomandations";
-      } else {
-        $packageMemory.journeyPurpose = CURRENT_PURPOSE;
+      //change naming => first character lowercase -> upercase / so its equal with the naming in the DB
+      //its little bit shitty but ok...
+      switch (CURRENT_PURPOSE) {
+        case "ourRecomandations":
+          $packageMemory.journeyPurpose = "Our recommendations";
+          break;
+        case "birthdayspecial":
+          $packageMemory.journeyPurpose = "Birthday special";
+          break;
+        case "vacation":
+          $packageMemory.journeyPurpose = "Vacation";
+          break;
+        case "phototour":
+          $packageMemory.journeyPurpose = "Phototour";
+          break;
+        case "honeymoon":
+          $packageMemory.journeyPurpose = "Honeymoon";
+          break;
+        
+        default:
+          break;
       }
     }
   }
@@ -112,7 +146,7 @@
       class="h-auto min-h-full px-7 rounded-md col-span-1 bg-NFTW-lila-800 py-2 text-center items-center grid text-sm font-semibold leading-6 text-white shadow-sm hover:bg-NFTW-lila-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition duration-500"
       class:border-4={IS_PROTOTYPING}
       class:border-orange-500={IS_PROTOTYPING}
-      class:text-NFTW-white={!IS_PROTOTYPING}>Start Your Journey With Us</a>
+      class:text-NFTW-white={!IS_PROTOTYPING}>Start your Journey with us!</a>
     {:else}
     <div
       class="h-auto min-h-full px-7 rounded-md col-span-1 bg-gray-600 py-2 text-center items-center grid text-sm font-semibold leading-6 text-white shadow-sm"
@@ -120,9 +154,9 @@
       class:border-orange-500={IS_PROTOTYPING}
       class:text-NFTW-white={!IS_PROTOTYPING}>
       {PAGE_IS_DESTINATION
-        ? "Select a journey purpose first to start the trip."
+        ? "Select a journey purpose first to start the trip"
         : PAGE_IS_JOURNEY_PURPOSE
-        ? "Select a destination first to start the trip." 
+        ? "Select a destination first to start the trip" 
         : ""}
     </div>
     {/if}

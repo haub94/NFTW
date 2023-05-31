@@ -10,6 +10,6 @@ export const load: PageServerLoad = async () => {
         }
     } catch (error) {
         console.error(error);
-            return fail(500, { message: 'Could not load Destination_Data from DB!'})
+            return fail(500, { message: 'Could not load Journey_Purposes data from DB!'})
     }
 }
