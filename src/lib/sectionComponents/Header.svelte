@@ -1,7 +1,10 @@
 <script lang="ts">
   import { dev } from "$app/environment";
+    import { page } from "$app/stores";
 
   let menuOpened = false;
+
+
   function openMenu() {
     menuOpened = true;
   }
@@ -9,6 +12,7 @@
     menuOpened = false;
   }
   let screenSize: number;
+
 </script>
 
 <svelte:window bind:innerWidth={screenSize} />
@@ -100,24 +104,27 @@
       <div class="hidden lg:flex lg:gap-x-12">
         <a
           href="/"
+          class:text-NFTW-blue-400={!$page.url.pathname.includes("/spacetravel") && !$page.url.pathname.includes("/clientStories") && !$page.url.pathname.includes("/getInContact")}
           class="text-lg font-semibold leading-6 text-NFTW-white hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300"
           on:click={closeMenu}>Home</a
         >
 
         <a
           href="/spacetravel"
-          class="text-lg font-semibold leading-6 text-NFTW-white hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300"
+          class:text-NFTW-blue-400={$page.url.pathname.includes("/spacetravel")} class="text-lg font-semibold leading-6 text-NFTW-white hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300"
           on:click={closeMenu}>Spacetravel</a
         >
 
         <a
           href="/clientStories"
+          class:text-NFTW-blue-400={$page.url.pathname.includes("/clientStories")}
           class="text-lg font-semibold leading-6 text-NFTW-white hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300"
           on:click={closeMenu}>Client Stories</a
         >
 
         <a
           href="/getInContact"
+          class:text-NFTW-blue-400={$page.url.pathname.includes("/getInContact")}
           class="text-lg font-semibold leading-6 text-NFTW-white hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300"
           on:click={closeMenu}>Get In Contact</a
         >
@@ -172,24 +179,28 @@
               <div class="space-y-2 py-6">
                 <a
                   href="/"
+                  class:text-NFTW-blue-400={!$page.url.pathname.includes("/spacetravel") && !$page.url.pathname.includes("/clientStories") && !$page.url.pathname.includes("/getInContact")}
                   class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-NFTW-white hover:bg-gray-800 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-500"
                   on:click={closeMenu}>Home</a
                 >
 
                 <a
                   href="/spacetravel"
+                  class:text-NFTW-blue-400={$page.url.pathname.includes("/spacetravel")}
                   class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-NFTW-white hover:bg-gray-800 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-500"
                   on:click={closeMenu}>Spacetravel</a
                 >
 
                 <a
                   href="/clientStories"
+                  class:text-NFTW-blue-400={$page.url.pathname.includes("/clientStories")}
                   class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-NFTW-white hover:bg-gray-800 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-500"
                   on:click={closeMenu}>Client Stories</a
                 >
 
                 <a
                   href="/getInContact"
+                  class:text-NFTW-blue-400={$page.url.pathname.includes("/getInContact")}
                   class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-NFTW-white hover:bg-gray-800 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-500"
                   on:click={closeMenu}>Get In Contact</a
                 >
