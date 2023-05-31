@@ -4,7 +4,6 @@
 
   let menuOpened = false;
 
-
   function openMenu() {
     menuOpened = true;
   }

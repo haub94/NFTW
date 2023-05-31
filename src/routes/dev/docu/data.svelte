@@ -3014,9 +3014,11 @@ const iFrameSrc = isMars
         },
       ],
       script: `
-      import { dev } from "$app/environment";
-  
+  import { dev } from "$app/environment";
+    import { page } from "$app/stores";
+
   let menuOpened = false;
+
   function openMenu() {
     menuOpened = true;
   }
@@ -3026,7 +3028,7 @@ const iFrameSrc = isMars
   let screenSize: number;
         `,
       html: `
-      <svelte:window bind:innerWidth={screenSize} />
+<svelte:window bind:innerWidth={screenSize} />
 {#if dev}
   <div class="fixed top-1 left-3 z-50 flex text-white text-3xl gap-6">
     <p class="sm:hidden">{"mobil "}{screenSize}{"px"}</p>
@@ -3065,7 +3067,7 @@ const iFrameSrc = isMars
       class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
       aria-label="Global"
     >
-      <div class="flex lg:flex-1">
+      <div class="flex lg:flex-1 gap-x-6">
         <a
           href="/"
           class="-m-1.5 p-1.5 hover:scale-125 hover:transition-all ease-in-out duration-300"
@@ -3082,7 +3084,13 @@ const iFrameSrc = isMars
             alt=""
           />
         </a>
+        <a
+          href="/"
+          class="self-center text-3xl font-semibold leading-6 text-NFTW-white hover:scale-110 hover:transition-all ease-in-out duration-300 lg:hidden"
+          on:click={closeMenu}>NFTW Adventures</a
+        >
       </div>
+
       <div class="flex lg:hidden">
         <button
           type="button"
@@ -3109,24 +3117,27 @@ const iFrameSrc = isMars
       <div class="hidden lg:flex lg:gap-x-12">
         <a
           href="/"
+          class:text-NFTW-blue-400={!$page.url.pathname.includes("/spacetravel") && !$page.url.pathname.includes("/clientStories") && !$page.url.pathname.includes("/getInContact") && !$page.url.pathname.includes("/imprint") && !$page.url.pathname.includes("/privacyPolicy") && !$page.url.pathname.includes("/contact")}
           class="text-lg font-semibold leading-6 text-NFTW-white hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300"
           on:click={closeMenu}>Home</a
         >
 
         <a
           href="/spacetravel"
-          class="text-lg font-semibold leading-6 text-NFTW-white hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300"
+          class:text-NFTW-blue-400={$page.url.pathname.includes("/spacetravel")} class="text-lg font-semibold leading-6 text-NFTW-white hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300"
           on:click={closeMenu}>Spacetravel</a
         >
 
         <a
           href="/clientStories"
+          class:text-NFTW-blue-400={$page.url.pathname.includes("/clientStories")}
           class="text-lg font-semibold leading-6 text-NFTW-white hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300"
           on:click={closeMenu}>Client Stories</a
         >
 
         <a
           href="/getInContact"
+          class:text-NFTW-blue-400={$page.url.pathname.includes("/getInContact")}
           class="text-lg font-semibold leading-6 text-NFTW-white hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300"
           on:click={closeMenu}>Get In Contact</a
         >
@@ -3181,24 +3192,28 @@ const iFrameSrc = isMars
               <div class="space-y-2 py-6">
                 <a
                   href="/"
+                  class:text-NFTW-blue-400={!$page.url.pathname.includes("/spacetravel") && !$page.url.pathname.includes("/clientStories") && !$page.url.pathname.includes("/getInContact") && !$page.url.pathname.includes("/imprint") && !$page.url.pathname.includes("/privacyPolicy") && !$page.url.pathname.includes("/contact")}
                   class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-NFTW-white hover:bg-gray-800 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-500"
                   on:click={closeMenu}>Home</a
                 >
 
                 <a
                   href="/spacetravel"
+                  class:text-NFTW-blue-400={$page.url.pathname.includes("/spacetravel")}
                   class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-NFTW-white hover:bg-gray-800 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-500"
                   on:click={closeMenu}>Spacetravel</a
                 >
 
                 <a
                   href="/clientStories"
+                  class:text-NFTW-blue-400={$page.url.pathname.includes("/clientStories")}
                   class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-NFTW-white hover:bg-gray-800 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-500"
                   on:click={closeMenu}>Client Stories</a
                 >
 
                 <a
                   href="/getInContact"
+                  class:text-NFTW-blue-400={$page.url.pathname.includes("/getInContact")}
                   class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-NFTW-white hover:bg-gray-800 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-500"
                   on:click={closeMenu}>Get In Contact</a
                 >
@@ -3210,6 +3225,7 @@ const iFrameSrc = isMars
       </div>{/if}
   </header>
 </div>
+
         `,
     },
     {
