@@ -146,7 +146,7 @@
       class="h-auto min-h-full px-7 rounded-md col-span-1 bg-NFTW-lila-800 py-2 text-center items-center grid text-sm font-semibold leading-6 text-white shadow-sm hover:bg-NFTW-lila-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition duration-500"
       class:border-4={IS_PROTOTYPING}
       class:border-orange-500={IS_PROTOTYPING}
-      class:text-NFTW-white={!IS_PROTOTYPING}>Start Your Journey With Us</a>
+      class:text-NFTW-white={!IS_PROTOTYPING}>Start your Journey with us!</a>
     {:else}
     <div
       class="h-auto min-h-full px-7 rounded-md col-span-1 bg-gray-600 py-2 text-center items-center grid text-sm font-semibold leading-6 text-white shadow-sm"
@@ -154,9 +154,9 @@
       class:border-orange-500={IS_PROTOTYPING}
       class:text-NFTW-white={!IS_PROTOTYPING}>
       {PAGE_IS_DESTINATION
-        ? "Select a journey purpose first to start the trip."
+        ? "Select a journey purpose first to start the trip"
         : PAGE_IS_JOURNEY_PURPOSE
-        ? "Select a destination first to start the trip." 
+        ? "Select a destination first to start the trip" 
         : ""}
     </div>
     {/if}
