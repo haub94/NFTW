@@ -10,7 +10,7 @@
 </script>
 
 <a href={routePath}>
-  <div class="group relative">
+  <div id="cardsSpacetravel" class="group relative">
     <div
       class="absolute -inset-2 rounded-lg bg-gradient-to-br from-NFTW-lila-500 via-NFTW-blue-500 to-NFTW-pink-500 opacity-0 blur transition duration-700 group-hover:opacity-100"
     />
