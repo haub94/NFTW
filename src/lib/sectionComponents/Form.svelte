@@ -235,16 +235,44 @@
     return true;
   }
 
+  //check if there is an SQL injection or XSS attack within the input
+  function sanitizeInput(inputString: string) {
+    if(inputString.includes("<") ||
+      inputString.includes(">") ||
+      inputString.includes("'") ||
+      inputString.includes("#") ||
+      inputString.includes("--") ||
+      inputString.includes("SELECT") ||
+      inputString.includes("DROP") ||
+      inputString.includes("FROM") ||
+      inputString.includes("TABLE") ||
+      inputString.includes("IF") ||
+      inputString.includes("admin") ||
+      inputString.includes("/") ||
+      inputString.includes("=")) {
+     
+      bannerStatus = 666;
+      return true;
+
+    }
+  }
+
   //controller which is executed after submit
   function inputController() {
     if (dev) {
       logInput();
     }
 
-    //CALL HERE THE FUNTION TO WRITE THE DATA IN THE DB !!!!!!
+    //proof input of dangerous content
+    if(sanitizeInput(inputData.firstName) ||
+      sanitizeInput(inputData.lastName) ||
+      sanitizeInput(inputData.emailAddress) ||
+      sanitizeInput(inputData.message)
+    ){
+      return false;
+    }
 
     if (validateDate(inputData.startDate, inputData.endDate)) {
-      console.log("call emailJS function to send mail");
       //send email to customer
       sendEmail(
         SERVICE_ID,
@@ -265,13 +293,11 @@
 
 <!--load testdate for dev-mode-->
 {#if dev}
-  <div class="">
     <button
       on:click={loadDevData}
       class="rounded-md bg-green-500 px-3.5 py-2.5 text-center text-sm font-semibold text-NFTW-white shadow-sm hover:bg-cyan-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
       >Load DEV-Data ...</button
     >
-  </div>
 {/if}
 
 <!-- GET IN CONTACT -->
@@ -306,6 +332,12 @@
       <Banner
         buzzWord="mailing error!"
         text="UuupsiWhuupsi... It looks like there was an error during the transmission. Try again or contact us by phone: +99 123 456 789"
+        color="red"
+      />
+      {:else if bannerStatus === 666}
+      <Banner
+        buzzWord="Nice Try"
+        text="You should improve your hacking skills to hit our database ...little script kiddy"
         color="red"
       />
     {/if}
