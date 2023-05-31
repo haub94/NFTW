@@ -60,8 +60,6 @@
 
   //if the customer changes the input => update the configMemory
   function updateInputData(separator: string) {
-    console.log('inputData.journeyPurpose :>> ', inputData.journeyPurpose);
-    console.log('nextRecomandationsStart :>> ', nextRecommandationsStart);
     switch (separator) {
       case "destination":
         $configMemory.destination = inputData.destination;
