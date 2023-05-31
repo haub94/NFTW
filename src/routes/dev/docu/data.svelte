@@ -2504,9 +2504,9 @@ switch (color) {
       class:border-orange-500={IS_PROTOTYPING}
       class:text-NFTW-white={!IS_PROTOTYPING}>
       {PAGE_IS_DESTINATION
-        ? "Select a journey purpose first to start the trip."
+        ? "Select a journey purpose first to start the trip"
         : PAGE_IS_JOURNEY_PURPOSE
-        ? "Select a destination first to start the trip." 
+        ? "Select a destination first to start the trip" 
         : ""}
     </div>
     {/if}

@@ -15,7 +15,7 @@
 
   export let data: PageData;
 
-  const DIVIDER_CAPTION: string = "Get ready for take off";
+  const DIVIDER_CAPTION: string = "Ready for the ultimate space adventure? NFTW Adventures offers exhilarating trips to the Moon, Mars, and Venus. Take the final step towards your extraordinary journey and prepare to explore the mysteries of the cosmos. Contact us now and be among the select few who will experience the thrill of space travel firsthand.";
 
   let JOURNEY_PURPOSE: JourneyPurposeData[];
   let IMAGES: ImageData[];
