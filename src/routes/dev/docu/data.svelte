@@ -48,6 +48,7 @@
   import CardDestinations from "$lib/components/CardDestinations.svelte";
   import HomeSection from "$lib/components/HomeSection.svelte";
   import LogoSection from "$lib/components/LogoSection.svelte";
+  import ButtonLink from "$lib/components/ButtonLink.svelte";
 
   export const componentData = [
     /*
@@ -577,22 +578,7 @@ export let captionPath: string = "";
       {/if}
     </div>
   </section>
-</body>
-
-<style>
-  .videoCon:after {
-    content: "";
-    display: block;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: rgba(black, 0.2);
-    z-index: 1;
-  }
-</style>
-        `,
+</body><style ✂prettier:content✂="CiAgLnZpZGVvQ29uOmFmdGVyIHsKICAgIGNvbnRlbnQ6ICIiOwogICAgZGlzcGxheTogYmxvY2s7CiAgICBoZWlnaHQ6IDEwMCU7CiAgICB3aWR0aDogMTAwJTsKICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTsKICAgIHRvcDogMDsKICAgIGxlZnQ6IDA7CiAgICBiYWNrZ3JvdW5kOiByZ2JhKGJsYWNrLCAwLjIpOwogICAgei1pbmRleDogMTsKICB9Cg==" ✂prettier:content✂="" ✂prettier:content✂="" ✂prettier:content✂="" ✂prettier:content✂="" ✂prettier:content✂=""></style>`,
     },
     {
       ID: 7,
@@ -2503,9 +2489,9 @@ switch (color) {
       class:border-orange-500={IS_PROTOTYPING}
       class:text-NFTW-white={!IS_PROTOTYPING}>
       {PAGE_IS_DESTINATION
-        ? "Select a journey purpose first to start the trip."
+        ? "Select a journey purpose first to start the trip"
         : PAGE_IS_JOURNEY_PURPOSE
-        ? "Select a destination first to start the trip." 
+        ? "Select a destination first to start the trip" 
         : ""}
     </div>
     {/if}
@@ -3028,9 +3014,11 @@ const iFrameSrc = isMars
         },
       ],
       script: `
-      import { dev } from "$app/environment";
-  
+  import { dev } from "$app/environment";
+    import { page } from "$app/stores";
+
   let menuOpened = false;
+
   function openMenu() {
     menuOpened = true;
   }
@@ -3040,7 +3028,7 @@ const iFrameSrc = isMars
   let screenSize: number;
         `,
       html: `
-      <svelte:window bind:innerWidth={screenSize} />
+<svelte:window bind:innerWidth={screenSize} />
 {#if dev}
   <div class="fixed top-1 left-3 z-50 flex text-white text-3xl gap-6">
     <p class="sm:hidden">{"mobil "}{screenSize}{"px"}</p>
@@ -3079,7 +3067,7 @@ const iFrameSrc = isMars
       class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
       aria-label="Global"
     >
-      <div class="flex lg:flex-1">
+      <div class="flex lg:flex-1 gap-x-6">
         <a
           href="/"
           class="-m-1.5 p-1.5 hover:scale-125 hover:transition-all ease-in-out duration-300"
@@ -3096,7 +3084,13 @@ const iFrameSrc = isMars
             alt=""
           />
         </a>
+        <a
+          href="/"
+          class="self-center text-3xl font-semibold leading-6 text-NFTW-white hover:scale-110 hover:transition-all ease-in-out duration-300 lg:hidden"
+          on:click={closeMenu}>NFTW Adventures</a
+        >
       </div>
+
       <div class="flex lg:hidden">
         <button
           type="button"
@@ -3123,24 +3117,27 @@ const iFrameSrc = isMars
       <div class="hidden lg:flex lg:gap-x-12">
         <a
           href="/"
+          class:text-NFTW-blue-400={!$page.url.pathname.includes("/spacetravel") && !$page.url.pathname.includes("/clientStories") && !$page.url.pathname.includes("/getInContact") && !$page.url.pathname.includes("/imprint") && !$page.url.pathname.includes("/privacyPolicy") && !$page.url.pathname.includes("/contact")}
           class="text-lg font-semibold leading-6 text-NFTW-white hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300"
           on:click={closeMenu}>Home</a
         >
 
         <a
           href="/spacetravel"
-          class="text-lg font-semibold leading-6 text-NFTW-white hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300"
+          class:text-NFTW-blue-400={$page.url.pathname.includes("/spacetravel")} class="text-lg font-semibold leading-6 text-NFTW-white hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300"
           on:click={closeMenu}>Spacetravel</a
         >
 
         <a
           href="/clientStories"
+          class:text-NFTW-blue-400={$page.url.pathname.includes("/clientStories")}
           class="text-lg font-semibold leading-6 text-NFTW-white hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300"
           on:click={closeMenu}>Client Stories</a
         >
 
         <a
           href="/getInContact"
+          class:text-NFTW-blue-400={$page.url.pathname.includes("/getInContact")}
           class="text-lg font-semibold leading-6 text-NFTW-white hover:scale-125 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-300"
           on:click={closeMenu}>Get In Contact</a
         >
@@ -3195,24 +3192,28 @@ const iFrameSrc = isMars
               <div class="space-y-2 py-6">
                 <a
                   href="/"
+                  class:text-NFTW-blue-400={!$page.url.pathname.includes("/spacetravel") && !$page.url.pathname.includes("/clientStories") && !$page.url.pathname.includes("/getInContact") && !$page.url.pathname.includes("/imprint") && !$page.url.pathname.includes("/privacyPolicy") && !$page.url.pathname.includes("/contact")}
                   class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-NFTW-white hover:bg-gray-800 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-500"
                   on:click={closeMenu}>Home</a
                 >
 
                 <a
                   href="/spacetravel"
+                  class:text-NFTW-blue-400={$page.url.pathname.includes("/spacetravel")}
                   class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-NFTW-white hover:bg-gray-800 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-500"
                   on:click={closeMenu}>Spacetravel</a
                 >
 
                 <a
                   href="/clientStories"
+                  class:text-NFTW-blue-400={$page.url.pathname.includes("/clientStories")}
                   class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-NFTW-white hover:bg-gray-800 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-500"
                   on:click={closeMenu}>Client Stories</a
                 >
 
                 <a
                   href="/getInContact"
+                  class:text-NFTW-blue-400={$page.url.pathname.includes("/getInContact")}
                   class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-NFTW-white hover:bg-gray-800 hover:transition-all hover:text-NFTW-blue-400 ease-in-out duration-500"
                   on:click={closeMenu}>Get In Contact</a
                 >
@@ -3224,6 +3225,7 @@ const iFrameSrc = isMars
       </div>{/if}
   </header>
 </div>
+
         `,
     },
     {
@@ -3582,7 +3584,7 @@ const IMAGE_PATH_INDEX: number = 0;
 </div>
         `,
     },
-    
+
     {
       ID: 47,
       name: "CardDestinations",
@@ -3679,13 +3681,12 @@ const IMAGE_PATH_INDEX: number = 0;
   </div>
 </a>
         `,
-    },  
+    },
     {
       ID: 48,
       name: "HomeSection",
       component: HomeSection,
-      description:
-        "Section on the homepage that shows what we offer.",
+      description: "Section on the homepage that shows what we offer.",
       author: LXT,
       version: "1.1",
       usedBy: ["Homepage"],
@@ -3809,6 +3810,140 @@ const IMAGE_PATH_INDEX: number = 0;
 
         `,
     },
+    {
+      ID: 50,
+      name: "ButtonLink",
+      component: ButtonLink,
+      description:
+        "Button with link to get back to destinations, journey purposes or spacetravel site",
+      author: DR,
+      version: "1.0",
+      usedBy: [
+        "Moon",
+        "Mars",
+        "Venus",
+        "Birthdayspecial",
+        "Vacation",
+        "OurRecomandations",
+        "Phototour",
+        "Honeymoon",
+        "Destinations",
+        "JourneyPurposes",
+      ],
+      dependecies: ["{ page } from $app/stores"],
+      variables: [
+        {
+          name: "PAGE_IS_DEST",
+          description: "Checks if PAGE_IS_DEST",
+        },
+        {
+          name: "PAGE_IS_JP",
+          description: "Checks if PAGE_IS_JP",
+        },
+        {
+          name: "PAGE_IS_MOON",
+          description: "Checks if PAGE_IS_MOON",
+        },
+        {
+          name: "PAGE_IS_MARS",
+          description: "Checks if PAGE_IS_MARS",
+        },
+        {
+          name: "PAGE_IS_VENUS",
+          description: "Checks if PAGE_IS_VENUS",
+        },
+        {
+          name: "PAGE_IS_BIRTHDAY",
+          description: "Checks if PAGE_IS_BIRTHDAY",
+        },
+        {
+          name: "PAGE_IS_VACATION",
+          description: "Checks if PAGE_IS_VACATION",
+        },
+        {
+          name: "PAGE_IS_HONEYMOON",
+          description: "Checks if PAGE_IS_HONEYMOON",
+        },
+        {
+          name: "PAGE_IS_PHOTOTOUR",
+          description: "Checks if PAGE_IS_PHOTOTOUR",
+        },
+        {
+          name: "PAGE_IS_OURRECOMANDATIONS",
+          description: "Checks if PAGE_IS_OURRECOMANDATIONS",
+        },
+        {
+          name: "checkIfDestDetailPage",
+          description: "Checks if page one out of the destination pages",
+        },
+        {
+          name: "checkIfJPDetailPage",
+          description:
+            "Checks if page is one out of the journey purposes pages",
+        },
+        {
+          name: "buttonText",
+          description: "Set the correct button text",
+        },
+        {
+          name: "buttonRoute",
+          description: "Set the correct buton link",
+        },
+      ],
+      script: `
+      import { page } from "$app/stores";
+
+const PAGE_IS_DEST = $page.url.pathname.includes("/spacetravel/destination");
+const PAGE_IS_JP = $page.url.pathname.includes("/spacetravel/journeyPurpose");
+const PAGE_IS_MOON = $page.url.pathname.includes("/moon");
+const PAGE_IS_MARS = $page.url.pathname.includes("/mars");
+const PAGE_IS_VENUS = $page.url.pathname.includes("/venus");
+const PAGE_IS_BIRTHDAY = $page.url.pathname.includes("/birthdayspecial");
+const PAGE_IS_VACATION = $page.url.pathname.includes("/vacation");
+const PAGE_IS_HONEYMOON = $page.url.pathname.includes("/honeymoon");
+const PAGE_IS_PHOTOTOUR = $page.url.pathname.includes("/phototour");
+const PAGE_IS_OURRECOMANDATIONS =
+  $page.url.pathname.includes("/ourRecomandations");
+
+let checkIfDestDetailPage: boolean =
+  PAGE_IS_MARS || PAGE_IS_MOON || PAGE_IS_VENUS;
+let checkIfJPDetailPage: boolean =
+  PAGE_IS_BIRTHDAY ||
+  PAGE_IS_VACATION ||
+  PAGE_IS_HONEYMOON ||
+  PAGE_IS_PHOTOTOUR ||
+  PAGE_IS_OURRECOMANDATIONS;
+
+let buttonRoute: string = checkIfDestDetailPage
+  ? "/spacetravel/destination"
+  : checkIfJPDetailPage
+  ? "/spacetravel/journeyPurpose"
+  : PAGE_IS_DEST || PAGE_IS_JP
+  ? "/spacetravel/#cardsSpacetravel"
+  : "/";
+
+let buttonText: string = checkIfDestDetailPage
+  ? "< Back to destinations"
+  : checkIfJPDetailPage
+  ? "< Back to journey purposes"
+  : PAGE_IS_DEST || PAGE_IS_JP
+  ? "< Back to spacetravel"
+  : "< Back to home";
+      `,
+      html: `
+      <div class="absolute left-5 top-5 flex">
+  <a
+    id="backButton"
+    href={buttonRoute}
+    aria-describedby="link-BackToSpacetravel"
+    class="h-auto min-h-full px-7 grid items-center rounded-md col-span-1 bg-NFTW-lila-800 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-NFTW-lila-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition duration-500"
+  >
+    {buttonText}
+  </a>
+</div>
+        `,
+    },
+
     //-------------------------------------------------------------------------------------------
   ];
 
@@ -3906,7 +4041,536 @@ let config = writable({
 export default config;
 `,
     },
+    {
+      ID: 3,
+      name: "+page.server.ts for journeyPurposes",
+      description:
+        "This code attempts to load journey purpose data and image data from a database using the prisma module. If the loading process encounters an error, it logs the error and returns a failure response with a status code of 500 and an error message indicating that the journey purpose data could not be loaded from the database.",
+      author: AK,
+      version: "1.0",
+      usedBy: ["Svelte Kit page to load data from a database"],
+      dependecies: [
+        "The prisma module is imported from $lib/server/prisma, the fail function is imported from @sveltejs/kit",
+      ],
+      variables: [
+        {
+          name: "load",
+          description:
+            "This variable is a constant that holds an implementation of the PageServerLoad type. It represents the server-side load function for the page",
+        },
+        {
+          name: "JOURNEY_PURPOSE_DATA",
+          description:
+            "This variable holds the result of the findMany function called on the Journey_Purposes model from the prisma module. It represents multiple rows of journey purpose data retrieved from the database.",
+        },
+        {
+          name: "IMAGES",
+          description:
+            "This variable holds the result of the findMany function called on the Images model from the prisma module. It represents multiple rows of image data retrieved from the database.",
+        },
+      ],
+      script: `
+import { prisma } from "$lib/server/prisma";
+import { fail } from "@sveltejs/kit";
+import type { PageServerLoad } from "./$types";
 
+export const load: PageServerLoad = async () => {
+  try {
+    return {
+      //the load function returns an object with a property named JOURNEY_PURPOSE_DATA.
+      JOURNEY_PURPOSE_DATA: await prisma.Journey_Purposes.findMany(), //findMany() is called on the Journey_Purposes model, which  represents a table in the database.
+      IMAGES: await prisma.Images.findMany(),
+    };
+  } catch (error) {
+    console.error(error);
+    return fail(500, {
+      message: "Could not load Journey_Purposes data from DB!",
+    });
+  }
+};
+`,
+    },
+    {
+      ID: 4,
+      name: "+page.server.ts for destinations",
+      description:
+        "This code attempts to load destinations data and images data from a database using the prisma module. If the loading process encounters an error, it logs the error and returns a failure response with a status code of 500 and an error message indicating that the destinations data could not be loaded from the database.",
+      author: AK,
+      version: "1.0",
+      usedBy: ["Svelte Kit page to load data from a database"],
+      dependecies: [
+        "The prisma module is imported from $lib/server/prisma, the fail function is imported from @sveltejs/kit",
+      ],
+      variables: [
+        {
+          name: "load",
+          description:
+            "This variable is a constant that holds an implementation of the PageServerLoad type. It represents the server-side load function for the page",
+        },
+        {
+          name: "DESTINATION_DATA",
+          description:
+            "This variable holds the result of the findMany function called on the Destinations model from the prisma module. It represents multiple rows of destination data retrieved from the database.",
+        },
+        {
+          name: "IMAGES",
+          description:
+            "This variable holds the result of the findMany function called on the Images model from the prisma module. It represents multiple rows of image data retrieved from the database.",
+        },
+      ],
+      script: `
+import { prisma } from "$lib/server/prisma";
+import { fail } from "@sveltejs/kit";
+import type { PageServerLoad } from "./$types";
+
+export const load: PageServerLoad = async () => {
+  try {
+    return {
+      //the load function returns an object with a property named DESTINATION_DATA.
+      DESTINATION_DATA: await prisma.Destinations.findMany(), ////findMany() is called on the Destinations model, which  represents a table in the database.
+      IMAGES: await prisma.Images.findMany(),
+    };
+  } catch (error) {
+    console.error(error);
+    return fail(500, {
+      message: "Could not load DESTINATION_DATA from DB!",
+    });
+  }
+};
+`,
+    },
+    {
+      ID: 5,
+      name: "+page.server.ts for BirthdaySpecial journeyPurpose",
+      description:
+        "This code performs data loading operations for the BirthdaySpecial journey purpose page. It fetches a specific row from the Journey_Purposes table based on the id, and fetches multiple rows from the Images table. If the loading process encounters an error, it logs the error and returns a failure response with a status code of 500 and an error message indicating the failure to load data from the database.",
+      author: AK,
+      version: "1.0",
+      usedBy: ["Svelte Kit page to load data from a database"],
+      dependecies: [
+        "The prisma module is imported from $lib/server/prisma, the fail function is imported from @sveltejs/kit",
+      ],
+      variables: [
+        {
+          name: "load",
+          description:
+            "This variable is a constant that holds an implementation of the PageServerLoad type. It represents the server-side load function for the page",
+        },
+        {
+          name: "JOURNEY_PURPOSES",
+          description:
+            "This variable represents the fetched data from the Journey_Purposes table in the database, specifically the row with the id of 2. It is obtained using the findUnique method provided by the prisma module.",
+        },
+        {
+          name: "IMAGES",
+          description:
+            "This variable holds the result of the findMany function called on the Images model from the prisma module. It represents multiple rows of image data retrieved from the database.",
+        },
+      ],
+      script: `
+import { prisma } from "$lib/server/prisma";
+import { fail } from "@sveltejs/kit";
+import type { PageServerLoad } from "../../../../../../.svelte-kit/types/src/routes/[[sites]]/spacetravel/journeyPurpose/phototour/$types";
+
+export const load: PageServerLoad = async () => {
+  try {
+    return {
+      //return an object with the fetched JOURNEY_PURPOSES data
+      JOURNEY_PURPOSES: await prisma.Journey_Purposes.findUnique({
+        where: { id: 2 }, //taking the ID of 2 from the database using prisma.Journey_Purposes.findUnique().
+      }),
+      IMAGES: await prisma.Images.findMany(),
+    };
+  } catch (error) {
+    console.error(error);
+    return fail(500, {
+      message: "Could not load Data from DB!",
+    });
+  }
+};
+`,
+    },
+    {
+      ID: 6,
+      name: "+page.server.ts for Honeymoon journeyPurpose",
+      description:
+        "This code performs data loading operations for the Honeymoon journey purpose page. It fetches a specific row from the Journey_Purposes table based on the id, and fetches multiple rows from the Images table. If the loading process encounters an error, it logs the error and returns a failure response with a status code of 500 and an error message indicating the failure to load data from the database.",
+      author: AK,
+      version: "1.0",
+      usedBy: ["Svelte Kit page to load data from a database"],
+      dependecies: [
+        "The prisma module is imported from $lib/server/prisma, the fail function is imported from @sveltejs/kit",
+      ],
+      variables: [
+        {
+          name: "load",
+          description:
+            "This variable is a constant that holds an implementation of the PageServerLoad type. It represents the server-side load function for the page",
+        },
+        {
+          name: "JOURNEY_PURPOSES",
+          description:
+            "This variable represents the fetched data from the Journey_Purposes table in the database, specifically the row with the id of 1. It is obtained using the findUnique method provided by the prisma module.",
+        },
+        {
+          name: "IMAGES",
+          description:
+            "This variable holds the result of the findMany function called on the Images model from the prisma module. It represents multiple rows of image data retrieved from the database.",
+        },
+      ],
+      script: `
+import { prisma } from "$lib/server/prisma";
+import { fail } from "@sveltejs/kit";
+import type { PageServerLoad } from "../../../../../../.svelte-kit/types/src/routes/[[sites]]/spacetravel/journeyPurpose/phototour/$types";
+
+export const load: PageServerLoad = async () => {
+  try {
+    return {
+      //return an object with the fetched JOURNEY_PURPOSES data
+      JOURNEY_PURPOSES: await prisma.Journey_Purposes.findUnique({
+        where: { id: 1 }, //taking the ID of 1 from the database using prisma.Journey_Purposes.findUnique().
+      }),
+      IMAGES: await prisma.Images.findMany(),
+    };
+  } catch (error) {
+    console.error(error);
+    return fail(500, {
+      message: "Could not load Data from DB!",
+    });
+  }
+};
+`,
+    },
+    {
+      ID: 7,
+      name: "+page.server.ts for OurRecommendations journeyPurpose",
+      description:
+        "This code performs data loading operations for the OurRecommendations journey purpose page. It fetches a specific row from the Journey_Purposes table based on the id, and fetches multiple rows from the Images table. If the loading process encounters an error, it logs the error and returns a failure response with a status code of 500 and an error message indicating the failure to load data from the database.",
+      author: AK,
+      version: "1.0",
+      usedBy: ["Svelte Kit page to load data from a database"],
+      dependecies: [
+        "The prisma module is imported from $lib/server/prisma, the fail function is imported from @sveltejs/kit",
+      ],
+      variables: [
+        {
+          name: "load",
+          description:
+            "This variable is a constant that holds an implementation of the PageServerLoad type. It represents the server-side load function for the page",
+        },
+        {
+          name: "JOURNEY_PURPOSES",
+          description:
+            "This variable represents the fetched data from the Journey_Purposes table in the database, specifically the row with the id of 5. It is obtained using the findUnique method provided by the prisma module.",
+        },
+        {
+          name: "IMAGES",
+          description:
+            "This variable holds the result of the findMany function called on the Images model from the prisma module. It represents multiple rows of image data retrieved from the database.",
+        },
+      ],
+      script: `
+import { prisma } from "$lib/server/prisma";
+import { fail } from "@sveltejs/kit";
+import type { PageServerLoad } from "../../../../../../.svelte-kit/types/src/routes/[[sites]]/spacetravel/journeyPurpose/phototour/$types";
+
+export const load: PageServerLoad = async () => {
+  try {
+    return {
+      //return an object with the fetched JOURNEY_PURPOSES data
+      JOURNEY_PURPOSES: await prisma.Journey_Purposes.findUnique({
+        where: { id: 5 }, //taking the ID of 5 from the database using prisma.Journey_Purposes.findUnique().
+      }),
+      IMAGES: await prisma.Images.findMany(),
+    };
+  } catch (error) {
+    console.error(error);
+    return fail(500, {
+      message: "Could not load Data from DB!",
+    });
+  }
+};
+`,
+    },
+    {
+      ID: 8,
+      name: "+page.server.ts for Phototour journeyPurpose",
+      description:
+        "This code performs data loading operations for the Phototour journey purpose page. It fetches a specific row from the Journey_Purposes table based on the id, and fetches multiple rows from the Images table. If the loading process encounters an error, it logs the error and returns a failure response with a status code of 500 and an error message indicating the failure to load data from the database.",
+      author: AK,
+      version: "1.0",
+      usedBy: ["Svelte Kit page to load data from a database"],
+      dependecies: [
+        "The prisma module is imported from $lib/server/prisma, the fail function is imported from @sveltejs/kit",
+      ],
+      variables: [
+        {
+          name: "load",
+          description:
+            "This variable is a constant that holds an implementation of the PageServerLoad type. It represents the server-side load function for the page",
+        },
+        {
+          name: "JOURNEY_PURPOSES",
+          description:
+            "This variable represents the fetched data from the Journey_Purposes table in the database, specifically the row with the id of 3. It is obtained using the findUnique method provided by the prisma module.",
+        },
+        {
+          name: "IMAGES",
+          description:
+            "This variable holds the result of the findMany function called on the Images model from the prisma module. It represents multiple rows of image data retrieved from the database.",
+        },
+      ],
+      script: `
+import { prisma } from "$lib/server/prisma";
+import { fail } from "@sveltejs/kit";
+import type { PageServerLoad } from "../../../../../../.svelte-kit/types/src/routes/[[sites]]/spacetravel/journeyPurpose/phototour/$types";
+
+export const load: PageServerLoad = async () => {
+  try {
+    return {
+      //return an object with the fetched JOURNEY_PURPOSES data
+      JOURNEY_PURPOSES: await prisma.Journey_Purposes.findUnique({
+        where: { id: 3 }, //taking the ID of 3 from the database using prisma.Journey_Purposes.findUnique().
+      }),
+      IMAGES: await prisma.Images.findMany(),
+    };
+  } catch (error) {
+    console.error(error);
+    return fail(500, {
+      message: "Could not load Data from DB!",
+    });
+  }
+};
+`,
+    },
+    {
+      ID: 9,
+      name: "+page.server.ts for Vacation journeyPurpose",
+      description:
+        "This code performs data loading operations for the Vacation journey purpose page. It fetches a specific row from the Journey_Purposes table based on the id, and fetches multiple rows from the Images table. If the loading process encounters an error, it logs the error and returns a failure response with a status code of 500 and an error message indicating the failure to load data from the database.",
+      author: AK,
+      version: "1.0",
+      usedBy: ["Svelte Kit page to load data from a database"],
+      dependecies: [
+        "The prisma module is imported from $lib/server/prisma, the fail function is imported from @sveltejs/kit",
+      ],
+      variables: [
+        {
+          name: "load",
+          description:
+            "This variable is a constant that holds an implementation of the PageServerLoad type. It represents the server-side load function for the page",
+        },
+        {
+          name: "JOURNEY_PURPOSES",
+          description:
+            "This variable represents the fetched data from the Journey_Purposes table in the database, specifically the row with the id of 4. It is obtained using the findUnique method provided by the prisma module.",
+        },
+        {
+          name: "IMAGES",
+          description:
+            "This variable holds the result of the findMany function called on the Images model from the prisma module. It represents multiple rows of image data retrieved from the database.",
+        },
+      ],
+      script: `
+import { prisma } from "$lib/server/prisma";
+import { fail } from "@sveltejs/kit";
+import type { PageServerLoad } from "./$types";
+
+export const load: PageServerLoad = async () => {
+  try {
+    return {
+      //return an object with the fetched JOURNEY_PURPOSES data
+      JOURNEY_PURPOSES: await prisma.Journey_Purposes.findUnique({
+        where: { id: 4 }, //taking the ID of 4 from the database using prisma.Journey_Purposes.findUnique().
+      }),
+      IMAGES: await prisma.Images.findMany(),
+    };
+  } catch (error) {
+    console.error(error);
+    return fail(500, {
+      message: "Could not load Data from DB!",
+    });
+  }
+};
+`,
+    },
+    {
+      ID: 10,
+      name: "+page.server.ts for Mars destination",
+      description:
+        "This code performs data loading operations for the Mars destination page. It fetches specific rows from the Destinations and Hotels tables based on their respective IDs, and fetches multiple rows from the Images table. If the loading process encounters an error, it logs the error and returns a failure response with a status code of 500 and an error message indicating the failure to load data from the database.",
+      author: AK,
+      version: "1.0",
+      usedBy: ["Svelte Kit page to load data from a database"],
+      dependecies: [
+        "The prisma module is imported from $lib/server/prisma, the fail function is imported from @sveltejs/kit",
+      ],
+      variables: [
+        {
+          name: "load",
+          description:
+            "This variable is a constant that holds an implementation of the PageServerLoad type. It represents the server-side load function for the page",
+        },
+        {
+          name: "DESTINATIONS",
+          description:
+            "This variable represents the fetched data from the Destinations table in the database, specifically the row with the destinationID of 1. It is obtained using the findUnique method provided by the prisma module.",
+        },
+        {
+          name: "HOTELS",
+          description:
+            "This variable represents the fetched data from the Hotels table in the database, specifically the row with the hotelID of 1. It is obtained using the findUnique method provided by the prisma module.",
+        },
+        {
+          name: "IMAGES",
+          description:
+            "This variable holds the result of the findMany function called on the Images model from the prisma module. It represents multiple rows of image data retrieved from the database.",
+        },
+      ],
+      script: `
+import { prisma } from "$lib/server/prisma";
+import { fail } from "@sveltejs/kit";
+import type { PageServerLoad } from "../../../../../../.svelte-kit/types/src/routes/[[sites]]/spacetravel/journeyPurpose/phototour/$types";
+
+export const load: PageServerLoad = async () => {
+  try {
+    return {
+      //return an object with the fetched DESTINATIONS data and HOTELS data
+      DESTINATIONS: await prisma.Destinations.findUnique({
+        where: { destinationID: 1 }, //taking the ID of 1 from the database using prisma.Destinations.findUnique().
+      }),
+      HOTELS: await prisma.Hotels.findUnique({
+        where: { hotelID: 1 }, //taking the ID of 1 from the database using prisma.Hotels.findUnique().
+      }),
+      IMAGES: await prisma.Images.findMany(),
+    };
+  } catch (error) {
+    console.error(error);
+    return fail(500, {
+      message: "Could not load Data from DB!",
+    });
+  }
+};
+`,
+    },
+    {
+      ID: 11,
+      name: "+page.server.ts for Moon destination",
+      description:
+        "This code performs data loading operations for the Moon destination page. It fetches specific rows from the Destinations and Hotels tables based on their respective IDs, and fetches multiple rows from the Images table. If the loading process encounters an error, it logs the error and returns a failure response with a status code of 500 and an error message indicating the failure to load data from the database.",
+      author: AK,
+      version: "1.0",
+      usedBy: ["Svelte Kit page to load data from a database"],
+      dependecies: [
+        "The prisma module is imported from $lib/server/prisma, the fail function is imported from @sveltejs/kit",
+      ],
+      variables: [
+        {
+          name: "load",
+          description:
+            "This variable is a constant that holds an implementation of the PageServerLoad type. It represents the server-side load function for the page",
+        },
+        {
+          name: "DESTINATIONS",
+          description:
+            "This variable represents the fetched data from the Destinations table in the database, specifically the row with the destinationID of 2. It is obtained using the findUnique method provided by the prisma module.",
+        },
+        {
+          name: "HOTELS",
+          description:
+            "This variable represents the fetched data from the Hotels table in the database, specifically the row with the hotelID of 2. It is obtained using the findUnique method provided by the prisma module.",
+        },
+        {
+          name: "IMAGES",
+          description:
+            "This variable holds the result of the findMany function called on the Images model from the prisma module. It represents multiple rows of image data retrieved from the database.",
+        },
+      ],
+      script: `
+import { prisma } from "$lib/server/prisma";
+import { fail } from "@sveltejs/kit";
+import type { PageServerLoad } from "../../../../../../.svelte-kit/types/src/routes/[[sites]]/spacetravel/journeyPurpose/phototour/$types";
+
+export const load: PageServerLoad = async () => {
+  try {
+    return {
+      //return an object with the fetched DESTINATIONS data and HOTELS data
+      DESTINATIONS: await prisma.Destinations.findUnique({
+        where: { destinationID: 2 }, //taking the ID of 2 from the database using prisma.Destinations.findUnique().
+      }),
+      HOTELS: await prisma.Hotels.findUnique({
+        where: { hotelID: 2 }, //taking the ID of 2 from the database using prisma.Hotels.findUnique().
+      }),
+      IMAGES: await prisma.Images.findMany(),
+    };
+  } catch (error) {
+    console.error(error);
+    return fail(500, {
+      message: "Could not load Data from DB!",
+    });
+  }
+};
+`,
+    },
+    {
+      ID: 12,
+      name: "+page.server.ts for Venus destination",
+      description:
+        "This code performs data loading operations for the Venus destination page. It fetches specific rows from the Destinations and Hotels tables based on their respective IDs, and fetches multiple rows from the Images table. If the loading process encounters an error, it logs the error and returns a failure response with a status code of 500 and an error message indicating the failure to load data from the database.",
+      author: AK,
+      version: "1.0",
+      usedBy: ["Svelte Kit page to load data from a database"],
+      dependecies: [
+        "The prisma module is imported from $lib/server/prisma, the fail function is imported from @sveltejs/kit",
+      ],
+      variables: [
+        {
+          name: "load",
+          description:
+            "This variable is a constant that holds an implementation of the PageServerLoad type. It represents the server-side load function for the page",
+        },
+        {
+          name: "DESTINATIONS",
+          description:
+            "This variable represents the fetched data from the Destinations table in the database, specifically the row with the destinationID of 3. It is obtained using the findUnique method provided by the prisma module.",
+        },
+        {
+          name: "HOTELS",
+          description:
+            "This variable represents the fetched data from the Hotels table in the database, specifically the row with the hotelID of 3. It is obtained using the findUnique method provided by the prisma module.",
+        },
+        {
+          name: "IMAGES",
+          description:
+            "This variable holds the result of the findMany function called on the Images model from the prisma module. It represents multiple rows of image data retrieved from the database.",
+        },
+      ],
+      script: `
+import { prisma } from "$lib/server/prisma";
+import { fail } from "@sveltejs/kit";
+import type { PageServerLoad } from "../../../../../../.svelte-kit/types/src/routes/[[sites]]/spacetravel/journeyPurpose/phototour/$types";
+
+export const load: PageServerLoad = async () => {
+  try {
+    return {
+      //return an object with the fetched DESTINATIONS data and HOTELS data
+      DESTINATIONS: await prisma.Destinations.findUnique({
+        where: { destinationID: 3 }, //taking the ID of 3 from the database using prisma.Destinations.findUnique().
+      }),
+      HOTELS: await prisma.Hotels.findUnique({
+        where: { hotelID: 3 }, //taking the ID of 3 from the database using prisma.Hotels.findUnique().
+      }),
+      IMAGES: await prisma.Images.findMany(),
+    };
+  } catch (error) {
+    console.error(error);
+    return fail(500, {
+      message: "Could not load Data from DB!",
+    });
+  }
+};
+`,
+    },
     //-------------------------------------------------------------------------------------------
   ];
 

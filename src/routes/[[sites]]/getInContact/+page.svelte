@@ -15,7 +15,7 @@
 
   export let data: PageData;
 
-  const DIVIDER_CAPTION: string = "Get ready for take off";
+  const DIVIDER_CAPTION: string = "Ready for the ultimate space adventure? NFTW Adventures offers exhilarating trips to the Moon, Mars, and Venus. Take the final step towards your extraordinary journey and prepare to explore the mysteries of the cosmos. Contact us now and be among the select few who will experience the thrill of space travel firsthand.";
 
   let JOURNEY_PURPOSE: JourneyPurposeData[];
   let IMAGES: ImageData[];
@@ -30,8 +30,8 @@
     if (JOURNEY_PURPOSE[index].name === $packageMemory.journeyPurpose) {
       //load start-/enddate if it´s set in the db
       if (
-        !($packageMemory.journeyPurpose === "birthday special") &&
-        !($packageMemory.journeyPurpose === "honeymoon")
+        !($packageMemory.journeyPurpose === "Birthday special") &&
+        !($packageMemory.journeyPurpose === "Honeymoon")
       ) {
         $packageMemory.startDate = JOURNEY_PURPOSE[index].startDate;
         $packageMemory.endDate = JOURNEY_PURPOSE[index].endDate;
@@ -53,20 +53,19 @@
   //start- and enddate for the upcoming trips
   const NEXT_JOURNEY_DATES = {
     VACATION: {
-      START_DATE: JOURNEY_PURPOSE[parseJourneyPurpose("vacation")].startDate,
-      END_DATE: JOURNEY_PURPOSE[parseJourneyPurpose("vacation")].endDate,
+      START_DATE: JOURNEY_PURPOSE[parseJourneyPurpose("Vacation")].startDate,
+      END_DATE: JOURNEY_PURPOSE[parseJourneyPurpose("Vacation")].endDate,
     },
     PHOTOTOUR: {
-      START_DATE: JOURNEY_PURPOSE[parseJourneyPurpose("phototour")].startDate,
-      END_DATE: JOURNEY_PURPOSE[parseJourneyPurpose("phototour")].endDate,
+      START_DATE: JOURNEY_PURPOSE[parseJourneyPurpose("Phototour")].startDate,
+      END_DATE: JOURNEY_PURPOSE[parseJourneyPurpose("Phototour")].endDate,
     },
     RECOMANDATIONS: {
-      START_DATE:
-        JOURNEY_PURPOSE[parseJourneyPurpose("our recomandations")].startDate,
-      END_DATE:
-        JOURNEY_PURPOSE[parseJourneyPurpose("our recomandations")].endDate,
+      START_DATE: JOURNEY_PURPOSE[parseJourneyPurpose("Our recommendations")].startDate,
+      END_DATE: JOURNEY_PURPOSE[parseJourneyPurpose("Our recommendations")].endDate,
     },
   };
+  
 
 </script>
 
@@ -93,6 +92,6 @@
     nextVacationEnd={NEXT_JOURNEY_DATES.VACATION.END_DATE}
     nextPhototourStart={NEXT_JOURNEY_DATES.PHOTOTOUR.START_DATE}
     nextPhototourEnd={NEXT_JOURNEY_DATES.PHOTOTOUR.END_DATE}
-    nextRecomandationsStart={NEXT_JOURNEY_DATES.RECOMANDATIONS.START_DATE}
-    nextRecomandationsEnd={NEXT_JOURNEY_DATES.RECOMANDATIONS.END_DATE} />
+    nextRecommandationsStart={NEXT_JOURNEY_DATES.RECOMANDATIONS.START_DATE}
+    nextRecommandationsEnd={NEXT_JOURNEY_DATES.RECOMANDATIONS.END_DATE} />
 </SectionBg002>

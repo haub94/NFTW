@@ -31,11 +31,11 @@
   style="padding-top:{(height - iFrameHeight) / 2 +
     'px'} ; padding-bottom:{(height - iFrameHeight) / 2 + 'px'} ;"
 >
-<!--
   <div class="lg:absolute lg:inset-0 lg:left-1/2 grid justify-center">
     <div
       class="w-full bg-NFTW-bg sm:h-80 lg:absolute lg:h-full bg-blend-multiply bg-no-repeat items-center grid"
     >
+    <!--
       <iframe
         title={iFrameTitle}
         src={iFrameSrc}
@@ -44,9 +44,9 @@
         frameborder="0"
         loading="lazy"
       />
+      -->
     </div>
   </div>
-  -->
   <div
     class="pb-24 pt-16 sm:pb-32 sm:pt-24 lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:pt-32"
     style="min-height:{iFrameHeight}px"
