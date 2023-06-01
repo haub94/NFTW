@@ -15,7 +15,6 @@
   let IMAGES: ImageData[];
 
   ({ IMAGES } = data);
-
 </script>
 
 <BgVideo

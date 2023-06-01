@@ -2886,7 +2886,7 @@ background-position:center;
       description:
         "Section component that shows text on the left side and a iFrame on the right side. The iFrame shows a 3D-Modell of the destination planet.",
       author: DR,
-      version: "1.2",
+      version: "1.3",
       usedBy: ["Moon", "Mars", "Venus"],
       dependecies: ["{ page } from $app/stores"],
       variables: [
@@ -2947,13 +2947,13 @@ const iFrameTitle = isMars
   : isVenus
   ? "venus3D"
   : "none";
-const iFrameSrc = isMars
-  ? "https://solarsystem.nasa.gov/gltf_embed/2372"
-  : isMoon
-  ? "https://solarsystem.nasa.gov/gltf_embed/2366"
-  : isVenus
-  ? "https://solarsystem.nasa.gov/gltf_embed/2342"
-  : undefined;
+  const iFrameSrc = isMars
+    ? "/videos/mars_rotating.mp4"
+    : isMoon
+    ? "/videos/moon_rotating.mp4"
+    : isVenus
+    ? "/videos/venus_rotating.mp4"
+    : undefined;
       `,
       html: `
       <div
@@ -2963,15 +2963,15 @@ const iFrameSrc = isMars
 >
   <div class="lg:absolute lg:inset-0 lg:left-1/2 grid justify-center">
     <div
-      class="w-full bg-NFTW-bg sm:h-80 lg:absolute lg:h-full bg-blend-multiply bg-no-repeat items-center grid"
+      class="w-full bg-NFTW-bg lg:absolute lg:h-full bg-blend-multiply bg-no-repeat items-center grid"
     >
-      <iframe
-        title={iFrameTitle}
+      <video
         src={iFrameSrc}
-        width={iFrameHeight + "px"}
-        height={iFrameHeight + "px"}
-        frameborder="0"
-        loading="lazy"
+        autoplay
+        loop
+        playsinline
+        muted
+        class="object-cover justify-self-center px-10"
       />
     </div>
   </div>
