@@ -478,7 +478,7 @@
                 </svg>
               </dt>
               <dd>
-                <a class="hover:text-NFTW-white" href="info@nftwadventures.com"
+                <a class="hover:text-NFTW-white" href="mailto:info@nftwadventures.com"
                   >info@nftwadventures.com</a
                 >
               </dd>
