@@ -122,7 +122,7 @@
 <SectionBg002>
 	<div class="grid justify-center justify-self-center mx-auto max-w-7xl">
 		<SectionHeader 
-			title="Mission Completed."
+			title="Client Stories"
 			description="Discover what our customers have to say about their unforgettable experiences with us. Read their stories and testimonials to see why we're the go-to company for unique and unforgettable holidays in space."
 			/>
 		<!--cards for the completed trips-->	
