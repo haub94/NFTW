@@ -161,7 +161,7 @@
                     <h3 class="text-white font-bold">About this Documentation</h3>  
                   </a>
                   <a on:click={toggleVisibilitySidebar} href={pathToAboutDocu} class={sidebarButtonStyle}>
-                    get help
+                    Get help
                   </a>
                 </div>
                 
