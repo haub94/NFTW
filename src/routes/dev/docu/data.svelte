@@ -4580,7 +4580,7 @@ export const load: PageServerLoad = async () => {
     {
       ID: 0,
       name: "",
-      description: "Beschreibung zu Test_Script.",
+      description: "Database Description",
       author: MH,
       version: "1.0",
       usedBy: "",
@@ -4588,11 +4588,10 @@ export const load: PageServerLoad = async () => {
 
       chapter: [
         {
-          name: "overview",
+          name: "Supabase",
         },
         {
-          name: "usage",
-          content: "blablabla",
+          name: "Prisma",
         },
       ],
     },
@@ -4605,7 +4604,7 @@ export const load: PageServerLoad = async () => {
     {
       ID: 0,
       name: "",
-      description: "Beschreibung zu Test_Script.",
+      description: "Design Description",
       author: MH,
       version: "1.0",
       usedBy: "",
@@ -4613,11 +4612,7 @@ export const load: PageServerLoad = async () => {
 
       chapter: [
         {
-          name: "overview",
-        },
-        {
-          name: "usage",
-          content: "blablabla",
+          name: "Colors",
         },
       ],
     },
