@@ -18,11 +18,11 @@
     ? "venus3D"
     : "none";
   const iFrameSrc = isMars
-    ? "https://solarsystem.nasa.gov/gltf_embed/2372"
+    ? "/videos/mars_rotating.mp4"
     : isMoon
-    ? "https://solarsystem.nasa.gov/gltf_embed/2366"
+    ? "/videos/moon_rotating.mp4"
     : isVenus
-    ? "https://solarsystem.nasa.gov/gltf_embed/2342"
+    ? "/videos/venus_rotating.mp4"
     : undefined;
 </script>
 
@@ -33,18 +33,16 @@
 >
   <div class="lg:absolute lg:inset-0 lg:left-1/2 grid justify-center">
     <div
-      class="w-full bg-NFTW-bg sm:h-80 lg:absolute lg:h-full bg-blend-multiply bg-no-repeat items-center grid"
+      class="w-full bg-NFTW-bg lg:absolute lg:h-full bg-blend-multiply bg-no-repeat items-center grid"
     >
-    <!--
-      <iframe
-        title={iFrameTitle}
+      <video
         src={iFrameSrc}
-        width={iFrameHeight + "px"}
-        height={iFrameHeight + "px"}
-        frameborder="0"
-        loading="lazy"
+        autoplay
+        loop
+        playsinline
+        muted
+        class="object-cover justify-self-center px-10"
       />
-      -->
     </div>
   </div>
   <div
@@ -63,14 +61,3 @@
     </div>
   </div>
 </div>
-
-<!-- 
-title="mars3D"
-src="https://solarsystem.nasa.gov/gltf_embed/2372"
-title="earth3D"
-src="https://solarsystem.nasa.gov/gltf_embed/2393"
-title="moon3D"
-src="https://solarsystem.nasa.gov/gltf_embed/2366"
-title="venus3D"
-src="https://solarsystem.nasa.gov/gltf_embed/2342"
- -->

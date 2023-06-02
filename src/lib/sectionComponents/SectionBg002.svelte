@@ -7,7 +7,7 @@
 </script>
 
 <div
-  class="relative isolate bg-NFTW-bg"
+  class="relative isolate bg-NFTW-bg overflow-hidden"
   style="padding-top:{paddingTop} ; padding-bottom:{paddingBottom};"
 >
   <div
