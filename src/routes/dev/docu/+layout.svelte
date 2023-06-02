@@ -8,9 +8,6 @@
     import { scriptData } from "./data.svelte";
     import { databaseData } from "./data.svelte";
     import { designData } from "./data.svelte";
-
-
-    import SidebarButton from "$lib/dev/docu/helper/SidebarButton.svelte";
     
     //config
     const pathToDocu: string = "/dev/docu";
@@ -137,7 +134,7 @@
     {/if}
 
       <!-- Static sidebar for desktop -->
-      <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
+      <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col pb-8">
         <!-- Sidebar component, swap this element with another sidebar if you like -->
         <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-NFTW-lila-800 px-6 no-scrollbar">
         <a href={pathToDocu} on:click={toggleVisibilitySidebar}>
@@ -164,7 +161,7 @@
                     <h3 class="text-white font-bold">About this Documentation</h3>  
                   </a>
                   <a on:click={toggleVisibilitySidebar} href={pathToAboutDocu} class={sidebarButtonStyle}>
-                    get help
+                    Get help
                   </a>
                 </div>
                 

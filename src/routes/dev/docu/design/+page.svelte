@@ -1,4 +1,13 @@
-<h1 id="overview">overview</h1>
+
+
+    <div id="Supabase" class="bg-white py-12 rounded-lg">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
+          <h3 id="Colors" class="pt-2 pb-8 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Tailwind color palette</h3>
+     
+
+
+
 
 <div class="space-y-12 flex flex-col">
   <div class="flex flex-row">
@@ -60,4 +69,8 @@
     <div class="w-40 h-40 bg-NFTW-pink-900 text-white">NFTW-pink-900</div>
     <div class="w-40 h-40 bg-NFTW-pink-950 text-white">NFTW-pink-950</div>
   </div>
+</div>
+
+</div>
+</div>
 </div>

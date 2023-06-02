@@ -31,12 +31,12 @@
     : "/";
 
   let buttonText: string = checkIfDestDetailPage
-    ? "< Back to destinations"
+    ? "◄ Back to destinations"
     : checkIfJPDetailPage
-    ? "< Back to journey purposes"
+    ? "◄ Back to journey purposes"
     : PAGE_IS_DEST || PAGE_IS_JP
-    ? "< Back to spacetravel"
-    : "< Back to home";
+    ? "◄ Back to spacetravel"
+    : "◄ Back to home";
 </script>
 
 <div class="absolute left-5 top-5 flex">

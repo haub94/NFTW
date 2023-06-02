@@ -4571,6 +4571,58 @@ export const load: PageServerLoad = async () => {
 };
 `,
     },
+    {
+      ID: 13,
+      name: "+page.server.ts for client stories",
+      description:
+        "This code performs data loading operations for the client stories page. It fetches the tables Customer_Data, Rating_Data and Images. If the loading process encounters an error, it logs the error and returns a failure response with a status code of 500 and an error message indicating the failure to load data from the database.",
+      author: MH,
+      version: "1.0",
+      usedBy: ["Svelte Kit page to load data from a database"],
+      dependecies: [
+        "The prisma module is imported from $lib/server/prisma, the fail function is imported from @sveltejs/kit",
+      ],
+      variables: [
+        {
+          name: "load",
+          description:
+            "This variable is a constant that holds an implementation of the PageServerLoad type. It represents the server-side load function for the page",
+        },
+        {
+          name: "CUSTOMER_DATA",
+          description:
+            "This variable holds the result of the findMany function called on the Customer_Data model from the prisma module. It represents multiple rows of Customer_Data retrieved from the database.",
+        },
+        {
+          name: "RATING_DATA",
+          description:
+            "This variable holds the result of the findMany function called on the Rating_Data model from the prisma module. It represents multiple rows of Rating_Data retrieved from the database.",
+        },
+        {
+          name: "IMAGES",
+          description:
+            "This variable holds the result of the findMany function called on the Images model from the prisma module. It represents multiple rows of image data retrieved from the database.",
+        },
+      ],
+      script: `
+import { prisma } from "$lib/server/prisma";
+import { fail } from "@sveltejs/kit";
+import type { PageServerLoad } from "./$types";
+
+export const load: PageServerLoad = async () => {
+	try {
+        return {
+            CUSTOMER_DATA: await prisma.Customer_Data.findMany(),
+            RATING_DATA: await prisma.Rating_Data.findMany(),
+            IMAGES: await prisma.Images.findMany(),
+        }
+    } catch (error) {
+        console.error(error);
+            return fail(500, { message: 'Could not load Customer_Data ore Rating_Data from DB!'})
+    }
+}
+`,
+    }
     //-------------------------------------------------------------------------------------------
   ];
 
@@ -4580,7 +4632,7 @@ export const load: PageServerLoad = async () => {
     {
       ID: 0,
       name: "",
-      description: "Beschreibung zu Test_Script.",
+      description: "Database Description",
       author: MH,
       version: "1.0",
       usedBy: "",
@@ -4588,11 +4640,10 @@ export const load: PageServerLoad = async () => {
 
       chapter: [
         {
-          name: "overview",
+          name: "Supabase",
         },
         {
-          name: "usage",
-          content: "blablabla",
+          name: "Prisma",
         },
       ],
     },
@@ -4605,7 +4656,7 @@ export const load: PageServerLoad = async () => {
     {
       ID: 0,
       name: "",
-      description: "Beschreibung zu Test_Script.",
+      description: "Design Description",
       author: MH,
       version: "1.0",
       usedBy: "",
@@ -4613,11 +4664,7 @@ export const load: PageServerLoad = async () => {
 
       chapter: [
         {
-          name: "overview",
-        },
-        {
-          name: "usage",
-          content: "blablabla",
+          name: "Colors",
         },
       ],
     },
