@@ -29,18 +29,13 @@ npm run dev -- --open
 - only the project owner merge staging into master
 - default merge-direction: master ⬅ staging ⬅ feature-branch
 
-### 4. Work with database
-
-    ...content follows soon
-
-### 5. Codestyle
+### 4. Codestyle
 
 - use Prettier! shortcut to open search bar VS Code:
   - MacOS: COMMAND + SHIFT + P |>Format Document
   - Windows: CRTL + SHIFT + P |>Format Document
-- if you do single changes, please comment with your name and date (syntax.: //JJJJ.MM.DD - lastname, firstname: descripe the change)
 
-### 6. Adding routes
+### 5. Adding routes
 
 - add sites with the default header&footer into the directory [[sites]]
 - if its necessary to break the default layout (header&footer) --> add the route into the root of routes
@@ -48,7 +43,7 @@ npm run dev -- --open
 ## 🔧 Building
 
 To create a production version of your app:
-(❗❗test this for every merge request❗❗)
+(❗❗test this before merge request❗❗)
 
 ```
 npm run build
@@ -77,5 +72,6 @@ some importent actions are:
 1. switch to the location where you want to have the project directory
 2. clone the repo: `git clone git@github.com:haub94/NFTW.git`
 3. switch into the created directory and install dependencies: `npm install`
-4. build the project `npm run build` (important because it generates the prisma client!)
-5. run the localhost: `npm run dev` or `npm run dev -- --open` to open a new tab in the browser
+4. add .env file with the databse-url (you will get this from the owner of the repository)
+5. build the project `npm run build`
+6. run the localhost: `npm run dev` or `npm run dev -- --open` to open a new tab in the browser
