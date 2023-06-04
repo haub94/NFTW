@@ -1,3 +1,3 @@
 <div class="pl-1.5">
-	<slot />
+  <slot />
 </div>

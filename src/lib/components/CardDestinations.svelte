@@ -30,7 +30,6 @@
   export let imgSize: string | number = "cover";
 
   const IMAGE_PATH_INDEX: number = 0;
-
 </script>
 
 <a href={routePath}>

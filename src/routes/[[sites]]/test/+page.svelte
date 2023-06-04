@@ -91,52 +91,49 @@
   </div>
 </div>
 
-
-
 <!--   iframes -->
 
-<div class="hidden"> 
-
+<div class="hidden">
   <div class="bg-NFTW-bg">
     <div
-    class="relative"
-    style="overflow:hidden;border-radius:50%;background-color:black;width:450px;height:450px"
+      class="relative"
+      style="overflow:hidden;border-radius:50%;background-color:black;width:450px;height:450px"
     >
-    <iframe
-    title="venus3D"
-    src="https://solarsystem.nasa.gov/gltf_embed/2342"
+      <iframe
+        title="venus3D"
+        src="https://solarsystem.nasa.gov/gltf_embed/2342"
+        width="450px"
+        height="450px"
+        frameborder="0"
+        class=""
+      />
+    </div>
+  </div>
+
+  <iframe
+    title="mars3D"
+    src="https://solarsystem.nasa.gov/gltf_embed/2372"
     width="450px"
     height="450px"
     frameborder="0"
-    class=""
-    />
-  </div>
-</div>
-
-<iframe
-title="mars3D"
-src="https://solarsystem.nasa.gov/gltf_embed/2372"
-width="450px"
-height="450px"
-frameborder="0"
-/>
-<iframe
-title="earth3D"
-src="https://solarsystem.nasa.gov/gltf_embed/2393"
-width="450px"
-height="450px"
-  frameborder="0"
   />
   <iframe
-  title="moon3D"
-  src="https://solarsystem.nasa.gov/gltf_embed/2366"
-  width="450px"
-  height="450px"
-  frameborder="0"
+    title="earth3D"
+    src="https://solarsystem.nasa.gov/gltf_embed/2393"
+    width="450px"
+    height="450px"
+    frameborder="0"
+  />
+  <iframe
+    title="moon3D"
+    src="https://solarsystem.nasa.gov/gltf_embed/2366"
+    width="450px"
+    height="450px"
+    frameborder="0"
   />
 </div>
-  
-  <!---->
-  
-  <style>
+
+<!---->
+
+<style>
 </style>

@@ -1,10 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./src/**/*.{html,js,svelte,ts}'],
+  content: ["./src/**/*.{html,js,svelte,ts}"],
   theme: {
     extend: {
       colors: {
-        "NFTW": {
+        NFTW: {
           white: "#E9E0FF",
           bg: "#06000F",
         },
@@ -19,7 +19,7 @@ export default {
           700: "#080014",
           800: "#06000F",
           900: "#020005",
-          950: "#020005"
+          950: "#020005",
         },
         "NFTW-blue": {
           50: "#E9E0FF",
@@ -32,7 +32,7 @@ export default {
           700: "#210075",
           800: "#16004D",
           900: "#0C0029",
-          950: "#060014"
+          950: "#060014",
         },
         "NFTW-lila": {
           50: "#F9E0FF",
@@ -45,7 +45,7 @@ export default {
           700: "#5A0070",
           800: "#3D004D",
           900: "#1D0024",
-          950: "#100014"
+          950: "#100014",
         },
         "NFTW-pink": {
           50: "#FFE0F6",
@@ -58,16 +58,16 @@ export default {
           700: "#85005F",
           800: "#57003E",
           900: "#2E0021",
-          950: "#14000F"
-        }
-      }
-    }
+          950: "#14000F",
+        },
+      },
+    },
   },
   plugins: [
-    require('@tailwindcss/forms')/* ({
+    require("@tailwindcss/forms") /* ({
       // Choose Only One Of The Following Strategies !!!
       strategy: 'base', // only generate global styles
       strategy: 'class', // only generate classes
-    }), */
+    }), */,
   ],
 };

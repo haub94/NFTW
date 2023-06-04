@@ -15,14 +15,13 @@
 
   export let data: PageData;
 
-  const DIVIDER_CAPTION: string = "Ready for the ultimate space adventure? NFTW Adventures offers exhilarating trips to the Moon, Mars, and Venus. Take the final step towards your extraordinary journey and prepare to explore the mysteries of the cosmos. Contact us now and be among the select few who will experience the thrill of space travel firsthand.";
+  const DIVIDER_CAPTION: string =
+    "Ready for the ultimate space adventure? NFTW Adventures offers exhilarating trips to the Moon, Mars, and Venus. Take the final step towards your extraordinary journey and prepare to explore the mysteries of the cosmos. Contact us now and be among the select few who will experience the thrill of space travel firsthand.";
 
   let JOURNEY_PURPOSE: JourneyPurposeData[];
   let IMAGES: ImageData[];
-  ({ JOURNEY_PURPOSE } = data); 
-  ({ IMAGES } = data); 
-
-
+  ({ JOURNEY_PURPOSE } = data);
+  ({ IMAGES } = data);
 
   //get the current destination to load the start- /enddate
   for (let index = 0; index < JOURNEY_PURPOSE.length; index++) {
@@ -61,37 +60,41 @@
       END_DATE: JOURNEY_PURPOSE[parseJourneyPurpose("Phototour")].endDate,
     },
     RECOMANDATIONS: {
-      START_DATE: JOURNEY_PURPOSE[parseJourneyPurpose("Our recommendations")].startDate,
-      END_DATE: JOURNEY_PURPOSE[parseJourneyPurpose("Our recommendations")].endDate,
+      START_DATE:
+        JOURNEY_PURPOSE[parseJourneyPurpose("Our recommendations")].startDate,
+      END_DATE:
+        JOURNEY_PURPOSE[parseJourneyPurpose("Our recommendations")].endDate,
     },
   };
-  
-
 </script>
 
 <svelte:head>
   <title>Get in Contact</title>
   <meta
     name="description"
-    content="Your final step before an unforgettable journey" />
+    content="Your final step before an unforgettable journey"
+  />
 </svelte:head>
 
 <SectionBg002>
-  <SectionHeader 
-  title="Get In Contact"
-  description="Are you ready to embark on an extraordinary adventure that will defy the limits of your imagination? Look no further! Just get in touch with us!" />
+  <SectionHeader
+    title="Get In Contact"
+    description="Are you ready to embark on an extraordinary adventure that will defy the limits of your imagination? Look no further! Just get in touch with us!"
+  />
   <DividerTextImage
     title="You are on the finish line"
     caption={DIVIDER_CAPTION}
     image={selectImageFromDb("astronautKid", IMAGES)}
     imgSize="cover"
     imgPosition="center"
-    imgHeight="50vh" />
+    imgHeight="50vh"
+  />
   <Form
     nextVacationStart={NEXT_JOURNEY_DATES.VACATION.START_DATE}
     nextVacationEnd={NEXT_JOURNEY_DATES.VACATION.END_DATE}
     nextPhototourStart={NEXT_JOURNEY_DATES.PHOTOTOUR.START_DATE}
     nextPhototourEnd={NEXT_JOURNEY_DATES.PHOTOTOUR.END_DATE}
     nextRecommandationsStart={NEXT_JOURNEY_DATES.RECOMANDATIONS.START_DATE}
-    nextRecommandationsEnd={NEXT_JOURNEY_DATES.RECOMANDATIONS.END_DATE} />
+    nextRecommandationsEnd={NEXT_JOURNEY_DATES.RECOMANDATIONS.END_DATE}
+  />
 </SectionBg002>

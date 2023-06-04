@@ -11,7 +11,10 @@
 
 <main class="h-full">
   <SectionBg002>
-    <SectionHeader title="Imprint" description="Information according to §5 TMG" />
+    <SectionHeader
+      title="Imprint"
+      description="Information according to §5 TMG"
+    />
     <ImpressumContent />
   </SectionBg002>
 </main>

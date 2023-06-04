@@ -8,12 +8,14 @@
   <title>Privacy Policy</title>
   <meta
     name="description"
-    content="Information requirements according to the General Data Protection Regulation (DSGVO)" />
+    content="Information requirements according to the General Data Protection Regulation (DSGVO)"
+  />
 </svelte:head>
 
 <SectionBg002>
   <SectionHeader
     title="Privacy Policy"
-    description="Information requirements according to the General Data Protection Regulation (DSGVO)" />
+    description="Information requirements according to the General Data Protection Regulation (DSGVO)"
+  />
   <PrivacyPolicyContent />
 </SectionBg002>
