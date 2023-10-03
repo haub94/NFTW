@@ -1,4 +1,6 @@
 # 🌎🚀 Readme NFTW Adventures
+Disclaimer: The repo contains the code for a fictitious website, which was created as part of a team effort at the university. It does not work out of the box, since all "product"-specific content was swapped out into a database. This was a requirement of our professor. You can create your own database with the appropriate data (see Prisma schema), then the site should work. The following content is very detailed, because in our team, different previous knowledge was available. <br>
+**WARNING: All used trademarks are protected by their owners and were only used to illustrate the site. Therefore, these should never be deployed with the logos online!**
 
 ## 💻 Developing
 
