@@ -10,9 +10,12 @@
 
   //add vars to style redundant parts
   const labelStyle = "block text-sm font-semibold leading-6 text-NFTW-white";
-  const labelStyleDisabled = "block text-sm font-semibold leading-6 text-NFTW-white/20";
-  const inputStyle = "block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6";
-  const dateStyle = "block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6 cursor-pointer";
+  const labelStyleDisabled =
+    "block text-sm font-semibold leading-6 text-NFTW-white/20";
+  const inputStyle =
+    "block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6";
+  const dateStyle =
+    "block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6 cursor-pointer";
   const selectionStyling = "bg-NFTW-black-600 bg-opacity-90";
 
   const overrideMemory: boolean = false; //DEV-ONLY
@@ -20,9 +23,9 @@
 
   //variables for the date of the upcoming trips
   export let nextVacationStart: string = "";
-  export let nextVacationEnd: string = ""; 
+  export let nextVacationEnd: string = "";
   export let nextPhototourStart: string = "";
-  export let nextPhototourEnd: string = ""; 
+  export let nextPhototourEnd: string = "";
   export let nextRecommandationsStart: string = "";
   export let nextRecommandationsEnd: string = "";
 
@@ -49,14 +52,15 @@
       $configMemory.journeyPurpose === EMPTY_STRING
         ? "Nothing Choosen"
         : $configMemory.journeyPurpose,
-    startDate: $configMemory.startDate === EMPTY_STRING ? "" : $configMemory.startDate,
-    endDate: $configMemory.endDate === EMPTY_STRING ? "" : $configMemory.endDate,
+    startDate:
+      $configMemory.startDate === EMPTY_STRING ? "" : $configMemory.startDate,
+    endDate:
+      $configMemory.endDate === EMPTY_STRING ? "" : $configMemory.endDate,
     firstName: "",
     lastName: "",
     emailAddress: "",
     message: "",
   };
-
 
   //if the customer changes the input => update the configMemory
   function updateInputData(separator: string) {
@@ -69,16 +73,16 @@
         if (inputData.journeyPurpose === "Vacation") {
           $configMemory.startDate = nextVacationStart;
           $configMemory.endDate = nextVacationEnd;
-        };
+        }
         if (inputData.journeyPurpose === "Phototour") {
           $configMemory.startDate = nextPhototourStart;
           $configMemory.endDate = nextPhototourEnd;
-        };
+        }
         if (inputData.journeyPurpose === "Our recommandations") {
           $configMemory.startDate = nextRecommandationsStart;
           $configMemory.endDate = nextRecommandationsEnd;
-        };
-        
+        }
+
         break;
       case "startDate":
         $configMemory.startDate = inputData.startDate;
@@ -88,7 +92,7 @@
         break;
       default:
         break;
-    }  
+    }
   }
 
   //select the template based on the current form type
@@ -230,7 +234,8 @@
 
   //check if there is an SQL injection or XSS attack within the input
   function sanitizeInput(inputString: string) {
-    if(inputString.includes("<") ||
+    if (
+      inputString.includes("<") ||
       inputString.includes(">") ||
       inputString.includes("'") ||
       inputString.includes("#") ||
@@ -242,11 +247,10 @@
       inputString.includes("IF") ||
       inputString.includes("admin") ||
       inputString.includes("/") ||
-      inputString.includes("=")) {
-     
+      inputString.includes("=")
+    ) {
       bannerStatus = 666;
       return true;
-
     }
   }
 
@@ -257,11 +261,12 @@
     }
 
     //proof input of dangerous content
-    if(sanitizeInput(inputData.firstName) ||
+    if (
+      sanitizeInput(inputData.firstName) ||
       sanitizeInput(inputData.lastName) ||
       sanitizeInput(inputData.emailAddress) ||
       sanitizeInput(inputData.message)
-    ){
+    ) {
       return false;
     }
 
@@ -282,16 +287,15 @@
       );
     }
   }
-
 </script>
 
 <!--load testdate for dev-mode-->
 {#if dev}
-    <button
-      on:click={loadDevData}
-      class="rounded-md bg-green-500 px-3.5 py-2.5 text-center text-sm font-semibold text-NFTW-white shadow-sm hover:bg-cyan-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-      >Load DEV-Data ...</button
-    >
+  <button
+    on:click={loadDevData}
+    class="rounded-md bg-green-500 px-3.5 py-2.5 text-center text-sm font-semibold text-NFTW-white shadow-sm hover:bg-cyan-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+    >Load DEV-Data ...</button
+  >
 {/if}
 
 <!-- GET IN CONTACT -->
@@ -328,7 +332,7 @@
         text="UuupsiWhuupsi... It looks like there was an error during the transmission. Try again or contact us by phone: +99 123 456 789"
         color="red"
       />
-      {:else if bannerStatus === 666}
+    {:else if bannerStatus === 666}
       <Banner
         buzzWord="Nice Try"
         text="You should improve your hacking skills to hit our database ...little script kiddy"
@@ -385,7 +389,10 @@
         </h2>
         {#if isContact}
           <p class="mt-6 text-lg leading-8 text-NFTW-white">
-            Thank you for your interest in getting in touch with us. To contact us, please fill out the contact form and click the "send message" button. We'll review your message and get back to you as soon as possible.
+            Thank you for your interest in getting in touch with us. To contact
+            us, please fill out the contact form and click the "send message"
+            button. We'll review your message and get back to you as soon as
+            possible.
           </p>
         {/if}
         {#if isGetInContact}
@@ -478,7 +485,9 @@
                 </svg>
               </dt>
               <dd>
-                <a class="hover:text-NFTW-white" href="mailto:info@nftwadventures.com"
+                <a
+                  class="hover:text-NFTW-white"
+                  href="mailto:info@nftwadventures.com"
                   >info@nftwadventures.com</a
                 >
               </dd>
@@ -565,7 +574,9 @@
                 />
               {:else}
                 <!--by using the select field, the date will not be shown after the customer changes the journey purpose-->
-                <div class="block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white/20 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6 cursor-default">
+                <div
+                  class="block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white/20 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6 cursor-default"
+                >
                   {#if $configMemory.journeyPurpose === ""}
                     <p>dd.mm.yyyy</p>
                   {:else}
@@ -599,14 +610,16 @@
                 />
               {:else}
                 <!--by using the select field, the date will not be shown after the customer changes the journey purpose-->
-                <div class="block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white/20 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6 cursor-default">
+                <div
+                  class="block w-full mt-2.5 rounded-md border-0 bg-white/5 px-3.5 py-2 text-NFTW-white/20 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-NFTW-blue-500 sm:text-sm sm:leading-6 cursor-default"
+                >
                   {#if $configMemory.journeyPurpose === ""}
                     <p>dd.mm.yyyy</p>
                   {:else}
                     <p>{$configMemory.endDate}</p>
                   {/if}
                 </div>
-                {/if}
+              {/if}
             </div>
 
             <div class="mb-10 sm:col-span-2" />

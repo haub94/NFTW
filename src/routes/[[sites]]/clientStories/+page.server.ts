@@ -3,14 +3,16 @@ import { fail } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async () => {
-	try {
-        return {
-            CUSTOMER_DATA: await prisma.Customer_Data.findMany(),
-            RATING_DATA: await prisma.Rating_Data.findMany(),
-            IMAGES: await prisma.Images.findMany(),
-        }
-    } catch (error) {
-        console.error(error);
-            return fail(500, { message: 'Could not load Customer_Data ore Rating_Data from DB!'})
-    }
-}
+  try {
+    return {
+      CUSTOMER_DATA: await prisma.Customer_Data.findMany(),
+      RATING_DATA: await prisma.Rating_Data.findMany(),
+      IMAGES: await prisma.Images.findMany(),
+    };
+  } catch (error) {
+    console.error(error);
+    return fail(500, {
+      message: "Could not load Customer_Data ore Rating_Data from DB!",
+    });
+  }
+};

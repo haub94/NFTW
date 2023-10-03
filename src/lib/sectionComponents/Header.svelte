@@ -1,6 +1,6 @@
 <script lang="ts">
   import { dev } from "$app/environment";
-    import { page } from "$app/stores";
+  import { page } from "$app/stores";
 
   let menuOpened = false;
 
@@ -11,7 +11,6 @@
     menuOpened = false;
   }
   let screenSize: number;
-
 </script>
 
 <svelte:window bind:innerWidth={screenSize} />

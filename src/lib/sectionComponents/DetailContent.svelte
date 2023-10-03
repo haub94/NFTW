@@ -53,7 +53,7 @@
   export let jpIncludedServices: { icon: string; service: string }[] = [
     { icon: "IoIosRocket", service: "Service 1" },
   ];
-  
+
   export let jpImage: string[] = ["", ""];
 
   export let imageSize: string | number = "cover"; // auto, cover, contain ... or own size: 50%, 200px
@@ -111,7 +111,6 @@
   let isPrototyping = false; /* only for dev */
 
   const IMAGE_PATH_INDEX: number = 0;
-
 </script>
 
 <div

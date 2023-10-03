@@ -4,13 +4,13 @@ import type { PrismaClient } from "@prisma/client";
 
 // for information about these interfaces
 declare global {
-	namespace App {
-		// interface Error {}
-		// interface Locals {}
-		// interface PageData {}
-		// interface Platform {}
-	}
+  namespace App {
+    // interface Error {}
+    // interface Locals {}
+    // interface PageData {}
+    // interface Platform {}
+  }
 }
-var prisma: PrismaClient
+var prisma: PrismaClient;
 
 export {};

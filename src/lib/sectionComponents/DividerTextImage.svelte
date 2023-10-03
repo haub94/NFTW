@@ -11,7 +11,6 @@
   export let imgHeight: string | number = "";
 
   const IMAGE_PATH_INDEX: number = 0;
-
 </script>
 
 <div class="relative bg-NFTW-bg bg-opacity-30">
